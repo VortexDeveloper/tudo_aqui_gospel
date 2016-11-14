@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111221130) do
+ActiveRecord::Schema.define(version: 20161114190901) do
 
   create_table "administrators", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20161111221130) do
     t.index ["user_id"], name: "index_insiders_on_user_id"
   end
 
+  create_table "phonebooks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "telephone_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id"
+    t.index ["user_id"], name: "index_phonebooks_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "resource_type"
@@ -55,6 +64,12 @@ ActiveRecord::Schema.define(version: 20161111221130) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_subscribers_on_user_id"
+  end
+
+  create_table "telephones", force: :cascade do |t|
+    t.string   "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
