@@ -1,0 +1,60 @@
+<!--- Header -->
+<header>
+  <div class="rst-header-socialbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav class="rst-socialbar-menu">
+            <ul>
+              <li><a href="#">SOBRE NÓS</a></li>
+              <li><a href="#">CONTATO</a></li>
+            </ul>
+          </nav>
+          <nav class="rst-socialbar-social rst-account-socialbar">
+            <ul>
+              <li>
+                <form action="#" class="rst-search">
+                  <input type="text" value="Busca" onblur="if (this.value == '') {this.value = 'Busca';}" onclick=" if (this.value == 'Busca') {this.value = '';} " name="s">
+                  <button class="sb"><i class="fa fa-search"></i></button>
+                </form>
+              </li>
+              <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+              <li>
+                <%= session_button %>
+              </li>
+            </ul>
+            <%= add_post_button %>
+          </nav>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- fim social bar -->
+  <!-- Menu bar -->
+  <div class="rst-header-menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="rst-header-menu-content">
+            <a class="rst-header-logo" href="../"><%= image_tag('header-logo.png') %></a>
+            <div id="rst-weather" class="rst-weather"></div>
+            <button class="rst-menu-trigger">
+              <span>Toggle navigation</span>
+            </button>
+            <ul>
+              <li><a href="category.html">CATEGORIA 1</a></li>
+              <li><a href="category.html">CATEGORIA 2</a></li>
+              <li><a href="category.html">CATEGORIA 3</a></li>
+              <li><a href="category.html">CATEGORIA 4</a></li>
+              <li><a href="category.html">CATEGORIA 5</a></li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!--- fim Header -->

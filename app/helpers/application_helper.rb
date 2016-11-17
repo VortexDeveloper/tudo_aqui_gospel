@@ -17,9 +17,16 @@ module ApplicationHelper
 
   def session_button
     if user_signed_in?
-      link_to "Sair", destroy_user_session_path, method: :delete, class: 'btn news_button logout-btn'
+      render partial: "layouts/application/profile"
     else
-      render partial: "application/login"
+      render partial: "layouts/application/login"
     end
   end
+
+  def add_post_button
+    if user_signed_in?
+      link_to "NOVO POST", "#", class: 'rst-accsetting-addpost rst-addpost-mobile'
+    end
+  end
+
 end
