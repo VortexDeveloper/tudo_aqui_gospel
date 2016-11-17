@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114214107) do
+ActiveRecord::Schema.define(version: 20161116204442) do
 
   create_table "administrators", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,8 +21,14 @@ ActiveRecord::Schema.define(version: 20161114214107) do
 
   create_table "announcers", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "name"
+    t.string   "fantasy_name"
+    t.string   "contact_name"
+    t.integer  "doc_type"
+    t.string   "doc"
+    t.string   "email"
     t.index ["user_id"], name: "index_announcers_on_user_id"
   end
 
@@ -66,9 +72,11 @@ ActiveRecord::Schema.define(version: 20161114214107) do
     t.string   "zip_code"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
     t.index ["city_id"], name: "index_personal_profiles_on_city_id"
     t.index ["country_id"], name: "index_personal_profiles_on_country_id"
     t.index ["state_id"], name: "index_personal_profiles_on_state_id"
+    t.index ["user_id"], name: "index_personal_profiles_on_user_id"
   end
 
   create_table "phonebooks", force: :cascade do |t|
@@ -110,6 +118,7 @@ ActiveRecord::Schema.define(version: 20161114214107) do
     t.string   "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|
