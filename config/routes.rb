@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get 'pages/home'
+  get 'personal_profiles/edit'
+  patch 'personal_profiles/update'
 
 end

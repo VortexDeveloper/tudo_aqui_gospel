@@ -29,4 +29,12 @@ module ApplicationHelper
     end
   end
 
+  def cities_for_select
+    options_from_collection_for_select(City.all, 'id', 'name', 1)
+  end
+
+  def states_for_select
+    options_from_collection_for_select(State.all, 'id', 'name', 1)
+  end
+
 end
