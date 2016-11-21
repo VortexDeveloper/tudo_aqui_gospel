@@ -41,11 +41,11 @@
               </div>
               <div class="rst-setting">
                 <span><%= f.label :state, "Estado" %></span>
-                <%= f.select :state, states_for_select, selected: @personal_profile.state_id, class: 'rst-pageinput' %>
+                <%= f.select(:state, [states_for_select], {selected: @personal_profile.state_id}, { :class => 'rst-pageinput' }) %>
               </div>
               <div class="rst-setting">
                 <span><%= f.label :city, "Cidade" %></span>
-                <%= f.select :city, cities_for_select, selected: @personal_profile.city_id, class: 'rst-pageinput' %>
+                <%= f.select(:city, [cities_for_select], {selected: @personal_profile.city_id}, { :class => 'rst-pageinput' }) %>
               </div>
               <div class="rst-setting">
                 <span><%= f.label :zip_code, "CEP" %></span>
@@ -55,7 +55,7 @@
               <input class="rst-pagebutton" type="submit" value="NÃO SALVAR"/>
             </div>
             <div class="rst-account-img">
-              <img src="images/account.jpg" alt="" />
+              <img src="../images/account.jpg" alt="" />
               <input class="rst-pagebutton" type="submit" value="ALTERAR"/>
             </div>
           </div>

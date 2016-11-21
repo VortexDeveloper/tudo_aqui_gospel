@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 ENV['RAILS_ADMIN_THEME'] = 'rollincode'
 
+
 module TudoAqui
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -15,3 +16,6 @@ module TudoAqui
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+Time::DATE_FORMATS[:default] = "%d/%m/%Y %H:%M"
+Date::DATE_FORMATS[:default] = "%d/%m/%Y"

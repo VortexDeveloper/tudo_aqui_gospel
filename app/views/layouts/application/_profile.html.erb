@@ -1,10 +1,9 @@
 <div class="rst-accsetoption">
-  <a class="rst-accsetting-name" href="#"><img src="images/icon/account-icon.jpg" alt="" /><%= current_user.email %><i class="fa fa-caret-down"></i></a>
+  <a class="rst-accsetting-name" href="#"><img src="../images/icon/account-icon.jpg" alt="" /><%= current_user.email %><i class="fa fa-caret-down"></i></a>
   <div>
     <ul>
-      <li><a href="#">Settings</a></li>
+      <li><%= link_to "Perfil", personal_profiles_edit_path %></li>
       <li><%= button_to "Sair", destroy_user_session_path, method: :delete, class: 'rst-account-socialbar-button' %></li>
     </ul>
   </div>
 </div>
-<a class="rst-accsetting-addpost" href="#"><i class="fa fa-plus"></i></a>

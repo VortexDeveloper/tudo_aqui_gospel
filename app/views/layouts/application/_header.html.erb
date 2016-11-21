@@ -7,7 +7,7 @@
           <nav class="rst-socialbar-menu">
             <ul>
               <li><a href="#">SOBRE NÓS</a></li>
-              <li><a href="#">CONTATO</a></li>
+              <li><%= link_to "CONTATO", new_contact_path %></li>
             </ul>
           </nav>
           <nav class="rst-socialbar-social rst-account-socialbar">
@@ -23,6 +23,7 @@
               <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
               <li>
                 <%= session_button %>
+                <%= plus_post_button %>
               </li>
             </ul>
             <%= add_post_button %>
@@ -55,7 +56,9 @@
             <div class="clear"></div>
           </div>
         </div>
+
       </div>
+      <%= show_notices(notice) %>
     </div>
   </div>
 </header>

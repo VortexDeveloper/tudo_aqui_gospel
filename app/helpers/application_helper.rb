@@ -3,6 +3,12 @@ module ApplicationHelper
     :user
   end
 
+  def show_notices(notice)
+    if notice.present?
+      render partial: 'layouts/shareds/notices'
+    end
+  end
+
   def resource
     @resource ||= User.new
   end
@@ -25,7 +31,21 @@ module ApplicationHelper
 
   def add_post_button
     if user_signed_in?
-      link_to "NOVO POST", "#", class: 'rst-accsetting-addpost rst-addpost-mobile'
+      columnist = current_user.roles.where("name = ?", "Columnist")
+      if columnist.present?
+        link_to "NOVO POST", "#", class: 'rst-accsetting-addpost rst-addpost-mobile'
+      end
+    end
+  end
+
+  def plus_post_button
+    if user_signed_in?
+      columnist = current_user.roles.where("name = ?", "Columnist")
+      if columnist.present?
+        link_to "#", class: 'rst-accsetting-addpost' do
+          content_tag(:i, "", :class => 'fa fa-plus')
+        end
+      end
     end
   end
 

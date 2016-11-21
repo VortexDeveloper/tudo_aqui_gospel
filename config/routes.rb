@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'personal_profiles/edit'
   patch 'personal_profiles/update'
+  resources :contacts
 
 end
