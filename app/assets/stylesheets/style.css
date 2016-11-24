@@ -26,6 +26,50 @@ CSS Style Structure
         General
 =======================*/
 
+/* CORES BACKGROUND*/
+
+.sign-buttons{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin: 0 !important;
+}
+
+.green-bg{
+  background: #2be0b5 !important;
+}
+
+.green-bg a{
+  color: #fff !important;
+}
+
+.green-bg:hover{
+  opacity: 0.5;
+}
+
+.blue-bg{
+  background: #0071bc !important;
+}
+
+.blue-bg a{
+  color: #fff !important;
+}
+
+.blue-bg:hover{
+  opacity: 0.5;
+}
+
+/* ================ */
+
+.price-sign-up{
+  text-align: center;
+  color: #0071bc;
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.price-sign-up.small{
+  font-size: 0.5em !important;
+}
 
 html,
 body {

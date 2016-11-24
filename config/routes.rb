@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get 'personal_profiles/edit'
   patch 'personal_profiles/update'
   resources :contacts
-
+  
 end

@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   def set_roles(roles_id)
     roles_id ||= {} # no role checked
-
     if roles_id.empty?
       add_role "Subscriber"
     else
