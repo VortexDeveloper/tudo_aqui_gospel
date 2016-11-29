@@ -1,0 +1,55 @@
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Cadastro de Anunciante</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Section Register -->
+<section id="rst-register-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <%= form_tag user_create_path(@user), method: :post, autocomplete: :on, class: 'form-package' do %>
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Cadastro de Anunciante</h4>
+          </div> <!-- end section title -->
+          <div class="row">
+            <div class="col-sm-6">
+              <%= email_field_tag 'user[email]', nil, autofocus: true, placeholder: 'Email da empresa', class: 'rst-pageinput' %>
+              <%= hidden_field_tag "roles[]", 2, class: 'rst-pageinput'%>
+            </div>
+            <div class="col-sm-6">
+              <%= password_field_tag 'user[password]', nil, autocomplete: "off", placeholder: 'Senha', class: 'rst-pageinput' %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> caracteres no mínimo)</em>
+              <% end %><br />
+              <%= password_field_tag 'user[password_confirmation]', nil, autocomplete: "off", placeholder: 'Confirme a senha', class: 'rst-pageinput' %>
+            </div>
+            <div class="col-xs-12">
+              <%= submit_tag "Enviar", class: 'rst-pagebutton' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <aside class="widget widget_adv">
+          <h3>Anúncios</h3>
+          <a href="#"><img src="../images/ad01.png" alt="" /></a>
+          <a href="#"><img src="../images/ad01.png" alt="" /></a>
+          <a href="#"><img src="../images/ad01.png" alt="" /></a>
+          <a href="#"><img src="../images/ad01.png" alt="" /></a>
+          <div class="clear"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Section Register -->

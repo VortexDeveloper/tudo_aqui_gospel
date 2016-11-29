@@ -19,7 +19,7 @@
       <%= form_for personal_profile, url: personal_profiles_update_path do |f| %>
         <div class="col-sm-8">
           <div class="rst-section-title rst-section-title-box">
-            <h4>Perfil</h4>
+            <h4>Dados do Perfil</h4>
           </div> <!-- end section title -->
           <div class="rst-accsetting">
             <div class="rst-account-setting">
@@ -50,40 +50,25 @@
               <div class="rst-setting">
                 <span><%= f.label :zip_code, "CEP" %></span>
                 <%= f.text_field :zip_code, value: @personal_profile.zip_code, class: 'rst-pageinput' %>
+                <%= hidden_field_tag :id, @personal_profile.id %>
               </div>
               <%= f.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>
-              <input class="rst-pagebutton" type="submit" value="NÃO SALVAR"/>
-            </div>
-            <div class="rst-account-img">
-              <img src="../images/account.jpg" alt="" />
-              <input class="rst-pagebutton" type="submit" value="ALTERAR"/>
             </div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="rst-section-title rst-section-title-box">
-            <h4>Social</h4>
+            <h4>Ofertas</h4>
           </div> <!-- end section title -->
-          <div class="rst-account-socials">
-            <div class="rst-acc-social">
-              <i class="fa fa-facebook"></i>
-              <a href="#"><i class="fa fa-times"></i></a>
-            </div>
-            <div class="rst-acc-social">
-              <i class="fa fa-twitter"></i>
-              <a href="#">ADD</a>
-            </div>
-            <div class="rst-acc-social">
-              <i class="fa fa-dribbble"></i>
-              <a href="#"><i class="fa fa-times"></i></a>
-            </div>
-            <div class="rst-acc-social">
-              <i class="fa fa-behance"></i>
-              <a href="#">ADD</a>
-            </div>
+          <aside class="widget widget_adv">
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
             <div class="clear"></div>
-          </div>
-        </div>
+          </aside>
       <% end %>
     </div>
   </div>

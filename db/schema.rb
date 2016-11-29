@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121180133) do
+ActiveRecord::Schema.define(version: 20161129151533) do
 
   create_table "administrators", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,14 +21,18 @@ ActiveRecord::Schema.define(version: 20161121180133) do
 
   create_table "announcers", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "name"
     t.string   "fantasy_name"
     t.string   "contact_name"
-    t.integer  "doc_type"
+    t.string   "doc_type"
     t.string   "doc"
     t.string   "email"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["user_id"], name: "index_announcers_on_user_id"
   end
 
@@ -42,8 +46,17 @@ ActiveRecord::Schema.define(version: 20161121180133) do
 
   create_table "columnists", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "periodicity"
+    t.string   "admin_info"
+    t.date     "birth_date"
+    t.string   "sex"
+    t.string   "admin_validate"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["user_id"], name: "index_columnists_on_user_id"
   end
 
@@ -119,8 +132,17 @@ ActiveRecord::Schema.define(version: 20161121180133) do
 
   create_table "subscribers", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "christian"
+    t.string   "church"
+    t.date     "birth_date"
+    t.string   "sex"
+    t.string   "christian_denomination"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["user_id"], name: "index_subscribers_on_user_id"
   end
 

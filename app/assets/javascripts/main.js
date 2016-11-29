@@ -2,6 +2,13 @@
 // This is The Scripts used for Simply Theme
 //
 
+$(function() {
+  $("#input-file").click(function(e) {
+    e.preventDefault();
+    $(".image-button").trigger('click');
+  });
+})
+
 function main() {
 
 (function () {

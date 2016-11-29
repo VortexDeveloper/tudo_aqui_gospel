@@ -27,25 +27,25 @@
         <div class="row">
           <article class="col-sm-4 col-xs-6">
             <div class="rst-postpic">
-              <a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
+              <a href="#"><%=  image_tag('curriculo.jpg') %></a>
             </div>
-            <div class="rst-postinfo">
+            <div class="rst-postinfo category-description">
               <p>Cadastre seus currículos para que possam ser vistos por nossas empresas parceiras</p>
             </div>
           </article>
           <article class="col-sm-4 col-xs-6">
             <div class="rst-postpic">
-              <a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
+              <a href="#"><%=  image_tag('empregos.jpg') %></a>
             </div>
-            <div class="rst-postinfo">
+            <div class="rst-postinfo category-description">
               <p>Acesso em primeira mão à vagas de empregos disponibilizadas por nossas empresas parceiras.</p>
             </div>
           </article>
           <article class="col-sm-4 col-xs-6">
             <div class="rst-postpic">
-              <a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
+              <a href="#"><%=  image_tag('descontos.jpg') %></a>
             </div>
-            <div class="rst-postinfo">
+            <div class="rst-postinfo category-description">
               <p>Descontos em estabelecimentos cadastrados</p>
             </div>
           </article>
@@ -53,25 +53,25 @@
         <div class="row">
           <article class="col-sm-4 col-xs-6">
             <div class="rst-postpic">
-              <a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
+              <a href="#"><%=  image_tag('estudo.jpg') %></a>
             </div>
-            <div class="rst-postinfo">
+            <div class="rst-postinfo category-description">
               <p>Material de estudo e diversas publicações disponibilizados por nossos colunistas em sua área de assinante.</p>
             </div>
           </article>
           <article class="col-sm-4 col-xs-6">
             <div class="rst-postpic">
-              <a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
+              <a href="#"><%=  image_tag('promocoes.jpg') %></a>
             </div>
-            <div class="rst-postinfo">
+            <div class="rst-postinfo category-description">
               <p>Promoções exclusivas disponibilizadas por nossas empresas parceiras.</p>
             </div>
           </article>
           <article class="col-sm-4 col-xs-6">
             <div class="rst-postpic">
-              <a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
+              <a href="#"><%=  image_tag('noticias.jpg') %></a>
             </div>
-            <div class="rst-postinfo">
+            <div class="rst-postinfo category-description">
               <p>Notícias de última hora do mundo Góspel.</p>
             </div>
           </article>
@@ -80,7 +80,7 @@
           <div class="rst-section-title rst-section-title-box ">
             <h4>Todas essas vantagens por um preço acessível ao seu bolso.</h4>
           </div>
-          <h1 class="price-sign-up">49,90<small> /mês</small></h1>  
+          <h1 class="price-sign-up">49,90<small> /mês</small></h1>
         </div>
       </div>
       <div class="col-sm-4">
@@ -104,7 +104,7 @@
           <div class="row">
             <div class="col-sm-6">
               <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'rst-pageinput' %>
-              <%= check_box_tag "roles[]", 5, class: 'rst-pageinput'%>
+              <%= check_box_tag "roles[]", 5, false, class: 'rst-pageinput'%>
               <%= f.label :roles, "Deseja ser nosso colunista?" %>
             </div>
             <div class="col-sm-6">

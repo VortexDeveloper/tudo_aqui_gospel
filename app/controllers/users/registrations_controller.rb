@@ -8,11 +8,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    PersonalProfile.create!(user: resource)
-    resource.set_roles(params[:roles])
-  end
+  #def create
+  #  super
+  #end
 
   # GET /resource/edit
   # def edit

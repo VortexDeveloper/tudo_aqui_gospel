@@ -6,9 +6,11 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def after_sign_up_path_for(user)
+  def after_sign_in_path_for(user)
+    PersonalProfile.create!(user: user)
+    user.set_roles(params[:roles])
     if user.has_any_role? "Administrator", "Announcer", "Columnist", "Insider"
-      rails_admin_edit_path(PersonalProfile, user)
+      personal_profiles_edit_path
     else
       root_path
     end

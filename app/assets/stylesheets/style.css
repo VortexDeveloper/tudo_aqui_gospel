@@ -28,6 +28,17 @@ CSS Style Structure
 
 /* CORES BACKGROUND*/
 
+
+input#roles_ {
+    width: auto;
+    float: left;
+}
+
+.category-description p{
+    color: #2be0b5 !important;
+    text-align: center;
+}
+
 .sign-buttons{
   padding-left: 10px !important;
   padding-right: 10px !important;
@@ -71,12 +82,17 @@ CSS Style Structure
   font-size: 0.5em !important;
 }
 
+@font-face {
+    font-family: ROBOTO;
+    src: url(../fonts/Roboto-Light.ttf);
+}
+
 html,
 body {
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'ROBOTO';
 }
 
 .clear {
@@ -452,7 +468,7 @@ footer li a:hover,
 .rst-login input[type="text"], input[type="email"], input[type="password"] {
   border: 1px solid #e8ecf0;
   color: #223040;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 13px;
   padding: 9px 15px;
   width: 250px;
@@ -473,7 +489,7 @@ footer li a:hover,
 }
 .rst-login p {
   color: #afb1b2;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 13px;
   margin: 12px 0 0;
   text-align: center;
@@ -504,7 +520,6 @@ footer li a:hover,
 .rst-header-menu-content > ul > li a {
   color: #2f3e42;
   display: block;
-  font-weight: 700;
   padding: 39px 20px 37px;
 }
 .rst-weather {
@@ -730,7 +745,7 @@ footer li a:hover,
 .rst-pageline-slider .owl-item p {
   color: #1b1b1b;
   font-size: 16px;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
   margin: 0;
 }
 .owl-theme .owl-controls {
@@ -769,7 +784,7 @@ h2 {
 #rst-popular .rst-postinfo h6,
 #rst-popular .rst-postinfo h6 a {
   color: #2f3e42;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 0.5px;
@@ -792,7 +807,7 @@ h2 {
 }
 .rst-postinfo p {
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   line-height: 24px;
   margin; 0;
@@ -946,7 +961,7 @@ h2 {
 .rst-rightpost h6 a
 {
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 18px;
   font-weight: bold;
   margin: 0;
@@ -1038,7 +1053,7 @@ h2 {
 }
 .widget_hot_news .rst-hotnews ul li p a {
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   font-weight: bold;
   line-height: 24px;
@@ -1069,13 +1084,13 @@ h2 {
 .widget.widget_social > a b {
   border-top: 1px solid #e8ecf0;
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 18px;
   padding: 6px 0 0;
 }
 .widget.widget_social > a span {
   color: #b9b9b9;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 13px;
   padding: 0 0 9px;
 }
@@ -1112,7 +1127,7 @@ h2 {
 .widget_popular li article .rst-postinfo h6 a {
   color: #1b1b1b;
   display: block;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   font-weight: bold;
   line-height: 24px;
@@ -1264,7 +1279,7 @@ h2 {
   display: block;
   font-size: 18px;
   font-weight: bold;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
 }
 #rst-latestcomments .comment .comment-data .comment-time,
 .comment-date {
@@ -1287,7 +1302,7 @@ h2 {
 #rst-latestcomments .comment .comment-data .comment-body,
 .comment-body p {
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   line-height: 23px;
   margin: 0;
@@ -1322,7 +1337,7 @@ footer li {
   margin: 0 0 14px;
 }
 footer li a {
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
   color: #a9acb0;
   font-size: 16px;
 }
@@ -1336,7 +1351,7 @@ footer li a {
   margin: 0;
   font-size: 14px;
   color: #212c34;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
 }
 .rst-design {
   text-align: right;
@@ -1364,7 +1379,7 @@ footer li a {
 }
 .rst-breadcrumb span {
   color: #b2b6b7;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 12px;
   margin: 0 11px 0 0;
 }
@@ -1379,7 +1394,7 @@ footer li a {
   border-radius: 0;
   color: #223040;
   display: block;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   padding: 14px 15px;
   width: 100%;
@@ -1402,6 +1417,12 @@ footer li a {
 .rst-accsetting {
   position: relative;
 }
+
+.image-button {
+    visibility: hidden;
+    width: 1px !important;
+}
+
 .rst-account-img {
   position: absolute;
   right: 30px;
@@ -1433,7 +1454,7 @@ footer li a {
   width: 69%;
 }
 .rst-setting > span {
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
   color: #223040;
   display: inline-block;
   font-size: 14px;
@@ -1522,7 +1543,7 @@ footer li a {
   border-bottom: 1px solid #e8ecf0;
   border-left: 0 none;
   display: block;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   padding: 20px 24px !important;
   text-align: left;
   text-transform: none;
@@ -1846,7 +1867,7 @@ p.help-block.text-danger ul li {
 .rst-author-contactinfo p a span {
   color: #1e2a36;
   font-size: 14px;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
   display: inline-block;
   vertical-align: middle;
 }
@@ -1891,7 +1912,7 @@ p.help-block.text-danger ul li {
 }
 .rst-author-excerpt {
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   line-height: 24px;
   margin: 22px 0 0;
@@ -1902,7 +1923,7 @@ p.help-block.text-danger ul li {
 .widget.widget_contactus span {
   color: #1e2a36;
   font-size: 14px;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
 }
 .widget.widget_contactus li {
   margin: 0 0 10px;
@@ -1993,7 +2014,7 @@ h3 {
 }
 .rst-item-content p {
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   line-height: 24px;
   margin: 0 0 24px;
@@ -2002,7 +2023,7 @@ h3 {
   border: 1px solid #e8ecf0;
   color: #a7a7a7;
   float: right;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 18px;
   line-height: 28px;
   margin: 0 0 20px;
@@ -2102,7 +2123,7 @@ h3 {
   color: #2f3e42 !important;
   font-size: 14px;
   font-weight: normal;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
 }
 .bootstrap-tagsinput .tag [data-role="remove"] {
   cursor: pointer;
@@ -2120,7 +2141,7 @@ h3 {
 }
 .rst-grouptitle {
   color: #223040;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   font-size: 14px;
   font-weight: bold;
   margin: 22px 0 15px;
@@ -2240,7 +2261,7 @@ span.checkbox, span.radio {
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #e8ecf0;
   color: #1b1b1b;
-  font-family: "HelveticaNeueCyrRoman";
+  font-family: "ROBOTO";
   line-height: 23px;
 }
 .panel-title > a {
@@ -2267,14 +2288,16 @@ span.checkbox, span.radio {
   height: 10px;
 }
 .alert {
-  background: #fff !important;
-  border-radius: 0;
-  color: #2f3e42 !important;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  padding: 11px 14px;
+    background: #2be0b5 !important;
+    border-radius: 0;
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 11px 14px;
 }
+
 .alert-success {
   border: 2px solid #2be0b5;
 }
@@ -2369,7 +2392,7 @@ span.checkbox, span.radio {
 .table-bordered > tfoot > tr > td {
   border: 0;
   color: #1b1b1b;
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
   padding: 15px 19px ;
   border-left: 1px solid #e8ecf0;
   border-bottom: 1px solid #e8ecf0;
@@ -2383,7 +2406,7 @@ span.checkbox, span.radio {
 }
 .rst-shortcodeslist ol,
 .rst-shortcodeslist ul {
-  font-family: 'HelveticaNeueCyrRoman';
+  font-family: 'ROBOTO';
   padding: 0 0 0 15px;
   color: #1b1b1b;
 }
