@@ -10,13 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129151533) do
+ActiveRecord::Schema.define(version: 20161130145430) do
+
+  create_table "ad_plans", force: :cascade do |t|
+    t.string   "comercial"
+    t.string   "name"
+    t.integer  "days"
+    t.integer  "value"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "type"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "administrators", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_administrators_on_user_id"
+  end
+
+  create_table "ads", force: :cascade do |t|
+    t.string   "description"
+    t.string   "title"
+    t.string   "link"
+    t.string   "text_description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "record_date"
+    t.integer  "price"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "category_id"
+    t.integer  "announcer_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.index ["announcer_id"], name: "index_ads_on_announcer_id"
+    t.index ["category_id"], name: "index_ads_on_category_id"
   end
 
   create_table "announcers", force: :cascade do |t|
@@ -33,7 +67,17 @@ ActiveRecord::Schema.define(version: 20161129151533) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "ad_plan_id"
+    t.index ["ad_plan_id"], name: "index_announcers_on_ad_plan_id"
     t.index ["user_id"], name: "index_announcers_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "father_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["father_id"], name: "index_categories_on_father_id"
   end
 
   create_table "cities", force: :cascade do |t|

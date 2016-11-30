@@ -2,6 +2,15 @@
 pt-BR:
   activerecord:
     models:
+      ad:
+        one: Anúncio
+        other: Anúncios
+      category:
+        one: Categoria
+        other: Categorias
+      ad_plan:
+        one: Plano de Anúncio
+        other: Planos de Anúncio
       administrator:
         one: Administrador
         other: Administradores
@@ -42,6 +51,36 @@ pt-BR:
         one: Usuário
         other: Usuários
     attributes:
+      ad:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        description: "Breve Descrição"
+        title: "Título"
+        link: "Link"
+        text_description: "Descrição completa"
+        avatar: "Imagem do anúncio"
+        start_date: "Data de início"
+        end_date: "Data final"
+        record_date: "Data do registro"
+        price: "Valor da oferta"
+        announcer: "Anunciante"
+        category: "Categoria"
+      ad_plan:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        comercial: "Comercial"
+        name: "Nome"
+        days: "Quantidade de dias"
+        value: "Valor do anúncio"
+        start_date: "Data de início"
+        end_date: "Data final"
+        type: "Tipo de plano"
+        description: "Descrição do plano"
+      category:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        name: "Nome"
+        father: "Superior"
       administrator:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -56,6 +95,8 @@ pt-BR:
         doc: "Número do documento"
         avatar: "Imagem"
         name: "Nome"
+        ad_plan: "Plano de anúncio"
+        ads: "Anúncios"
       city:
         created_at: "Criado em"
         updated_at: "Atualizado em"

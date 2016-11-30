@@ -1,10 +1,6 @@
-class Announcer < ApplicationRecord
-  include Rolifiable
-  has_many :ads
-  belongs_to :ad_plan
-  belongs_to :user
-  validates :email, :doc, :doc_type, presence: true, on: :update
-  enum doc_type: [:cnpj, :cpf]
+class Ad < ApplicationRecord
+  belongs_to :announcer
+  belongs_to :category
 
   has_attached_file(
     :avatar,
@@ -13,4 +9,5 @@ class Announcer < ApplicationRecord
   )
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
 end
