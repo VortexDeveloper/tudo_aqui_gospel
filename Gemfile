@@ -38,6 +38,8 @@ gem "paperclip", "~> 5.0.0"
 gem 'will_paginate', '~> 3.1.0'
 gem 'rails_admin', '~> 1.0'
 gem 'rails_admin_rollincode', '~> 1.0'
+gem 'devise-i18n'
+gem 'rails_admin-i18n'
 
 
 group :development, :test do

@@ -17,7 +17,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
-        <%= form_for @user, :url => user_create_path(@user), class: 'form-package' do |user| %>
+        <%= form_for @user, :html => { :multipart => true }, :url => user_create_path(@user), class: 'form-package' do |user| %>
+          <%= devise_error_messages! %>
           <div class="rst-section-title rst-section-title-box">
             <h4>Cadastro de Anunciante</h4>
           </div> <!-- end section title -->
