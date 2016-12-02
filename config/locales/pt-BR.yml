@@ -50,6 +50,9 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+      gallery:
+        one: "Galeria"
+        other: "Galerias"
     attributes:
       ad:
         created_at: "Criado em"
@@ -65,6 +68,8 @@ pt-BR:
         price: "Valor da oferta"
         announcer: "Anunciante"
         category: "Categoria"
+        type: "Tipo do Anúncio"
+        home: "Páginal Principal"
       ad_plan:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -97,6 +102,12 @@ pt-BR:
         name: "Nome"
         ad_plan: "Plano de anúncio"
         ads: "Anúncios"
+        photos: "Galeria"
+        banner: "Banner"
+        about_text: "Quem Somos"
+      gallery:
+        image: "Imagem"
+        announcer: "Anunciante"
       city:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -172,6 +183,7 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Atualizado em"
         active: "Ativo"
+        reset_password_sent_at: "Reset de senha enviado em"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

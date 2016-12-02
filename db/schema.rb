@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130145430) do
+ActiveRecord::Schema.define(version: 20161202193133) do
 
   create_table "ad_plans", force: :cascade do |t|
     t.string   "comercial"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20161130145430) do
     t.integer  "value"
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "type"
+    t.integer  "plan_type"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20161130145430) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "type"
+    t.string   "home"
     t.index ["announcer_id"], name: "index_ads_on_announcer_id"
     t.index ["category_id"], name: "index_ads_on_category_id"
   end
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(version: 20161130145430) do
     t.string   "name"
     t.string   "fantasy_name"
     t.string   "contact_name"
-    t.string   "doc_type"
+    t.integer  "doc_type"
     t.string   "doc"
     t.string   "email"
     t.string   "avatar_file_name"
@@ -68,6 +70,11 @@ ActiveRecord::Schema.define(version: 20161130145430) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "ad_plan_id"
+    t.string   "about_text"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
     t.index ["ad_plan_id"], name: "index_announcers_on_ad_plan_id"
     t.index ["user_id"], name: "index_announcers_on_user_id"
   end
@@ -119,6 +126,17 @@ ActiveRecord::Schema.define(version: 20161130145430) do
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "galleries", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "announcer_id"
+    t.index ["announcer_id"], name: "index_galleries_on_announcer_id"
   end
 
   create_table "insiders", force: :cascade do |t|

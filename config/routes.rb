@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :contacts
+  resources :announcers
 
   get 'pages/home'
   get 'personal_profiles/edit'
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
   patch 'columnists/update'
   get 'subscribers/edit'
   patch 'subscribers/update'
-  get 'user/new'
-  post 'user/create'
-  get 'personal_profiles/edit_announcer/:id' => 'personal_profiles#edit_announcer', as: 'edit_announcer'
+#  get 'announcers/new'
+  post 'announcers/create'
+#  get 'announcers/show'
+#  get 'announcers/edit'
+#  get 'personal_profiles/edit_announcer/:id' => 'personal_profiles#edit_announcer', as: 'edit_announcer'
 end

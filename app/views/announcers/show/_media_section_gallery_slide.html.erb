@@ -1,0 +1,5 @@
+<div class="rst-catbanner-slider owl-carousel rst-postpic">
+  <% @announcer.photos.each do |photo| %>
+    <%= image_tag photo.image.url(:large) %>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="rst-section-title">
+      <h4>Galeria da Empresa</h4>
+    </div>
+    <div class="rst-newsandhot-post">
+      <div class="rst-newsandhot-post-content">
+        <article>
+          <div class="row">
+            <% @announcer.photos.each do |photo| %>
+              <div class="rst-postpic col-sm-4">
+                <a href="#"><%=  image_tag photo.image.url %></a>
+              </div>
+            <% end %>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

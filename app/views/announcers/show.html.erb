@@ -1,0 +1,136 @@
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Empresa</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Category Page Content -->
+<section id="rst-catcontent-author">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Author zone -->
+        <div class="rst-section-title rst-section-title-box">
+          <h4><%= @announcer.fantasy_name %></h4>
+        </div>
+        <div class="rst-author-contact">
+          <% if @announcer.avatar.present? %>
+            <%= image_tag @announcer.avatar.url(:medium) %>
+          <% else %>
+            <img src="../images/user.png" alt="" />
+          <% end %>
+          <div class="rst-author-contactinfo">
+            <p>
+              <a href="tel:+48 122 33 66"><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
+              <a href=""><i class="fa fa-paper-plane"></i> <span><%= @announcer.email %></span></a>
+              <a href=""><span><i class="fa fa-location-arrow"></i><%= @personal_profile.street %>, <%= @personal_profile.neighborhood %>, <%= city_show(@personal_profile.city_id) %> - <%= state_show(@personal_profile.state_id) %></span></a>
+            </p>
+          </div>
+        </div>
+        <p class="rst-author-excerpt"><%= @announcer.about_text %></p>
+        <!-- End zone -->
+      </div>
+    </div>
+  </div>
+</section>
+<%= media_section_banner(@announcer) %>
+<!-- End Category Page Content -->
+<section id="rst-newsandhot">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-section-title">
+          <h4>Anúncios</h4>
+        </div>
+        <div class="rst-newsandhot-post">
+          <div class="rst-newsandhot-post-content">
+            <article>
+              <div class="row">
+                <% @announcer.ads.each do |ad| %>
+                  <div class="rst-postpic col-sm-4">
+                    <a href="#"><%=  image_tag ad.avatar.url %></a>
+                    <a href="#" class="rst-postpic-cat"><span><%= ad.title %></span></a>
+                  </div>
+                <% end %>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= media_section_gallery(@announcer) %>
+  </div>
+</section>
+<!-- Section Latest Comments -->
+<section id="rst-latestcomments">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-section-title rst-section-title-box">
+          <h4>Latest Comment</h4>
+        </div> <!-- end section title -->
+        <div class="row commentlist owl-carousel">
+          <div class="col-sm-12 comment">
+            <div class="comment-avatar">
+              <%=  image_tag('slider/category/hm01.jpg') %>
+            </div>
+            <div class="comment-data">
+              <a href="#" class="comment-author">John Doe</a>
+              <span class="comment-time"><i class="fa fa-clock-o"></i>20 minute ago</span>
+              <p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 comment">
+            <div class="comment-avatar">
+              <%=  image_tag('slider/category/hm02.jpg') %>
+            </div>
+            <div class="comment-data">
+              <a href="#" class="comment-author">John Doe</a>
+              <span class="comment-time"><i class="fa fa-clock-o"></i>20 minute ago</span>
+              <p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 comment">
+            <div class="comment-avatar">
+              <%=  image_tag('slider/category/hm03.jpg') %>
+            </div>
+            <div class="comment-data">
+              <a href="#" class="comment-author">John Doe</a>
+              <span class="comment-time"><i class="fa fa-clock-o"></i>20 minute ago</span>
+              <p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 comment">
+            <div class="comment-avatar">
+              <%=  image_tag('slider/category/hm03.jpg') %>
+            </div>
+            <div class="comment-data">
+              <a href="#" class="comment-author">John Doe</a>
+              <span class="comment-time"><i class="fa fa-clock-o"></i>20 minute ago</span>
+              <p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 comment">
+            <div class="comment-avatar">
+              <%=  image_tag('slider/category/hm02.jpg') %>
+            </div>
+            <div class="comment-data">
+              <a href="#" class="comment-author">John Doe</a>
+              <span class="comment-time"><i class="fa fa-clock-o"></i>20 minute ago</span>
+              <p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Section Latest Comments -->

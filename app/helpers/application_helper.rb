@@ -63,7 +63,7 @@ module ApplicationHelper
         end
       when "Administrator"
         content_tag(:li, "") do
-          link_to "Cadastro de anunciante", user_new_path
+          link_to "Cadastro de anunciante", new_announcer_path
         end
     end
   end
@@ -81,25 +81,25 @@ module ApplicationHelper
 
   def show_image_thumb(columnist, subscriber)
     profile_type = current_user.roles.first.name
-
     case profile_type
-
       when "Columnist"
         if columnist.avatar.present?
           image_tag columnist.avatar.url(:thumb)
         else
           image_tag ('user_thumb.png')
         end
-
       when "Subscriber"
         if subscriber.avatar.present?
           image_tag subscriber.avatar.url(:thumb)
         else
           image_tag ('user_thumb.png')
         end
-
     end
+  end
 
+  def plans_for_select(selected)
+    selected ||= 1
+    options_from_collection_for_select(AdPlan.all, 'id', 'name', selected)
   end
 
   def cities_for_select
@@ -108,6 +108,32 @@ module ApplicationHelper
 
   def states_for_select
     options_from_collection_for_select(State.all, 'id', 'name', 1)
+  end
+
+  def city_show(id)
+    City.find(id).name
+  end
+
+  def state_show(id)
+    State.find(id).uf
+  end
+
+  def media_section_banner(announcer)
+    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+      render partial: 'announcers/show/media_section_banner'
+    end
+  end
+
+  def media_section_gallery(announcer)
+    if announcer.ad_plan.gold?
+      render partial: 'announcers/show/media_section_gallery'
+    end
+  end
+
+  def media_section_gallery_slide(announcer)
+    if announcer.ad_plan.gold?
+      render partial: 'announcers/show/media_section_gallery_slide'
+    end
   end
 
 end

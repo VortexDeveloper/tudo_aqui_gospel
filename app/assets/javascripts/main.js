@@ -3,9 +3,16 @@
 //
 
 $(function() {
-  $("#input-file").click(function(e) {
+  $("#input-banner").click(function(e) {
     e.preventDefault();
-    $(".image-button").trigger('click');
+    $("#image-button-banner").trigger('click');
+  });
+})
+
+$(function() {
+  $("#input-avatar").click(function(e) {
+    e.preventDefault();
+    $("#image-button-avatar").trigger('click');
   });
 })
 

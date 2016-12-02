@@ -4,20 +4,17 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="rst-mainslider owl-carousel">
-							<div class="rst-mainslide">
-                <%=  image_tag('slider/main.png') %>
-								<div class="rst-boxinfo">
-									<a href="#"><span>Empresa anúncio</span></a>
-									<p><a href="#">Curabitur erat massa, rutrum sed fermentum in placerat.</a></p>
-								</div>
-							</div>
-							<div class="rst-mainslide">
-                <%=  image_tag('slider/main.png') %>
-								<div class="rst-boxinfo">
-									<a href="#"><span>Empresa anúncio</span></a>
-									<p><a href="#">Curabitur erat massa, rutrum sed fermentum in placerat.</a></p>
-								</div>
-							</div>
+              <% @ads.each do |ad| %>
+                <div class="rst-mainslide">
+                  <%= image_tag ad.avatar.url(:large) %>
+  								<div class="rst-boxinfo">
+                    <%= link_to ad.announcer do %>
+                      <span><%= ad.announcer.fantasy_name %></span>
+                    <% end %>
+  									<p><a href="#"><%= ad.description %></a></p>
+  								</div>
+  							</div>
+              <% end %>
 						</div>
 						<!-- fim slider -->
 						<div class="rst-mainslider-posts">
