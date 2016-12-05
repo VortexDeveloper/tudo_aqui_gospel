@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @columnist = Columnist.where("user_id = ?", current_user.id).first
       @subscriber = Subscriber.where("user_id = ?", current_user.id).first
     end
+    @versicles = Versicle.where("show_day = ?", Date.today)
   end
 
 end

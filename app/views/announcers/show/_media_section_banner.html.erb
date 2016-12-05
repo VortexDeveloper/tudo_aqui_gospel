@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <div class="rst-catbanner-post">
+        <div class="rst-catbanner-post rst-postpic-img">
           <div class="rst-mainslide">
             <div class="rst-boxinfo">
-              <a href="#"><span><%= @announcer.fantasy_name %></span></a>
+              <a href="#"><span class="banner"><%= @announcer.fantasy_name %></span></a>
             </div>
             <% if @announcer.banner.present? %>
               <%= image_tag @announcer.banner.url(:normal) %>

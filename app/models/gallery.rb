@@ -1,5 +1,5 @@
 class Gallery < ApplicationRecord
-  has_one :announcer
+  belongs_to :announcer
 
   has_attached_file(
     :image,

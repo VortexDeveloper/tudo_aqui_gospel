@@ -1,0 +1,2 @@
+class Versicle < ApplicationRecord
+end

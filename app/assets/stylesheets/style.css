@@ -762,9 +762,32 @@ h2 {
   padding: 27px 0;
   text-align: center;
 }
+
 .rst-postpic {
   position: relative;
 }
+
+.rst-postpic-img img {
+    height: 370px !important;
+}
+
+.gallery img {
+    height: 250px !important;
+    max-width: 200%;
+}
+
+.banner{
+  font-size: 40px !important;
+}
+
+.photobox {
+    width: 23%;
+    height: 210px;
+    float: left;
+    margin: 10px;
+    overflow: hidden;
+}
+
 .rst-postpic .rst-postpic-cat {
   background: #2be0b5;
   bottom: 20px;
@@ -1595,7 +1618,8 @@ footer li a {
 }
 .rst-catbanner-post {
   float: left;
-  width: 68.3%;
+  width: 67.3%;
+  margin-right: 1%;
 }
 .rst-catbanner-slider {
   float: left;
@@ -1915,7 +1939,7 @@ p.help-block.text-danger ul li {
   font-family: "ROBOTO";
   font-size: 14px;
   line-height: 24px;
-  margin: 22px 0 0;
+  margin: 22px 0;
 }
 .rst-author-contactinfo li a:hover {
   background: #204385;

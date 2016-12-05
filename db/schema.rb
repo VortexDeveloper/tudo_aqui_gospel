@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202193133) do
+ActiveRecord::Schema.define(version: 20161205153625) do
 
   create_table "ad_plans", force: :cascade do |t|
     t.string   "comercial"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20161202193133) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "type"
+    t.integer  "ad_type"
     t.string   "home"
     t.index ["announcer_id"], name: "index_ads_on_announcer_id"
     t.index ["category_id"], name: "index_ads_on_category_id"
@@ -231,6 +231,27 @@ ActiveRecord::Schema.define(version: 20161202193133) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  end
+
+  create_table "vacancies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "active"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "announcer_id"
+    t.index ["announcer_id"], name: "index_vacancies_on_announcer_id"
+  end
+
+  create_table "versicles", force: :cascade do |t|
+    t.string   "testament"
+    t.string   "book"
+    t.string   "chapter"
+    t.string   "versicle"
+    t.string   "text"
+    t.date     "show_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

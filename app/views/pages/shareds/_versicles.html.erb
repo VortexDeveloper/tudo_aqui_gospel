@@ -1,0 +1,16 @@
+<!-- versículos -->
+<div class="rst-pageline container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-pageline-content">
+        <span>Versículo</span>
+        <div class="rst-pageline-slider owl-carousel">
+          <% @versicles.each do |versicle| %>
+            <p><%= versicle.text %><%= versicle.book %> - <%= versicle.chapter %>, <%= versicle.versicle %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- fim versículos -->

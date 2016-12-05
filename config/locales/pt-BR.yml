@@ -51,8 +51,14 @@ pt-BR:
         one: Usuário
         other: Usuários
       gallery:
-        one: "Galeria"
-        other: "Galerias"
+        one: Galeria
+        other: Galerias
+      vacancy:
+        one: Vaga de Emprego
+        other: Vagas de Emprego
+      versicle:
+        one: Versículo
+        other: Versículos
     attributes:
       ad:
         created_at: "Criado em"
@@ -184,6 +190,21 @@ pt-BR:
         updated_at: "Atualizado em"
         active: "Ativo"
         reset_password_sent_at: "Reset de senha enviado em"
+      vacancy:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        active: "Ativo"
+        name: "Nome"
+        description: "Descrição"
+        announcer: "Anunciante"
+      versicle:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        testament: "Testamento"
+        book: "Livro"
+        versicle: "Versículo"
+        text: "Texto"
+        show_day: "Data"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
