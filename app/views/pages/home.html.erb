@@ -18,19 +18,15 @@
 						</div>
 						<!-- fim slider -->
 						<div class="rst-mainslider-posts">
-							 <div class="rst-posttype">
-                 <%=  image_tag('slider/category/hc01.jpg') %>
-								<div class="rst-boxinfo">
-									<a href="#"><span>Empresa anúncio</span></a>
-									<p><a href="#">Curabitur erat massa, rutrum sed fermentum in placerat.</a></p>
-								</div>
-							 </div>
-							 <div class="rst-posttype">
-                <%=  image_tag('slider/category/hc02.jpg') %>
-								<div class="rst-boxinfo">
-									<a href="#"><span>Empresa anúncio</span></a>
-									<p><a href="#">Curabitur erat massa, rutrum sed fermentum in placerat.</a></p>
-								</div>
+               <% @ads_ban.each do |ad| %>
+  							 <div class="rst-posttype">
+                   <%=  image_tag ad.avatar.url(:large) %>
+  								<div class="rst-boxinfo">
+  									<a href="#"><span><%= ad.announcer.fantasy_name %></span></a>
+  									<p><a href="#"><%= ad.description %></a></p>
+  								</div>
+  							 </div>
+               <% end %>
 							 </div>
 							 <div class="clear"></div>
 						</div>
@@ -199,62 +195,12 @@
 							<div class="rst-newsandhot-post-content">
 								<article>
 									<div class="row">
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-									</div>
-								</article>
-								<article>
-									<div class="row">
-										<div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-									</div>
-								</article>
-								<article>
-									<div class="row">
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-									</div>
-								</article>
-								<article>
-									<div class="row">
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-									</div>
-								</article>
-								<article>
-									<div class="row">
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
-                    <div class="rst-postpic col-sm-6">
-											<a href="#"><%=  image_tag('slider/category/new03.jpg') %></a>
-											<a href="#" class="rst-postpic-cat"><span>Empresa anúncio</span></a>
-										</div>
+                    <% @ads_body.each do |ad| %>
+                      <div class="rst-postpic col-sm-6">
+  											<a href="#"><%=  image_tag ad.avatar.url(:large) %></a>
+  											<a href="#" class="rst-postpic-cat"><span><%= ad.announcer.fantasy_name %></span></a>
+  										</div>
+                    <% end %>
 									</div>
 								</article>
 							</div>
