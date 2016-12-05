@@ -50,7 +50,6 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'awesome_print'
   gem 'faker'
-  gem 'seed_dump'
 end
 
 group :development do
