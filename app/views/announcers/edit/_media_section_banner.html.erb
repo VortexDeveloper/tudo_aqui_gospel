@@ -1,0 +1,22 @@
+<section id="rst-catbanner">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-catbanner-post rst-postpic-img">
+          <div class="rst-mainslide">
+            <div class="rst-boxinfo">
+              <a href="#"><span class="banner"><%= @announcer.fantasy_name %></span></a>
+            </div>
+            <% if @announcer.banner.present? %>
+              <%= image_tag @announcer.banner.url(:normal) %>
+            <% else %>
+              <img src="../images/banner_normal.png" alt="" />
+            <% end %>
+          </div>
+        </div>
+        <%= render partial: 'announcers/edit/media_section_gallery_slide' %>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</section>
