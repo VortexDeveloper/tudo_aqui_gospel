@@ -6,7 +6,7 @@
 						<div class="rst-mainslider owl-carousel">
               <% @ads.each do |ad| %>
                 <div class="rst-mainslide">
-                  <%= image_tag ad.avatar.url(:large) %>
+                  <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
   								<div class="rst-boxinfo">
                     <%= link_to ad.announcer do %>
                       <span><%= ad.announcer.fantasy_name %></span>

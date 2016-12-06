@@ -1,0 +1,2 @@
+class ColumnistTitle < ApplicationRecord
+end
