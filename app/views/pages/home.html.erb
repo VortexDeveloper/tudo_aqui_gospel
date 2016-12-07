@@ -7,8 +7,9 @@
               <% @ads.each do |ad| %>
                 <div class="rst-mainslide photobox-800x640">
                   <%= link_to ad do %>
-                    <%= image_tag ad.avatar.url(:large) %>
+                    <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
                   <% end %>
+
   								<div class="rst-boxinfo">
                     <%= link_to ad.announcer do %>
                       <span><%= ad.announcer.fantasy_name %></span>

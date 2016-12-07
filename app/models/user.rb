@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :phonebooks
   has_many :telephones, through: :phonebooks
+  has_one :columnist
+  has_one :profile, class_name: 'PersonalProfile'
 
   def set_roles(roles_id)
     roles_id ||= {} # no role checked

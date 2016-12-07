@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161207124408) do
+
 
   create_table "ad_plans", force: :cascade do |t|
     t.string   "comercial"
@@ -96,6 +98,21 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
+  create_table "columnist_knowledges", force: :cascade do |t|
+    t.integer  "columnist_id"
+    t.integer  "knowledge_area_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["columnist_id"], name: "index_columnist_knowledges_on_columnist_id"
+    t.index ["knowledge_area_id"], name: "index_columnist_knowledges_on_knowledge_area_id"
+  end
+
+  create_table "columnist_titles", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "columnists", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",          null: false
@@ -109,6 +126,8 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "columnist_title_id"
+    t.index ["columnist_title_id"], name: "index_columnists_on_columnist_title_id"
     t.index ["user_id"], name: "index_columnists_on_user_id"
   end
 
@@ -147,6 +166,12 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.index ["user_id"], name: "index_insiders_on_user_id"
   end
 
+  create_table "knowledge_areas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "personal_profiles", force: :cascade do |t|
     t.string   "name"
     t.string   "street"
@@ -172,6 +197,20 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.datetime "updated_at",   null: false
     t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id"
     t.index ["user_id"], name: "index_phonebooks_on_user_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.text     "body"
+    t.integer  "pub_type",          limit: 1
+    t.integer  "pub_category"
+    t.integer  "knowledge_area_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "author_id"
+    t.index ["author_id"], name: "index_publications_on_author_id"
+    t.index ["knowledge_area_id"], name: "index_publications_on_knowledge_area_id"
   end
 
   create_table "roles", force: :cascade do |t|
