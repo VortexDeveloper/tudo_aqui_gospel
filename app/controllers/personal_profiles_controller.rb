@@ -4,6 +4,7 @@ class PersonalProfilesController < ApplicationController
     @personal_profile = PersonalProfile.where("user_id = ?", current_user.id).first
     @columnist = Columnist.where("user_id = ?", current_user.id).first
     @subscriber = Subscriber.where("user_id = ?", current_user.id).first
+    @announcer = Announcer.where("user_id = ?", current_user.id).first
   end
 
   def update

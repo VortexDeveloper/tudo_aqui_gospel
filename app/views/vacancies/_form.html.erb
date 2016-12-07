@@ -1,0 +1,65 @@
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Cadastro de vaga de emprego</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Section Register -->
+<section id="rst-account-page">
+  <div class="container">
+    <div class="row">
+      <%= form_for(vacancy) do |f| %>
+        <% if vacancy.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(vacancy.errors.count, "error") %> prohibited this vacancy from being saved:</h2>
+
+            <ul>
+            <% vacancy.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="col-sm-8">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Dados da Vaga</h4>
+          </div> <!-- end section title -->
+          <div class="rst-accsetting">
+            <div class="rst-account-setting">
+              <div class="rst-setting">
+                <span><%= f.label :name, "Título da vaga" %></span>
+                <%= f.text_field :name, value: @vacancy.name, class: 'rst-pageinput' %>
+              </div>
+              <div class="rst-setting">
+                <span><%= f.label :description, "Descrição" %></span>
+                <%= f.text_area :description, value: @vacancy.description, class: 'rst-pageinput' %>
+              </div>
+              <%= f.hidden_field :announcer_id, value: @announcer.id %>
+              <%= f.submit "SALVAR", class: 'rst-pagebutton' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Ofertas</h4>
+          </div> <!-- end section title -->
+          <aside class="widget widget_adv">
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <div class="clear"></div>
+          </aside>
+      <% end %>
+    </div>
+  </div>
+</section>
+<!-- End Section Register -->

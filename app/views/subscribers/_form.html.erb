@@ -66,8 +66,8 @@
               <% else %>
                 <img src="../images/user.png" alt="" />
               <% end %>
-              <input id="input-file" class="rst-pagebutton" type="submit" value="ALTERAR"/>
-              <%= f.file_field :avatar, class: 'image-button' %>
+              <input id="input-avatar" class="rst-pagebutton" type="submit" value="ALTERAR"/>
+              <%= f.file_field :avatar, class: 'image-button', id: 'image-button-avatar' %>
             </div>
           </div>
         </div>

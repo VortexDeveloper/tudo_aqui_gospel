@@ -61,11 +61,23 @@ input#roles_ {
   background: #0071bc !important;
 }
 
-.blue-bg a{
+.blue-bg{
   color: #fff !important;
 }
 
 .blue-bg:hover{
+  opacity: 0.5;
+}
+
+.red-bg{
+  background: #ef5350 !important;
+}
+
+.red-bg a{
+  color: #fff !important;
+}
+
+.red-bg:hover{
   opacity: 0.5;
 }
 
@@ -776,8 +788,32 @@ h2 {
     max-width: 200%;
 }
 
+.margin-button{
+  margin: 15px 0;
+}
+
+.rst-announcer-input{
+  padding: 10px;
+  border-radius: 3px;
+  border: solid 1px #2be0b5;
+}
+
 .banner{
   font-size: 40px !important;
+}
+
+.banner-button{
+  width: 550px;
+}
+
+.banner-input{
+  float: right;
+  margin: 15px;
+}
+
+.text-area-announcer{
+  width: 100%;
+  height: 150px;
 }
 
 .photobox {
@@ -786,6 +822,83 @@ h2 {
     float: left;
     margin: 10px;
     overflow: hidden;
+}
+
+.photobox-100x76 {
+    height: 76px;
+    overflow: hidden;
+}
+
+.photobox-140x106 {
+    height: 106px;
+    overflow: hidden;
+}
+
+.photobox-170x170 {
+    height: 170px;
+    overflow: hidden;
+    float: left;
+    width: 170px;
+    position: relative;
+}
+
+.photobox-170x170 img{
+    max-width: 110%;
+}
+
+.photobox-270x190 {
+    height: 190px;
+    overflow: hidden;
+}
+
+.photobox-370x278 {
+    height: 278px;
+    overflow: hidden;
+}
+
+.photobox-370x320 {
+    height: 320px;
+    overflow: hidden;
+}
+
+.photobox-370x370 {
+    height: 370px;
+    overflow: hidden;
+}
+
+.photobox-370x370 img{
+  max-width: 150%;
+  height: auto !important;
+}
+
+.photobox-570x334 {
+    height: 334px;
+    overflow: hidden;
+}
+
+.photobox-800x640 {
+    height: 640px;
+    overflow: hidden;
+}
+
+.announcer-buttons-new{
+  float: right;
+  z-index: 99999 !important;
+  position: relative;
+  top: -10px;
+}
+
+.vacancy-actions{
+  padding: 3px;
+  text-align: center;
+  margin: 0 3px;
+  float: left;
+  width: 33px;
+  border-radius: 2px;
+  color: #fff;
+  -webkit-box-shadow: inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
+  -moz-box-shadow:    inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
+  box-shadow:         inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
 }
 
 .rst-postpic .rst-postpic-cat {
@@ -803,6 +916,7 @@ h2 {
 {
   border: 1px solid #e8ecf0;
   padding: 16px 20px 23px;
+
 }
 #rst-popular .rst-postinfo h6,
 #rst-popular .rst-postinfo h6 a {
@@ -1310,7 +1424,7 @@ h2 {
   font-family: Lato;
   font-size: 12px;
   font-weight: bold;
-  margin: 7px 0 10px;
+  margin: 7px 0 7px;
   text-transform: uppercase;
 }
 .comment-date {

@@ -1,0 +1,42 @@
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Empresa</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Category Page Content -->
+<section id="rst-catcontent-author">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Author zone -->
+        <div class="rst-section-title rst-section-title-box">
+          <h4><%= @vacancy.name %></h4>
+        </div>
+        <div class="rst-author-contact">
+          <% if @vacancy.announcer.avatar.present? %>
+            <%= image_tag @vacancy.announcer.avatar.url(:medium) %>
+          <% else %>
+            <img src="../images/user.png" alt="" />
+          <% end %>
+          <div class="rst-author-contactinfo">
+            <p>
+              <a href="tel:+48 122 33 66"><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
+              <a href=""><i class="fa fa-paper-plane"></i> <span><%= @vacancy.announcer.email %></span></a>
+            </p>
+          </div>
+        </div>
+        <p class="rst-author-excerpt"><%= @vacancy.description %></p>
+        <!-- End zone -->
+      </div>
+    </div>
+  </div>
+</section>

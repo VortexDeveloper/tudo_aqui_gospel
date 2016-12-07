@@ -3,6 +3,13 @@
 //
 
 $(function() {
+  $("#input-photo").click(function(e) {
+    e.preventDefault();
+    $("#image-button-photo").trigger('click');
+  });
+})
+
+$(function() {
   $("#input-banner").click(function(e) {
     e.preventDefault();
     $("#image-button-banner").trigger('click');

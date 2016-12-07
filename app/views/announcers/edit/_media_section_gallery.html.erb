@@ -5,6 +5,13 @@
     </div>
     <div class="rst-newsandhot-post">
       <div class="rst-newsandhot-post-content">
+
+        <%= form_tag announcers_add_photo_path, method: :post, multipart: true do %>
+          <input id="input-photo" class="rst-pagebutton" type="submit" value="INSERIR FOTO"/>
+          <%= file_field_tag :image, class: 'image-button', id: 'image-button-photo' %>
+          <%= submit_tag "SALVAR", class: 'rst-pagebutton' %>
+        <% end %>
+
         <article>
           <div class="row">
             <% @announcer.photos.each do |photo| %>
@@ -12,6 +19,7 @@
               <div class="rst-postpic gallery">
                 <a href="#"><%=  image_tag photo.image.url %></a>
               </div>
+
             </div>
             <% end %>
           </div>

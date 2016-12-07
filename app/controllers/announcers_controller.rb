@@ -1,6 +1,9 @@
 class AnnouncersController < ApplicationController
 
   def edit
+    @announcer = Announcer.find(params[:id])
+    @personal_profile = PersonalProfile.where("user_id = ?", @announcer.user_id).first
+    @photo = Gallery.new
   end
 
   def show
@@ -8,13 +11,35 @@ class AnnouncersController < ApplicationController
     @personal_profile = PersonalProfile.where("user_id = ?", @announcer.user_id).first
   end
 
+#  def update
+#      @announcer = Announcer.where("user_id = ?", current_user.id).first
+#      if @announcer.update(announcer_params)
+#        redirect_to announcer_edit_url, notice: 'Dados atualizados com sucesso.'
+#      else
+#        render :edit
+#      end
+#  end
+
+  def add_photo
+    byebug
+    announcer = Announcer.where("user_id = ?", current_user).first
+    announcer.photos << Gallery.new(photo_params)
+    announcer.save!
+    redirect_to edit_announcer_path(announcer)
+  end
+
+
   def update
-      @announcer = Announcer.where("user_id = ?", current_user.id).first
+    @announcer = Announcer.where("user_id = ?", current_user).first
+    respond_to do |format|
       if @announcer.update(announcer_params)
-        redirect_to announcer_edit_url, notice: 'Dados atualizados com sucesso.'
+        format.html { redirect_to @announcer, notice: 'Cadastro atualizado com sucesso.' }
+        format.json { render :show, status: :ok, location: @announcer }
       else
-        render :edit
+        format.html { render :edit }
+        format.json { render json: @announcer.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   def new
@@ -42,6 +67,12 @@ class AnnouncersController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def photo_params
+    params.require(:photo).permit(
+    :image
+    )
   end
 
   def user_params
@@ -76,7 +107,8 @@ class AnnouncersController < ApplicationController
     :avatar,
     :photos,
     :ad_plan_id,
-    :banner
+    :banner,
+    :about_text
     )
   end
 

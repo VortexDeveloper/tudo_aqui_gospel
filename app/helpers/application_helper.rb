@@ -65,6 +65,10 @@ module ApplicationHelper
         content_tag(:li, "") do
           link_to "Cadastro de anunciante", new_announcer_path
         end
+      when "Announcer"
+        content_tag(:li, "") do
+          link_to "Dados da Página", edit_announcer_path(@announcer)
+        end
     end
   end
 

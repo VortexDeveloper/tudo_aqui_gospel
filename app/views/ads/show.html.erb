@@ -1,0 +1,58 @@
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Perfil</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Section Register -->
+<section id="rst-account-page">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+          <div class="rst-section-title rst-section-title-box">
+            <%= link_to @ad.announcer do %>
+              <h4><%= @ad.announcer.fantasy_name %></h4>
+            <% end %>
+          </div> <!-- end section title -->
+          <div class="rst-newsandhot-post">
+						<div class="rst-newsandhot-post-content">
+              <article>
+                <div class="row">
+                  <div class="rst-postpic col-sm-6">
+                    <a href="#"><%= image_tag @ad.avatar.url(:medium) %></a>
+                    <a href="#" class="rst-postpic-cat"><span><%= @ad.price %></span></a>
+                  </div>
+                  <div class="rst-postinfo col-sm-6">
+                    <h6><%= @ad.title %></h6>
+                    <time><i class="fa fa-clock-o"></i><%= @ad.created_at %></time>
+                    <p><%= @ad.text_description %></p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Outros anuncios de <%= @ad.announcer.fantasy_name %></h4>
+          </div> <!-- end section title -->
+          <aside class="widget widget_adv">
+            <% @ad.announcer.ads.each do |ad| %>
+              <div class="photobox-170x170">
+                <a href="#"><%= image_tag ad.avatar(:medium) %></a>
+              </div>
+            <% end %>
+            <div class="clear"></div>
+          </aside>
+        </div>
+  </div>
+</section>
+<!-- End Section Register -->

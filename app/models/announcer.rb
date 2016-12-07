@@ -18,7 +18,7 @@ class Announcer < ApplicationRecord
 
   has_attached_file(
     :banner,
-    styles: { normal: "800x370>", thumb: "555x150>" },
+    styles: { normal: "800x370>", medium: "555x150>", thumb: "100x100>" },
     default_url: "../../images/banner.png"
   )
 

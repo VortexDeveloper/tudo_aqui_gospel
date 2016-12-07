@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205153625) do
+ActiveRecord::Schema.define(version: 20161207124408) do
 
   create_table "ad_plans", force: :cascade do |t|
     t.string   "comercial"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161205153625) do
     t.datetime "avatar_updated_at"
     t.integer  "ad_type"
     t.string   "home"
+    t.integer  "active"
     t.index ["announcer_id"], name: "index_ads_on_announcer_id"
     t.index ["category_id"], name: "index_ads_on_category_id"
   end

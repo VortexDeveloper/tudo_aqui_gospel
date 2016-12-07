@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :announcers
+  resources :ads
+  resources :vacancies
 
   get 'pages/home'
   get 'personal_profiles/edit'
@@ -18,9 +20,7 @@ Rails.application.routes.draw do
   patch 'columnists/update'
   get 'subscribers/edit'
   patch 'subscribers/update'
-#  get 'announcers/new'
   post 'announcers/create'
-#  get 'announcers/show'
-#  get 'announcers/edit'
-#  get 'personal_profiles/edit_announcer/:id' => 'personal_profiles#edit_announcer', as: 'edit_announcer'
+  post 'announcers/add_photo'
+
 end

@@ -5,8 +5,10 @@
 					<div class="col-xs-12">
 						<div class="rst-mainslider owl-carousel">
               <% @ads.each do |ad| %>
-                <div class="rst-mainslide">
-                  <%= image_tag ad.avatar.url(:large) %>
+                <div class="rst-mainslide photobox-800x640">
+                  <%= link_to ad do %>
+                    <%= image_tag ad.avatar.url(:large) %>
+                  <% end %>
   								<div class="rst-boxinfo">
                     <%= link_to ad.announcer do %>
                       <span><%= ad.announcer.fantasy_name %></span>
@@ -19,7 +21,7 @@
 						<!-- fim slider -->
 						<div class="rst-mainslider-posts">
                <% @ads_ban.each do |ad| %>
-  							 <div class="rst-posttype">
+  							 <div class="rst-posttype photobox-370x320">
                    <%=  image_tag ad.avatar.url(:large) %>
   								<div class="rst-boxinfo">
   									<a href="#"><span><%= ad.announcer.fantasy_name %></span></a>
@@ -197,8 +199,10 @@
 									<div class="row">
                     <% @ads_body.each do |ad| %>
                       <div class="rst-postpic col-sm-6">
-  											<a href="#"><%=  image_tag ad.avatar.url(:large) %></a>
-  											<a href="#" class="rst-postpic-cat"><span><%= ad.announcer.fantasy_name %></span></a>
+                        <div class="photobox-370x278">
+                          <a href="#"><%=  image_tag ad.avatar.url(:large) %></a>
+    											<a href="#" class="rst-postpic-cat"><span><%= ad.announcer.fantasy_name %></span></a>
+                        </div>
   										</div>
                     <% end %>
 									</div>
@@ -388,56 +392,18 @@
 							<h4>Vagas de Emprego</h4>
 						</div> <!-- fim section title -->
 						<div class="row commentlist owl-carousel">
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm01.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Empresa</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm02.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Empresa</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm03.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Empresa</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm02.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Empresa</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm01.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Empresa</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
+              <% @vacancies.each do |vacancy| %>
+  							<div class="col-sm-12 comment">
+  								<div class="comment-avatar">
+  									<%=  image_tag vacancy.announcer.avatar.url %>
+  								</div>
+  								<div class="comment-data">
+  									<a href="#" class="comment-author"><%= vacancy.announcer.fantasy_name %></a>
+  									<span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
+  									<p class="comment-body"><%= vacancy.name %></p>
+  								</div>
+  							</div>
+              <% end %>
 						</div>
 					</div>
 				</div>
