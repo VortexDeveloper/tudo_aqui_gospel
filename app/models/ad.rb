@@ -1,6 +1,6 @@
 class Ad < ApplicationRecord
-  belongs_to :announcer
-  belongs_to :category
+  belongs_to :announcer, optional: false
+  belongs_to :category, optional: false
   enum ad_type: [:principal, :banner, :normal]
   enum home: [:s, :n]
   enum active: [:sim, :nao]
@@ -12,5 +12,6 @@ class Ad < ApplicationRecord
   )
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates :announcer_id, uniqueness: true
 
 end

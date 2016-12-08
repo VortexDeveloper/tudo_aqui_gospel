@@ -52,18 +52,11 @@ class AnnouncersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
-    @personal_profile = PersonalProfile.new(personal_profile_params)
-    @personal_profile.user = @user
-    @personal_profile.save!
-    @announcer = Announcer.new(announcer_params)
-    @announcer.user = @user
-    @announcer.save!
+    @user.profile.update personal_profile_params
+    @user.create_announcer announcer_params
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to root_path, notice: 'Anunciante cadastrado com sucesso!' }
-      else
-        format.html { render :new }
-      end
+      format.html { redirect_to root_path, notice: 'Anunciante cadastrado com sucesso!' }
+      format.html { render :new }
     end
   end
 

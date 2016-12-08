@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    #PersonalProfile.create!(user: user)
-    #user.set_roles(params[:roles])
     if user.has_any_role? "Administrator", "Announcer", "Columnist", "Insider"
       personal_profiles_edit_path
     else
