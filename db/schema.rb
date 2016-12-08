@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20161207124408) do
-
 
   create_table "ad_plans", force: :cascade do |t|
     t.string   "comercial"

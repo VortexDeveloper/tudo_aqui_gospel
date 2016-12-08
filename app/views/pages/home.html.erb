@@ -23,7 +23,7 @@
 						<div class="rst-mainslider-posts">
                <% @ads_ban.each do |ad| %>
   							 <div class="rst-posttype photobox-370x320">
-                   <%=  image_tag ad.avatar.url(:large) %>
+                   <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
   								<div class="rst-boxinfo">
   									<a href="#"><span><%= ad.announcer.fantasy_name %></span></a>
   									<p><a href="#"><%= ad.description %></a></p>
@@ -201,7 +201,7 @@
                     <% @ads_body.each do |ad| %>
                       <div class="rst-postpic col-sm-6">
                         <div class="photobox-370x278">
-                          <a href="#"><%=  image_tag ad.avatar.url(:large) %></a>
+                          <a href="#"><%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
     											<a href="#" class="rst-postpic-cat"><span><%= ad.announcer.fantasy_name %></span></a>
                         </div>
   										</div>
@@ -396,7 +396,7 @@
               <% @vacancies.each do |vacancy| %>
   							<div class="col-sm-12 comment">
   								<div class="comment-avatar">
-  									<%=  image_tag vacancy.announcer.avatar.url %>
+  									<%=  image_tag vacancy.announcer.avatar.url if vacancy.announcer.avatar.present? %>
   								</div>
   								<div class="comment-data">
   									<a href="#" class="comment-author"><%= vacancy.announcer.fantasy_name %></a>

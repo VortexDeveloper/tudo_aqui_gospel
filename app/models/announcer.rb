@@ -4,8 +4,11 @@ class Announcer < ApplicationRecord
   has_many :photos, class_name: "Gallery"
   has_many :vacancies
   belongs_to :ad_plan
-  belongs_to :user
+  belongs_to :user, optional: false
+
+  validates :user_id, presence: true, uniqueness: true
   validates :email, :doc, :doc_type, presence: true, on: :update
+  
   enum doc_type: [:cnpj, :cpf]
 
   has_attached_file(
