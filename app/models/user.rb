@@ -7,17 +7,19 @@ class User < ApplicationRecord
 
   has_many :phonebooks
   has_many :telephones, through: :phonebooks
-  has_one :profile, class_name: 'PersonalProfile'
+  has_one :profile, class_name: 'PersonalProfile', dependent: :destroy
 
-  has_one :columnist
-  has_one :insider
-  has_one :announcer
-  has_one :administrator
-  has_one :subscriber
+  has_one :columnist, dependent: :destroy
+  has_one :insider, dependent: :destroy
+  has_one :announcer, dependent: :destroy
+  has_one :administrator, dependent: :destroy
+  has_one :subscriber, dependent: :destroy
 
   after_create :setting_user
 
   enum active: [:unactive, :active]
+
+  validates :email, presence: true, uniqueness: true
 
   # DEPRECATED
   def set_roles(roles_id)
