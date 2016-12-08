@@ -4,22 +4,20 @@
       <h4>Galeria da Empresa</h4>
     </div>
     <div class="rst-newsandhot-post">
+      <%= add_photo_button(@announcer) %>
       <div class="rst-newsandhot-post-content">
-
-        <%= form_tag announcers_add_photo_path, method: :post, multipart: true do %>
-          <input id="input-photo" class="rst-pagebutton" type="submit" value="INSERIR FOTO"/>
-          <%= file_field_tag :image, class: 'image-button', id: 'image-button-photo' %>
-          <%= submit_tag "SALVAR", class: 'rst-pagebutton' %>
-        <% end %>
-
         <article>
           <div class="row">
             <% @announcer.photos.each do |photo| %>
-            <div class="photobox">
-              <div class="rst-postpic gallery">
-                <a href="#"><%=  image_tag photo.image.url %></a>
+            <div class="col-sm-3">
+              <div class="rst-postpic gallery photobox-270x190">
+                <a><%=  image_tag photo.image.url %></a>
               </div>
-
+              <%= link_to photo, method: :delete, data: { confirm: 'Tem certeza que deseja excluir essa foto?' }, class: '' do %>
+                <div class="gallery-actions red-bg">
+                  <i class="fa fa-trash"></i>
+                </div>
+              <% end %>
             </div>
             <% end %>
           </div>

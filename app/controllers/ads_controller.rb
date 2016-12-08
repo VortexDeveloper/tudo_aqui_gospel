@@ -22,14 +22,6 @@ class AdsController < ApplicationController
     @ad = Ad.new
   end
 
-  def enable_ad(ad)
-    ad.enable_ad
-  end
-
-  def disable_ad(ad)
-    ad.disable_ad
-  end
-
   # GET /ads/1/edit
   def edit
   end
@@ -52,9 +44,10 @@ class AdsController < ApplicationController
   # PATCH/PUT /ads/1
   # PATCH/PUT /ads/1.json
   def update
+    announcer = Announcer.where("user_id = ?", current_user.id).first
     respond_to do |format|
       if @ad.update(ad_params)
-        format.html { redirect_to @ad, notice: 'Ad was successfully updated.' }
+        format.html { redirect_to edit_announcer_path(announcer), notice: 'Anuncio atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @ad }
       else
         format.html { render :edit }
@@ -89,7 +82,8 @@ class AdsController < ApplicationController
       :avatar,
       :start_date,
       :end_date,
-      :price
+      :price,
+      :active
       )
     end
 end

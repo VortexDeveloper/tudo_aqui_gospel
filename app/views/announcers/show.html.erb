@@ -29,9 +29,9 @@
           <% end %>
           <div class="rst-author-contactinfo">
             <p>
-              <a href="tel:+48 122 33 66"><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
-              <a href=""><i class="fa fa-paper-plane"></i> <span><%= @announcer.email %></span></a>
-              <a href=""><span><i class="fa fa-location-arrow"></i><%= @personal_profile.street %>, <%= @personal_profile.neighborhood %>, <%= city_show(@personal_profile.city_id) %> - <%= state_show(@personal_profile.state_id) %></span></a>
+              <a><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
+              <a><i class="fa fa-paper-plane"></i> <span><%= @announcer.email %></span></a>
+              <a><span><i class="fa fa-location-arrow"></i><%= @personal_profile.street %>, <%= @personal_profile.neighborhood %>, <%= city_show(@personal_profile.city_id) %> - <%= state_show(@personal_profile.state_id) %></span></a>
             </p>
           </div>
         </div>
@@ -56,8 +56,12 @@
               <div class="row">
                 <% @announcer.ads.each do |ad| %>
                   <div class="rst-postpic col-sm-4 rst-postpic-img">
-                    <a href="#"><%=  image_tag ad.avatar.url %></a>
-                    <a href="#" class="rst-postpic-cat"><span><%= ad.title %></span></a>
+                    <%= link_to ad do %>
+                      <%=  image_tag ad.avatar.url %>
+                    <% end %>
+                    <%= link_to ad, class: 'rst-postpic-cat' do %>
+                      <span><%= ad.title %></span>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
@@ -79,14 +83,18 @@
         <div class="row commentlist owl-carousel">
           <% @announcer.vacancies.each do |vacancy| %>
             <div class="col-sm-12 comment">
-              <div class="comment-avatar">
-                <%=  image_tag @announcer.avatar.url(:medium) %>
-              </div>
-                <div class="comment-data">
-                  <a href="#" class="comment-author"><%= @announcer.fantasy_name %></a>
-                  <span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
-                  <p class="comment-body"><%= vacancy.name %></p>
+              <%= link_to vacancy do %>
+                <div class="comment-avatar">
+                  <%=  image_tag @announcer.avatar.url(:medium) %>
                 </div>
+              <% end %>
+              <div class="comment-data">
+                <%= link_to vacancy do %>
+                  <%= @announcer.fantasy_name %>
+                <% end %>
+                <span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
+                <p class="comment-body"><%= vacancy.name %></p>
+              </div>
             </div>
           <% end %>
         </div>

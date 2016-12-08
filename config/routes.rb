@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :announcers
   resources :ads
   resources :vacancies
+  resources :galleries
 
   get 'pages/home'
   get 'personal_profiles/edit'

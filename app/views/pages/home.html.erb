@@ -14,7 +14,7 @@
                     <%= link_to ad.announcer do %>
                       <span><%= ad.announcer.fantasy_name %></span>
                     <% end %>
-  									<p><a href="#"><%= ad.description %></a></p>
+  									<p><a href=""><%= ad.description %></a></p>
   								</div>
   							</div>
               <% end %>
@@ -23,10 +23,14 @@
 						<div class="rst-mainslider-posts">
                <% @ads_ban.each do |ad| %>
   							 <div class="rst-posttype photobox-370x320">
-                   <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
+                   <%= link_to ad do %>
+                      <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
+                   <% end %>
   								<div class="rst-boxinfo">
-  									<a href="#"><span><%= ad.announcer.fantasy_name %></span></a>
-  									<p><a href="#"><%= ad.description %></a></p>
+                    <%= link_to ad.announcer do %>
+  									  <span><%= ad.announcer.fantasy_name %></span>
+                    <% end %>
+  									<p><a href=""><%= ad.description %></a></p>
   								</div>
   							 </div>
                <% end %>
@@ -201,8 +205,12 @@
                     <% @ads_body.each do |ad| %>
                       <div class="rst-postpic col-sm-6">
                         <div class="photobox-370x278">
-                          <a href="#"><%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
-    											<a href="#" class="rst-postpic-cat"><span><%= ad.announcer.fantasy_name %></span></a>
+                          <%= link_to ad do %>
+                            <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
+                          <% end %>
+                          <%= link_to ad.announcer, class: 'rst-postpic-cat' do %>
+                            <span><%= ad.announcer.fantasy_name %></span>
+                          <% end %>
                         </div>
   										</div>
                     <% end %>
@@ -399,7 +407,9 @@
   									<%=  image_tag vacancy.announcer.avatar.url if vacancy.announcer.avatar.present? %>
   								</div>
   								<div class="comment-data">
-  									<a href="#" class="comment-author"><%= vacancy.announcer.fantasy_name %></a>
+                    <%= link_to vacancy.announcer, class: 'comment-author' do %>
+                      <%= vacancy.announcer.fantasy_name %>
+                    <% end %>
   									<span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
   									<p class="comment-body"><%= vacancy.name %></p>
   								</div>

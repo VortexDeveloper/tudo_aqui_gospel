@@ -14,13 +14,4 @@ class Ad < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates :announcer_id, uniqueness: true
 
-  def enable_ad
-    self.active = "sim"
-    self.save
-  end
-
-  def disable_ad
-    self.active = "nao"
-    self.save
-  end
 end

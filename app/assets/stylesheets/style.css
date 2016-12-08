@@ -610,10 +610,12 @@ footer li a:hover,
   position: relative;
 }
 .rst-boxinfo {
-  bottom: 38px;
-  left: 30px;
-  position: absolute;
-  right: 30px;
+    width: 100%;
+    bottom: 38px;
+    left: 30px;
+    position: absolute;
+    right: 30px;
+    background: rgba(0,0,0,0.7);
 }
 .rst-posttype {
   position: relative;
@@ -783,11 +785,6 @@ h2 {
     height: 370px !important;
 }
 
-.gallery img {
-    height: 250px !important;
-    max-width: 200%;
-}
-
 .margin-button{
   margin: 15px 0;
 }
@@ -816,13 +813,6 @@ h2 {
   height: 150px;
 }
 
-.photobox {
-    width: 23.3346%;
-    height: 210px;
-    float: left;
-    margin: 10px;
-    overflow: hidden;
-}
 
 .photobox-100x76 {
     height: 76px;
@@ -847,9 +837,17 @@ h2 {
 }
 
 .photobox-270x190 {
+    width: 100%;
+    position: relative;
     height: 190px;
     overflow: hidden;
+    margin-top: 30px;
 }
+
+.photobox-270x190 img{
+    max-width: 200%;
+}
+
 
 .photobox-370x278 {
     height: 278px;
@@ -901,6 +899,35 @@ h2 {
   box-shadow:         inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
 }
 
+.gallery-actions{
+  padding: 3px;
+  text-align: center;
+  margin: 3px 0;
+  float: left;
+  width: 33px;
+  border-radius: 2px;
+  color: #fff;
+  -webkit-box-shadow: inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
+  -moz-box-shadow:    inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
+  box-shadow:         inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
+}
+
+.enable-ad-button{
+  float: left;
+  top: 15px;
+  left: 20px;
+  border: none;
+  position: relative;
+  width: auto !important;
+  margin-right: 5px;
+}
+
+.add-image-actions{
+  float: right;
+  position: relative;
+  width: 100%;
+}
+
 .rst-postpic .rst-postpic-cat {
   background: #2be0b5;
   bottom: 20px;
@@ -911,6 +938,7 @@ h2 {
   position: absolute;
   text-transform: uppercase;
 }
+
 #rst-popular .rst-postinfo,
 .col-sm-6.rst-catpost .rst-postinfo
 {
