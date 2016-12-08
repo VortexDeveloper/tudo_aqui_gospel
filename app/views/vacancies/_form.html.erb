@@ -52,10 +52,13 @@
             <h4>Ofertas</h4>
           </div> <!-- end section title -->
           <aside class="widget widget_adv">
-            <a href="#"><%=  image_tag('ad01.png') %></a>
-            <a href="#"><%=  image_tag('ad01.png') %></a>
-            <a href="#"><%=  image_tag('ad01.png') %></a>
-            <a href="#"><%=  image_tag('ad01.png') %></a>
+            <% @ads.each do |ad| %>
+            <div class="photobox-170x170">
+              <%= link_to ad do %>
+                <%= image_tag ad.avatar(:medium) %>
+              <% end %>
+            </div>
+            <% end %>
             <div class="clear"></div>
           </aside>
       <% end %>

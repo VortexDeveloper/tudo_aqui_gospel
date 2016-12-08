@@ -50,54 +50,59 @@ module ApplicationHelper
   end
 
   def show_profile_type
-    profile_type = current_user.roles.first.name
+    if user_signed_in?
+      profile_type = current_user.roles.first.name
 
-    case profile_type
-      when "Columnist"
-        content_tag(:li, "") do
-          link_to "Dados do Perfil", columnists_edit_path
-        end
-      when "Subscriber"
-        content_tag(:li, "") do
-          link_to "Dados do Perfil", subscribers_edit_path
-        end
-      when "Administrator"
-        content_tag(:li, "") do
-          link_to "Cadastro de anunciante", new_announcer_path
-        end
-      when "Announcer"
-        content_tag(:li, "") do
-          link_to "Dados da Página", edit_announcer_path(@announcer)
-        end
+      case profile_type
+        when "Columnist"
+          content_tag(:li, "") do
+            link_to "Dados do Perfil", columnists_edit_path
+          end
+        when "Subscriber"
+          content_tag(:li, "") do
+            link_to "Dados do Perfil", subscribers_edit_path
+          end
+        when "Administrator"
+          content_tag(:li, "") do
+            link_to "Cadastro de anunciante", new_announcer_path
+          end
+        when "Announcer"
+          content_tag(:li, "") do
+            link_to "Dados da Página", edit_announcer_path(@announcer)
+          end
+      end
     end
   end
 
   def show_admin
-    profile_type = current_user.roles.first.name
+    if user_signed_in?
+      profile_type = current_user.roles.first.name
 
-    if profile_type == "Administrator"
-      content_tag(:li, "") do
-        link_to "Painel de administração", rails_admin_path
+      if profile_type == "Administrator"
+        content_tag(:li, "") do
+          link_to "Painel de administração", rails_admin_path
+        end
       end
     end
-
   end
 
   def show_image_thumb(columnist, subscriber)
-    profile_type = current_user.roles.first.name
-    case profile_type
-      when "Columnist"
-        if columnist.avatar.present?
-          image_tag columnist.avatar.url(:thumb)
-        else
-          image_tag ('user_thumb.png')
-        end
-      when "Subscriber"
-        if subscriber.avatar.present?
-          image_tag subscriber.avatar.url(:thumb)
-        else
-          image_tag ('user_thumb.png')
-        end
+    if user_signed_in?
+      profile_type = current_user.roles.first.name
+      case profile_type
+        when "Columnist"
+          if columnist.avatar.present?
+            image_tag columnist.avatar.url(:thumb)
+          else
+            image_tag ('user_thumb.png')
+          end
+        when "Subscriber"
+          if subscriber.avatar.present?
+            image_tag subscriber.avatar.url(:thumb)
+          else
+            image_tag ('user_thumb.png')
+          end
+      end
     end
   end
 

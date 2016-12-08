@@ -47,7 +47,9 @@
           <aside class="widget widget_adv">
             <% @ad.announcer.ads.each do |ad| %>
               <div class="photobox-170x170">
-                <a href="#"><%= image_tag ad.avatar(:medium) %></a>
+                <%= link_to ad do %>
+                  <%= image_tag ad.avatar(:medium) %>
+                <% end %>
               </div>
             <% end %>
             <div class="clear"></div>
