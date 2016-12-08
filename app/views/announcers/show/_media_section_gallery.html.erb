@@ -8,9 +8,9 @@
         <article>
           <div class="row">
             <% @announcer.photos.each do |photo| %>
-            <div class="photobox">
-              <div class="rst-postpic gallery">
-                <a href="#"><%=  image_tag photo.image.url %></a>
+            <div class="col-sm-3">
+              <div class="rst-postpic gallery photobox-270x190">
+                <a><%=  image_tag photo.image.url %></a>
               </div>
             </div>
             <% end %>

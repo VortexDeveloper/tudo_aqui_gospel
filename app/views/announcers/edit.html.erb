@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="rst-section-title rst-section-title-box">
-            <%= f.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton banner-input' %>
+            <%= f.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton banner-input blue-bg' %>
             <h4><%= f.text_field :fantasy_name, value: @announcer.fantasy_name, class: 'rst-announcer-input' %></h4>
           </div>
           <div class="rst-author-contact">
@@ -27,13 +27,13 @@
             <% end %>
             <div class="rst-author-contactinfo">
               <p>
-                <a href="tel:+48 122 33 66"><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
-                <a href=""><i class="fa fa-paper-plane"></i> <span><%= f.text_field :email, value: @announcer.email, class: 'rst-announcer-input' %></span></a>
-                <a href=""><span><i class="fa fa-location-arrow"></i><%= @personal_profile.street %>, <%= @personal_profile.neighborhood %>, <%= city_show(@personal_profile.city_id) %> - <%= state_show(@personal_profile.state_id) %></span></a>
+                <i class="fa fa-mobile"></i> <span>+48 122 33 66</span>
+                <i class="fa fa-paper-plane"></i> <span><%= f.text_field :email, value: @announcer.email, class: 'rst-announcer-input' %></span>
+                <span><i class="fa fa-location-arrow"></i><%= @personal_profile.street %>, <%= @personal_profile.neighborhood %>, <%= city_show(@personal_profile.city_id) %> - <%= state_show(@personal_profile.state_id) %></span>
               </p>
             </div>
           </div>
-          <input id="input-avatar" class="rst-pagebutton" type="submit" value="ALTERAR LOGO"/>
+          <input id="input-avatar" class="rst-pagebutton blue-bg" type="submit" value="ALTERAR LOGO"/>
           <%= f.file_field :avatar, class: 'image-button', id: 'image-button-avatar' %>
           <p class="rst-author-excerpt"><%= f.text_area :about_text, value: @announcer.about_text, class: 'text-area-announcer rst-announcer-input' %></p>
           <%= f.hidden_field :user, value: @announcer.user %>
@@ -41,14 +41,14 @@
       </div>
     </div>
   </section>
-  <%= render partial: 'announcers/edit/media_section_banner' %>
+  <%= media_section_banner_edit(@announcer) %>
   <div class="container">
     <div class="margin-button">
-      <input id="input-banner" class="rst-pagebutton" type="submit" value="ALTERAR BANNER"/>
+      <input id="input-banner" class="rst-pagebutton blue-bg" type="submit" value="ALTERAR BANNER"/>
       <%= f.file_field :banner, class: 'image-button', id: 'image-button-banner' %>
     </div>
   </div>
-
+<% end %>
   <section id="rst-newsandhot">
     <div class="container">
       <div class="row">
@@ -62,8 +62,22 @@
                 <div class="row">
                   <% @announcer.ads.each do |ad| %>
                     <div class="rst-postpic col-sm-4 rst-postpic-img">
-                      <a href="#"><%=  image_tag ad.avatar.url %></a>
-                      <a href="#" class="rst-postpic-cat"><span><%= ad.title %></span></a>
+                      <%= link_to ad do %>
+                        <%=  image_tag ad.avatar.url %>
+                      <% end %>
+                      <%= link_to ad, class: 'rst-postpic-cat' do %>
+                        <span><%= ad.title %></span>
+                      <% end %>
+                      <div class="add-image-actions">
+                        <%= form_for ad do |ad| %>
+                            <%= ad.hidden_field :active, value: "sim" %>
+                            <%= ad.submit "Ativar", class: 'gallery-actions green-bg enable-ad-button' %>
+                        <% end %>
+                        <%= form_for ad do |ad| %>
+                            <%= ad.hidden_field :active, value: "nao" %>
+                            <%= ad.submit "Desativar", class: 'gallery-actions red-bg enable-ad-button' %>
+                        <% end %>
+                      </div>
                     </div>
                   <% end %>
                 </div>
@@ -72,7 +86,7 @@
           </div>
         </div>
       </div>
-      <%= render partial: 'announcers/edit/media_section_gallery' %>
+      <%= media_section_gallery_edit(@announcer) %>
     </div>
   </section>
   <section id="rst-latestcomments">
@@ -82,15 +96,21 @@
           <div class="rst-section-title rst-section-title-box">
             <h4>Vagas de emprego</h4>
           </div>
-          <%= link_to 'Nova vaga', new_vacancy_path, class: 'rst-pagebutton announcer-buttons-new blue-bg' %>
+          <div class="add-image-actions">
+            <%= link_to 'Nova vaga', new_vacancy_path, class: 'rst-pagebutton announcer-buttons-new blue-bg' %>
+          </div>
           <div class="row commentlist owl-carousel">
             <% @announcer.vacancies.each do |vacancy| %>
               <div class="col-sm-12 comment">
                 <div class="comment-avatar">
-                  <%=  image_tag @announcer.avatar.url(:medium) %>
+                  <%= link_to vacancy do %>
+                    <%= image_tag @announcer.avatar.url(:medium) %>
+                  <% end %>
                 </div>
                   <div class="comment-data">
-                    <a href="#" class="comment-author"><%= @announcer.fantasy_name %></a>
+                    <%= link_to vacancy, class: 'comment-author' do %>
+                      <%= @announcer.fantasy_name %>
+                    <% end %>
                     <span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
                     <p class="comment-body"><%= vacancy.name %></p>
                     <%= link_to vacancy, class: 'vacancy-actions green-bg' do %>
@@ -110,4 +130,3 @@
       </div>
     </div>
   </section>
-<% end %>

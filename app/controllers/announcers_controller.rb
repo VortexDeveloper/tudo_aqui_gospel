@@ -3,7 +3,7 @@ class AnnouncersController < ApplicationController
   def edit
     @announcer = Announcer.find(params[:id])
     @personal_profile = PersonalProfile.where("user_id = ?", @announcer.user_id).first
-    @photo = Gallery.new
+    @gallery = Gallery.new
   end
 
   def show
@@ -21,13 +21,11 @@ class AnnouncersController < ApplicationController
 #  end
 
   def add_photo
-    byebug
     announcer = Announcer.where("user_id = ?", current_user).first
-    announcer.photos << Gallery.new(photo_params)
+    announcer.photos << Gallery.new(gallery_params)
     announcer.save!
-    redirect_to edit_announcer_path(announcer)
+    redirect_to edit_announcer_path(announcer), notice: 'Foto adicionada a sua galeria.'
   end
-
 
   def update
     @announcer = Announcer.where("user_id = ?", current_user).first
@@ -69,8 +67,14 @@ class AnnouncersController < ApplicationController
     end
   end
 
-  def photo_params
-    params.require(:photo).permit(
+  def ad_params
+    params.require(:ad).permit(
+    :active
+    )
+  end
+
+  def gallery_params
+    params.require(:gallery).permit(
     :image
     )
   end

@@ -140,4 +140,35 @@ module ApplicationHelper
     end
   end
 
+  def media_section_banner_edit(announcer)
+    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+      render partial: 'announcers/edit/media_section_banner'
+    end
+  end
+
+  def media_section_gallery_edit(announcer)
+    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+      render partial: 'announcers/edit/media_section_gallery'
+    end
+  end
+
+  def media_section_gallery_slide_edit(announcer)
+    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+      render partial: 'announcers/edit/media_section_gallery_slide'
+    end
+  end
+
+  def add_photo_button(announcer)
+    if announcer.ad_plan.silver?
+      if announcer.photos.count < 10
+        render partial: 'announcers/edit/add_photo_button'
+      end
+    end
+    if announcer.ad_plan.gold?
+        if announcer.photos.count < 20
+          render partial: 'announcers/edit/add_photo_button'
+        end
+    end
+  end
+
 end

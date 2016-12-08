@@ -1,0 +1,9 @@
+<div class="add-image-actions">
+  <%= form_for @gallery, :html => { :multipart => true }, :url => announcers_add_photo_path do |photo| %>
+      <button id="input-photo" class="rst-pagebutton announcer-buttons-new blue-bg" type="submit" value="INSERIR FOTO">
+        <i class="fa fa-plus"></i>
+      </button>
+      <%= photo.submit "SALVAR", class: 'rst-pagebutton announcer-buttons-new blue-bg'%>
+      <%= photo.file_field :image, class: 'image-button', id: 'image-button-photo' %>
+  <% end %>
+</div>
