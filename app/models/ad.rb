@@ -12,6 +12,4 @@ class Ad < ApplicationRecord
   )
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  validates :announcer_id, uniqueness: true
-
 end
