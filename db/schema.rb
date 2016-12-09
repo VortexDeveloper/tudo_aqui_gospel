@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207124408) do
+ActiveRecord::Schema.define(version: 20161209171441) do
 
-  create_table "ad_plans", force: :cascade do |t|
+  create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
     t.string   "name"
     t.integer  "days"
@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "administrators", force: :cascade do |t|
+  create_table "administrators", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_administrators_on_user_id"
+    t.index ["user_id"], name: "index_administrators_on_user_id", using: :btree
   end
 
-  create_table "ads", force: :cascade do |t|
+  create_table "ads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "description"
     t.string   "title"
     t.string   "link"
@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.integer  "ad_type"
     t.string   "home"
     t.integer  "active"
-    t.index ["announcer_id"], name: "index_ads_on_announcer_id"
-    t.index ["category_id"], name: "index_ads_on_category_id"
+    t.index ["announcer_id"], name: "index_ads_on_announcer_id", using: :btree
+    t.index ["category_id"], name: "index_ads_on_category_id", using: :btree
   end
 
-  create_table "announcers", force: :cascade do |t|
+  create_table "announcers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "name"
     t.string   "fantasy_name"
     t.string   "contact_name"
@@ -71,47 +71,47 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "ad_plan_id"
-    t.string   "about_text"
+    t.text     "about_text",          limit: 65535
     t.string   "banner_file_name"
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
-    t.index ["ad_plan_id"], name: "index_announcers_on_ad_plan_id"
-    t.index ["user_id"], name: "index_announcers_on_user_id"
+    t.index ["ad_plan_id"], name: "index_announcers_on_ad_plan_id", using: :btree
+    t.index ["user_id"], name: "index_announcers_on_user_id", using: :btree
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "father_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["father_id"], name: "index_categories_on_father_id"
+    t.index ["father_id"], name: "index_categories_on_father_id", using: :btree
   end
 
-  create_table "cities", force: :cascade do |t|
+  create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["state_id"], name: "index_cities_on_state_id"
+    t.index ["state_id"], name: "index_cities_on_state_id", using: :btree
   end
 
-  create_table "columnist_knowledges", force: :cascade do |t|
+  create_table "columnist_knowledges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "columnist_id"
     t.integer  "knowledge_area_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["columnist_id"], name: "index_columnist_knowledges_on_columnist_id"
-    t.index ["knowledge_area_id"], name: "index_columnist_knowledges_on_knowledge_area_id"
+    t.index ["columnist_id"], name: "index_columnist_knowledges_on_columnist_id", using: :btree
+    t.index ["knowledge_area_id"], name: "index_columnist_knowledges_on_knowledge_area_id", using: :btree
   end
 
-  create_table "columnist_titles", force: :cascade do |t|
+  create_table "columnist_titles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "columnists", force: :cascade do |t|
+  create_table "columnists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -125,11 +125,11 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "columnist_title_id"
-    t.index ["columnist_title_id"], name: "index_columnists_on_columnist_title_id"
-    t.index ["user_id"], name: "index_columnists_on_user_id"
+    t.index ["columnist_title_id"], name: "index_columnists_on_columnist_title_id", using: :btree
+    t.index ["user_id"], name: "index_columnists_on_user_id", using: :btree
   end
 
-  create_table "contacts", force: :cascade do |t|
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "company"
@@ -139,14 +139,14 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "countries", force: :cascade do |t|
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "galleries", force: :cascade do |t|
+  create_table "galleries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
@@ -154,23 +154,23 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "announcer_id"
-    t.index ["announcer_id"], name: "index_galleries_on_announcer_id"
+    t.index ["announcer_id"], name: "index_galleries_on_announcer_id", using: :btree
   end
 
-  create_table "insiders", force: :cascade do |t|
+  create_table "insiders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_insiders_on_user_id"
+    t.index ["user_id"], name: "index_insiders_on_user_id", using: :btree
   end
 
-  create_table "knowledge_areas", force: :cascade do |t|
+  create_table "knowledge_areas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "personal_profiles", force: :cascade do |t|
+  create_table "personal_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "street"
     t.string   "complement"
@@ -182,55 +182,55 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
-    t.index ["city_id"], name: "index_personal_profiles_on_city_id"
-    t.index ["country_id"], name: "index_personal_profiles_on_country_id"
-    t.index ["state_id"], name: "index_personal_profiles_on_state_id"
-    t.index ["user_id"], name: "index_personal_profiles_on_user_id"
+    t.index ["city_id"], name: "index_personal_profiles_on_city_id", using: :btree
+    t.index ["country_id"], name: "index_personal_profiles_on_country_id", using: :btree
+    t.index ["state_id"], name: "index_personal_profiles_on_state_id", using: :btree
+    t.index ["user_id"], name: "index_personal_profiles_on_user_id", using: :btree
   end
 
-  create_table "phonebooks", force: :cascade do |t|
+  create_table "phonebooks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "telephone_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id"
-    t.index ["user_id"], name: "index_phonebooks_on_user_id"
+    t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id", using: :btree
+    t.index ["user_id"], name: "index_phonebooks_on_user_id", using: :btree
   end
 
-  create_table "publications", force: :cascade do |t|
+  create_table "publications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "description"
-    t.text     "body"
+    t.text     "body",              limit: 65535
     t.integer  "pub_type",          limit: 1
     t.integer  "pub_category"
     t.integer  "knowledge_area_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "author_id"
-    t.index ["author_id"], name: "index_publications_on_author_id"
-    t.index ["knowledge_area_id"], name: "index_publications_on_knowledge_area_id"
+    t.index ["author_id"], name: "index_publications_on_author_id", using: :btree
+    t.index ["knowledge_area_id"], name: "index_publications_on_knowledge_area_id", using: :btree
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "resource_type"
     t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["name"], name: "index_roles_on_name"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+    t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
-  create_table "states", force: :cascade do |t|
+  create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "uf"
     t.integer  "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_states_on_country_id"
+    t.index ["country_id"], name: "index_states_on_country_id", using: :btree
   end
 
-  create_table "subscribers", force: :cascade do |t|
+  create_table "subscribers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -243,17 +243,17 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.index ["user_id"], name: "index_subscribers_on_user_id"
+    t.index ["user_id"], name: "index_subscribers_on_user_id", using: :btree
   end
 
-  create_table "telephones", force: :cascade do |t|
+  create_table "telephones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -261,27 +261,27 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.integer  "active",                 default: 0,  null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "users_roles", id: false, force: :cascade do |t|
+  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
-  create_table "vacancies", force: :cascade do |t|
+  create_table "vacancies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "description"
     t.string   "active"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "announcer_id"
-    t.index ["announcer_id"], name: "index_vacancies_on_announcer_id"
+    t.index ["announcer_id"], name: "index_vacancies_on_announcer_id", using: :btree
   end
 
-  create_table "versicles", force: :cascade do |t|
+  create_table "versicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "testament"
     t.string   "book"
     t.string   "chapter"
@@ -292,4 +292,27 @@ ActiveRecord::Schema.define(version: 20161207124408) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "administrators", "users"
+  add_foreign_key "ads", "announcers"
+  add_foreign_key "ads", "categories"
+  add_foreign_key "announcers", "ad_plans"
+  add_foreign_key "announcers", "users"
+  add_foreign_key "cities", "states"
+  add_foreign_key "columnist_knowledges", "columnists"
+  add_foreign_key "columnist_knowledges", "knowledge_areas"
+  add_foreign_key "columnists", "columnist_titles"
+  add_foreign_key "columnists", "users"
+  add_foreign_key "galleries", "announcers"
+  add_foreign_key "insiders", "users"
+  add_foreign_key "personal_profiles", "cities"
+  add_foreign_key "personal_profiles", "countries"
+  add_foreign_key "personal_profiles", "states"
+  add_foreign_key "personal_profiles", "users"
+  add_foreign_key "phonebooks", "telephones"
+  add_foreign_key "phonebooks", "users"
+  add_foreign_key "publications", "knowledge_areas"
+  add_foreign_key "publications", "users", column: "author_id"
+  add_foreign_key "states", "countries"
+  add_foreign_key "subscribers", "users"
+  add_foreign_key "vacancies", "announcers"
 end
