@@ -59,6 +59,9 @@ pt-BR:
       versicle:
         one: Versículo
         other: Versículos
+      publication:
+        one: Publicação
+        other: Publicações
     attributes:
       ad:
         created_at: "Criado em"
@@ -205,6 +208,15 @@ pt-BR:
         versicle: "Versículo"
         text: "Texto"
         show_day: "Data"
+      publication:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        title: "Título"
+        description: "Descrição"
+        body: "Corpo"
+        pub_type: "Tipo de publicação"
+        pub_category: "Categoria"
+        knowledge_area: "Area de conhecimento"  
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

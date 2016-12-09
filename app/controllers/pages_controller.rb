@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   end
 
   def ads_categories
-    @page_title = params[:category]
+    @page_title = Category.find(params[:category]).name
     @ads_categories = Ad.where("category_id LIKE ?", params[:category])
   end
 
