@@ -86,7 +86,7 @@ module ApplicationHelper
     end
   end
 
-  def show_image_thumb(columnist, subscriber)
+  def show_image_thumb(columnist, subscriber, announcer)
     if user_signed_in?
       profile_type = current_user.roles.first.name
       case profile_type
@@ -99,6 +99,12 @@ module ApplicationHelper
         when "Subscriber"
           if subscriber.avatar.present?
             image_tag subscriber.avatar.url(:thumb)
+          else
+            image_tag ('user_thumb.png')
+          end
+        when "Announcer"
+          if announcer.avatar.present?
+            image_tag announcer.avatar.url(:thumb)
           else
             image_tag ('user_thumb.png')
           end
@@ -120,11 +126,15 @@ module ApplicationHelper
   end
 
   def city_show(id)
-    City.find(id).name
+    if id.present?
+      City.find(id).name
+    end
   end
 
   def state_show(id)
-    State.find(id).uf
+    if id.present?
+      State.find(id).uf  
+    end
   end
 
   def media_section_banner(announcer)

@@ -8,12 +8,12 @@ class Announcer < ApplicationRecord
 
   validates :user_id, presence: true, uniqueness: true
   validates :email, :doc, :doc_type, presence: true, on: :update
-  
+
   enum doc_type: [:cnpj, :cpf]
 
   has_attached_file(
     :avatar,
-    styles: { medium: "140x140>", thumb: "100x100>" },
+    styles: { medium: "140x140>", small: "100x100>", thumb: "27x27>" },
     default_url: "../../images/user.png"
   )
 
