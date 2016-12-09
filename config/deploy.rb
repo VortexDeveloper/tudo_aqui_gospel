@@ -14,7 +14,7 @@ set :user, 'tag_rails'          # Username in the server to SSH to.
 set :domain, '45.55.83.125'
 set :deploy_to, "/home/tag_rails/tag_production/"
 set :repository, 'git@github.com:VortexDeveloper/tudo_aqui_gospel.git'
-set :branch, 'master'
+set :branch, 'production'
 #   set :port, '30000'      # SSH port number.
 # set :ssh_options, '-A'
 set :forward_agent, true    # SSH forward_agent.
@@ -34,6 +34,7 @@ end
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
+  invoke :'rbenv:load'
   command %{gem install rails}
   command %{rbenv rehash}
 end
