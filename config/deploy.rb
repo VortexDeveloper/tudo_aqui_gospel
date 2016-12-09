@@ -12,7 +12,7 @@ require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 
 set :user, 'tag_rails'          # Username in the server to SSH to.
 set :domain, '45.55.83.125'
-set :deploy_to, "/home/tag_rails/tag_production/current/public"
+set :deploy_to, "/home/tag_rails/tag_production/"
 set :repository, 'git@github.com:VortexDeveloper/tudo_aqui_gospel.git'
 set :branch, 'master'
 #   set :port, '30000'      # SSH port number.
