@@ -62,6 +62,7 @@ task deploy: :environment do
         # command "chown -R www-data:www-data /home/tag_rails/tag_production/current/public"
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
+        command %{sudo service nginx restart}
       end
       # invoke :'sidekiq:restart'
     end
