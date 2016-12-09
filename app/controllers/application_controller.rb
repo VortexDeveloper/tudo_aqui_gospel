@@ -8,13 +8,15 @@ class ApplicationController < ActionController::Base
       @columnist = Columnist.where("user_id = ?", current_user.id).first
       @subscriber = Subscriber.where("user_id = ?", current_user.id).first
       @announcer = Announcer.where("user_id = ?", current_user.id).first
+      @personal_profile = PersonalProfile.where("user_id = ?", current_user.id).first
     end
     @versicles = Versicle.where("show_day = ?", Date.today)
+    @categories = Category.all
+    @vacancies = Vacancy.all.shuffle
+
     @ads_ban = Ad.all.order('created_at DESC limit 2').shuffle
     @ads_body = Ad.all.order('created_at DESC limit 10').shuffle
-    @vacancies = Vacancy.all.shuffle
     @ads = Ad.all.shuffle
-    @categories = Category.all
   end
 
   def after_sign_in_path_for(user)
@@ -23,6 +25,11 @@ class ApplicationController < ActionController::Base
     else
       root_path
     end
+  end
+
+  def ads_categories
+    @page_title = Category.find(params[:id_category]).name
+    @ads_categories = Ad.where("category_id LIKE ?", params[:id_category])
   end
 
 end

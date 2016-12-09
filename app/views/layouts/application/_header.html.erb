@@ -52,7 +52,7 @@
             <ul>
               <% @categories.each do |category| %>
                 <li>
-                  <%= link_to category.name, action: 'ads_categories', category: category.id %>
+                  <%= link_to category.name, ads_categories_path(category) %>
                 </li>
               <% end %>
             </ul>

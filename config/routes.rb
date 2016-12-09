@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :galleries
 
   get 'pages/home'
-  get 'pages/ads_categories'
+  get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'
   get 'personal_profiles/edit'
   patch 'personal_profiles/update'
   post 'personal_profiles/update_announcer'
@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   patch 'subscribers/update'
   post 'announcers/create'
   post 'announcers/add_photo'
-  
+
 
 end

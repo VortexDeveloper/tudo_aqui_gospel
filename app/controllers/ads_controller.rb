@@ -10,11 +10,6 @@ class AdsController < ApplicationController
   # GET /ads/1
   # GET /ads/1.json
   def show
-    if user_signed_in?
-      @columnist = Columnist.where("user_id = ?", current_user.id).first
-      @subscriber = Subscriber.where("user_id = ?", current_user.id).first
-      @announcer = Announcer.where("user_id = ?", current_user.id).first
-    end
   end
 
   # GET /ads/new

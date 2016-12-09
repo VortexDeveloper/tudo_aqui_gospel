@@ -11,30 +11,15 @@ class VacanciesController < ApplicationController
   # GET /vacancies/1
   # GET /vacancies/1.json
   def show
-    if user_signed_in?
-      @columnist = Columnist.where("user_id = ?", current_user.id).first
-      @subscriber = Subscriber.where("user_id = ?", current_user.id).first
-      @announcer = Announcer.where("user_id = ?", current_user.id).first
-    end
   end
 
   # GET /vacancies/new
   def new
     @vacancy = Vacancy.new
-    if user_signed_in?
-      @columnist = Columnist.where("user_id = ?", current_user.id).first
-      @subscriber = Subscriber.where("user_id = ?", current_user.id).first
-      @announcer = Announcer.where("user_id = ?", current_user.id).first
-    end
   end
 
   # GET /vacancies/1/edit
   def edit
-    if user_signed_in?
-      @columnist = Columnist.where("user_id = ?", current_user.id).first
-      @subscriber = Subscriber.where("user_id = ?", current_user.id).first
-      @announcer = Announcer.where("user_id = ?", current_user.id).first
-    end
   end
 
   # POST /vacancies
