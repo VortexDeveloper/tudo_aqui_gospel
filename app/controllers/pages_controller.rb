@@ -12,4 +12,10 @@ class PagesController < ApplicationController
     @vacancies = Vacancy.all.shuffle
     @ads = Ad.all.shuffle
   end
+
+  def ads_categories
+    @page_title = params[:category]
+    @ads_categories = Ad.where("category_id LIKE ?", params[:category])
+  end
+
 end

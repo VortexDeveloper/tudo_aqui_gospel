@@ -50,11 +50,11 @@
               <span>Toggle navigation</span>
             </button>
             <ul>
-              <li><a href="category.html">CATEGORIA 1</a></li>
-              <li><a href="category.html">CATEGORIA 2</a></li>
-              <li><a href="category.html">CATEGORIA 3</a></li>
-              <li><a href="category.html">CATEGORIA 4</a></li>
-              <li><a href="category.html">CATEGORIA 5</a></li>
+              <% @categories.each do |category| %>
+                <li>
+                  <%= link_to category.name, action: 'ads_categories', category: category.id %>
+                </li>
+              <% end %>
             </ul>
             <div class="clear"></div>
           </div>

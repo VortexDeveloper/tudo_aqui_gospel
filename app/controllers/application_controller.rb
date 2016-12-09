@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     @ads_body = Ad.all.order('created_at DESC limit 10').shuffle
     @vacancies = Vacancy.all.shuffle
     @ads = Ad.all.shuffle
+    @categories = Category.all
   end
 
   def after_sign_in_path_for(user)
