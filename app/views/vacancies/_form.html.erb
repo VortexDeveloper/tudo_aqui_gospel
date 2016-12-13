@@ -52,7 +52,7 @@
             <h4>Ofertas</h4>
           </div> <!-- end section title -->
           <aside class="widget widget_adv">
-            <% @ads.each do |ad| %>
+            <% @ads_min.each do |ad| %>
             <div class="photobox-170x170">
               <%= link_to ad do %>
                 <%= image_tag ad.avatar(:medium) %>

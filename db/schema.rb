@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209171441) do
+ActiveRecord::Schema.define(version: 20161212123533) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20161209171441) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "ad_type"
-    t.string   "home"
+    t.integer  "home"
     t.integer  "active"
     t.index ["announcer_id"], name: "index_ads_on_announcer_id", using: :btree
     t.index ["category_id"], name: "index_ads_on_category_id", using: :btree

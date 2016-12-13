@@ -23,6 +23,30 @@ $(function() {
   });
 })
 
+
+  function verificaMostraBotao(){
+      $('#image-button-photo').each(function(index){
+          if ($('#image-button-photo').eq(index).val() != ""){
+            $("#save-button").trigger('click');
+
+          }
+      });
+  }
+
+  $('#image-button-photo').on("change", function(){
+    verificaMostraBotao();
+  });
+
+  $('#save-button').on("click", function(){
+      $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
+      $('#save-button').hide();
+  });
+
+
+
+
+
+
 function main() {
 
 (function () {

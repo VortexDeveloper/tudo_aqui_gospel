@@ -1,4 +1,5 @@
 class AnnouncersController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def edit
     @announcer = Announcer.find(params[:id])
@@ -10,6 +11,7 @@ class AnnouncersController < ApplicationController
     @announcer = Announcer.find(params[:id])
     @personal_profile = PersonalProfile.where("user_id = ?", @announcer.user_id).first
   end
+
 
 #  def update
 #      @announcer = Announcer.where("user_id = ?", current_user.id).first
@@ -24,7 +26,7 @@ class AnnouncersController < ApplicationController
     announcer = Announcer.where("user_id = ?", current_user).first
     announcer.photos << Gallery.new(gallery_params)
     announcer.save!
-    redirect_to edit_announcer_path(announcer), notice: 'Foto adicionada a sua galeria.'
+    redirect_to edit_announcer_path(announcer), notice: 'Foto adicionada a sua galeria com sucesso.'
   end
 
   def update

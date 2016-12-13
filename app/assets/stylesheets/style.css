@@ -45,6 +45,10 @@ input#roles_ {
   margin: 0 !important;
 }
 
+.hide{
+  display: none;
+}
+
 .green-bg{
   background: #2be0b5 !important;
 }
@@ -899,7 +903,7 @@ h2 {
 }
 
 .gallery-actions{
-  padding: 3px;
+  padding: 3px 8px;
   text-align: center;
   margin: 3px 0;
   float: left;
