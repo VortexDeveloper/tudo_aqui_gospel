@@ -42,7 +42,7 @@ module ApplicationHelper
     if user_signed_in?
       columnist = current_user.roles.where("name = ?", "Columnist")
       if columnist.present?
-        link_to "#", class: 'rst-accsetting-addpost' do
+        link_to new_publication_path, class: 'rst-accsetting-addpost' do
           content_tag(:i, "", :class => 'fa fa-plus')
         end
       end
@@ -133,7 +133,7 @@ module ApplicationHelper
 
   def state_show(id)
     if id.present?
-      State.find(id).uf  
+      State.find(id).uf
     end
   end
 

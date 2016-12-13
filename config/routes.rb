@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :ads
   resources :vacancies
   resources :galleries
+  resources :publications
 
   get 'pages/home'
   get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'
