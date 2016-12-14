@@ -10,8 +10,8 @@ class GalleriesController < ApplicationController
     announcer = Announcer.where("user_id = ?", current_user.id).first
     @gallery.destroy
     respond_to do |format|
+      format.js { head :ok, notice: 'Foto excluída com sucesso.' }
       format.html { redirect_to edit_announcer_path(announcer), notice: 'Foto excluída com sucesso.' }
-      format.json { head :no_content }
     end
   end
 

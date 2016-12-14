@@ -4,7 +4,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="rst-mainslider owl-carousel">
-              <% @ads.each do |ad| %>
+              <% @banner_home.each do |ad| %>
                 <div class="rst-mainslide photobox-800x640">
                   <%= link_to ad do %>
                     <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
@@ -21,7 +21,7 @@
 						</div>
 						<!-- fim slider -->
 						<div class="rst-mainslider-posts">
-               <% @ads_ban.each do |ad| %>
+               <% @principal_home.each do |ad| %>
   							 <div class="rst-posttype photobox-370x320">
                    <%= link_to ad do %>
                       <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
@@ -202,7 +202,7 @@
 							<div class="rst-newsandhot-post-content">
 								<article>
 									<div class="row">
-                    <% @ads_body.each do |ad| %>
+                    <% @normal_home.each do |ad| %>
                       <div class="rst-postpic col-sm-6">
                         <div class="photobox-370x278">
                           <%= link_to ad do %>

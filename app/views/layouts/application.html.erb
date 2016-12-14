@@ -8,5 +8,8 @@
       <%= render partial: 'layouts/application/footer' %>
     </section>
     <%= render partial: 'layouts/application/scripts' %>
+    <script type="text/javascript">
+       <%= yield :js %>
+    </script>
   </body>
 </html>

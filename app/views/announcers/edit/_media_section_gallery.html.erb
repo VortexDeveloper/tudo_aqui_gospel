@@ -9,16 +9,26 @@
         <article>
           <div class="row">
             <% @announcer.photos.each do |photo| %>
-            <div class="col-sm-3">
+            <div class="col-sm-3" id="photo_<%= photo.id %>">
               <div class="rst-postpic gallery photobox-270x190">
                 <a><%=  image_tag photo.image.url %></a>
               </div>
-              <%= link_to photo, method: :delete, data: { confirm: 'Tem certeza que deseja excluir essa foto?' }, class: '' do %>
+              <%= link_to photo,
+                method: :delete,
+                data: { confirm: 'Tem certeza que deseja excluir essa foto?' },
+                remote: true,
+                id: "remove_photo_#{photo.id}" do %>
                 <div class="gallery-actions red-bg">
                   <i class="fa fa-trash"></i>
                 </div>
               <% end %>
             </div>
+            <% content_for :js do%>
+              $('#remove_photo_<%= photo.id %>').bind('ajax:success', function(){
+                $('#photo_<%= photo.id %>').remove();
+                }
+              );
+            <%end%>
             <% end %>
           </div>
         </article>
