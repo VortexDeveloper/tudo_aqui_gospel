@@ -766,8 +766,7 @@ footer li a:hover,
   margin: 0;
   text-align: center;
 }
-.rst-section-title h4,
-h2 {
+.rst-section-title h4 {
   border-bottom: 2px solid #ebebea;
   color: #2f3e42;
   font-size: 24px;
@@ -2006,9 +2005,6 @@ p.help-block.text-danger ul li {
   margin-bottom: 20px;
   margin-top: -10px;
 }
-.form-group {
-  margin-bottom: 0;
-}
 .rst-author-contact {
   position: relative;
   min-height: 100px;
@@ -2674,4 +2670,13 @@ span.checkbox, span.radio {
 }
 .btn-file > input {
   z-index: 99;
+}
+
+#show-publication .pub-body {
+}
+
+#show-publication .pub-category {
+}
+
+#show-publication #pub-title {
 }

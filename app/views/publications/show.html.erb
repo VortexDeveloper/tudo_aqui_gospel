@@ -1,0 +1,15 @@
+<section id='show-publication'>
+  <div class="container">
+    <div class="col-md-12">
+      <div class="pub-category">
+        <%= @publication.knowledge_area.name %> | <%= @publication.pub_category %>
+      </div>
+      <h2 id='pub-title'><%= @publication.title %></h2>
+      <div class="pub-body">
+        <%= @publication.body.html_safe %>
+      </div>
+      <%= link_to 'Edit', edit_publication_path(@publication) %> |
+      <%= link_to 'Back', publications_path %>
+    </div>
+  </div>
+</section>
