@@ -23,6 +23,12 @@ $(function() {
   });
 })
 
+$(function() {
+  $("#input-publication-image").click(function(e) {
+    e.preventDefault();
+    $("#publication-image-button").trigger('click');
+  });
+})
 
   function verificaMostraBotao(){
       $('#image-button-photo').each(function(index){
