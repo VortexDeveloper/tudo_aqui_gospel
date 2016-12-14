@@ -14,4 +14,13 @@ class Publication < ApplicationRecord
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  def create_attachments(attchments)
+    attchments = [attchments] unless attchments.kind_of? Array
+    attchments.each do |file_params|
+      p = PubAttachment.new
+      p.file = file_params
+      p.save!
+      pub_attachments << p
+    end
+  end
 end

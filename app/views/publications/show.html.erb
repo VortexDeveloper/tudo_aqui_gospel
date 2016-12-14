@@ -54,6 +54,14 @@
           <article class="col-xs-12 rst-item-content">
             <%= @publication.body.html_safe %>
           </article>
+          <div class="pub_attachments">
+            <h2>Anexos</h2>
+            <% @publication.pub_attachments.each do |attchment| %>
+              <p>
+                <%= link_to attchment.file.instance.file_file_name, attchment.file.url, target: '_blank' %>
+              </p>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="col-sm-4">
