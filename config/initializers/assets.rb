@@ -25,7 +25,7 @@ Rails.application.config.assets.precompile += %w( rs-wp-v1.2.css )
 Rails.application.config.assets.precompile += %w( jquery.rs.selectbox.css )
 Rails.application.config.assets.precompile += %w( style.css )
 Rails.application.config.assets.precompile += %w( responsive.css )
-#Rails.application.config.assets.precompile += %w( fonts/stylesheet.css )
+Rails.application.config.assets.precompile += %w( ckeditor/* )
 
 
 #SCRIPTS

@@ -1,0 +1,47 @@
+<%= form_for(publication) do |f| %>
+  <% if publication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
+
+      <ul>
+      <% publication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', required: true %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :pub_category %>
+        <%= f.select :pub_category, Publication.pub_categories.keys.map { |k| [k.humanize, k] }, {}, {class: 'form-control', required: true} %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :knowledge_area %>
+        <%= f.select :knowledge_area, options_from_collection_for_select(KnowledgeArea.all, :id, :name), {}, class: 'form-control', required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= cktext_area :publication, :body, class: 'form-control', required: true, rows: 6 %>
+  </div>
+
+  <div class="form-group row actions">
+    <%= f.submit 'Postar', class: 'btn btn-lg btn-success btn-block' %>
+  </div>
+<% end %>

@@ -11,3 +11,8 @@
 // about supported directives.
 //
 // .
+//= require jquery_ujs
+//= require ckeditor/init
+//= require wow.min
+//= require main
+//= require init_ckeditor
