@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213225042) do
-
+ActiveRecord::Schema.define(version: 20161214180022) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -214,6 +213,17 @@ ActiveRecord::Schema.define(version: 20161213225042) do
     t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id", using: :btree
   end
 
+  create_table "pub_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "publication_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.index ["publication_id"], name: "index_pub_attachments_on_publication_id", using: :btree
+  end
+
   create_table "publications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "description"
@@ -327,6 +337,7 @@ ActiveRecord::Schema.define(version: 20161213225042) do
   add_foreign_key "personal_profiles", "users"
   add_foreign_key "phonebooks", "personal_profiles"
   add_foreign_key "phonebooks", "telephones"
+  add_foreign_key "pub_attachments", "publications"
   add_foreign_key "publications", "knowledge_areas"
   add_foreign_key "publications", "users", column: "author_id"
   add_foreign_key "states", "countries"
