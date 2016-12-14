@@ -1,5 +1,5 @@
 class Telephone < ApplicationRecord
-  belongs_to :user
+  belongs_to :personal_profile
   has_many :phonebooks
-  has_many :users, through: :phonebooks
+  has_many :personal_profiles, through: :phonebooks
 end

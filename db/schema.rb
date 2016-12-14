@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212123533) do
+ActiveRecord::Schema.define(version: 20161213225042) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -189,12 +189,12 @@ ActiveRecord::Schema.define(version: 20161212123533) do
   end
 
   create_table "phonebooks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
     t.integer  "telephone_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "personal_profile_id"
+    t.index ["personal_profile_id"], name: "index_phonebooks_on_personal_profile_id", using: :btree
     t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id", using: :btree
-    t.index ["user_id"], name: "index_phonebooks_on_user_id", using: :btree
   end
 
   create_table "publications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -308,8 +308,8 @@ ActiveRecord::Schema.define(version: 20161212123533) do
   add_foreign_key "personal_profiles", "countries"
   add_foreign_key "personal_profiles", "states"
   add_foreign_key "personal_profiles", "users"
+  add_foreign_key "phonebooks", "personal_profiles"
   add_foreign_key "phonebooks", "telephones"
-  add_foreign_key "phonebooks", "users"
   add_foreign_key "publications", "knowledge_areas"
   add_foreign_key "publications", "users", column: "author_id"
   add_foreign_key "states", "countries"

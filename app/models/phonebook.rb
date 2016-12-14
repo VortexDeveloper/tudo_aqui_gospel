@@ -1,4 +1,4 @@
 class Phonebook < ApplicationRecord
-  belongs_to :user
+  belongs_to :personal_profile
   belongs_to :telephone
 end

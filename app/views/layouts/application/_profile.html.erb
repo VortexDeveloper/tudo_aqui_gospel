@@ -4,6 +4,7 @@
     <%= current_user.email %><i class="fa fa-caret-down"></i></a>
   <div>
     <ul>
+      <li><%= link_to "Conta", edit_user_registration_path %></li>
       <%= show_admin %>
       <%= show_profile_type %>
       <li><%= link_to "Perfil", personal_profiles_edit_path %></li>

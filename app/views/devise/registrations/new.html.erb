@@ -86,12 +86,13 @@
       <div class="col-sm-4">
         <aside class="widget widget_adv">
           <h3>Anúncios</h3>
-          <a href="#"><img src="../images/ad01.png" alt="" /></a>
-          <a href="#"><img src="../images/ad01.png" alt="" /></a>
-          <a href="#"><img src="../images/ad01.png" alt="" /></a>
-          <a href="#"><img src="../images/ad01.png" alt="" /></a>
-          <a href="#"><img src="../images/ad01.png" alt="" /></a>
-          <a href="#"><img src="../images/ad01.png" alt="" /></a>
+          <% @ads_med.each do |ad| %>
+          <div class="photobox-170x170">
+            <%= link_to ad do %>
+              <%= image_tag ad.avatar(:medium) %>
+            <% end %>
+          </div>
+          <% end %>
           <div class="clear"></div>
         </aside>
       </div>

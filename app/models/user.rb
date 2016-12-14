@@ -5,8 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
        :recoverable, :validatable
 
-  has_many :phonebooks
-  has_many :telephones, through: :phonebooks
   has_one :profile, class_name: 'PersonalProfile', dependent: :destroy
 
   has_one :columnist, dependent: :destroy

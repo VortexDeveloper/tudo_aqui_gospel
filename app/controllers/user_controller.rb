@@ -11,7 +11,6 @@ class UserController < ApplicationController
   end
 
   def create
-      byebug
     @user = User.create!(user_params)
     @personal_profile = PersonalProfile.new(personal_profile_params)
     @personal_profile.user = @user
