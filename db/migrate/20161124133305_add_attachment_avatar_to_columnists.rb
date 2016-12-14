@@ -1,4 +1,5 @@
 class AddAttachmentAvatarToColumnists < ActiveRecord::Migration
+
   def self.up
     change_table :columnists do |t|
       t.attachment :avatar
@@ -8,4 +9,5 @@ class AddAttachmentAvatarToColumnists < ActiveRecord::Migration
   def self.down
     remove_attachment :columnists, :avatar
   end
+
 end

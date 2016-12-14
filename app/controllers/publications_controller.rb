@@ -24,7 +24,6 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-    byebug
     @publication = Publication.new(publication_params)
     @publication.knowledge_area = KnowledgeArea.find knowledge_params[:knowledge_area]
     @publication.author = current_user
@@ -72,7 +71,7 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:title, :pub_category, :description, :body)
+      params.require(:publication).permit(:title, :pub_category, :description, :body, :image)
     end
 
     def knowledge_params

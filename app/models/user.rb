@@ -56,4 +56,10 @@ class User < ApplicationRecord
     create_profile
     roles.each { |role| create_role_profile(role.name) }
   end
+
+  def user_name user
+    profile = PersonalProfile.where('user_id = ?', user.id )
+    profile.first.name
+  end
+
 end

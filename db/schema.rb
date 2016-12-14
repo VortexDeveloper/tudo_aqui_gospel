@@ -227,13 +227,17 @@ ActiveRecord::Schema.define(version: 20161214180022) do
   create_table "publications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "description"
-    t.text     "body",              limit: 65535
-    t.integer  "pub_type",          limit: 1
+    t.text     "body",               limit: 65535
+    t.integer  "pub_type",           limit: 1
     t.integer  "pub_category"
     t.integer  "knowledge_area_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "author_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["author_id"], name: "index_publications_on_author_id", using: :btree
     t.index ["knowledge_area_id"], name: "index_publications_on_knowledge_area_id", using: :btree
   end

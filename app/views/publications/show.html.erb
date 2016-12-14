@@ -1,15 +1,154 @@
-<section id='show-publication'>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Publicação</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Category Banner -->
+<section id="rst-catbanner-item">
   <div class="container">
-    <div class="col-md-12">
-      <div class="pub-category">
-        <%= @publication.knowledge_area.name %> | <%= @publication.pub_category %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-catbanner-post">
+          <div class="rst-mainslide">
+            <% if @publication.image.present? %>
+              <%= image_tag @publication.image.url(:normal) %>
+            <% else %>
+              <img src="../images/banner_normal.png" alt="" />
+            <% end %>
+            <div class="rst-boxinfo">
+              <a><span><%= @publication.pub_category %></span></a>
+              <p><a><%= @publication.description %></a></p>
+              <time><i class="fa fa-clock-o"></i><%= @publication.created_at %></time>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
       </div>
-      <h2 id='pub-title'><%= @publication.title %></h2>
-      <div class="pub-body">
-        <%= @publication.body.html_safe %>
+    </div>
+  </div>
+</section>
+<!-- End Category Banner -->
+
+<!-- Category Page Content -->
+<section id="rst-itemcontent">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="rst-section-title rst-section-title-box rst-item-content-title">
+          <h2><%= @publication.title %></h2>
+          <div class="rst-shortmenu">
+            <p>
+              <span class="rst-item-author"><b>POR</b><a href="#"><%= @publication.author.user_name(@publication.author) %></a></span>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <article class="col-xs-12 rst-item-content">
+            <%= @publication.body.html_safe %>
+          </article>
+        </div>
       </div>
-      <%= link_to 'Edit', edit_publication_path(@publication) %> |
-      <%= link_to 'Back', publications_path %>
+      <div class="col-sm-4">
+        <aside class="widget widget_popular">
+          <ul>
+            <li>
+              <a href="#">Popular</a>
+              <ul>
+                <li>
+                  <article>
+                    <div class="rst-postpic">
+                      <a href="#"><img src="images/slider/category/pol01.jpg" alt="" /></a>
+                    </div>
+                    <div class="rst-postinfo">
+                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
+                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
+                    </div>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <div class="rst-postpic">
+                      <a href="#"><img src="images/slider/category/pol02.jpg" alt="" /></a>
+                    </div>
+                    <div class="rst-postinfo">
+                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
+                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
+                    </div>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <div class="rst-postpic">
+                      <a href="#"><img src="images/slider/category/pol03.jpg" alt="" /></a>
+                    </div>
+                    <div class="rst-postinfo">
+                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
+                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
+                    </div>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <div class="rst-postpic">
+                      <a href="#"><img src="images/slider/category/pol04.jpg" alt="" /></a>
+                    </div>
+                    <div class="rst-postinfo">
+                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
+                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Latest</a>
+              <ul>
+                <li>
+                  <article>
+                    <div class="rst-postpic">
+                      <a href="#"><img src="images/slider/category/pol02.jpg" alt="" /></a>
+                    </div>
+                    <div class="rst-postinfo">
+                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
+                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
+                    </div>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <div class="rst-postpic">
+                      <a href="#"><img src="images/slider/category/pol03.jpg" alt="" /></a>
+                    </div>
+                    <div class="rst-postinfo">
+                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
+                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+        <aside class="widget widget_adv">
+          <h3>Anúncios</h3>
+          <% @ads_min.each do |ad| %>
+          <div class="photobox-170x170">
+            <%= link_to ad do %>
+              <%= image_tag ad.avatar(:medium) %>
+            <% end %>
+          </div>
+          <% end %>
+          <div class="clear"></div>
+        </aside>
+      </div>
     </div>
   </div>
 </section>
