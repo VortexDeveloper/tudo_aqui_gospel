@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_one :announcer, dependent: :destroy
   has_one :administrator, dependent: :destroy
   has_one :subscriber, dependent: :destroy
+  has_many :publications, foreign_key: "author_id"
 
   after_create :setting_user
 

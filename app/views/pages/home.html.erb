@@ -58,50 +58,25 @@
 							</div>
 						</div>
 					</div>
-					<article class="col-sm-3 col-xs-6">
-						<div class="rst-postpic">
-							<a href="#"><%=  image_tag('slider/category/po01.jpg') %></a>
-							<a class="rst-postpic-cat" href="#"><span>Cat. Public.</span></a>
-						</div>
-						<div class="rst-postinfo">
-							<h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-							<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-						</div>
-					</article>
-					<article class="col-sm-3 col-xs-6">
-						<div class="rst-postpic">
-							<a href="#"><%=  image_tag('slider/category/po02.jpg') %></a>
-							<a class="rst-postpic-cat" href="#"><span>Cat. Public.</span></a>
-						</div>
-						<div class="rst-postinfo">
-							<h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-							<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-						</div>
-					</article>
-					<article class="col-sm-3 col-xs-6">
-						<div class="rst-postpic">
-							<a href="#"><%=  image_tag('slider/category/po03.jpg') %></a>
-							<a class="rst-postpic-cat" href="#"><span>Cat. Public.</span></a>
-						</div>
-						<div class="rst-postinfo">
-							<h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-							<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-						</div>
-					</article>
-					<article class="col-sm-3 col-xs-6">
-						<div class="rst-postpic">
-							<a href="#"><%=  image_tag('slider/category/po04.jpg') %></a>
-							<a class="rst-postpic-cat" href="#"><span>Cat. Public.</span></a>
-						</div>
-						<div class="rst-postinfo">
-							<h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-							<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-						</div>
-					</article>
+          <% @last_publications.each do |publication| %>
+  					<article class="col-sm-3 col-xs-6">
+  						<div class="rst-postpic photobox-270x190">
+                <%= link_to publication do %>
+                  <%=  image_tag publication.image.url %>
+                <% end %>
+                <a class="rst-postpic-cat"><span><%= publication.pub_category %></span></a>
+  						</div>
+  						<div class="rst-postinfo">
+  							<h6>
+                  <%= link_to publication do %>
+                    <%= publication.title %>
+                  <% end %>
+                </h6>
+  							<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+  							<p><%= publication.description %></p>
+  						</div>
+  					</article>
+          <% end %>
 				</div>
 			</div>
 		</section>
@@ -121,9 +96,11 @@
 										<div class="rst-shortmenu">
 											<a href="#"><i class="fa fa-bars"></i></a>
 											<ul>
-												<li><a href="#">Cat 1</a></li>
-												<li><a href="#">Cat 2</a></li>
-												<li><a href="#">Cat 3</a></li>
+                        <% @categories.each do |category| %>
+  												<li>
+                            <%= link_to category.name, ads_categories_path(category) %>
+                          </li>
+                        <% end %>
 											</ul>
 										</div>
 									</div>
@@ -132,58 +109,40 @@
 						</div>
 					</div>
 					<article class="col-sm-6 rst-leftpost">
-						<div class="rst-specpost owl-carousel">
-							<a href="#"><%=  image_tag('slider/category/li01.jpg') %></a>
-							<a href="#"><%=  image_tag('slider/category/li01.jpg') %></a>
-							<a href="#"><%=  image_tag('slider/category/li01.jpg') %></a>
+						<div class="rst-specpost photobox-570x334">
+              <%= link_to @publications_category.first do %>
+                <%= image_tag @publications_category.first.image.url %>
+              <% end %>
 						</div>
 						<div class="rst-postinfo">
-							<h6><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h6>
-							<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id libero vitae magna sollicitudin pulvinar vel et tellus. Cras a tincidunt sapien, et efficitur turpis. Pellentesque efficitur in purus in feugiat.</p>
+							<h6>
+                <%= link_to @publications_category.first do %>
+                  <% @publications_category.first.title %>
+                <% end %>
+              </h6>
+							<time><i class="fa fa-clock-o"></i><%= @publications_category.first.created_at %></time>
+							<p><%= @publications_category.first.description %></p>
 						</div>
 					</article>
 					<div class="col-sm-6 rst-rightpost">
-						<article>
-							<div class="rst-postpic">
-								<a href="#"><%=  image_tag('slider/category/li02.jpg') %></a>
-							</div>
-							<div class="rst-postinfo">
-								<h6><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h6>
-								<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-								<p>Cras a tincidunt sapien, et efficitur turpis. Pellentesque efficitur in purus in feugiat.</p>
-							</div>
-						</article>
-						<article>
-							<div class="rst-postpic">
-								<a href="#"><%=  image_tag('slider/category/li03.jpg') %></a>
-							</div>
-							<div class="rst-postinfo">
-								<h6><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h6>
-								<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-								<p>Cras a tincidunt sapien, et efficitur turpis. Pellentesque efficitur in purus in feugiat.</p>
-							</div>
-						</article>
-						<article>
-							<div class="rst-postpic">
-								<a href="#"><%=  image_tag('slider/category/li04.jpg') %></a>
-							</div>
-							<div class="rst-postinfo">
-								<h6><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h6>
-								<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-								<p>Cras a tincidunt sapien, et efficitur turpis. Pellentesque efficitur in purus in feugiat.</p>
-							</div>
-						</article>
-						<article>
-							<div class="rst-postpic">
-								<a href="#"><%=  image_tag('slider/category/li05.jpg') %></a>
-							</div>
-							<div class="rst-postinfo">
-								<h6><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h6>
-								<time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-								<p>Cras a tincidunt sapien, et efficitur turpis. Pellentesque efficitur in purus in feugiat.</p>
-							</div>
-						</article>
+            <% @publications_category.first(4).each do |publication| %>
+              <article>
+  							<div class="rst-postpic photobox-140x106">
+                  <%= link_to publication do %>
+                    <%=  image_tag publication.image.url %>
+                  <% end %>
+  							</div>
+  							<div class="rst-postinfo">
+  								<h6>
+                    <%= link_to publication do %>
+                      <%= publication.title %>
+                    <% end %>
+                  </h6>
+  								<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+  								<p><%= publication.description %></p>
+  							</div>
+  						</article>
+            <% end %>
 					</div>
 				</div>
 			</div>
@@ -224,140 +183,25 @@
 							<h3>Notícias</h3>
 							<div class="rst-hotnews owl-carousel">
 								<ul>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-									</li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-									</li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-									</li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-									</li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-									</li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
-								</ul>
-								<ul>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
-									<li>
-                    <article>
-                      <div class="rst-postpic">
-                        <a href="#"><%=  image_tag('slider/category/pol02.jpg') %></a>
-                      </div>
-                      <div class="rst-postinfo">
-                        <p><a href="#">Lorem ipsum dolor sit amet consectetur.</a></p>
-                        <time><i class="fa fa-clock-o"></i>7 novembro, 2016</time>
-                      </div>
-                    </article>
-                  </li>
+                  <% @news.each do |news| %>
+  									<li>
+                      <article>
+                        <div class="rst-postpic photobox-100x76">
+                          <%= link_to news do %>
+                            <%= image_tag news.image.url(:thumb) %>
+                          <% end %>
+                        </div>
+                        <div class="rst-postinfo">
+                          <p>
+                            <%= link_to news do %>
+                              <%= news.description %>
+                            <% end %>
+                          </p>
+                          <time><i class="fa fa-clock-o"></i><%= news.created_at %></time>
+                        </div>
+                      </article>
+  									</li>
+                  <% end %>
 								</ul>
 							</div>
 						</aside>
@@ -379,10 +223,16 @@
 
 						<aside class="widget widget_adv">
 							<h3>Nossos Colunistas</h3>
-							<a href="#"><%=  image_tag('ad01.png') %></a>
-							<a href="#"><%=  image_tag('ad01.png') %></a>
-							<a href="#"><%=  image_tag('ad01.png') %></a>
-							<a href="#"><%=  image_tag('ad01.png') %></a>
+              <% @columnists.first(4).each do |columnist|%>
+                  <%= link_to columnist, class: 'photobox-170x170' do %>
+                    <%= if columnist.avatar.present?
+                          image_tag columnist.avatar.url(:large)
+                        else
+                          image_tag ('user.png')
+                        end
+                      %>
+                  <% end %>
+              <% end %>
 							<div class="clear"></div>
 						</aside>
 					</div>
@@ -426,56 +276,26 @@
 							<h4>Currículos</h4>
 						</div> <!-- end section title -->
 						<div class="row commentlist owl-carousel">
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm01.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Nome Assinante</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm02.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Nome Assinante</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm03.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Nome Assinante</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm02.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Nome Assinante</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
-							<div class="col-sm-12 comment">
-								<div class="comment-avatar">
-									<%=  image_tag('slider/category/hm01.jpg') %>
-								</div>
-								<div class="comment-data">
-									<a href="#" class="comment-author">Nome Assinante</a>
-									<span class="comment-time"><i class="fa fa-clock-o"></i>20 minutos atrás</span>
-									<p class="comment-body">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-								</div>
-							</div>
+              <% @curriculums.each do |curriculum| %>
+                <div class="col-sm-12 comment">
+  								<div class="comment-avatar photobox-100x100">
+                    <%=
+                      if curriculum.subscriber.avatar.present?
+                          image_tag curriculum.subscriber.avatar.url(:medium)
+                        else
+                          image_tag ('user.png')
+                        end
+                    %>
+  								</div>
+  								<div class="comment-data">
+                    <%= link_to curriculum, class: 'comment-author' do %>
+                      <%= curriculum.subscriber.user.profile.name %>
+                    <% end %>
+  									<span class="comment-time"><i class="fa fa-clock-o"></i><%= curriculum.created_at %></span>
+  									<p class="comment-body"><%= curriculum.description %></p>
+  								</div>
+  							</div>
+              <% end %>
 						</div>
 					</div>
 				</div>

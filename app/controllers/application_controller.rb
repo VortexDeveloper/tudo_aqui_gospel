@@ -10,9 +10,18 @@ class ApplicationController < ActionController::Base
       @announcer = Announcer.where("user_id = ?", current_user.id).first
       @personal_profile = PersonalProfile.where("user_id = ?", current_user.id).first
     end
-    @versicles = Versicle.where("show_day = ?", Date.today)
+    @versicles = Versicle.all.order(created_at: :desc)
     @categories = Category.all
     @vacancies = Vacancy.all.shuffle
+    @curriculums = Curriculum.all.shuffle
+
+    #Publications
+    @last_publications = Publication.all.where(pub_type: "post").order(created_at: :desc).first(4)
+    random_category = Category.all.shuffle.first
+    @publications_category = Publication.where(pub_category: random_category.name).where(pub_type: "post")
+    @news = Publication.where(pub_type: "news")
+
+    @columnists = Columnist.all.shuffle
 
     #Ads side
     @ads_min = Ad.all.shuffle.first(4)

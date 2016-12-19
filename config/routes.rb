@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :vacancies
   resources :galleries
   resources :publications
+  resources :curriculums
+
 
   get 'pages/home'
   get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   patch 'personal_profiles/update'
   post 'personal_profiles/update_announcer'
   get 'columnists/edit'
+  get 'columnists/:id' => 'columnists#show', as: 'columnist'
   patch 'columnists/update'
   get 'subscribers/edit'
   patch 'subscribers/update'

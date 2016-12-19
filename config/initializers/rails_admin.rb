@@ -38,4 +38,24 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model Publication do
+    edit do
+      # For RailsAdmin >= 0.5.0
+      field :image
+      field :title
+      field :description
+      field :body, :ck_editor
+      field :pub_type
+      field :pub_category
+      field :knowledge_area
+      field :pub_attachments
+      field :author
+      # For RailsAdmin < 0.5.0
+      # field :description do
+      #   ckeditor true
+      # end
+    end
+  end
+
 end

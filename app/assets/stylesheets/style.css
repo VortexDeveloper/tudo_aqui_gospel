@@ -39,12 +39,6 @@ input#roles_ {
     text-align: center;
 }
 
-.sign-buttons{
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  margin: 0 !important;
-}
-
 .hide{
   display: none;
 }
@@ -344,6 +338,20 @@ footer li a:hover,
   color: #90979f;
   vertical-align: top;
 }
+
+.sign-buttons {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin: 0 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+.sign-buttons a{
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
 .rst-socialbar-menu li {
   margin: 0 42px 0 0;
   padding: 17px 0 16px;
@@ -770,7 +778,7 @@ footer li a:hover,
   margin: 0;
   text-align: center;
 }
-.rst-section-title h4 {
+.rst-section-title h4, h2 {
   border-bottom: 2px solid #ebebea;
   color: #2f3e42;
   font-size: 24px;
@@ -821,9 +829,20 @@ footer li a:hover,
     overflow: hidden;
 }
 
+.photobox-100x76 img{
+  max-width: 190% !important;
+  height: auto !important;
+}
+
 .photobox-140x106 {
+    width: 140px;
     height: 106px;
     overflow: hidden;
+}
+
+.photobox-140x106 img{
+  max-width: 150% !important;
+  height: auto !important;
 }
 
 .photobox-170x170 {
@@ -835,7 +854,9 @@ footer li a:hover,
 }
 
 .photobox-170x170 img{
-    max-width: 110%;
+    min-width: 100% !important;
+    max-width: 150% !important;
+    height: auto !important;
 }
 
 .photobox-270x190 {
@@ -847,7 +868,7 @@ footer li a:hover,
 }
 
 .photobox-270x190 img{
-    max-width: 200%;
+    max-width: 150% !important;
 }
 
 
@@ -867,13 +888,18 @@ footer li a:hover,
 }
 
 .photobox-370x370 img{
-  max-width: 150%;
+  max-width: 150% !important;
   height: auto !important;
 }
 
 .photobox-570x334 {
     height: 334px;
     overflow: hidden;
+}
+
+.photobox-570x334 img{
+  max-width: 150% !important;
+  height: auto !important;
 }
 
 .photobox-800x640 {
@@ -1234,7 +1260,7 @@ h2 {
 .widget.widget_social > a {
   border: 1px solid #e8ecf0;
   display: inline-block;
-  margin-right: 4.25%;
+  margin-right: 4.05%;
   text-align: center;
   width: 30%;
 }

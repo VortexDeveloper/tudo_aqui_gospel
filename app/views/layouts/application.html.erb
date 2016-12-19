@@ -3,8 +3,15 @@
   <%= render partial: 'layouts/application/head' %>
   <body>
     <section id="wrapper" class="clearfix">
-      <%= render partial: 'layouts/application/header' %>
-      <%= yield %>
+
+      <div id="Header">
+        <%= render partial: 'layouts/application/header' %>
+      </div>
+
+      <div id="Content">
+        <%= yield %>
+      </div>
+
       <%= render partial: 'layouts/application/footer' %>
     </section>
     <%= render partial: 'layouts/application/scripts' %>

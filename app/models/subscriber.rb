@@ -2,12 +2,13 @@ class Subscriber < ApplicationRecord
   include Rolifiable
 
   belongs_to :user, optional: false
+  has_one :curriculum
 
   validates :user_id, presence: true, uniqueness: true
 
   has_attached_file(
     :avatar,
-    styles: { medium: "140x140>", thumb: "27x27>" },
+    styles: { large: "140x140>", medium: "100x100>", thumb: "27x27>" },
     default_url: "../../images/user.png"
   )
 

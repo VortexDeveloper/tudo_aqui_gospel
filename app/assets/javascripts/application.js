@@ -11,8 +11,13 @@
 // about supported directives.
 //
 // .
+//= require jquery
 //= require jquery_ujs
 //= require ckeditor/init
 //= require wow.min
 //= require main
 //= require init_ckeditor
+// RailsAjax
+//= require jquery.history
+//= require jquery.rails-ajax
+//= require RailsAjax-Config

@@ -41,6 +41,7 @@ gem 'rails_admin_rollincode', '~> 1.0'
 gem 'devise-i18n'
 gem 'rails_admin-i18n'
 gem 'ckeditor'
+gem 'rails-ajax'
 
 
 group :development, :test do

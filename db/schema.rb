@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214180022) do
+ActiveRecord::Schema.define(version: 20161219151020) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -160,6 +160,19 @@ ActiveRecord::Schema.define(version: 20161214180022) do
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "curriculums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "subscriber_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.index ["subscriber_id"], name: "index_curriculums_on_subscriber_id", using: :btree
   end
 
   create_table "galleries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -333,6 +346,7 @@ ActiveRecord::Schema.define(version: 20161214180022) do
   add_foreign_key "columnist_knowledges", "knowledge_areas"
   add_foreign_key "columnists", "columnist_titles"
   add_foreign_key "columnists", "users"
+  add_foreign_key "curriculums", "subscribers"
   add_foreign_key "galleries", "announcers"
   add_foreign_key "insiders", "users"
   add_foreign_key "personal_profiles", "cities"

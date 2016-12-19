@@ -1,5 +1,9 @@
 class ColumnistsController < ApplicationController
 
+
+  def show
+  end
+
   def edit
     @columnist = Columnist.where("user_id = ?", current_user.id).first
   end

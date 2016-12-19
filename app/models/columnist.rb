@@ -10,7 +10,7 @@ class Columnist < ApplicationRecord
 
   has_attached_file(
     :avatar,
-    styles: { medium: "140x140>", thumb: "27x27>" },
+    styles: { large: "170x170>", medium: "140x140>", thumb: "27x27>" },
     default_url: "../../images/user.png"
   )
 

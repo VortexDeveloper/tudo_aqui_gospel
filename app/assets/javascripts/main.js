@@ -146,12 +146,6 @@ function main() {
 			navigation : true,
 			navigationText : ['<i class="fa fa-long-arrow-left"></i>','<i class="fa fa-long-arrow-right"></i>'],
 		});
-		$('.rst-specpost').owlCarousel({
-			singleItem: true,
-			pagination : true,
-			navigation : true,
-			navigationText : ['<i class="fa fa-long-arrow-left"></i>','<i class="fa fa-long-arrow-right"></i>'],
-		});
 		$('.rst-hotnews').owlCarousel({
 			paginationSpeed: 300,
 			singleItem: true,
