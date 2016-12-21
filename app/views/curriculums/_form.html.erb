@@ -1,17 +1,79 @@
-<%= form_for(curriculum) do |f| %>
-  <% if curriculum.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(curriculum.errors.count, "error") %> prohibited this curriculum from being saved:</h2>
-
-      <ul>
-      <% curriculum.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Cadastro de Currículo</span></a>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
-<% end %>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Section Register -->
+<section id="rst-account-page">
+  <div class="container">
+    <div class="row">
+      <%= form_for(curriculum) do |f| %>
+        <% if curriculum.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(curriculum.errors.count, "error") %> prohibited this curriculum from being saved:</h2>
+
+            <ul>
+            <% curriculum.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="col-sm-8">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Currículo</h4>
+          </div> <!-- end section title -->
+          <div class="rst-accsetting">
+            <div class="rst-account-setting">
+              <div class="rst-setting">
+                <span><%= f.label :title, "Título" %></span>
+                <%= f.text_field :title, value: curriculum.title, class: 'rst-pageinput' %>
+              </div>
+              <div class="rst-setting">
+                <span><%= f.label :description, "Descrição" %></span>
+                <%= f.text_field :description, value: curriculum.description, class: 'rst-pageinput' %>
+              </div>
+              <div class="rst-setting">
+                <span><%= f.label :file, "Anexo" %></span>
+                <div class="input-group-btn rst-pageinput">
+                  <div class="input-group-text"></div>
+                  <div class="btn btn-primary btn-file">
+                    <img src="/images/icon/addmedia.png" alt="" />
+                    <%= f.file_field :file, value: curriculum.file.url, class: 'rst-pageinput', id: 'publication-image-button' %>
+                    <%= f.hidden_field :subscriber_id, value: @subscriber.id %>
+                  </div>
+                </div>
+              </div>
+              <%= f.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Ofertas</h4>
+          </div> <!-- end section title -->
+          <aside class="widget widget_adv">
+            <% @ads_min.each do |ad| %>
+              <%= link_to ad, class: 'photobox-170x170' do %>
+                <%= image_tag ad.avatar(:medium) %>
+              <% end %>
+            <% end %>
+            <div class="clear"></div>
+          </aside>
+            <div class="clear"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- End Section Register -->

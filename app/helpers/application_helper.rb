@@ -38,6 +38,40 @@ module ApplicationHelper
     end
   end
 
+  def curriculum_button
+    if user_signed_in?
+      subscriber = current_user.roles.where(name: "Subscriber")
+      if subscriber.present?
+        if current_user.subscriber.curriculum.present?
+          content_tag(:li, "") do
+            link_to "Editar Currículo", edit_curriculum_path(@curriculum)
+          end
+        else
+          content_tag(:li, "") do
+            link_to "Cadastrar Currículo", new_curriculum_path
+          end
+        end
+      end
+    end
+  end
+
+  def publications_button
+    if user_signed_in?
+      columnist = current_user.roles.where(name: "Columnist")
+      if columnist.present?
+        if current_user.publications.first.present?
+          content_tag(:li, "") do
+            link_to "Minhas publicações", publications_path
+          end
+        else
+          content_tag(:li, "") do
+            link_to "Criar publicação", new_publication_path
+          end
+        end
+      end
+    end
+  end
+
   def plus_post_button
     if user_signed_in?
       columnist = current_user.roles.where("name = ?", "Columnist")
@@ -123,6 +157,11 @@ module ApplicationHelper
 
   def states_for_select
     options_from_collection_for_select(State.all, 'id', 'name', 1)
+  end
+
+  def knowledge_area_for_select(selected=nil)
+    selected = selected || 1
+    options_from_collection_for_select(KnowledgeArea.all, 'id', 'name', selected)
   end
 
   def city_show(id)

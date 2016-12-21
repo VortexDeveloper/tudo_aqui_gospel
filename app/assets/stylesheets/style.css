@@ -79,6 +79,10 @@ input#roles_ {
   opacity: 0.5;
 }
 
+.t-bottom{
+  margin-bottom: 30px;
+}
+
 /* ================ */
 
 .price-sign-up{
@@ -229,8 +233,8 @@ footer li a:hover,
   -ms-transition: all 0.2s ease-in-out 0s;
   -o-transition: all 0.2s ease-in-out 0s;
 }
-.page-numbers.current,
-.page-numbers:hover
+
+.page-numbers a
 {
   color: #fff;
   background: #2be0b5;
@@ -793,6 +797,7 @@ footer li a:hover,
 }
 
 .rst-postpic-img img {
+    width: 370px !important;
     height: 370px !important;
 }
 
@@ -1988,7 +1993,7 @@ footer li a {
   padding: 10px 22px;
   text-transform: uppercase;
 }
-.page-numbers {
+.page-numbers a{
   color: #2f3e42;
   display: inline-block;
   font-family: Lato;
@@ -1997,12 +2002,7 @@ footer li a {
   margin: 0 4px;
   padding: 10px 14px;
 }
-.page-numbers.current,
-.page-numbers:hover
-{
-  color: #fff;
-  background: #2be0b5;
-}
+
 .col-sm-12.rst-catpost .rst-postpic .rst-postpic-cat,
 .col-sm-6.rst-catpost .rst-postinfo .rst-postpic-cat
 {

@@ -30,7 +30,7 @@
         <% end %>
         <div class="col-sm-8">
           <div class="rst-section-title rst-section-title-box">
-            <h4>Novo publicação</h4>
+            <h4>Publicação</h4>
           </div> <!-- end section title -->
           <div class="rst-newscontent">
             <div class="row">
@@ -48,19 +48,26 @@
               </div>
               <div class="col-sm-6 col-xs-12">
                 <span class="input-group-btn">
-                  <span class="input-group-text"></span>
-                  <span class="btn btn-primary btn-file">
-                    <img src="../images/icon/addmedia.png" alt="" />
-                    <%= file_field_tag 'file[]', multiple: true, class: 'class="rst-pageinput"' %>
+                  <span class="input-group-text">
+                    <% if publication.pub_attachments.first.present? %>
+                      <%= publication.pub_attachments.first.file.instance.file_file_name %>
+                    <% end %>
                   </span>
-                </span>
+                  <span class="btn btn-primary btn-file">
+                    <img src="/images/icon/addmedia.png" alt="" />
+                    <%= file_field_tag 'file[0]', multiple: true, class: 'class="rst-pageinput"' %>
+                  </span>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <span class="input-group-btn">
-                  <span class="input-group-text"></span>
+                  <span class="input-group-text">
+                    <% if publication.pub_attachments.second.present? %>
+                      <%= publication.pub_attachments.second.file.instance.file_file_name %>
+                    <% end %>
+                  </span>
                   <span class="btn btn-primary btn-file">
-                    <img src="../images/icon/addmedia.png" alt="" />
-                    <%= file_field_tag 'file[]', multiple: true, class: 'class="rst-pageinput"' %>
+                    <img src="/images/icon/addmedia.png" alt="" />
+                    <%= file_field_tag 'file[1]', multiple: true, class: 'class="rst-pageinput"' %>
                   </span>
                 </span>
               </div>
@@ -77,18 +84,18 @@
             <div class="rst-shortmenu">
               <a><i class="fa fa-angle-down"></i></a>
             </div>
-          </div> <!-- end section title -->
+          </div>
           <div class="rst-new-cat">
-            <%= f.select :knowledge_area, options_from_collection_for_select(KnowledgeArea.all, :id, :name), {}, class: 'rst-pageinput', required: true %>
+            <%= f.select :pub_category, Publication.pub_categories.keys.map { |k| [k.humanize, k] }, {}, {class: 'rst-pageinput', required: true} %>
           </div>
           <div class="rst-section-title rst-section-title-box">
             <h4>Selecione uma área</h4>
             <div class="rst-shortmenu">
               <a><i class="fa fa-angle-down"></i></a>
             </div>
-          </div> <!-- end section title -->
+          </div>
           <div class="rst-new-cat">
-            <%= f.select :pub_category, Publication.pub_categories.keys.map { |k| [k.humanize, k] }, {}, {class: 'rst-pageinput', required: true} %>
+            <%= f.select :knowledge_area, knowledge_area_for_select(publication.knowledge_area_id), {}, {class: 'rst-pageinput', required: true} %>
           </div>
           <div class="rst-previewimg">
             <div class="rst-section-title rst-section-title-box">
@@ -96,7 +103,10 @@
               <div class="rst-shortmenu">
                 <a><i class="fa fa-angle-down"></i></a>
               </div>
-            </div> <!-- end section title -->
+            </div>
+            <% if publication.image.present? %>
+              <%= image_tag publication.image.url %>
+            <% end %>
             <input id="input-publication-image" class="rst-pagebutton" type="submit" value="SELECIONAR"/>
             <%= f.file_field :image, class: 'image-button', id: 'publication-image-button' %>
           </div>

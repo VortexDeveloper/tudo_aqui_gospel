@@ -4,7 +4,7 @@
       <div class="rst-breadcrumb">
         <a href="#"><span>Home</span></a>
         <span>></span>
-        <a href="#"><span>Columnist</span></a>
+        <a href="#"><span>Colunista</span></a>
       </div>
     </div>
   </div>
@@ -14,242 +14,102 @@
     <div class="row">
       <div class="col-sm-8">
         <div class="rst-section-title rst-section-title-box">
-          <h4>John Doe</h4>
+          <h4><%= @columnist.user.profile.name %></h4>
           <div class="rst-shortmenu">
-            <span class="rst-authortitle">Reporter, blogger</span>
+            <span class="rst-authortitle"><%= @columnist.columnist_title %></span>
           </div>
         </div>
         <div class="rst-author-contact">
-          <img src="images/account.jpg" alt="" />
+          <%= if @columnist.avatar.present?
+                image_tag @columnist.avatar.url(:large)
+              else
+                image_tag ('user.png')
+              end
+            %>
           <div class="rst-author-contactinfo">
             <p>
-              <a href="tel:+48 122 33 66"><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
-              <a href="mailto:john@gmail.com"><i class="fa fa-paper-plane"></i> <span>john@gmail.com</span></a>
+              <a><i class="fa fa-mobile"></i> <span>+48 122 33 66</span></a>
+              <a><i class="fa fa-paper-plane"></i> <span><%= @columnist.user.email %></span></a>
             </p>
-            <ul>
-              <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-behance"></i></a></li>
-            </ul>
           </div>
         </div>
-        <p class="rst-author-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor urna eget lectus ultrices, sed euismod nulla congue. Aliquam aliquet malesuada nulla, a malesuada orci ornare eget. Aenean nunc ante, fringilla in elementum ut, sagittis ac arcu. Aliquam et mollis diam. Etiam eros nisl, dignissim eget eros vel, laoreet euismod justo.</p>
         <div class="rst-section-title rst-section-title-box">
-          <h4>News</h4>
+          <h4>Publicações de <%= @columnist.user.profile.name %></h4>
         </div>
         <div class="row rst-cat-postlist">
-          <article class="col-sm-6 rst-catpost">
-            <div class="rst-postpic">
-              <a href="#"><img src="images/cat-03.jpg" alt="" /></a>
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-            </div>
-            <div class="rst-postinfo">
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-              <h6><a href="#">Lorem ipsum dolor sit amet, Ut congue ex eget nulla lacinia.</a></h6>
-              <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue ex eget nulla lacinia, id efficitur felis luctus. Nam vitae dui id ex faucibus tincidunt id non eros. Pellentesque varius dapibus lacinia. Quisque eu arcu efficitur nibh hendrerit pulvinar sed quis nunc.</p>
-            </div>
-            <div class="clear"></div>
-          </article>
-          <article class="col-sm-6 rst-catpost">
-            <div class="rst-postpic">
-              <a href="#"><img src="images/cat-04.jpg" alt="" /></a>
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-            </div>
-            <div class="rst-postinfo">
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-              <h6><a href="#">Lorem ipsum dolor sit amet, Ut congue ex eget nulla lacinia.</a></h6>
-              <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue ex eget nulla lacinia, id efficitur felis luctus. Nam vitae dui id ex faucibus tincidunt id non eros. Pellentesque varius dapibus lacinia. Quisque eu arcu efficitur nibh hendrerit pulvinar sed quis nunc.</p>
-            </div>
-            <div class="clear"></div>
-          </article>
-          <article class="col-sm-6 rst-catpost">
-            <div class="rst-postpic">
-              <a href="#"><img src="images/cat-05.jpg" alt="" /></a>
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-            </div>
-            <div class="rst-postinfo">
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-              <h6><a href="#">Lorem ipsum dolor sit amet, Ut congue ex eget nulla lacinia.</a></h6>
-              <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue ex eget nulla lacinia, id efficitur felis luctus. Nam vitae dui id ex faucibus tincidunt id non eros. Pellentesque varius dapibus lacinia. Quisque eu arcu efficitur nibh hendrerit pulvinar sed quis nunc.</p>
-            </div>
-            <div class="clear"></div>
-          </article>
-          <article class="col-sm-6 rst-catpost">
-            <div class="rst-postpic">
-              <a href="#"><img src="images/cat-06.jpg" alt="" /></a>
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-            </div>
-            <div class="rst-postinfo">
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-              <h6><a href="#">Lorem ipsum dolor sit amet, Ut congue ex eget nulla lacinia.</a></h6>
-              <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue ex eget nulla lacinia, id efficitur felis luctus. Nam vitae dui id ex faucibus tincidunt id non eros. Pellentesque varius dapibus lacinia. Quisque eu arcu efficitur nibh hendrerit pulvinar sed quis nunc.</p>
-            </div>
-            <div class="clear"></div>
-          </article>
-          <article class="col-sm-6 rst-catpost">
-            <div class="rst-postpic">
-              <a href="#"><img src="images/cat-07.jpg" alt="" /></a>
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-            </div>
-            <div class="rst-postinfo">
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-              <h6><a href="#">Lorem ipsum dolor sit amet, Ut congue ex eget nulla lacinia.</a></h6>
-              <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue ex eget nulla lacinia, id efficitur felis luctus. Nam vitae dui id ex faucibus tincidunt id non eros. Pellentesque varius dapibus lacinia. Quisque eu arcu efficitur nibh hendrerit pulvinar sed quis nunc.</p>
-            </div>
-            <div class="clear"></div>
-          </article>
-          <article class="col-sm-6 rst-catpost">
-            <div class="rst-postpic">
-              <a href="#"><img src="images/cat-08.jpg" alt="" /></a>
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-            </div>
-            <div class="rst-postinfo">
-              <a class="rst-postpic-cat" href="#"><span>fitness</span></a>
-              <h6><a href="#">Lorem ipsum dolor sit amet, Ut congue ex eget nulla lacinia.</a></h6>
-              <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue ex eget nulla lacinia, id efficitur felis luctus. Nam vitae dui id ex faucibus tincidunt id non eros. Pellentesque varius dapibus lacinia. Quisque eu arcu efficitur nibh hendrerit pulvinar sed quis nunc.</p>
-            </div>
-            <div class="clear"></div>
-          </article>
+          <% @publications_show.each do |publication| %>
+            <article class="col-sm-6 rst-catpost">
+              <div class="rst-postpic photobox-370x370">
+                <%= link_to publication do %>
+                  <%= image_tag publication.image.url %>
+                <% end %>
+                <%= link_to publication, class: 'rst-postpic-cat' do %>
+                  <span><%= publication.pub_category %></span>
+                <% end %>
+              </div>
+              <div class="rst-postinfo">
+                <%= link_to publication, class: 'rst-postpic-cat' do %>
+                  <span><%= publication.pub_category %></span>
+                <% end %>
+                <h6>
+                  <%= link_to publication do %>
+                    <%= publication.title %>
+                  <% end %>
+                </h6>
+                <time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+                <p><%= publication.description %></p>
+              </div>
+              <div class="clear"></div>
+            </article>
+          <% end %>
         </div>
+
         <div class="row">
           <div class="col-xs-12">
-            <nav class="wp-pagenavi">
-              <a class="page-prev" href="#">Prev</a>
-              <a class="page-numbers current" href="#">1</a>
-              <a class="page-numbers" href="#">2</a>
-              <a class="page-numbers" href="#">3</a>
-              <a class="page-numbers" href="#">4</a>
-              <a class="page-numbers" href="#">5</a>
-              <a class="page-next" href="#">Next</a>
+            <nav class="wp-pagenavi t-bottom">
+              <%= will_paginate @publications_show, class: 'page-numbers' %>
             </nav>
             <div class="clear"></div>
           </div>
         </div>
       </div>
       <div class="col-sm-4">
-        <aside class="widget widget_social">
-          <h3>Social</h3>
-          <a href="#" target="_blank">
-            <i class="fa fa-facebook"></i>
-            <b>15,000</b>
-            <span>Fans</span>
-          </a>
-          <a href="#" target="_blank">
-            <i class="fa fa-twitter"></i>
-            <b>30,000</b>
-            <span>Followers</span>
-          </a>
-          <a href="#" target="_blank">
-            <i class="fa fa-rss"></i>
-            <b>9,000</b>
-            <span>Subscribers</span>
-          </a>
-        </aside>
         <aside class="widget widget_popular">
           <ul>
             <li>
-              <a href="#">Popular</a>
+              <a href="#">Últimas notícias</a>
               <ul>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol01.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol02.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol03.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol04.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Latest</a>
-              <ul>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol02.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol03.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
+                <% @lastest_news.each do |news| %>
+                  <li>
+                    <article>
+                      <div class="rst-postpic photobox-100x76">
+                        <%= link_to news do %>
+                          <%= image_tag news.image.url(:min) %>
+                        <% end %>
+                      </div>
+                      <div class="rst-postinfo">
+                        <h6>
+                          <%= link_to news do %>
+                            <%= news.title %>
+                          <% end %>
+                        </h6>
+                        <time><i class="fa fa-clock-o"></i><%= news.created_at %></time>
+                      </div>
+                    </article>
+                  </li>
+                <% end %>
               </ul>
             </li>
           </ul>
         </aside>
         <aside class="widget widget_adv">
-          <h3>Advertisement</h3>
-          <a href="#"><img src="images/ad01.png" alt="" /></a>
-          <a href="#"><img src="images/ad01.png" alt="" /></a>
-          <a href="#"><img src="images/ad01.png" alt="" /></a>
-          <a href="#"><img src="images/ad01.png" alt="" /></a>
+          <h3>Anúncios</h3>
+          <% @ads_min.each do |ad| %>
+              <%= link_to ad, class: 'photobox-170x170' do %>
+                <%= image_tag ad.avatar(:medium) %>
+              <% end %>
+          <% end %>
           <div class="clear"></div>
-        </aside>
-        <aside class="widget widget_video">
-          <h3>Video</h3>
-          <a href="#"><img src="images/cat-09.jpg" alt="" /></a>
-        </aside>
-        <aside class="widget widget_newsletter">
-          <h3>Newsletter</h3>
-          <form action="#">
-            <input class="rst-pageinput" type="text" value="Email and hit enter" onblur="if (this.value == '') {this.value = 'Email and hit enter';}" onclick=" if (this.value == 'Email and hit enter') {this.value = '';}" />
-            <input class="rst-pagebutton" type="submit" value="Subscribe"/>
-          </form>
         </aside>
       </div>
     </div>

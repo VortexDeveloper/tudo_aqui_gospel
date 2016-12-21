@@ -1,5 +1,9 @@
 ---
 pt-BR:
+  will_paginate:
+    previous_label: "&#8592; ANTERIOR"
+    next_label: "PRÓXIMO &#8594;"
+    page_gap: "&hellip;"
   activerecord:
     models:
       ad:
@@ -74,6 +78,9 @@ pt-BR:
       pub_attachment:
         one: Anexos da publicação
         other: Anexos das publicações
+      curriculum:
+        one: Currículo
+        other: Currículos
     attributes:
       ad:
         created_at: "Criado em"
@@ -252,6 +259,12 @@ pt-BR:
         updated_at: "Atualizado em"
         file: "Anexo"
         publication: "Publicação"
+      curriculum:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        file: "Anexo"
+        title: "Título"
+        description: "Descrição"  
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

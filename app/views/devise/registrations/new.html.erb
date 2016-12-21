@@ -87,11 +87,9 @@
         <aside class="widget widget_adv">
           <h3>Anúncios</h3>
           <% @ads_med.each do |ad| %>
-          <div class="photobox-170x170">
-            <%= link_to ad do %>
+            <%= link_to ad, class: 'photobox-170x170' do %>
               <%= image_tag ad.avatar(:medium) %>
             <% end %>
-          </div>
           <% end %>
           <div class="clear"></div>
         </aside>

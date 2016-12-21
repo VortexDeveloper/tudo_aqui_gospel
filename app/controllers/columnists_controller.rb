@@ -2,6 +2,8 @@ class ColumnistsController < ApplicationController
 
 
   def show
+    @columnist = Columnist.find(params[:id])
+    @publications_show = Publication.where(author_id: @columnist.user_id).paginate(page: params[:page], per_page: 4)
   end
 
   def edit

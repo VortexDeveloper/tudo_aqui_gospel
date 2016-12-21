@@ -1,10 +1,11 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /publications
   # GET /publications.json
   def index
-    @publications = Publication.all
+    @publications = Publication.where(author_id: current_user.id).paginate(page: params[:page], per_page: 4)
   end
 
   # GET /publications/1
@@ -31,7 +32,7 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.save
         @publication.create_attachments(params[:file])
-        format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
+        format.html { redirect_to @publication, notice: 'Publicação cadastrada com sucesso.' }
         format.json { render :show, status: :created, location: @publication }
       else
         format.html { render :new }
@@ -45,7 +46,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
+        format.html { redirect_to @publication, notice: 'Publicação atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @publication }
       else
         format.html { render :edit }
@@ -59,8 +60,8 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to publications_url, notice: 'Publication was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { head :ok, notice: 'Publicação excluída com sucesso.' }
+      format.html { redirect_to publications_url, notice: 'Publicação excluída com sucesso.' }
     end
   end
 

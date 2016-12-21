@@ -1,5 +1,5 @@
 class CurriculumsController < ApplicationController
-  before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
+  before_action :set_curriculum, only: [:show, :update, :destroy]
 
   # GET /curriculums
   # GET /curriculums.json
@@ -19,6 +19,7 @@ class CurriculumsController < ApplicationController
 
   # GET /curriculums/1/edit
   def edit
+
   end
 
   # POST /curriculums
@@ -28,7 +29,7 @@ class CurriculumsController < ApplicationController
 
     respond_to do |format|
       if @curriculum.save
-        format.html { redirect_to @curriculum, notice: 'Curriculum was successfully created.' }
+        format.html { redirect_to @curriculum, notice: 'Currículo cadastrado com sucesso.' }
         format.json { render :show, status: :created, location: @curriculum }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class CurriculumsController < ApplicationController
   def update
     respond_to do |format|
       if @curriculum.update(curriculum_params)
-        format.html { redirect_to @curriculum, notice: 'Curriculum was successfully updated.' }
+        format.html { redirect_to @curriculum, notice: 'Currículo atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @curriculum }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class CurriculumsController < ApplicationController
   def destroy
     @curriculum.destroy
     respond_to do |format|
-      format.html { redirect_to curriculums_url, notice: 'Curriculum was successfully destroyed.' }
+      format.html { redirect_to curriculums_url, notice: 'Currículo excluído com sucesso.' }
       format.json { head :no_content }
     end
   end

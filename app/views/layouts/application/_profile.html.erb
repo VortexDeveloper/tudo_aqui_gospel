@@ -8,6 +8,8 @@
       <%= show_admin %>
       <%= show_profile_type %>
       <li><%= link_to "Perfil", personal_profiles_edit_path %></li>
+      <%= curriculum_button %>
+      <%= publications_button %>
       <li><%= button_to "Sair", destroy_user_session_path, method: :delete, class: 'rst-account-socialbar-button' %></li>
     </ul>
   </div>

@@ -46,11 +46,9 @@
           </div> <!-- end section title -->
           <aside class="widget widget_adv">
             <% @ad.announcer.ads.each do |ad| %>
-              <div class="photobox-170x170">
-                <%= link_to ad do %>
-                  <%= image_tag ad.avatar(:medium) %>
-                <% end %>
-              </div>
+              <%= link_to ad, class: 'photobox-170x170' do %>
+                <%= image_tag ad.avatar(:medium) %>
+              <% end %>
             <% end %>
             <div class="clear"></div>
           </aside>

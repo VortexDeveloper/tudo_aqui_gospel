@@ -1,25 +1,113 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Minhas publicações</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<section id="rst-catcontent-author">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="rst-section-title rst-section-title-box">
+          <h4>Publicações</h4>
+        </div>
+        <div class="row rst-cat-postlist">
+          <% @publications.each do |publication| %>
+            <article class="col-sm-6 rst-catpost" id="publication_<%= publication.id %>">
+              <div class="rst-postpic photobox-370x370">
+                <%= link_to publication do %>
+                  <%= image_tag publication.image.url %>
+                <% end %>
+                <%= link_to publication, class: 'rst-postpic-cat' do %>
+                  <span><%= publication.pub_category %></span>
+                <% end %>
+              </div>
+              <div class="rst-postinfo">
+                <%= link_to publication, class: 'rst-postpic-cat' do %>
+                  <span><%= publication.pub_category %></span>
+                <% end %>
+                <h6>
+                  <%= link_to publication do %>
+                    <%= publication.title %>
+                  <% end %>
+                </h6>
+                <time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+                <p><%= publication.description %></p>
+                <br>
+                <%= link_to publication, class: 'vacancy-actions green-bg', alt: 'Visualizar' do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+                <%= link_to edit_publication_path(publication), class: 'vacancy-actions blue-bg' do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                <% end %>
+                <%= link_to publication, method: :delete, data: { confirm: 'Tem certeza que deseja excluir essa publicação?' }, class: 'vacancy-actions red-bg', remote: true, id: "remove_publication_#{publication.id}" do %>
+                  <i class="fa fa-trash"></i>
+                <% end %><br>
+              </div>
+              <div class="clear"></div>
+            </article>
+            <% content_for :js do%>
+              $('#remove_publication_<%= publication.id %>').bind('ajax:success', function(){
+                $('#publication_<%= publication.id %>').remove();
+                }
+              );
+            <%end%>
+          <% end %>
+        </div>
 
-<h1>Publications</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @publications.each do |publication| %>
-      <tr>
-        <td><%= link_to 'Show', publication %></td>
-        <td><%= link_to 'Edit', edit_publication_path(publication) %></td>
-        <td><%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Publication', new_publication_path %>
+        <div class="row">
+          <div class="col-xs-12">
+            <nav class="wp-pagenavi t-bottom">
+              <%= will_paginate @publications, class: 'page-numbers' %>
+            </nav>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <aside class="widget widget_popular">
+          <ul>
+            <li>
+              <a href="#">Últimas notícias</a>
+              <ul>
+                <% @lastest_news.each do |news| %>
+                  <li>
+                    <article>
+                      <div class="rst-postpic photobox-100x76">
+                        <%= link_to news do %>
+                          <%= image_tag news.image.url(:min) %>
+                        <% end %>
+                      </div>
+                      <div class="rst-postinfo">
+                        <h6>
+                          <%= link_to news do %>
+                            <%= news.title %>
+                          <% end %>
+                        </h6>
+                        <time><i class="fa fa-clock-o"></i><%= news.created_at %></time>
+                      </div>
+                    </article>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+        <aside class="widget widget_adv">
+          <h3>Anúncios</h3>
+          <% @ads_min.each do |ad| %>
+            <%= link_to ad, class: 'photobox-170x170' do %>
+              <%= image_tag ad.avatar(:medium) %>
+            <% end %>
+          <% end %>
+          <div class="clear"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>

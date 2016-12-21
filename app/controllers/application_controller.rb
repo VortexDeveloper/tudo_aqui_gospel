@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       @columnist = Columnist.where("user_id = ?", current_user.id).first
       @subscriber = Subscriber.where("user_id = ?", current_user.id).first
+      if @subscriber.present?
+        @curriculum = @subscriber.curriculum
+      end
       @announcer = Announcer.where("user_id = ?", current_user.id).first
       @personal_profile = PersonalProfile.where("user_id = ?", current_user.id).first
     end
@@ -17,9 +20,10 @@ class ApplicationController < ActionController::Base
 
     #Publications
     @last_publications = Publication.all.where(pub_type: "post").order(created_at: :desc).first(4)
-    random_category = Category.all.shuffle.first
-    @publications_category = Publication.where(pub_category: random_category.name).where(pub_type: "post")
+    random_category = Publication.all.shuffle.first.pub_category
+    @publications_category = Publication.where(pub_category: random_category).where(pub_type: "post")
     @news = Publication.where(pub_type: "news")
+    @lastest_news = Publication.where(pub_type: "news").order(created_at: :desc)
 
     @columnists = Columnist.all.shuffle
 

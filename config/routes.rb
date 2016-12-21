@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :publications
   resources :curriculums
 
-
   get 'pages/home'
   get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'
   get 'personal_profiles/edit'
@@ -29,6 +28,5 @@ Rails.application.routes.draw do
   patch 'subscribers/update'
   post 'announcers/create'
   post 'announcers/add_photo'
-
 
 end

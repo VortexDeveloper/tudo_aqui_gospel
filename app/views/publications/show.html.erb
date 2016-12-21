@@ -30,6 +30,17 @@
             </div>
           </div>
         </div>
+        <div class="rst-catbanner-listpost">
+          <aside class="widget widget_adv">
+            <% @ads_min.each do |ad| %>
+              <%= link_to ad, class: 'photobox-170x170' do %>
+                <%= image_tag ad.avatar(:medium) %>
+              <% end %>
+            <% end %>
+            <div class="clear"></div>
+          </aside>
+          <div class="clear"></div>
+        </div>
         <div class="clear"></div>
       </div>
     </div>
@@ -65,97 +76,36 @@
         </div>
       </div>
       <div class="col-sm-4">
+        <br>
         <aside class="widget widget_popular">
           <ul>
             <li>
-              <a href="#">Popular</a>
+              <a href="#">Últimas notícias</a>
               <ul>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol01.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol02.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol03.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol04.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Latest</a>
-              <ul>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol02.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
-                <li>
-                  <article>
-                    <div class="rst-postpic">
-                      <a href="#"><img src="images/slider/category/pol03.jpg" alt="" /></a>
-                    </div>
-                    <div class="rst-postinfo">
-                      <h6><a href="#">Lorem ipsum dolor sit amet consectetur.</a></h6>
-                      <time><i class="fa fa-clock-o"></i>12 sep, 2015</time>
-                    </div>
-                  </article>
-                </li>
+                <% @lastest_news.each do |news| %>
+                  <li>
+                    <article>
+                      <div class="rst-postpic photobox-100x76">
+                        <%= link_to news do %>
+                          <%= image_tag news.image.url(:min) %>
+                        <% end %>
+                      </div>
+                      <div class="rst-postinfo">
+                        <h6>
+                          <%= link_to news do %>
+                            <%= news.title %>
+                          <% end %>
+                        </h6>
+                        <time><i class="fa fa-clock-o"></i><%= news.created_at %></time>
+                      </div>
+                    </article>
+                  </li>
+                <% end %>
               </ul>
             </li>
           </ul>
         </aside>
-        <aside class="widget widget_adv">
-          <h3>Anúncios</h3>
-          <% @ads_min.each do |ad| %>
-          <div class="photobox-170x170">
-            <%= link_to ad do %>
-              <%= image_tag ad.avatar(:medium) %>
-            <% end %>
-          </div>
-          <% end %>
-          <div class="clear"></div>
-        </aside>
+        <br>
       </div>
     </div>
   </div>
