@@ -1,5 +1,9 @@
-<div class="rst-catbanner-slider owl-carousel rst-postpic rst-postpic-img">
-  <% @announcer.photos.each do |photo| %>
-    <%= image_tag photo.image.url(:large) %>
-  <% end %>
+<div class="rst-catbanner-listpost">
+  <aside class="widget widget_adv">
+    <% @announcer.photos.first(4).each do |photo| %>
+      <a class="photobox-170x170">
+        <%= image_tag photo.image.url %>
+      </a>
+    <% end %>
+  </aside>
 </div>

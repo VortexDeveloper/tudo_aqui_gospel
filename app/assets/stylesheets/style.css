@@ -83,6 +83,10 @@ input#roles_ {
   margin-bottom: 30px;
 }
 
+.rst-postpic{
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
 /* ================ */
 
 .price-sign-up{
@@ -626,12 +630,13 @@ footer li a:hover,
   position: relative;
 }
 .rst-boxinfo {
-    width: 100%;
-    bottom: 38px;
-    left: 30px;
-    position: absolute;
-    right: 30px;
-    background: rgba(0,0,0,0.7);
+  width: 100%;
+  bottom: 38px;
+  left: 0px;
+  position: absolute;
+  right: 30px;
+  background: rgba(0,0,0,0.7);
+  padding: 25px;
 }
 .rst-posttype {
   position: relative;
@@ -704,8 +709,8 @@ footer li a:hover,
   margin: 9px 0 11px;
 }
 .rst-mainslider-posts .rst-boxinfo {
-  bottom: 28px;
-  left: 30px;
+  bottom: 0px;
+  left: 0px;
   position: absolute;
 }
 .rst-pageline-content {

@@ -4,36 +4,86 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="rst-mainslider owl-carousel">
-              <% @banner_home.each do |ad| %>
-                <div class="rst-mainslide photobox-800x640">
-                  <%= link_to ad do %>
-                    <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
-                  <% end %>
-
-  								<div class="rst-boxinfo">
-                    <%= link_to ad.announcer do %>
-                      <span><%= ad.announcer.fantasy_name %></span>
+              <% if @banner_home.present? %>
+                <% @banner_home.each do |ad| %>
+                  <div class="rst-mainslide photobox-800x640">
+                    <%= link_to ad do %>
+                      <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
                     <% end %>
-  									<p><a href=""><%= ad.description %></a></p>
-  								</div>
-  							</div>
+
+    								<div class="rst-boxinfo">
+                      <%= link_to ad.announcer do %>
+                        <span><%= ad.announcer.fantasy_name %></span>
+                      <% end %>
+    									<p><a href=""><%= ad.description %></a></p>
+    								</div>
+    							</div>
+                <% end %>
+              <% else %>
+                <div class="rst-mainslide photobox-800x640">
+                  <%= link_to new_contact_path do %>
+                    <%= image_tag ('anun_800_640.jpg') %>
+                  <% end %>
+                  <div class="rst-boxinfo">
+                    <%= link_to new_contact_path do %>
+                      <span>Quer anunciar? Clique aqui!</span>
+                    <% end %>
+                  </div>
+                </div>
               <% end %>
 						</div>
 						<!-- fim slider -->
 						<div class="rst-mainslider-posts">
-               <% @principal_home.each do |ad| %>
-  							 <div class="rst-posttype photobox-370x320">
-                   <%= link_to ad do %>
-                      <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
+              <% if @principal_home.present? %>
+                 <% @principal_home.each do |ad| %>
+    							 <div class="rst-posttype photobox-370x320">
+                     <%= link_to ad do %>
+                        <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
+                     <% end %>
+    								<div class="rst-boxinfo">
+                      <%= link_to ad.announcer do %>
+    									  <span><%= ad.announcer.fantasy_name %></span>
+                      <% end %>
+    									<p><a href=""><%= ad.description %></a></p>
+    								</div>
+    							 </div>
+                 <% end %>
+                 <% if @principal_home.size < 2 %>
+                   <%
+                     $i = 2 - @principal_home.size
+                   %>
+                   <% while $i > 0  do %>
+                     <div class="rst-posttype photobox-370x320">
+                       <%= link_to new_contact_path do %>
+                          <%=  image_tag ('anun_370_320.jpg') %>
+                       <% end %>
+                      <div class="rst-boxinfo">
+                        <%= link_to new_contact_path do %>
+                          <span>Quer anunciar nessa área?</span>
+                        <% end %>
+                      </div>
+                     </div>
+                     <% $i -=1 %>
                    <% end %>
-  								<div class="rst-boxinfo">
-                    <%= link_to ad.announcer do %>
-  									  <span><%= ad.announcer.fantasy_name %></span>
+                 <% end %>
+              <% else %>
+                <%
+                  $i = 2
+                %>
+                <% while $i > 0  do %>
+                  <div class="rst-posttype photobox-370x320">
+                    <%= link_to new_contact_path do %>
+                       <%=  image_tag ('anun_370_320.jpg') %>
                     <% end %>
-  									<p><a href=""><%= ad.description %></a></p>
-  								</div>
-  							 </div>
-               <% end %>
+                   <div class="rst-boxinfo">
+                     <%= link_to new_contact_path do %>
+                       <span>Quer anunciar nessa área?</span>
+                     <% end %>
+                   </div>
+                  </div>
+                  <% $i -=1 %>
+                <% end %>
+              <% end %>
 							 </div>
 							 <div class="clear"></div>
 						</div>
@@ -58,24 +108,30 @@
 							</div>
 						</div>
 					</div>
-          <% @last_publications.each do |publication| %>
-  					<article class="col-sm-3 col-xs-6">
-  						<div class="rst-postpic photobox-270x190">
-                <%= link_to publication do %>
-                  <%=  image_tag publication.image.url %>
-                <% end %>
-                <a class="rst-postpic-cat"><span><%= publication.pub_category %></span></a>
-  						</div>
-  						<div class="rst-postinfo">
-  							<h6>
+          <% if @last_publications.present? %>
+            <% @last_publications.each do |publication| %>
+    					<article class="col-sm-3 col-xs-6">
+    						<div class="rst-postpic photobox-270x190">
                   <%= link_to publication do %>
-                    <%= publication.title %>
+                    <%=  image_tag publication.image.url %>
                   <% end %>
-                </h6>
-  							<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
-  							<p><%= publication.description %></p>
-  						</div>
-  					</article>
+                  <a class="rst-postpic-cat"><span><%= publication.pub_category %></span></a>
+    						</div>
+    						<div class="rst-postinfo">
+    							<h6>
+                    <%= link_to publication do %>
+                      <%= publication.title %>
+                    <% end %>
+                  </h6>
+    							<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+    							<p><%= publication.description %></p>
+    						</div>
+    					</article>
+            <% end %>
+          <% else %>
+            <p>
+              Ainda não existem publicações cadastradas!
+            </p>
           <% end %>
 				</div>
 			</div>
@@ -90,7 +146,7 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-xs-12">
-									<h4>Categorias de públicações</h4>
+									<h4>Públicações</h4>
 									<div class="rst-section-title-short">
 										<a href="#"><span>Ver todos</span></a>
 										<div class="rst-shortmenu">
@@ -108,42 +164,46 @@
 							</div>
 						</div>
 					</div>
-					<article class="col-sm-6 rst-leftpost">
-						<div class="rst-specpost photobox-570x334">
-              <%= link_to @publications_category.first do %>
-                <%= image_tag @publications_category.first.image.url %>
-              <% end %>
-						</div>
-						<div class="rst-postinfo">
-							<h6>
+          <% if @publications_category.present? %>
+  					<article class="col-sm-6 rst-leftpost">
+  						<div class="rst-specpost photobox-570x334">
                 <%= link_to @publications_category.first do %>
-                  <% @publications_category.first.title %>
+                  <%= image_tag @publications_category.first.image.url %>
                 <% end %>
-              </h6>
-							<time><i class="fa fa-clock-o"></i><%= @publications_category.first.created_at %></time>
-							<p><%= @publications_category.first.description %></p>
-						</div>
-					</article>
-					<div class="col-sm-6 rst-rightpost">
-            <% @publications_category.first(4).each do |publication| %>
-              <article>
-  							<div class="rst-postpic photobox-140x106">
-                  <%= link_to publication do %>
-                    <%=  image_tag publication.image.url %>
+  						</div>
+  						<div class="rst-postinfo">
+  							<h6>
+                  <%= link_to @publications_category.first do %>
+                    <% @publications_category.first.title %>
                   <% end %>
-  							</div>
-  							<div class="rst-postinfo">
-  								<h6>
+                </h6>
+  							<time><i class="fa fa-clock-o"></i><%= @publications_category.first.created_at %></time>
+  							<p><%= @publications_category.first.description %></p>
+  						</div>
+  					</article>
+  					<div class="col-sm-6 rst-rightpost">
+              <% @publications_category.first(4).each do |publication| %>
+                <article>
+    							<div class="rst-postpic photobox-140x106">
                     <%= link_to publication do %>
-                      <%= publication.title %>
+                      <%=  image_tag publication.image.url %>
                     <% end %>
-                  </h6>
-  								<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
-  								<p><%= publication.description %></p>
-  							</div>
-  						</article>
-            <% end %>
-					</div>
+    							</div>
+    							<div class="rst-postinfo">
+    								<h6>
+                      <%= link_to publication do %>
+                        <%= publication.title %>
+                      <% end %>
+                    </h6>
+    								<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+    								<p><%= publication.description %></p>
+    							</div>
+    						</article>
+              <% end %>
+  					</div>
+          <% else %>
+            <p>Ainda não existem publicações cadastradas!</p>
+          <% end %>
 				</div>
 			</div>
 		</section>
@@ -161,17 +221,58 @@
 							<div class="rst-newsandhot-post-content">
 								<article>
 									<div class="row">
-                    <% @normal_home.each do |ad| %>
-                      <div class="rst-postpic col-sm-6">
-                        <div class="photobox-370x278">
-                          <%= link_to ad do %>
-                            <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
-                          <% end %>
-                          <%= link_to ad.announcer, class: 'rst-postpic-cat' do %>
-                            <span><%= ad.announcer.fantasy_name %></span>
-                          <% end %>
+                    <% if @normal_home.present? %>
+                      <% @normal_home.each do |ad| %>
+                        <div class="rst-postpic col-sm-6">
+                          <div class="photobox-370x278">
+                            <%= link_to ad do %>
+                              <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
+                            <% end %>
+                            <%= link_to ad.announcer, class: 'rst-postpic-cat' do %>
+                              <span><%= ad.announcer.fantasy_name %></span>
+                            <% end %>
+                          </div>
+    										</div>
+                      <% end %>
+                      <% if @normal_home.size < 8 %>
+
+                        <%
+                          $i = 8 - @normal_home.size
+                        %>
+
+                        <% while $i > 0  do %>
+                          <div class="rst-postpic col-sm-6">
+                            <div class="photobox-370x278">
+                              <%= link_to new_contact_path do %>
+                                <%=  image_tag ('anun_370_320.jpg') %></a>
+                              <% end %>
+                              <%= link_to new_contact_path, class: 'rst-postpic-cat' do %>
+                                <span>Clique aqui!</span>
+                              <% end %>
+                            </div>
+      										</div>
+                          <% $i -=1 %>
+                        <% end %>
+
+                      <% end %>
+                    <% else %>
+                      <%
+                        $i = 8
+                      %>
+
+                      <% while $i > 0  do %>
+                        <div class="rst-postpic col-sm-6">
+                          <div class="photobox-370x278">
+                            <%= link_to new_contact_path do %>
+                              <%=  image_tag ('anun_370_320.jpg') %></a>
+                            <% end %>
+                            <%= link_to new_contact_path, class: 'rst-postpic-cat' do %>
+                              <span>Clique aqui!</span>
+                            <% end %>
+                          </div>
                         </div>
-  										</div>
+                        <% $i -=1 %>
+                      <% end %>
                     <% end %>
 									</div>
 								</article>
@@ -181,29 +282,35 @@
 					<div class="col-sm-4">
 						<aside class="widget widget_popular">
 							<h3>Notícias</h3>
-							<div class="rst-hotnews owl-carousel">
-								<ul>
-                  <% @news.each do |news| %>
-  									<li>
-                      <article>
-                        <div class="rst-postpic photobox-100x76">
-                          <%= link_to news do %>
-                            <%= image_tag news.image.url(:thumb) %>
-                          <% end %>
-                        </div>
-                        <div class="rst-postinfo">
-                          <p>
+              <% if @news.present? %>
+                <div class="rst-hotnews owl-carousel">
+  								<ul>
+                    <% @news.each do |news| %>
+    									<li>
+                        <article>
+                          <div class="rst-postpic photobox-100x76">
                             <%= link_to news do %>
-                              <%= news.description %>
+                              <%= image_tag news.image.url(:thumb) %>
                             <% end %>
-                          </p>
-                          <time><i class="fa fa-clock-o"></i><%= news.created_at %></time>
-                        </div>
-                      </article>
-  									</li>
-                  <% end %>
-								</ul>
-							</div>
+                          </div>
+                          <div class="rst-postinfo">
+                            <p>
+                              <%= link_to news do %>
+                                <%= news.description %>
+                              <% end %>
+                            </p>
+                            <time><i class="fa fa-clock-o"></i><%= news.created_at %></time>
+                          </div>
+                        </article>
+    									</li>
+                    <% end %>
+  								</ul>
+  							</div>
+              <% else %>
+                <p>
+                  Ainda não existem notícias cadastradas!
+                </p>
+              <% end %>
 						</aside>
 						<!-- fim noticias e anuncios sec -->
 
@@ -223,15 +330,21 @@
 
 						<aside class="widget widget_adv">
 							<h3>Nossos Colunistas</h3>
-              <% @columnists.first(4).each do |columnist|%>
-                  <%= link_to columnist, class: 'photobox-170x170' do %>
-                    <%= if columnist.avatar.present?
-                          image_tag columnist.avatar.url(:large)
-                        else
-                          image_tag ('user.png')
-                        end
-                      %>
-                  <% end %>
+              <% if @columnists.present? %>
+                  <% @columnists.first(4).each do |columnist|%>
+                    <%= link_to columnist, class: 'photobox-170x170' do %>
+                      <%= if columnist.avatar.present?
+                            image_tag columnist.avatar.url(:large)
+                          else
+                            image_tag ('user.png')
+                          end
+                        %>
+                    <% end %>
+                <% end %>
+              <% else %>
+                  <p>
+                    Ainda não existem colunistas cadastrados
+                  </p>
               <% end %>
 							<div class="clear"></div>
 						</aside>
@@ -251,19 +364,25 @@
 							<h4>Vagas de Emprego</h4>
 						</div> <!-- fim section title -->
 						<div class="row commentlist owl-carousel">
-              <% @vacancies.each do |vacancy| %>
-  							<div class="col-sm-12 comment">
-  								<div class="comment-avatar">
-  									<%=  image_tag vacancy.announcer.avatar.url if vacancy.announcer.avatar.present? %>
-  								</div>
-  								<div class="comment-data">
-                    <%= link_to vacancy.announcer, class: 'comment-author' do %>
-                      <%= vacancy.announcer.fantasy_name %>
-                    <% end %>
-  									<span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
-  									<p class="comment-body"><%= vacancy.name %></p>
-  								</div>
-  							</div>
+              <% if @vacancies.present? %>
+                <% @vacancies.each do |vacancy| %>
+    							<div class="col-sm-12 comment">
+    								<div class="comment-avatar">
+    									<%=  image_tag vacancy.announcer.avatar.url if vacancy.announcer.avatar.present? %>
+    								</div>
+    								<div class="comment-data">
+                      <%= link_to vacancy.announcer, class: 'comment-author' do %>
+                        <%= vacancy.announcer.fantasy_name %>
+                      <% end %>
+    									<span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
+    									<p class="comment-body"><%= vacancy.name %></p>
+    								</div>
+    							</div>
+                <% end %>
+              <% else %>
+                <p>
+                  Ainda não existem vagas de emprego cadastradas
+                </p>
               <% end %>
 						</div>
 					</div>
@@ -276,25 +395,31 @@
 							<h4>Currículos</h4>
 						</div> <!-- end section title -->
 						<div class="row commentlist owl-carousel">
-              <% @curriculums.each do |curriculum| %>
-                <div class="col-sm-12 comment">
-  								<div class="comment-avatar photobox-100x100">
-                    <%=
-                      if curriculum.subscriber.avatar.present?
-                          image_tag curriculum.subscriber.avatar.url(:medium)
-                        else
-                          image_tag ('user.png')
-                        end
-                    %>
-  								</div>
-  								<div class="comment-data">
-                    <%= link_to curriculum, class: 'comment-author' do %>
-                      <%= curriculum.subscriber.user.profile.name %>
-                    <% end %>
-  									<span class="comment-time"><i class="fa fa-clock-o"></i><%= curriculum.created_at %></span>
-  									<p class="comment-body"><%= curriculum.description %></p>
-  								</div>
-  							</div>
+              <% if @curriculums.present? %>
+                <% @curriculums.each do |curriculum| %>
+                  <div class="col-sm-12 comment">
+    								<div class="comment-avatar photobox-100x100">
+                      <%=
+                        if curriculum.subscriber.avatar.present?
+                            image_tag curriculum.subscriber.avatar.url(:medium)
+                          else
+                            image_tag ('user.png')
+                          end
+                      %>
+    								</div>
+    								<div class="comment-data">
+                      <%= link_to curriculum, class: 'comment-author' do %>
+                        <%= curriculum.subscriber.user.profile.name %>
+                      <% end %>
+    									<span class="comment-time"><i class="fa fa-clock-o"></i><%= curriculum.created_at %></span>
+    									<p class="comment-body"><%= curriculum.description %></p>
+    								</div>
+    							</div>
+                <% end %>
+              <% else %>
+                <p>
+                  Ainda não existem Currículos cadastrados
+                </p>
               <% end %>
 						</div>
 					</div>

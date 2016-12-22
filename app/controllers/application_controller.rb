@@ -20,8 +20,11 @@ class ApplicationController < ActionController::Base
 
     #Publications
     @last_publications = Publication.all.where(pub_type: "post").order(created_at: :desc).first(4)
-    random_category = Publication.all.shuffle.first.pub_category
-    @publications_category = Publication.where(pub_category: random_category).where(pub_type: "post")
+    random_category = Publication.all.shuffle.first
+    if random_category.present?
+        @publications_category = Publication.where(pub_category: random_category.pub_category).where(pub_type: "post")
+    end
+
     @news = Publication.where(pub_type: "news")
     @lastest_news = Publication.where(pub_type: "news").order(created_at: :desc)
 

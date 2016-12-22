@@ -23,7 +23,7 @@
         </div>
         <!-- fim slider -->
         <div class="rst-mainslider-posts">
-           <% @ads_categories.each do |ad| %>
+           <% @ads_categories.first(2).each do |ad| %>
              <div class="rst-posttype photobox-370x320">
                <%= link_to ad do %>
                   <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
@@ -75,7 +75,7 @@
       </div>
       <div class="col-sm-4">
         <aside class="widget widget_adv">
-          <h3>Anuncios</h3>
+          <h3>Anúncios</h3>
           <% @ads_categories.each do |ad| %>
             <%= link_to ad, class: 'photobox-170x170' do %>
               <%= image_tag ad.avatar(:medium) %>

@@ -51,13 +51,22 @@
             <button class="rst-menu-trigger">
               <span>Toggle navigation</span>
             </button>
+            <% if @categories.present? %>
+              <ul>
+                <% @categories.each do |category| %>
+                  <li>
+                    <%= link_to category.name, ads_categories_path(category) %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
             <ul>
-              <% @categories.each do |category| %>
                 <li>
-                  <%= link_to category.name, ads_categories_path(category) %>
+                    <a>Ainda não existem categorias cadastradas</a>
                 </li>
-              <% end %>
             </ul>
+
+            <% end %>
             <div class="clear"></div>
           </div>
         </div>
