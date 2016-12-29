@@ -89,6 +89,18 @@ input#roles_ {
 }
 /* ================ */
 
+.phone-button{
+  margin-right: 0 !important;
+}
+
+.phone-field{
+  width: 55% !important;
+}
+
+.phone-field-list{
+  width: 28% !important;
+}
+
 .price-sign-up{
   text-align: center;
   color: #0071bc;
@@ -151,6 +163,10 @@ iframe {
 ul {
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+li {
   list-style: none;
 }
 .rst-textleft {
@@ -631,7 +647,7 @@ footer li a:hover,
 }
 .rst-boxinfo {
   width: 100%;
-  bottom: 38px;
+  bottom: 0;
   left: 0px;
   position: absolute;
   right: 30px;
@@ -937,6 +953,10 @@ footer li a:hover,
   box-shadow:         inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
 }
 
+.gallery{
+  transition: all 0.5s ease !important;
+}
+
 .gallery-actions{
   padding: 3px 8px;
   text-align: center;
@@ -968,7 +988,7 @@ footer li a:hover,
 
 .rst-postpic .rst-postpic-cat {
   background: #2be0b5;
-  bottom: 20px;
+  bottom: 35px;
   color: #fff;
   font-weight: 700;
   left: 20px;
@@ -1474,7 +1494,7 @@ h2 {
   margin: 0 0 0 120px;
 }
 #rst-latestcomments .comment-avatar img {
-  max-width: 100px;
+  max-width: 48px;
 }
 #rst-latestcomments .comment .comment-data .comment-author,
 .comment-author {

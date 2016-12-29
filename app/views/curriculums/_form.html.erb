@@ -44,14 +44,18 @@
               <div class="rst-setting">
                 <span><%= f.label :file, "Anexo" %></span>
                 <div class="input-group-btn rst-pageinput">
-                  <div class="input-group-text"></div>
+                  <div class="input-group-text">
+                    <% if curriculum.file.present? %>
+                      <%= curriculum.file.instance.file_file_name %>
+                    <% end %>
+                  </div>
                   <div class="btn btn-primary btn-file">
                     <img src="/images/icon/addmedia.png" alt="" />
-                    <%= f.file_field :file, value: curriculum.file.url, class: 'rst-pageinput', id: 'publication-image-button' %>
-                    <%= f.hidden_field :subscriber_id, value: @subscriber.id %>
+                    <%= f.file_field :file, class: 'rst-pageinput', id: 'publication-image-button' %>
                   </div>
                 </div>
               </div>
+              <%= f.hidden_field :subscriber_id, value: @subscriber.id %>
               <%= f.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>
             </div>
           </div>

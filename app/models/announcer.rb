@@ -5,6 +5,7 @@ class Announcer < ApplicationRecord
   has_many :vacancies
   belongs_to :ad_plan
   belongs_to :user, optional: false
+  has_many :evaluations, class_name: "Evaluation"
 
   validates :user_id, presence: true, uniqueness: true
   validates :email, :doc, :doc_type, presence: true, on: :update

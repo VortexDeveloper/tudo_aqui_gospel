@@ -90,11 +90,11 @@ module ApplicationHelper
       case profile_type
         when "Columnist"
           content_tag(:li, "") do
-            link_to "Dados do Perfil", columnists_edit_path
+            link_to "Dados do Colunista", columnists_edit_path
           end
         when "Subscriber"
           content_tag(:li, "") do
-            link_to "Dados do Perfil", subscribers_edit_path
+            link_to "Dados do Assinante", subscribers_edit_path
           end
         when "Administrator"
           content_tag(:li, "") do
@@ -102,7 +102,7 @@ module ApplicationHelper
           end
         when "Announcer"
           content_tag(:li, "") do
-            link_to "Dados da Página", edit_announcer_path(@announcer)
+            link_to "Minha página", edit_announcer_path(@announcer)
           end
       end
     end
@@ -120,7 +120,7 @@ module ApplicationHelper
     end
   end
 
-  def show_image_thumb(columnist, subscriber, announcer)
+  def show_image_thumb(columnist, subscriber, announcer, administrator)
     if user_signed_in?
       profile_type = current_user.roles.first.name
       case profile_type
@@ -142,6 +142,8 @@ module ApplicationHelper
           else
             image_tag ('user_thumb.png')
           end
+        when "Administrator"
+            image_tag ('user_thumb.png')
       end
     end
   end

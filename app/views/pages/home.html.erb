@@ -235,16 +235,14 @@
     										</div>
                       <% end %>
                       <% if @normal_home.size < 8 %>
-
                         <%
                           $i = 8 - @normal_home.size
                         %>
-
                         <% while $i > 0  do %>
                           <div class="rst-postpic col-sm-6">
                             <div class="photobox-370x278">
                               <%= link_to new_contact_path do %>
-                                <%=  image_tag ('anun_370_320.jpg') %></a>
+                                <%=  image_tag ('anun_370_278.jpg') %></a>
                               <% end %>
                               <%= link_to new_contact_path, class: 'rst-postpic-cat' do %>
                                 <span>Clique aqui!</span>
@@ -259,12 +257,11 @@
                       <%
                         $i = 8
                       %>
-
                       <% while $i > 0  do %>
                         <div class="rst-postpic col-sm-6">
                           <div class="photobox-370x278">
                             <%= link_to new_contact_path do %>
-                              <%=  image_tag ('anun_370_320.jpg') %></a>
+                              <%=  image_tag ('anun_370_278.jpg') %></a>
                             <% end %>
                             <%= link_to new_contact_path, class: 'rst-postpic-cat' do %>
                               <span>Clique aqui!</span>
@@ -400,7 +397,7 @@
                   <div class="col-sm-12 comment">
     								<div class="comment-avatar photobox-100x100">
                       <%=
-                        if curriculum.subscriber.avatar.present?
+                          if curriculum.subscriber.avatar.present?
                             image_tag curriculum.subscriber.avatar.url(:medium)
                           else
                             image_tag ('user.png')

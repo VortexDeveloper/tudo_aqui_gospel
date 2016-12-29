@@ -10,6 +10,7 @@ class AnnouncersController < ApplicationController
   def show
     @announcer = Announcer.find(params[:id])
     @personal_profile = PersonalProfile.where("user_id = ?", @announcer.user_id).first
+    @evaluation = Evaluation.new
   end
 
 
@@ -27,6 +28,13 @@ class AnnouncersController < ApplicationController
     announcer.photos << Gallery.new(gallery_params)
     announcer.save!
     redirect_to edit_announcer_path(announcer), notice: 'Foto adicionada a sua galeria com sucesso.'
+  end
+
+  def add_evaluation
+    announcer = Announcer.where(id: evaluation_params[:announcer_id]).first
+    evaluation = Evaluation.new(evaluation_params)
+    evaluation.save!
+    redirect_to announcer, notice: 'Avaliação adicionada com sucesso.'
   end
 
   def update
@@ -92,6 +100,14 @@ class AnnouncersController < ApplicationController
     :state_id,
     :country_id,
     :zip_code
+    )
+  end
+
+  def evaluation_params
+    params.require(:evaluation).permit(
+    :comment,
+    :user_id,
+    :announcer_id
     )
   end
 

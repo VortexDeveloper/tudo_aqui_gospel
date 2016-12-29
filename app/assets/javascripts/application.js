@@ -17,7 +17,3 @@
 //= require wow.min
 //= require main
 //= require init_ckeditor
-// RailsAjax
-//= require jquery.history
-//= require jquery.rails-ajax
-//= require RailsAjax-Config

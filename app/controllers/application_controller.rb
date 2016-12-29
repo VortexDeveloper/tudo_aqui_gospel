@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
         @curriculum = @subscriber.curriculum
       end
       @announcer = Announcer.where("user_id = ?", current_user.id).first
+      @administrator = Administrator.where("user_id = ?", current_user.id).first
       @personal_profile = PersonalProfile.where("user_id = ?", current_user.id).first
     end
     @versicles = Versicle.all.order(created_at: :desc)

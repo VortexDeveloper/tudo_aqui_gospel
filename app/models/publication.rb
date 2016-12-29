@@ -15,7 +15,6 @@ class Publication < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def create_attachments(attachments)
-    byebug
     attachments = [attachments] unless attachments.kind_of? Array
     attachments.each do |file_params|
       p = PubAttachment.new

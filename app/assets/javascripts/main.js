@@ -119,20 +119,6 @@ function main() {
 
 		});
 
-
-		// Weather in Header menu
-		$.simpleWeather({
-			location: 'Hà Nội, VN',
-			woeid: '',
-			unit: 'c',
-			success: function(weather) {
-				$("#rst-weather").html('<span><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;</span>');
-			},
-			error: function(error) {
-				$("#rst-weather").html('<p>'+error+'</p>');
-			}
-		});
-
 		// Owl Carosel
 		$('.rst-mainslider').owlCarousel({
 			singleItem: true,

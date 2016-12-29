@@ -16,13 +16,38 @@
 <section id="rst-account-page">
   <div class="container">
     <div class="row">
-      <%= form_for personal_profile, url: personal_profiles_update_path do |f| %>
+
+
         <div class="col-sm-8">
           <div class="rst-section-title rst-section-title-box">
             <h4>Dados do Perfil</h4>
           </div> <!-- end section title -->
           <div class="rst-accsetting">
             <div class="rst-account-setting">
+              <% if @personal_profile.telephones.size < 3 %>
+                <%= form_for(@telephone) do |telephone| %>
+                  <div class="rst-setting">
+                        <span><%= telephone.label :number, "Novo Telefone" %></span>
+                        <%= telephone.text_field :number, class: 'rst-pageinput phone-field' %>
+                        <%= telephone.submit "+", class: 'rst-pagebutton phone-button' %>
+                  </div>
+                <% end %>
+              <% end %>
+              <div class="rst-setting">
+                <% @personal_profile.telephones.each_with_index do |telephone, i| %>
+                  <%= form_for(telephone) do |t| %>
+                    <div class="rst-setting">
+                          <span><%= t.label :number, "Telefone (#{i + 1})"  %></span>
+                          <%= t.text_field :number, value: telephone.number, class: 'rst-pageinput phone-field-list' %>
+                          <%= t.submit "Atualizar", class: 'rst-pagebutton phone-button' %>
+                          <%= link_to telephone, method: :delete, data: { confirm: 'Tem certeza que deseja deletar esse telefone?' }, class: 'rst-pagebutton phone-button' do %>
+                            <i class="fa fa-trash"></i>
+                          <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <%= form_for personal_profile, url: personal_profiles_update_path do |f| %>
               <div class="rst-setting">
                 <span><%= f.label :name, "Nome" %></span>
                 <%= f.text_field :name, value: @personal_profile.name, class: 'rst-pageinput' %>

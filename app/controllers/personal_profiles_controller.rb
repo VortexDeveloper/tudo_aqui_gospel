@@ -1,6 +1,7 @@
 class PersonalProfilesController < ApplicationController
 
   def edit
+    @telephone = Telephone.new
   end
 
   def update

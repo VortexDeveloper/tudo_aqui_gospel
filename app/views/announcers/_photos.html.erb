@@ -1,0 +1,5 @@
+<div id="photo-gallery" class="row">
+  <% @announcer.photos.each do |photo| %>
+    <%= render partial: "announcers/edit/photo", locals: { photo: photo } %>
+  <% end %>
+</div>

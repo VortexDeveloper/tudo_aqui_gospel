@@ -4,8 +4,6 @@ class Subscriber < ApplicationRecord
   belongs_to :user, optional: false
   has_one :curriculum
 
-  validates :curriculum, uniqueness: true
-
   validates :user_id, presence: true, uniqueness: true
 
   has_attached_file(

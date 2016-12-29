@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one :administrator, dependent: :destroy
   has_one :subscriber, dependent: :destroy
   has_many :publications, foreign_key: "author_id"
+  has_many :evaluations, dependent: :destroy
 
   after_create :setting_user
 
@@ -61,6 +62,20 @@ class User < ApplicationRecord
   def user_name user
     profile = PersonalProfile.where('user_id = ?', user.id )
     profile.first.name
+  end
+
+  def type
+    profile_type = self.roles.first.name
+    case profile_type
+      when "Columnist"
+        self.columnist
+      when "Subscriber"
+        self.subscriber
+      when "Announcer"
+        self.announcer
+      when "Administrator"
+        self.administrator
+    end
   end
 
 end

@@ -1,0 +1,18 @@
+<li class="comment">
+  <div class="comment-container">
+    <div class="comment-avatar">
+      <%= image_tag evaluation.user.profile.subscriber.avatar.url(:thumb) %>
+    </div>
+    <div class="comment-data">
+      <div class="comment-header">
+        <a class="comment-author"><%= evaluation.user.profile.name %></a>
+        <time class="comment-date"><i class="fa fa-clock-o"></i><%= evaluation.created_at %></time>
+      </div>
+      <div class="comment-body">
+        <p>
+          <%= evaluation.comment %>
+        </p>
+      </div>
+    </div>
+  </div>
+</li>

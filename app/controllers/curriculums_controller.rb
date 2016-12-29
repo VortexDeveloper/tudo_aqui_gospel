@@ -41,6 +41,7 @@ class CurriculumsController < ApplicationController
   # PATCH/PUT /curriculums/1
   # PATCH/PUT /curriculums/1.json
   def update
+    byebug
     respond_to do |format|
       if @curriculum.update(curriculum_params)
         format.html { redirect_to @curriculum, notice: 'Currículo atualizado com sucesso.' }
@@ -72,7 +73,8 @@ class CurriculumsController < ApplicationController
       params.require(:curriculum).permit(
       :title,
       :description,
-      :subscriber_id
+      :subscriber_id,
+      :file
       )
     end
 end

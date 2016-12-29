@@ -1,0 +1,19 @@
+<%= form_for(@evaluation) do |f| %>
+  <% if @evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+      <% @evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= f.text_area :comment, placeholder: 'Deixe sua avaliação', class: 'rst-pageinput' %>
+      <%= f.submit "ENVIAR", class: 'rst-pagebutton' %>
+    </div>
+  </div>
+<% end %>

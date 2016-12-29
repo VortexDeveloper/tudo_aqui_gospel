@@ -100,6 +100,62 @@
         </div>
       </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12 rst-content-comment">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Avaliações desse anunciante</h4>
+          </div>
+          <ol class="commentlist">
+            <% @announcer.evaluations.each do |evaluation| %>
+              <li class="comment">
+                <div class="comment-container">
+                  <div class="comment-avatar">
+                    <% if evaluation.user.type.avatar.present? %>
+                      <%= image_tag evaluation.user.type.avatar.url(:thumb) %>
+                    <% else %>
+                      <%= image_tag('user.png') %>
+                    <% end %>
+                  </div>
+                  <div class="comment-data">
+                    <div class="comment-header">
+                      <a class="comment-author"><%= evaluation.user.profile.name %></a>
+                      <time class="comment-date"><i class="fa fa-clock-o"></i><%= evaluation.created_at %></time>
+                    </div>
+                    <div class="comment-body">
+                      <p>
+                        <%= evaluation.comment %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ol>
+        </div>
+        <div class="row rst-comments">
+          <div class="container">
+            <div class="col-xs-12">
+              <div class="rst-section-title rst-section-title-box">
+                <h4>Deixe sua avaliação</h4>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="rst-getintouch-form">
+                <%= form_for(@evaluation, :url => announcers_add_evaluation_path) do |f| %>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <%= f.text_area :comment, placeholder: 'Deixe sua avaliação', class: 'rst-pageinput' %>
+                      <%= f.hidden_field :user_id, value: current_user.id %>
+                      <%= f.hidden_field :announcer_id, value: @announcer.id %>
+                      <%= f.submit "ENVIAR", class: 'rst-pagebutton' %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 </section>
 <!-- End Section Latest Comments -->

@@ -15,12 +15,15 @@ Rails.application.routes.draw do
   resources :galleries
   resources :publications
   resources :curriculums
+  resources :evaluations
+  resources :telephones
 
   get 'pages/home'
   get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'
   get 'personal_profiles/edit'
   patch 'personal_profiles/update'
   post 'personal_profiles/update_announcer'
+  #post 'personal_profiles/add_telephone'
   get 'columnists/edit'
   get 'columnists/:id' => 'columnists#show', as: 'columnist'
   patch 'columnists/update'
@@ -28,5 +31,6 @@ Rails.application.routes.draw do
   patch 'subscribers/update'
   post 'announcers/create'
   post 'announcers/add_photo'
+  post 'announcers/add_evaluation'
 
 end
