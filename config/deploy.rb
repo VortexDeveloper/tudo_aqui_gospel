@@ -57,7 +57,7 @@ task deploy: :environment do
       in_path(fetch(:current_path)) do
         command %{source ~/.profile}
         invoke :'rbenv:load'
-        command "RAILS_ENV='production' bundle exec rake db:seed"
+        # command "RAILS_ENV='production' bundle exec rake db:seed"
         # command "chown -R www-data:www-data /home/tag_rails/tag_production/current"
         # command "chown -R www-data:www-data /home/tag_rails/tag_production/current/public"
         command %{mkdir -p tmp/}
