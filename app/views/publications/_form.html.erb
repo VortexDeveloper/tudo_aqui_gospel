@@ -14,7 +14,7 @@
 
 <!-- Section Register -->
 <section id="rst-new-page">
-  <div class="container"> 
+  <div class="container">
     <div class="row">
       <%= form_for(publication, html: { multipart: true }) do |f| %>
         <% if publication.errors.any? %>
@@ -56,7 +56,19 @@
                   </span>
                   <span class="btn btn-primary btn-file">
                     <img src="/images/icon/addmedia.png" alt="" />
-                    <%= file_field_tag 'file[]', multiple: true, class: 'class="rst-pageinput"' %>
+                    <%= file_field_tag 'file[]', multiple: true, class: 'rst-pageinput' %>
+                  </span>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <span class="input-group-btn">
+                  <span class="input-group-text">
+                    <% if publication.pub_attachments.first.present? %>
+                      <%= publication.pub_attachments.first.file.instance.file_file_name %>
+                    <% end %>
+                  </span>
+                  <span class="btn btn-primary btn-file">
+                    <img src="/images/icon/addmedia.png" alt="" />
+                    <%= file_field_tag 'file[]', multiple: true, class: 'rst-pageinput' %>
                   </span>
               </div>
               <div class="col-xs-12">

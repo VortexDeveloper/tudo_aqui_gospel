@@ -24,23 +24,25 @@
           </div> <!-- end section title -->
           <div class="rst-accsetting">
             <div class="rst-account-setting">
-              <% if @personal_profile.telephones.size < 3 %>
-                <%= form_for(@telephone) do |telephone| %>
-                  <div class="rst-setting">
-                        <span><%= telephone.label :number, "Novo Telefone" %></span>
-                        <%= telephone.text_field :number, class: 'rst-pageinput phone-field' %>
-                        <%= telephone.submit "+", class: 'rst-pagebutton phone-button' %>
-                  </div>
+              <div id="telephone-new-div">
+                <% if @personal_profile.telephones.size < 3 %>
+                  <%= form_for @telephone , remote: true do |telephone| %>
+                    <div class="rst-setting">
+                          <span><%= telephone.label :number, "Novo Telefone" %></span>
+                          <%= telephone.text_field :number, class: 'rst-pageinput phone-field', id: 'telephone-new', maxlength: '15' %>
+                          <%= telephone.submit "+", class: 'rst-pagebutton phone-button' %>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
-              <div class="rst-setting">
+              </div>
+              <div class="rst-setting" id="telephones-list">
                 <% @personal_profile.telephones.each_with_index do |telephone, i| %>
-                  <%= form_for(telephone) do |t| %>
+                  <%= form_for telephone, remote: true do |t| %>
                     <div class="rst-setting">
                           <span><%= t.label :number, "Telefone (#{i + 1})"  %></span>
-                          <%= t.text_field :number, value: telephone.number, class: 'rst-pageinput phone-field-list' %>
+                          <%= t.text_field :number, value: telephone.number, class: 'rst-pageinput phone-field-list', maxlength: '15' %>
                           <%= t.submit "Atualizar", class: 'rst-pagebutton phone-button' %>
-                          <%= link_to telephone, method: :delete, data: { confirm: 'Tem certeza que deseja deletar esse telefone?' }, class: 'rst-pagebutton phone-button' do %>
+                          <%= link_to telephone, method: :delete, data: { confirm: 'Tem certeza que deseja deletar esse telefone?' }, class: 'rst-pagebutton phone-button', remote: true do %>
                             <i class="fa fa-trash"></i>
                           <% end %>
                     </div>
@@ -65,12 +67,23 @@
                 <%= f.text_field :neighborhood, value: @personal_profile.neighborhood, class: 'rst-pageinput' %>
               </div>
               <div class="rst-setting">
-                <span><%= f.label :state, "Estado" %></span>
-                <%= f.select(:state, [states_for_select], {selected: @personal_profile.state_id}, { :class => 'rst-pageinput' }) %>
+                <%= f.label :state, "Estado" %>
+                <%= f.select(:state_id, states_for_select(@personal_profile.state_id), { :class => 'rst-pageinput' }) %>
               </div>
               <div class="rst-setting">
-                <span><%= f.label :city, "Cidade" %></span>
-                <%= f.select(:city, [cities_for_select], {selected: @personal_profile.city_id}, { :class => 'rst-pageinput' }) %>
+                <%= f.label :city, "Cidade" %>
+                <%= f.grouped_collection_select(
+                      :city_id,
+                      State.all.includes(:cities),
+                      :cities,
+                      :name,
+                      :id,
+                      :name,
+                      selected: (@personal_profile.city.present?) ? @personal_profile.city.id : State.first.cities.first,
+                      class: 'rst-pageinput',
+                      include_blank: true
+                    )
+                %>
               </div>
               <div class="rst-setting">
                 <span><%= f.label :zip_code, "CEP" %></span>
@@ -97,4 +110,5 @@
     </div>
   </div>
 </section>
-<!-- End Section Register -->
+
+<%= javascript_include_tag 'populate_city_select' %>

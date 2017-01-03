@@ -1,0 +1,5 @@
+$('#telephones-list').append('<%= j render partial: "telephone" %>');
+$('#telephone-new').val("");
+if ('<%= @personal_profile.telephones.size %>' > 2) {
+  $('#telephone-new-div').hide();
+}

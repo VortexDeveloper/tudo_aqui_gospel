@@ -46,6 +46,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
+        @publication.update_attachments(params[:file])
         format.html { redirect_to @publication, notice: 'Publicação atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @publication }
       else

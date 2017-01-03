@@ -81,6 +81,12 @@ pt-BR:
       curriculum:
         one: Currículo
         other: Currículos
+      evaluation:
+        one: Avaliação do anunciante
+        other: Avaliações dos anunciantes
+      role:
+        one: Role
+        other: Roles
     attributes:
       ad:
         created_at: "Criado em"
@@ -114,6 +120,7 @@ pt-BR:
         updated_at: "Atualizado em"
         name: "Nome"
         father: "Superior"
+        ads: "Anúncios"
       administrator:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -181,11 +188,14 @@ pt-BR:
         country: "País"
         zip_code: "CEP"
         avatar: "Imagem"
+        phonebooks: "Agendas"
+        telephones: "Telefones"
       phonebook:
         created_at: "Criado em"
         updated_at: "Atualizado em"
         user: "Usuário"
         telephone: "Telefone"
+        personal_profile: "Perfil"
       state:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -207,6 +217,7 @@ pt-BR:
         updated_at: "Atualizado em"
         user: "Usuário"
         number: "Número"
+        phonebooks: "Agendas"
       user:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -224,6 +235,7 @@ pt-BR:
         updated_at: "Atualizado em"
         testament: "Testamento"
         book: "Livro"
+        chapter: "Capítulo"
         versicle: "Versículo"
         text: "Texto"
         show_day: "Data"
@@ -264,7 +276,23 @@ pt-BR:
         updated_at: "Atualizado em"
         file: "Anexo"
         title: "Título"
-        description: "Descrição"  
+        description: "Descrição"
+        subscriber: "Assinante"
+      evaluation:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        comment: "Comentário"
+        user: "Usuário"
+        announcer: "Anunciante"
+      role:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        name: "Nome"
+        user: "Usuário"
+      gallery:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        user: "Usuário"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

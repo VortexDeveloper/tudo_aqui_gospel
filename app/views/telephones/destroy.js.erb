@@ -1,0 +1,4 @@
+if ('<%= @personal_profile.telephones.size %>' > 1) {
+  $('#telephone-new-div').show();
+}
+$('#edit_telephone_<%= @telephone.id %>').remove();

@@ -28,14 +28,13 @@ class TelephonesController < ApplicationController
     personal_profile = current_user.profile
     @telephone = Telephone.new(telephone_params)
     personal_profile.telephones << @telephone
-
     respond_to do |format|
       if @telephone.save
         format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone adicionado com sucesso!' }
-        format.json { render :show, status: :created, location: @telephone }
+        format.js
       else
         format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone adicionado com sucesso!' }
-        format.json { render json: @telephone.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -47,10 +46,10 @@ class TelephonesController < ApplicationController
     respond_to do |format|
       if @telephone.update(telephone_params)
         format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone atualizado com sucesso!' }
-        format.json { render :show, status: :ok, location: @telephone }
+        format.js
       else
         format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone atualizado com sucesso!' }
-        format.json { render json: @telephone.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -64,7 +63,7 @@ class TelephonesController < ApplicationController
     @telephone.destroy
     respond_to do |format|
       format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone excluído com sucesso!' }
-      format.json { head :no_content }
+      format.js
     end
   end
 

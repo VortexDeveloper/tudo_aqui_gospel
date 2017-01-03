@@ -22,7 +22,9 @@ class PersonalProfilesController < ApplicationController
     :complement,
     :neighborhood,
     :city_id,
+    :city,
     :state_id,
+    :state,
     :country_id,
     :zip_code
     )

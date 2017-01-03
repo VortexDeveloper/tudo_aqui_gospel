@@ -1,0 +1,10 @@
+<%= form_for @telephone, remote: true do |t| %>
+    <div class="rst-setting">
+          <span><%= t.label :number, "Telefone (#{@personal_profile.telephones.size})"  %></span>
+          <%= t.text_field :number, value: @telephone.number, class: 'rst-pageinput phone-field-list', maxlength: '15' %>
+          <%= t.submit "Atualizar", class: 'rst-pagebutton phone-button' %>
+          <%= link_to @telephone, method: :delete, data: { confirm: 'Tem certeza que deseja deletar esse telefone?' }, class: 'rst-pagebutton phone-button', remote: true do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+    </div>
+<% end %>
