@@ -17,4 +17,3 @@
 //= require ckeditor/init
 //= require wow.min
 //= require main
-//= require init_ckeditor

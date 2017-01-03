@@ -80,15 +80,6 @@ ActiveRecord::Schema.define(version: 20161227212028) do
     t.index ["user_id"], name: "index_announcers_on_user_id", using: :btree
   end
 
-  create_table "average_caches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "rater_id"
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "avg",           limit: 24, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "father_id"
@@ -218,14 +209,6 @@ ActiveRecord::Schema.define(version: 20161227212028) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "overall_averages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "overall_avg",   limit: 24, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "personal_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "street"
@@ -280,29 +263,6 @@ ActiveRecord::Schema.define(version: 20161227212028) do
     t.datetime "image_updated_at"
     t.index ["author_id"], name: "index_publications_on_author_id", using: :btree
     t.index ["knowledge_area_id"], name: "index_publications_on_knowledge_area_id", using: :btree
-  end
-
-  create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "rater_id"
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "stars",         limit: 24, null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
-    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
-  end
-
-  create_table "rating_caches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "cacheable_type"
-    t.integer  "cacheable_id"
-    t.float    "avg",            limit: 24, null: false
-    t.integer  "qty",                       null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
