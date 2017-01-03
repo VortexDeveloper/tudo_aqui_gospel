@@ -1625,6 +1625,7 @@ footer li a {
   -webkit-box-shadow: inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
   -moz-box-shadow:    inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
   box-shadow:         inset 0px 1px 1px 0px rgba(50, 50, 50, 0.1);
+  background-color: #fff;
 }
 .rst-pagebutton {
   background: transparent;
@@ -1666,11 +1667,11 @@ footer li a {
   position: relative;
   margin: 0 0 30px;
 }
-.rst-setting:nth-of-type(3),
+/*.rst-setting:nth-of-type(3),
 .rst-setting:nth-of-type(5)
 {
   margin: 0 0 80px;
-}
+}*/
 .rst-setting .rst-pageinput {
   display: inline-block;
   margin: 0;

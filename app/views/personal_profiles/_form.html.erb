@@ -67,11 +67,11 @@
                 <%= f.text_field :neighborhood, value: @personal_profile.neighborhood, class: 'rst-pageinput' %>
               </div>
               <div class="rst-setting">
-                <%= f.label :state, "Estado" %>
-                <%= f.select(:state_id, states_for_select(@personal_profile.state_id), { :class => 'rst-pageinput' }) %>
+                <span><%= f.label :state, "Estado" %></span>
+                <%= f.select(:state_id, states_for_select(@personal_profile.state_id), {}, :class => 'rst-pageinput') %>
               </div>
               <div class="rst-setting">
-                <%= f.label :city, "Cidade" %>
+                <span><%= f.label :city, "Cidade" %></span>
                 <%= f.grouped_collection_select(
                       :city_id,
                       State.all.includes(:cities),
@@ -79,7 +79,7 @@
                       :name,
                       :id,
                       :name,
-                      selected: (@personal_profile.city.present?) ? @personal_profile.city.id : State.first.cities.first,
+                      {selected: (@personal_profile.city.id if @personal_profile.city.present?)},
                       class: 'rst-pageinput',
                       include_blank: true
                     )
@@ -110,5 +110,12 @@
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  jQuery(function($){
+    $('#telephone-new').inputmask('(99) 9999[9]-9999', {greedy: false, clearIncomplete: true});
+   $('#personal_profile_zip_code').inputmask('99999-999', {greedy: false, clearIncomplete: true});
+  });
+</script>
 
 <%= javascript_include_tag 'populate_city_select' %>
