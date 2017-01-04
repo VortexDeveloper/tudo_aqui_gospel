@@ -933,6 +933,21 @@ footer li a:hover,
     overflow: hidden;
 }
 
+.photobox-800x640 img{
+  max-width: 150% !important;
+  height: auto !important;
+}
+
+.photobox-800x370 {
+    height: 370px;
+    overflow: hidden;
+}
+
+.photobox-800x370 img{
+  max-width: 150% !important;
+  height: auto !important;
+}
+
 .announcer-buttons-new{
   float: right;
   z-index: 99999 !important;
@@ -2078,9 +2093,6 @@ p.help-block.text-danger ul li {
 .rst-author-contactinfo p a {
   margin: 0 39px 0 0;
 }
-.rst-author-contactinfo p a:last-child i {
-  font-size: 17px;
-}
 .rst-author-contactinfo p a span {
   color: #1e2a36;
   font-size: 14px;
@@ -2091,7 +2103,6 @@ p.help-block.text-danger ul li {
 .rst-author-contactinfo p a i {
   color: #b2b6b7;
   display: inline-block;
-  font-size: 24px;
   margin: 0 8px 0 0;
   vertical-align: middle;
 }

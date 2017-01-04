@@ -10,6 +10,8 @@ class Announcer < ApplicationRecord
   validates :user_id, presence: true, uniqueness: true
   validates :email, :doc, :doc_type, presence: true, on: :update
 
+  ratyrate_rateable "quality"
+
   enum doc_type: [:cnpj, :cpf]
 
   has_attached_file(
@@ -28,4 +30,37 @@ class Announcer < ApplicationRecord
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 
+  def rate(stars, comment, user, dimension=nil, dirichlet_method=false)
+    dimension = nil if dimension.blank?
+
+    if can_rate? user, dimension
+      rates(dimension).create! do |r|
+        r.stars = stars
+        r.rater = user
+        r.comment = comment
+      end
+      if dirichlet_method
+        update_rate_average_dirichlet(stars, dimension)
+      else
+        update_rate_average(stars, dimension)
+      end
+    else
+      update_current_rate(stars, comment, user, dimension)
+    end
+  end
+
+  def update_current_rate(stars, comment, user, dimension)
+    current_rate = rates(dimension).where(rater_id: user.id).take
+    current_rate.stars = stars
+    current_rate.comment = comment
+    current_rate.save!(validate: false)
+
+    if rates(dimension).count > 1
+      update_rate_average(stars, dimension)
+    else # Set the avarage to the exact number of stars
+      a = average(dimension)
+      a.avg = stars
+      a.save!(validate: false)
+    end
+  end
 end

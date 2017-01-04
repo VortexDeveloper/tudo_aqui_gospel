@@ -186,7 +186,7 @@
                 <article>
     							<div class="rst-postpic photobox-140x106">
                     <%= link_to publication do %>
-                      <%=  image_tag publication.image.url %>
+                      <%=  image_tag publication.image.url if publication.image.present? %>
                     <% end %>
     							</div>
     							<div class="rst-postinfo">
