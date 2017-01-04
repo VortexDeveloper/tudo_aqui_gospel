@@ -61,15 +61,6 @@ function main() {
 	//-----------------------------------
     jQuery(document).ready(function($){
 
-		// Tiny editor
-		if($('textarea#content').length != 0)
-		{
-			tinymce.init({
-				selector: "textarea#content",
-				//toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-			});
-		}
-
 		// Search Form Click
 		$('.rst-search').submit(function(e){
 			if( !$(this).hasClass('open') ){

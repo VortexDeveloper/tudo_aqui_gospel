@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
        :recoverable, :validatable
 
+  ratyrate_rater
+
   has_one :profile, class_name: 'PersonalProfile', dependent: :destroy
 
   has_one :columnist, dependent: :destroy
@@ -43,7 +45,6 @@ class User < ApplicationRecord
     super valid_role(role_sym)
   end
 
-  # DEPRECATED
   def add_role role
     role = valid_role(role)
     super role
@@ -78,4 +79,7 @@ class User < ApplicationRecord
     end
   end
 
+  def active_for_authentication?
+    super && active?
+  end
 end

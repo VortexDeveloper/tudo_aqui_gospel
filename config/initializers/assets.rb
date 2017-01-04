@@ -26,6 +26,7 @@ Rails.application.config.assets.precompile += %w( jquery.rs.selectbox.css )
 Rails.application.config.assets.precompile += %w( style.css )
 Rails.application.config.assets.precompile += %w( responsive.css )
 Rails.application.config.assets.precompile += %w( ckeditor/* )
+Rails.application.config.assets.precompile += %w( init_ckeditor.js )
 
 
 #SCRIPTS

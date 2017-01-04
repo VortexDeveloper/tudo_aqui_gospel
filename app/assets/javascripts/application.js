@@ -17,4 +17,9 @@
 //= require ckeditor/init
 //= require wow.min
 //= require main
-//= require init_ckeditor
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
+//= require jquery.raty
+//= require ratyrate

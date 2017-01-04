@@ -61,6 +61,15 @@
                       <%= user.password_field :password_confirmation, value: @user.password_confirmation, autocomplete: "off", class: 'rst-pageinput' %>
                     </div>
                     <div class="rst-setting">
+                      <label for="ative">Ativar?</label><br />
+                      <label>
+                        <%= user.radio_button :active, 'active', checked: @user.active? %>
+                        <%= user.label :active, "Ativo" %> <br>
+                        <%= user.radio_button :active, 'unactive', checked: @user.unactive? %>
+                        <%= user.label :active, "Inativo" %>
+                      </label>
+                    </div>
+                    <div class="rst-setting">
                       <span><%= profile.label :name, "Nome de usuário" %></span>
                       <%= profile.text_field :name, value: @personal_profile.name, class: 'rst-pageinput' %>
                     </div>

@@ -62,6 +62,7 @@ class AnnouncersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
+    @user.set_roles(params[:roles])
     @user.profile.update personal_profile_params
     @user.create_announcer announcer_params
     respond_to do |format|

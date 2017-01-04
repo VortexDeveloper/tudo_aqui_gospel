@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161227212028) do
+ActiveRecord::Schema.define(version: 20170103225146) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -286,10 +286,11 @@ ActiveRecord::Schema.define(version: 20161227212028) do
     t.integer  "rater_id"
     t.string   "rateable_type"
     t.integer  "rateable_id"
-    t.float    "stars",         limit: 24, null: false
+    t.float    "stars",         limit: 24,    null: false
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "comment",       limit: 65535
     t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
     t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
   end
