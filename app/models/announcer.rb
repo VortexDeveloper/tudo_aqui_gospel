@@ -1,4 +1,4 @@
-class Announcer < ApplicationRecord
+ class Announcer < ApplicationRecord
   include Rolifiable
   has_many :ads
   has_many :photos, class_name: "Gallery"

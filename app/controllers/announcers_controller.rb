@@ -61,14 +61,28 @@ class AnnouncersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
-    @user.set_roles(params[:roles])
-    @user.profile.update personal_profile_params
-    @user.create_announcer announcer_params
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Anunciante cadastrado com sucesso!' }
-      format.html { render :new }
+    @user = User.new(user_params)
+
+    if @user.save
+        @user.set_roles(params[:roles])
+        @user.profile.update personal_profile_params
+        @user.create_announcer announcer_params
+        @announcer = @user.announcer
+        respond_to do |format|
+          format.html { redirect_to announcer_path(id: @announcer.id), notice: 'Anunciante cadastrado com sucesso!' }
+        end
+    else
+        respond_to do |format|
+            messages = []
+            @user.errors.full_messages.each { |msg| messages << "<li>#{msg}</li>" }
+            flash[:new_user_errors] = messages.join
+            session[:user_error] = @user
+            session[:profile_error] = personal_profile_params
+            session[:announcer_error] = announcer_params
+          format.html { redirect_to new_announcer_path }
+        end
     end
+
   end
 
   def ad_params
@@ -87,7 +101,8 @@ class AnnouncersController < ApplicationController
     params.require(:user).permit(
     :email,
     :password,
-    :password_confirmation
+    :password_confirmation,
+    :active
     )
   end
 
@@ -124,7 +139,9 @@ class AnnouncersController < ApplicationController
     :photos,
     :ad_plan_id,
     :banner,
-    :about_text
+    :about_text,
+    :state,
+    :city
     )
   end
 
