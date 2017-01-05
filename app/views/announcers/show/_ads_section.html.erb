@@ -1,26 +1,30 @@
+<!-- End Category Page Content -->
 <section id="rst-newsandhot">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="rst-section-title">
-          <h4>Galeria da Empresa</h4>
+          <h4>Anúncios</h4>
         </div>
         <div class="rst-newsandhot-post">
           <div class="rst-newsandhot-post-content">
             <article>
-                <% if @announcer.photos.present? %>
+                <% if @announcer.ads.present? %>
                     <div class="row">
-                        <% @announcer.photos.each do |photo| %>
-                        <div class="col-sm-3">
-                          <div class="rst-postpic gallery photobox-270x190">
-                            <a><%=  image_tag photo.image.url %></a>
+                        <% @announcer.ads.each do |ad| %>
+                          <div class="rst-postpic col-sm-4 rst-postpic-img">
+                            <%= link_to ad do %>
+                              <%=  image_tag ad.avatar.url %>
+                            <% end %>
+                            <%= link_to ad, class: 'rst-postpic-cat' do %>
+                              <span><%= ad.title %></span>
+                            <% end %>
                           </div>
-                        </div>
                         <% end %>
                     </div>
                 <% else %>
                     <div class='alert'>
-                        Galerias ainda não cadastradas
+                        Anúncios ainda não cadastrados
                     </div>
                 <% end %>
             </article>

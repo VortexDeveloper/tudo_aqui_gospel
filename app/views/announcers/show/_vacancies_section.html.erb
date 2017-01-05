@@ -1,0 +1,35 @@
+<section id="rst-newsandhot">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-section-title rst-section-title-box">
+          <h4>Vagas de emprego</h4>
+        </div> <!-- end section title -->
+        <% if @announcer.vacancies.present? %>
+            <div class="row commentlist owl-carousel">
+              <% @announcer.vacancies.each do |vacancy| %>
+                <div class="col-sm-12 comment">
+                  <%= link_to vacancy do %>
+                    <div class="comment-avatar">
+                      <%=  image_tag @announcer.avatar.url(:medium) %>
+                    </div>
+                  <% end %>
+                  <div class="comment-data">
+                    <%= link_to vacancy do %>
+                      <%= @announcer.fantasy_name %>
+                    <% end %>
+                    <span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
+                    <p class="comment-body"><%= vacancy.name %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        <% else %>
+            <div class='alert'>
+                Vagas de emprego ainda não cadastradas
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

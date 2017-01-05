@@ -63,4 +63,12 @@ class Announcer < ApplicationRecord
       a.save!(validate: false)
     end
   end
+
+  def main_telephone
+    user.profile.telephones.first
+  end
+
+  def address_string
+    "#{user.profile.street}, #{user.profile.neighborhood}, #{user.profile.city.try(:name)} - #{user.profile.state.try(:name)}"
+  end
 end

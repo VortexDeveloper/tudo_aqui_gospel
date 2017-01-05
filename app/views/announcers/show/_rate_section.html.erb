@@ -1,0 +1,27 @@
+<section id="rst-latestcomments">
+  <div class="container">
+    <div class="row">
+        <div class="row rst-comments">
+          <div class="container">
+              <div class="rst-section-title rst-section-title-box">
+                <h4>Deixe sua avaliação</h4>
+              </div>
+            <% if user_signed_in? %>
+              <div class="col-sm-8">
+                <div class="rst-getintouch-form" id='rate-form'>
+                  <div class="alert hidden"></div>
+                  Deixe sua avaliação: <%= rating_for_user @announcer, current_user, 'quality', star: 5 %> <br />
+                  <%= text_area_tag :comment, @rating.try(:comment) || '', placeholder: 'Escreva um comentário', class: 'rst-pageinput' %>
+                  <%= button_tag 'ENVIAR', id: 'rate-submit', class: 'rst-pagebutton' %>
+                </div>
+              </div>
+            <% else %>
+                <%= link_to new_user_session_path do %>
+                    <%= button_tag 'Faça login e avalie!', class: 'btn btn-block rst-pagebutton' %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>

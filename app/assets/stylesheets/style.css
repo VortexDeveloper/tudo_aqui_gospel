@@ -808,9 +808,8 @@ footer li a:hover,
   color: #2f3e42;
   font-size: 24px;
   font-weight: 700;
-  margin: 3px 0 32px;
-  padding: 27px 0;
-  text-align: center;
+  margin: 35px 0 10px;
+  padding: 10px 0;
 }
 
 .rst-postpic {
@@ -2090,17 +2089,15 @@ p.help-block.text-danger ul li {
 .rst-author-contactinfo {
   margin: 0 0 0 127px;
 }
-.rst-author-contactinfo p a {
-  margin: 0 39px 0 0;
-}
-.rst-author-contactinfo p a span {
+.rst-author-contactinfo span {
   color: #1e2a36;
   font-size: 14px;
   font-family: 'ROBOTO';
   display: inline-block;
   vertical-align: middle;
+  margin-right: 10px;
 }
-.rst-author-contactinfo p a i {
+.rst-author-contactinfo i {
   color: #b2b6b7;
   display: inline-block;
   margin: 0 8px 0 0;

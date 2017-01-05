@@ -1,0 +1,48 @@
+<!-- End Category Page Content -->
+<section id="rst-newsandhot">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 rst-content-comment">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Avaliações desse anunciante</h4>
+          </div>
+          <% if @announcer.quality_rates.present? %>
+              <ol class="commentlist">
+                <% @announcer.quality_rates.each do |evaluation| %>
+                  <li class="comment">
+                    <div class="comment-container">
+                      <div class="comment-avatar">
+                        <% #if evaluation.rater.type.avatar.present? %>
+                          <%#= image_tag evaluation.rater.type.avatar.url(:thumb) %>
+                        <% #else %>
+                          <%#= image_tag('user.png') %>
+                        <%# end %>
+                        <%= image_tag('user.png') %>
+                      </div>
+                      <div class="comment-data">
+                        <div class="comment-header">
+                          <a class="comment-author"><%= evaluation.rater.profile.name %></a>
+                          <div class="rate-info">
+                            <time class="comment-date"><i class="fa fa-clock-o"></i><%= evaluation.created_at %></time>
+                            <%= rating_for_user @announcer, evaluation.rater, "quality", readonly: true %>
+                          </div>
+                        </div>
+                        <div class="comment-body">
+                          <p>
+                            <%= evaluation.comment %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              </ol>
+            <% else %>
+                <div class='alert'>
+                    Empresa ainda não recebeu avaliações
+                </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</section>
