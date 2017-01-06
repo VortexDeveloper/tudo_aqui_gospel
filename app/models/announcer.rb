@@ -65,6 +65,8 @@
   end
 
   def main_telephone
+    main_phone = user.profile.telephones.where(main_telephone: :main)
+    return main_phone.first if main_phone.present?
     user.profile.telephones.first
   end
 

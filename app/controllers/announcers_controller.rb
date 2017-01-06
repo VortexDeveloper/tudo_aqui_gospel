@@ -38,9 +38,11 @@ class AnnouncersController < ApplicationController
   end
 
   def update
-    @announcer = Announcer.where("user_id = ?", current_user).first
+
+    @announcer = current_user.announcer
     respond_to do |format|
       if @announcer.update(announcer_params)
+        update_main_phone
         format.html { redirect_to @announcer, notice: 'Cadastro atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @announcer }
       else
@@ -84,6 +86,16 @@ class AnnouncersController < ApplicationController
         end
     end
 
+  end
+
+  def update_main_phone
+    main_phone = @announcer.main_telephone
+
+    if main_phone.id != main_phone_params[:phone_id].to_i
+      main_phone.not_main!
+      phone = Telephone.find main_phone_params[:phone_id]
+      phone.main!
+    end
   end
 
   def ad_params
@@ -146,4 +158,9 @@ class AnnouncersController < ApplicationController
     )
   end
 
+  def main_phone_params
+    params.require(:main_phone).permit(
+    :phone_id
+    )
+  end
 end

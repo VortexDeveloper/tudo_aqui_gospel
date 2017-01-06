@@ -19,9 +19,16 @@
       <div class="col-xs-12">
         <!-- Author zone -->
         <div class="rst-section-title rst-section-title-box">
-          <h4><%= @announcer.fantasy_name %></h4>
+          <% if @announcer.user == current_user %>
+            <%= link_to edit_announcer_path(@announcer) do %>
+              <%= button_tag "Editar Página", class: 'rst-pagebutton banner-input blue-bg', style: 'margin: 0' %>
+            <% end %>
+          <% end %>
+          <h4>
+            <%= @announcer.fantasy_name %>
+          </h4>
         </div>
-        <div class="rst-author-contact">
+        <div class="rst-contato-autor">
           <% if @announcer.avatar.present? %>
             <%= image_tag @announcer.avatar.url(:medium) %>
           <% else %>
@@ -37,12 +44,19 @@
           </div>
         </div>
 
-        <% if @announcer.about_text.present? %>
-        <div class="rst-section-title rst-section-title-box">
+        <div style='clear: both;'></div>
+        <div class="rst-section-title rst-section-title-box" style='overfloww: hidden;'>
           <h4>Sobre</h4>
         </div>
-        <p class="rst-author-excerpt"><%= @announcer.about_text %></p>
-        <% end %>
+        <p class="rst-author-excerpt">
+          <% if @announcer.about_text.present? %>
+            <%= @announcer.about_text %>
+          <% else %>
+            <div class="alert">
+              A empresa não forneceu uma descrição
+            </div>
+          <% end %>
+        </p>
         <!-- End zone -->
       </div>
     </div>

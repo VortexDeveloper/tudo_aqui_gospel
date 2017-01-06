@@ -5,7 +5,7 @@
         <div class="rst-section-title rst-section-title-box">
           <h4>Vagas de emprego</h4>
         </div> <!-- end section title -->
-        <% if @announcer.vacancies.present? %>
+        <% if @announcer.vacancies.where(active: :s).present? %>
             <div class="row commentlist owl-carousel">
               <% @announcer.vacancies.each do |vacancy| %>
                 <div class="col-sm-12 comment">

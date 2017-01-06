@@ -1,0 +1,55 @@
+<section id="rst-latestcomments">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-section-title rst-section-title-box">
+          <h4>Vagas de emprego</h4>
+        </div>
+        <div class="add-image-actions" style="float: none;">
+          <%= link_to new_vacancy_path, class: 'rst-pagebutton announcer-buttons-new blue-bg' do %>
+            <i class="fa fa-plus" ></i>
+          <% end %>
+        </div>
+        <% if @announcer.vacancies.present? %>
+          <div class="row commentlist owl-carousel">
+            <% @announcer.vacancies.each do |vacancy| %>
+              <div class="col-sm-12 comment" id="vacancy_<%= vacancy.id %>">
+                <div class="comment-avatar">
+                  <%= link_to vacancy do %>
+                    <%= image_tag @announcer.avatar.url(:medium) %>
+                  <% end %>
+                </div>
+                  <div class="comment-data">
+                    <%= link_to vacancy, class: 'comment-author' do %>
+                      <%= @announcer.fantasy_name %>
+                    <% end %>
+                    <span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
+                    <p class="comment-body"><%= vacancy.name %></p>
+                    <%= link_to vacancy, class: 'vacancy-actions green-bg' do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                    <%= link_to edit_vacancy_path(vacancy), class: 'vacancy-actions blue-bg' do %>
+                      <i class="fa fa-pencil-square-o"></i>
+                    <% end %>
+                    <%= link_to vacancy, method: :delete, data: { confirm: 'Tem certeza que deseja excluir essa vaga?' }, class: 'vacancy-actions red-bg', remote: true, id: "remove_vacancy_#{vacancy.id}" do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  </div>
+              </div>
+              <% content_for :js do%>
+                $('#remove_vacancy_<%= vacancy.id %>').bind('ajax:success', function(){
+                  $('#vacancy_<%= vacancy.id %>').remove();
+                  }
+                );
+              <%end%>
+            <% end %>
+          </div>
+        <% else %>
+          <div class='alert' style='clear: both;'>
+              Vagas de emprego ainda não cadastradas
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

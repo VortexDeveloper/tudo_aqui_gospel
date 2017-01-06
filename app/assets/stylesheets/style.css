@@ -2083,6 +2083,9 @@ p.help-block.text-danger ul li {
   position: relative;
   min-height: 100px;
 }
+.rst-contato-autor, .rst-contato-autor img {
+  float: left;
+}
 .rst-author-contact img {
   height: auto;
   left: 0;

@@ -1,0 +1,46 @@
+<!-- End Category Page Content -->
+<section id="rst-newsandhot">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rst-section-title">
+          <h4>Anúncios</h4>
+        </div>
+        <div class="rst-newsandhot-post">
+          <div class="rst-newsandhot-post-content">
+            <article>
+              <% if @announcer.ads.present? %>
+                <div class="row">
+                  <% @announcer.ads.each do |ad| %>
+                    <div class="rst-postpic col-sm-4 rst-postpic-img">
+                      <%= link_to ad do %>
+                        <%=  image_tag ad.avatar.url %>
+                      <% end %>
+                      <%= link_to ad, class: 'rst-postpic-cat' do %>
+                        <span><%= ad.title %></span>
+                      <% end %>
+                      <div class="add-image-actions">
+                        <%= form_for ad do |ad_builder| %>
+                            <%= ad_builder.hidden_field :active, value: "sim" %>
+                            <%= ad_builder.submit "Ativar", class: 'gallery-actions green-bg enable-ad-button', disabled: ad.sim? %>
+                        <% end %>
+                        <%= form_for ad do |ad_builder| %>
+                            <%= ad_builder.hidden_field :active, value: "nao" %>
+                            <%= ad_builder.submit "Desativar", class: 'gallery-actions red-bg enable-ad-button', disabled: ad.nao? %>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class='alert'>
+                  Anúncios ainda não cadastrados
+                </div>
+              <% end %>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

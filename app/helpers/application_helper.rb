@@ -102,7 +102,7 @@ module ApplicationHelper
           end
         when "Announcer"
           content_tag(:li, "") do
-            link_to "Minha página", edit_announcer_path(@announcer)
+            link_to "Minha página", announcer_path(@announcer)
           end
       end
     end
@@ -197,9 +197,9 @@ module ApplicationHelper
     end
   end
 
-  def media_section_banner_edit(announcer)
+  def media_section_banner_edit(announcer, form_builder)
     if announcer.ad_plan.silver? || announcer.ad_plan.gold?
-      render partial: 'announcers/edit/media_section_banner'
+      render partial: 'announcers/edit/media_section_banner', locals: {f: form_builder}
     end
   end
 
