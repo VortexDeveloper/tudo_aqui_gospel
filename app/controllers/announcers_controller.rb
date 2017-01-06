@@ -54,6 +54,7 @@ class AnnouncersController < ApplicationController
     @user = User.new
     @personal_profile = PersonalProfile.new
     @announcer = Announcer.new
+    @telephone = Telephone.new
     if user_signed_in?
       @columnist = Columnist.where("user_id = ?", current_user.id).first
       @subscriber = Subscriber.where("user_id = ?", current_user.id).first
@@ -64,13 +65,13 @@ class AnnouncersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-        @user.set_roles(params[:roles])
-        @user.profile.update personal_profile_params
-        @user.create_announcer announcer_params
-        @announcer = @user.announcer
-        respond_to do |format|
-          format.html { redirect_to announcer_path(id: @announcer.id), notice: 'Anunciante cadastrado com sucesso!' }
-        end
+      @user.set_roles(params[:roles])
+      @user.profile.update personal_profile_params
+      @announcer = @user.announcer
+      @announcer.update announcer_params
+      respond_to do |format|
+        format.html { redirect_to announcer_path(id: @announcer.id), notice: 'Anunciante cadastrado com sucesso!' }
+      end
     else
         respond_to do |format|
             messages = []

@@ -27,28 +27,44 @@
             <% end %>
             <div class="rst-author-contactinfo">
               <p>
-                <i class="fa fa-mobile"></i> <span>+48 122 33 66</span>
-                <i class="fa fa-paper-plane"></i> <span><%= f.text_field :email, value: @announcer.email, class: 'rst-announcer-input' %></span>
-                <span><i class="fa fa-location-arrow"></i><%= @personal_profile.street %>, <%= @personal_profile.neighborhood %>, <%= city_show(@personal_profile.city_id) %> - <%= state_show(@personal_profile.state_id) %></span>
+                <%= show_telephone if @announcer.main_telephone.present? %>
+                <%= show_edit_email(f) %>
+                <%= show_location %>
+                <%= show_average if @announcer.average('quality').present? %>
               </p>
             </div>
           </div>
+
+          <!-- Logo Button -->
           <input id="input-avatar" class="rst-pagebutton blue-bg" type="submit" value="ALTERAR LOGO"/>
           <%= f.file_field :avatar, class: 'image-button', id: 'image-button-avatar' %>
-          <p class="rst-author-excerpt"><%= f.text_area :about_text, value: @announcer.about_text, class: 'text-area-announcer rst-announcer-input' %></p>
+          <!-- END -->
+
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Sobre</h4>
+          </div>
+          <p class="rst-author-excerpt"><%= f.text_area :about_text, value: @announcer.about_text, class: 'text-area-announcer rst-announcer-input', placeholder: 'Descrição sobre a sua empresa' %></p>
           <%= f.hidden_field :user, value: @announcer.user %>
         </div>
       </div>
     </div>
   </section>
+
+
   <%= media_section_banner_edit(@announcer) %>
+
+  <!-- Banner button -->
   <div class="container">
     <div class="margin-button">
       <input id="input-banner" class="rst-pagebutton blue-bg" type="submit" value="ALTERAR BANNER"/>
       <%= f.file_field :banner, class: 'image-button', id: 'image-button-banner' %>
     </div>
   </div>
+  <!-- END -->
 <% end %>
+<!-- end form for announcer -->
+
+
   <section id="rst-newsandhot">
     <div class="container">
       <div class="row">
@@ -59,28 +75,34 @@
           <div class="rst-newsandhot-post">
             <div class="rst-newsandhot-post-content">
               <article>
-                <div class="row">
-                  <% @announcer.ads.each do |ad| %>
-                    <div class="rst-postpic col-sm-4 rst-postpic-img">
-                      <%= link_to ad do %>
-                        <%=  image_tag ad.avatar.url %>
-                      <% end %>
-                      <%= link_to ad, class: 'rst-postpic-cat' do %>
-                        <span><%= ad.title %></span>
-                      <% end %>
-                      <div class="add-image-actions">
-                        <%= form_for ad do |ad| %>
-                            <%= ad.hidden_field :active, value: "sim" %>
-                            <%= ad.submit "Ativar", class: 'gallery-actions green-bg enable-ad-button' %>
+                <% if @announcer.ads.present? %>
+                  <div class="row">
+                    <% @announcer.ads.each do |ad| %>
+                      <div class="rst-postpic col-sm-4 rst-postpic-img">
+                        <%= link_to ad do %>
+                          <%=  image_tag ad.avatar.url %>
                         <% end %>
-                        <%= form_for ad do |ad| %>
-                            <%= ad.hidden_field :active, value: "nao" %>
-                            <%= ad.submit "Desativar", class: 'gallery-actions red-bg enable-ad-button' %>
+                        <%= link_to ad, class: 'rst-postpic-cat' do %>
+                          <span><%= ad.title %></span>
                         <% end %>
+                        <div class="add-image-actions">
+                          <%= form_for ad do |ad| %>
+                              <%= ad.hidden_field :active, value: "sim" %>
+                              <%= ad.submit "Ativar", class: 'gallery-actions green-bg enable-ad-button' %>
+                          <% end %>
+                          <%= form_for ad do |ad| %>
+                              <%= ad.hidden_field :active, value: "nao" %>
+                              <%= ad.submit "Desativar", class: 'gallery-actions red-bg enable-ad-button' %>
+                          <% end %>
+                        </div>
                       </div>
-                    </div>
-                  <% end %>
-                </div>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class='alert'>
+                    Anúncios ainda não cadastrados
+                  </div>
+                <% end %>
               </article>
             </div>
           </div>

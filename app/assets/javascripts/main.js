@@ -136,6 +136,12 @@ function main() {
 			navigation : true,
 			navigationText : ['<i class="fa fa-long-arrow-left"></i>','<i class="fa fa-long-arrow-right"></i>'],
 		});
+    $('.evaluation-section .commentlist').owlCarousel({
+			items	   : 3,
+			pagination : false,
+			navigation : true,
+			navigationText : ['<i class="fa fa-long-arrow-left"></i>','<i class="fa fa-long-arrow-right"></i>'],
+		});
 		$('.rst-catbanner-slider').owlCarousel({
 			singleItem: true,
 			pagination : true,

@@ -36,19 +36,19 @@
           <div class="col-sm-6">
             <div class="rst-setting">
               <span><%= u.label :email, "Email" %></span>
-              <%= u.email_field :email, value: user.email, autofocus: true, class: 'rst-pageinput' %>
+              <%= u.email_field :email, value: user.email, autofocus: true, class: 'rst-pageinput', required: true %>
               <%= hidden_field_tag "roles[]", 2, class: 'rst-pageinput'%>
             </div>
             <div class="rst-setting">
               <span><%= u.label :password, "Senha" %></span>
-              <%= u.password_field :password, value: user.password, autocomplete: "off", class: 'rst-pageinput' %>
+              <%= u.password_field :password, value: user.password, autocomplete: "off", class: 'rst-pageinput', required: true %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> caracteres no mínimo)</em>
               <% end %><br />
             </div>
             <div class="rst-setting">
               <span><%= u.label :password_confirmation, "Confirmação de senha" %></span>
-              <%= u.password_field :password_confirmation, value: user.password_confirmation, autocomplete: "off", class: 'rst-pageinput' %>
+              <%= u.password_field :password_confirmation, value: user.password_confirmation, autocomplete: "off", class: 'rst-pageinput', required: true %>
             </div>
             <div class="rst-setting">
               <label for="ative">Ativar?</label><br />
@@ -61,57 +61,57 @@
             </div>
             <div class="rst-setting">
               <span><%= profile.label :name, "Nome de usuário" %></span>
-              <%= profile.text_field :name, value: personal_profile.name, class: 'rst-pageinput' %>
+              <%= profile.text_field :name, value: personal_profile.name, class: 'rst-pageinput', required: true %>
             </div>
             <div class="rst-setting">
               <span><%= a.label :contact_name, "Nome do contato" %></span>
-              <%= a.text_field :contact_name, value: announcer.contact_name, class: 'rst-pageinput' %>
+              <%= a.text_field :contact_name, value: announcer.contact_name, class: 'rst-pageinput', required: true %>
             </div>
             <div class="rst-setting">
               <span><%= a.label :email, "Email do contato" %></span>
-              <%= a.text_field :email, value: announcer.email, class: 'rst-pageinput' %>
+              <%= a.text_field :email, value: announcer.email, class: 'rst-pageinput', required: true %>
             </div>
           </div>
           <div class="col-sm-6">
 
             <div class="rst-setting">
               <span><%= profile.label :street, "Rua" %></span>
-              <%= profile.text_field :street, value: personal_profile.street, class: 'rst-pageinput' %>
+              <%= profile.text_field :street, value: personal_profile.street, class: 'rst-pageinput', required: true %>
             </div>
             <div class="rst-setting">
               <span><%= profile.label :complement, "Complemento" %></span>
-              <%= profile.text_field :complement, value: personal_profile.complement, class: 'rst-pageinput' %>
+              <%= profile.text_field :complement, value: personal_profile.complement, class: 'rst-pageinput', required: true %>
             </div>
             <div class="rst-setting">
               <span><%= profile.label :neighborhood, "Bairro" %></span>
-              <%= profile.text_field :neighborhood, value: personal_profile.neighborhood, class: 'rst-pageinput' %>
+              <%= profile.text_field :neighborhood, value: personal_profile.neighborhood, class: 'rst-pageinput', required: true %>
             </div>
             <div class="rst-setting">
               <span><%= profile.label :state, "Estado" %></span>
-              <%= profile.select(:state_id, [states_for_select], {selected: personal_profile.state_id}, { :class => 'rst-pageinput' }) %>
+              <%= profile.select(:state_id, [states_for_select], {selected: personal_profile.state_id}, { :class => 'rst-pageinput', required: true }) %>
             </div>
             <div class="rst-setting">
               <span><%= profile.label :city, "Cidade" %></span>
-              <%= profile.select(:city_id, [cities_for_select], {selected: personal_profile.city_id}, { :class => 'rst-pageinput' }) %>
+              <%= profile.select(:city_id, [cities_for_select], {selected: personal_profile.city_id}, { :class => 'rst-pageinput', required: true }) %>
             </div>
             <div class="rst-setting">
               <span><%= profile.label :zip_code, "CEP" %></span>
-              <%= profile.text_field :zip_code, value: personal_profile.zip_code, class: 'rst-pageinput' %>
+              <%= profile.text_field :zip_code, value: personal_profile.zip_code, class: 'rst-pageinput', required: true %>
               <%= hidden_field_tag :id, personal_profile.id %>
             </div>
             <div class="rst-setting">
               <span><%= a.label :ad_plan_id, "Plano de Anunciante" %></span>
-              <%= a.select(:ad_plan_id, plans_for_select(announcer.ad_plan_id), {}, { :class => 'rst-pageinput' }) %>
+              <%= a.select(:ad_plan_id, plans_for_select(announcer.ad_plan_id), {}, { :class => 'rst-pageinput', required: true }) %>
             </div>
           </div>
           <div class="col-sm-6">
               <div class="rst-setting">
                 <span><%= a.label :name, "Razão Social" %></span>
-                <%= a.text_field :name, value: announcer.name, class: 'rst-pageinput' %>
+                <%= a.text_field :name, value: announcer.name, class: 'rst-pageinput', required: true %>
               </div>
               <div class="rst-setting">
                 <span><%= a.label :fantasy_name, "Nome fantasia" %></span>
-                <%= a.text_field :fantasy_name, value: announcer.fantasy_name, class: 'rst-pageinput' %>
+                <%= a.text_field :fantasy_name, value: announcer.fantasy_name, class: 'rst-pageinput', required: true %>
               </div>
               <div class="rst-setting">
                 <label>
@@ -123,7 +123,7 @@
               </div>
               <div class="rst-setting">
                 <span><%= a.label :doc, "Número do documento" %></span>
-                <%= a.text_field :doc, value: announcer.doc, class: 'rst-pageinput' %>
+                <%= a.text_field :doc, value: announcer.doc, class: 'rst-pageinput', required: true %>
               </div>
             </div>
           </div>
