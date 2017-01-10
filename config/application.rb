@@ -16,6 +16,7 @@ module TudoAqui
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Brasilia'
+    config.turbolinks.auto_include = false
   end
 end
 

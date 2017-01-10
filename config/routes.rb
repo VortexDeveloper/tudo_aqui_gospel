@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :curriculums
   resources :evaluations
   resources :telephones
+  resources :pub_attachments
 
   get 'pages/home'
   get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'

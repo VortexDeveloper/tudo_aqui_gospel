@@ -23,14 +23,4 @@ class Publication < ApplicationRecord
       pub_attachments << p
     end
   end
-
-  def update_attachments(attachments)
-    attachments = [attachments] unless attachments.kind_of? Array
-    attachments.each_with_index do |file_params, i|
-      p = pub_attachments[i]
-      p.file = file_params
-      p.save!
-    end
-  end
-
 end

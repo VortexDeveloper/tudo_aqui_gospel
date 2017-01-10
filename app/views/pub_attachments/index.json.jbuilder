@@ -1,0 +1,1 @@
+json.array! @pub_attachments, partial: 'pub_attachments/pub_attachment', as: :pub_attachment

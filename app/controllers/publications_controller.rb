@@ -16,10 +16,12 @@ class PublicationsController < ApplicationController
   # GET /publications/new
   def new
     @publication = Publication.new
+    @pub_attachment = PubAttachment.new
   end
 
   # GET /publications/1/edit
   def edit
+    @pub_attachment = PubAttachment.new
   end
 
   # POST /publications
@@ -46,7 +48,7 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        @publication.update_attachments(params[:file])
+        @publication.create_attachments(params[:file])
         format.html { redirect_to @publication, notice: 'Publicação atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @publication }
       else

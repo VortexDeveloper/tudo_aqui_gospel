@@ -1,0 +1,1 @@
+json.partial! "pub_attachments/pub_attachment", pub_attachment: @pub_attachment

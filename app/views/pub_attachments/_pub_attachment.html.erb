@@ -1,0 +1,6 @@
+<div class="rst-setting">
+      <%= pub_attachment.file.instance.file_file_name %>
+      <%= link_to pub_attachment, method: :delete, data: { confirm: 'Tem certeza que deseja deletar esse anexo?' }, class: 'rst-pagebutton phone-button', remote: true do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+</div>
