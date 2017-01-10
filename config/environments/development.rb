@@ -56,4 +56,12 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  #pagseguro-oficial
+  PagSeguro.configure do |config|
+    config.token       = "947533195E6B4C6FB5F793F48BE43D2B"
+    config.email       = "tufa.araujo@hotmail.com"
+    config.environment = :sandbox # ou :sandbox. O padrão é production.
+    config.encoding    = "UTF-8" # ou ISO-8859-1. O padrão é UTF-8.
+  end
 end
