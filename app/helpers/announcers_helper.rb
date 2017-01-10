@@ -18,7 +18,7 @@ module AnnouncersHelper
     html = content_tag(:i, '', class: "fa fa-lg fa-map-marker")
     html << content_tag(:span, @announcer.address_string)
   end
-
+ 
   def show_average
     html = content_tag(:i, '', class: "fa fa-lg fa-star", style: 'color: #EDA100;')
     html << content_tag(:span, @announcer.average('quality').avg)

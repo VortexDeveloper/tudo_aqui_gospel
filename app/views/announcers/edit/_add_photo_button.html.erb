@@ -7,8 +7,3 @@
       <%= photo.file_field :image, class: 'image-button', id: 'image-button-photo' %>
   <% end %>
 </div>
-<% content_for :js do %>
-  $('#new_gallery').bind('ajax:complete', function(xhr, result){
-    $('#photo-gallery').replaceWith(result.responseText);
-  });
-<% end %>

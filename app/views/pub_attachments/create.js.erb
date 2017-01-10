@@ -1,0 +1,5 @@
+$('#pub_attachment-list').append('<%= j render partial: "pub_attachment" %>');
+$('#pub_attachment-new').val("");
+if ('<%= @publication.pub_attachments.size %>' > 2) {
+  $('#pub_attachment-new-div').hide();
+}

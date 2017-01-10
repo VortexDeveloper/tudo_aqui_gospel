@@ -21,7 +21,7 @@
             <article class="col-sm-6 rst-catpost" id="publication_<%= publication.id %>">
               <div class="rst-postpic photobox-370x370">
                 <%= link_to publication do %>
-                  <%= image_tag publication.image.url %>
+                  <%= image_tag publication.image.url if publication.image.url.present? %>
                 <% end %>
                 <%= link_to publication, class: 'rst-postpic-cat' do %>
                   <span><%= publication.pub_category %></span>

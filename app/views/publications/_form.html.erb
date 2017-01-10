@@ -43,34 +43,55 @@
               </div>
               <div class="col-xs-12">
                 <%= cktext_area :publication, :body, class: 'rst-pageinput', required: true, cols: 30, rows: 10, id: 'content' %>
-
                 <p class="rst-grouptitle">Arquivos adicionais</p>
+              </div>
+              <div id="attachments-list">
+                <% if publication.pub_attachments.size > 0 %>
+                  <% publication.pub_attachments.each do |attachment| %>
+                    <div class="col-sm-6 col-xs-12" id="attachment_<%= attachment.id %>">
+                      <span class="input-group-btn">
+                        <span class="input-group-text">
+                          <% if attachment.present? %>
+                            <%= attachment.file.instance.file_file_name %>
+                          <% end %>
+                        </span>
+                        <span class="btn btn-primary btn-file">
+                          <%= link_to attachment,
+                              method: :delete,
+                              data: { confirm: 'Tem certeza que deseja deletar esse anexo?' },
+                              remote: true,
+                              id: "remove_attachment_#{attachment.id}" do %>
+                            <i class="fa fa-trash"></i>
+                          <% end %>
+                        </span>
+                    </div>
+                    <% content_for :js do %>
+                      $('#remove_attachment_<%= attachment.id %>').bind('ajax:success', function(){
+                        $('#attachment_<%= attachment.id %>').remove();
+                        $('#attachments-list').append('<%= j render partial: "attachment" %>');
+                      });
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              <% if @publication.pub_attachments.size < 2 %>
+                <%
+                  $i = 2 - @publication.pub_attachments.size
+                %>
+                <% while $i > 0  do %>
+                <div class="col-sm-6 col-xs-12">
+                  <span class="input-group-btn">
+                    <span class="input-group-text">
 
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <span class="input-group-btn">
-                  <span class="input-group-text">
-                    <% if publication.pub_attachments.first.present? %>
-                      <%= publication.pub_attachments.first.file.instance.file_file_name %>
-                    <% end %>
-                  </span>
-                  <span class="btn btn-primary btn-file">
-                    <img src="/images/icon/addmedia.png" alt="" />
-                    <%= file_field_tag 'file[]', multiple: true, class: 'rst-pageinput' %>
-                  </span>
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <span class="input-group-btn">
-                  <span class="input-group-text">
-                    <% if publication.pub_attachments.first.present? %>
-                      <%= publication.pub_attachments.first.file.instance.file_file_name %>
-                    <% end %>
-                  </span>
-                  <span class="btn btn-primary btn-file">
-                    <img src="/images/icon/addmedia.png" alt="" />
-                    <%= file_field_tag 'file[]', multiple: true, class: 'rst-pageinput' %>
-                  </span>
-              </div>
+                    </span>
+                    <span class="btn btn-primary btn-file">
+                      <img src="/images/icon/addmedia.png" alt="" />
+                      <%= file_field_tag 'file[]', multiple: true, class: 'rst-pageinput' %>
+                    </span>
+                </div>
+                  <% $i -= 1 %>
+                <% end %>
+              <% end %>
               <div class="col-xs-12">
                 <br>
                 <%= f.submit 'PUBLICAR', class: 'rst-pagebutton' %>

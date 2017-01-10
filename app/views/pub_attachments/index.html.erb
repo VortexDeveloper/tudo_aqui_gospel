@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pub Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pub_attachments.each do |pub_attachment| %>
+      <tr>
+        <td><%= link_to 'Show', pub_attachment %></td>
+        <td><%= link_to 'Edit', edit_pub_attachment_path(pub_attachment) %></td>
+        <td><%= link_to 'Destroy', pub_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pub Attachment', new_pub_attachment_path %>

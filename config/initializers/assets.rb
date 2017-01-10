@@ -30,7 +30,7 @@ Rails.application.config.assets.precompile += %w( init_ckeditor.js )
 
 
 #SCRIPTS
-Rails.application.config.assets.precompile += %w( jquery.1.11.1.js )
+#Rails.application.config.assets.precompile += %w( jquery.1.11.1.js )
 Rails.application.config.assets.precompile += %w( jquery_ujs.js )
 Rails.application.config.assets.precompile += %w( bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( bootstrap-tagsinput.js )
