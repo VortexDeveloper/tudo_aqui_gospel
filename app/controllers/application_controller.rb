@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
     @news = Publication.where(pub_type: "news")
 
     #Ads side
-    @ads_min = Ad.all.shuffle.first(4)
-    @ads_med = Ad.all.shuffle.first(6)
-    @ads_max = Ad.all.shuffle.first(8)
+    @ads_min = Ad.active.shuffle.first(4)
+    @ads_med = Ad.active.shuffle.first(6)
+    @ads_max = Ad.active.shuffle.first(8)
 
     #Ads pages
     @principal = Ad.active_side_banner(home: false).first(2)
