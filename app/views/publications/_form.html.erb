@@ -51,9 +51,7 @@
                     <div class="col-sm-6 col-xs-12" id="attachment_<%= attachment.id %>">
                       <span class="input-group-btn">
                         <span class="input-group-text">
-                          <% if attachment.present? %>
-                            <%= attachment.file.instance.file_file_name %>
-                          <% end %>
+                          <%= attachment.file.instance.file_file_name %>
                         </span>
                         <span class="btn btn-primary btn-file">
                           <%= link_to attachment,
@@ -79,16 +77,7 @@
                   $i = 2 - @publication.pub_attachments.size
                 %>
                 <% while $i > 0  do %>
-                <div class="col-sm-6 col-xs-12">
-                  <span class="input-group-btn">
-                    <span class="input-group-text">
-
-                    </span>
-                    <span class="btn btn-primary btn-file">
-                      <img src="/images/icon/addmedia.png" alt="" />
-                      <%= file_field_tag 'file[]', multiple: true, class: 'rst-pageinput' %>
-                    </span>
-                </div>
+                  <%= render partial: "attachment" %>
                   <% $i -= 1 %>
                 <% end %>
               <% end %>

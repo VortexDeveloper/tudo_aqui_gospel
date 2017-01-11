@@ -58,5 +58,5 @@ class ApplicationController < ActionController::Base
     @page_title = Category.find(params[:id_category]).name
     @ads_categories = Ad.where("category_id LIKE ?", params[:id_category])
   end
-
+  
 end

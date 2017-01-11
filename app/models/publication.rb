@@ -9,7 +9,7 @@ class Publication < ApplicationRecord
   has_attached_file(
     :image,
     styles: { normal: "800x370>", medium: "555x150>", thumb: "100x100>", min: "100x76>" },
-    default_url: "../../images/banner.png"
+    default_url: "/images/banner.png"
   )
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
