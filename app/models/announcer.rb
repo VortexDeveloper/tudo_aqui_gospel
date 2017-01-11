@@ -17,7 +17,7 @@
   has_attached_file(
     :avatar,
     styles: { medium: "140x140>", small: "100x100>", thumb: "27x27>" },
-    default_url: "../../images/user.png"
+    default_url: "/images/user.png"
   )
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
@@ -25,7 +25,7 @@
   has_attached_file(
     :banner,
     styles: { normal: "800x370>", medium: "555x150>", thumb: "100x100>" },
-    default_url: "../../images/banner.png"
+    default_url: "/images/banner.png"
   )
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
