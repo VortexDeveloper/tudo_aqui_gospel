@@ -6,11 +6,13 @@ class PublicationsController < ApplicationController
   # GET /publications.json
   def index
     @publications = Publication.where(author_id: current_user.id).paginate(page: params[:page], per_page: 4)
+    @lastest_news = Publication.latest_news
   end
 
   # GET /publications/1
   # GET /publications/1.json
   def show
+    @lastest_news = Publication.latest_news
   end
 
   # GET /publications/new

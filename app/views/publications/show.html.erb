@@ -57,7 +57,12 @@
           <h2><%= @publication.title %></h2>
           <div class="rst-shortmenu">
             <p>
-              <span class="rst-item-author"><b>POR</b><a href="#"><%= @publication.author.user_name(@publication.author) %></a></span>
+              <span class="rst-item-author">
+                <b>POR</b>
+                <%= link_to columnist_path(@publication.author.columnist) do %>
+                  <%= @publication.author.profile.name || @publication.author.email %>
+                <% end %>
+              </span>
             </p>
           </div>
         </div>

@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   post 'announcers/create'
   post 'announcers/add_photo'
   post 'announcers/add_evaluation'
+  get 'pages/:id/subscription', controller: :pages, action: :subscription, as: 'subscription'
 
 end

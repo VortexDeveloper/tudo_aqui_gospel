@@ -60,11 +60,6 @@ class User < ApplicationRecord
     roles.each { |role| create_role_profile(role.name) }
   end
 
-  def user_name user
-    profile = PersonalProfile.where('user_id = ?', user.id )
-    profile.first.name
-  end
-
   def type
     profile_type = self.roles.first.name
     case profile_type

@@ -14,6 +14,9 @@ class Publication < ApplicationRecord
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  scope :latest_publications, -> { where(pub_type: "post").order(created_at: :desc) }
+  scope :latest_news, -> { where(pub_type: "news").order(created_at: :desc) }
+
   def create_attachments(attachments)
     attachments = [attachments] unless attachments.kind_of? Array
     attachments.each do |file_params|
@@ -22,5 +25,9 @@ class Publication < ApplicationRecord
       p.save!
       pub_attachments << p
     end
+  end
+
+  def self.random_category
+    self.pub_categories.keys.sample
   end
 end

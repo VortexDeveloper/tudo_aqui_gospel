@@ -37,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -58,4 +58,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_sign_up_path_for(resource)
+    if params[:roles].present?
+      root_path
+    else
+      subscription_path(resource)
+    end
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    if params[:roles].present?
+      root_path
+    else
+      subscription_path(resource)
+    end
+  end
 end
