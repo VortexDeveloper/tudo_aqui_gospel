@@ -1,5 +1,8 @@
 class AnnouncersController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
+  before_action :load_announcer, only: [:edit, :show, :update]
+  before_action :authenticate_current_user, except: [:show, :new, :create]
+  before_action :authenticate_admin, only: [:new, :create]
 
   def edit
     @announcer = Announcer.find(params[:id])
@@ -24,7 +27,7 @@ class AnnouncersController < ApplicationController
 #  end
 
   def add_photo
-    announcer = Announcer.where("user_id = ?", current_user).first
+    announcer = current_user.announcer
     announcer.photos << Gallery.new(gallery_params)
     announcer.save!
     redirect_to edit_announcer_path(announcer), notice: 'Foto adicionada a sua galeria com sucesso.'
@@ -38,8 +41,6 @@ class AnnouncersController < ApplicationController
   end
 
   def update
-
-    @announcer = current_user.announcer
     respond_to do |format|
       if @announcer.update(announcer_params)
         update_main_phone
@@ -162,5 +163,14 @@ class AnnouncersController < ApplicationController
     params.require(:main_phone).permit(
     :phone_id
     )
+  end
+
+  def load_announcer
+    @announcer = Announcer.find params[:id]
+  end
+
+  def authenticate_current_user
+    authenticate_user!
+    redirect_to after_sign_in_path_for(current_user), notice: 'Você não está autorizado a acessar esta página.' if current_user.announcer != @announcer
   end
 end

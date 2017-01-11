@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   before_action :global_variables
   include CanCan::ControllerAdditions
 
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to main_app.root_url, :notice => exception.message }
+    end
+  end
+
   def global_variables
     if user_signed_in?
       @columnist = current_user.columnist
@@ -47,4 +54,8 @@ class ApplicationController < ActionController::Base
     @ads_categories = Ad.where("category_id LIKE ?", params[:id_category])
   end
 
+  def authenticate_admin
+    authenticate_user!
+    redirect_to after_sign_in_path_for(current_user), notice: 'Você não está autorizado a acessar esta página.' unless current_user.has_role? :administrator
+  end
 end

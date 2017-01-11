@@ -508,3 +508,9 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  unauthorized:
+    manage:
+      all: "Você não está autorizado a acessar esta página."
+      user: "Você não está permitdo a administrar as contas de outros usuários."
+    update:
+      project: "Não permitido atualizar este projeto."
