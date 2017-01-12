@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :announcers
-  resources :ads
-  resources :vacancies
+  resources :ads, only: [:show, :update]
+  resources :vacancies, except: [:index]
   resources :galleries
   resources :publications
-  resources :curriculums
+  resources :curriculums, except: [:index]
   resources :evaluations
   resources :telephones
   resources :pub_attachments

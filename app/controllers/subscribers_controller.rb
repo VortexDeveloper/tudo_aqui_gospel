@@ -1,11 +1,11 @@
 class SubscribersController < ApplicationController
 
   def edit
-    @subscriber = Subscriber.where("user_id = ?", current_user.id).first
+    @subscriber = current_user.subscriber
   end
 
   def update
-      @subscriber = Subscriber.where("user_id = ?", current_user.id).first
+      @subscriber = current_user.subscriber
       if @subscriber.update(subscriber_params)
         redirect_to subscribers_edit_url, notice: 'Dados atualizado com sucesso.'
       else

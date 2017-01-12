@@ -3,13 +3,6 @@
 //
 
 $(function() {
-  $("#input-photo").click(function(e) {
-    e.preventDefault();
-    $("#image-button-photo").trigger('click');
-  });
-})
-
-$(function() {
   $("#input-banner").click(function(e) {
     e.preventDefault();
     $("#image-button-banner").trigger('click');
@@ -30,23 +23,34 @@ $(function() {
   });
 })
 
-  function verificaMostraBotao(){
-      $('#image-button-photo').each(function(index){
-          if ($('#image-button-photo').eq(index).val() != ""){
-            $("#save-button").trigger('click');
-
-          }
-      });
-  }
-
-  $('#image-button-photo').on("change", function(){
-    verificaMostraBotao();
+$(function() {
+  $("#input-photo").click(function(e) {
+    e.preventDefault();
+    alert("1 - input-photo click");
+    $("#image-button-photo2").trigger('click');
   });
+})
 
-  $('#save-button').on("click", function(){
-      $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
-      $('#save-button').hide();
+function verificaMostraBotao(){
+  alert("verificaMostraBotao");
+  $('#image-button-photo2').each(function(index){
+      if ($('#image-button-photo2').eq(index).val() != ""){
+        $("#save-button").trigger('click');
+
+      }
   });
+}
+
+$('#image-button-photo2').on("change", function(){
+  alert("image-button-photo change");
+  verificaMostraBotao();
+});
+
+$('#save-button').on("click", function(){
+  alert("save-button append");
+    $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
+    $('#save-button').hide();
+});
 
 
 

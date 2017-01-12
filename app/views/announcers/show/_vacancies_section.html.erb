@@ -1,29 +1,39 @@
-<section id="rst-newsandhot">
+<section id="rst-newsandhot" class="evaluation-section">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="rst-section-title rst-section-title-box">
           <h4>Vagas de emprego</h4>
         </div> <!-- end section title -->
-        <% if @announcer.vacancies.where(active: :s).present? %>
-            <div class="row commentlist owl-carousel">
+        <% if @announcer.vacancies.present? %>
+            <ol class="row commentlist owl-carousel">
               <% @announcer.vacancies.each do |vacancy| %>
                 <div class="col-sm-12 comment">
-                  <%= link_to vacancy do %>
-                    <div class="comment-avatar">
-                      <%=  image_tag @announcer.avatar.url(:medium) %>
-                    </div>
-                  <% end %>
-                  <div class="comment-data">
+                  <div class="comment-container">
                     <%= link_to vacancy do %>
-                      <%= @announcer.fantasy_name %>
+                      <div class="comment-avatar">
+                        <%=  image_tag @announcer.avatar.url(:medium) %>
+                      </div>
                     <% end %>
-                    <span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
-                    <p class="comment-body"><%= vacancy.name %></p>
+                    <div class="comment-data">
+                      <div class="comment-header">
+                        <%= link_to vacancy.name, vacancy, class: "comment-author" %>
+                        <div class="rate-info">
+                          <time class="comment-date">
+                            <i class="fa fa-clock-o"></i><%= vacancy.created_at %>
+                          </time>
+                        </div>
+                      </div>
+                      <div class="comment-body">
+                        <p>
+                          Empresa: <%= @announcer.fantasy_name %>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               <% end %>
-            </div>
+            </ol>
         <% else %>
             <div class='alert'>
                 Vagas de emprego ainda não cadastradas

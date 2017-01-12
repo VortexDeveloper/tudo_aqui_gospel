@@ -59,7 +59,11 @@
             <p>
               <span class="rst-item-author">
                 <b>POR</b>
-                <%= link_to columnist_path(@publication.author.columnist) do %>
+                <% if @publication.author.columnist.present? %>
+                  <%= link_to columnist_path(@publication.author.columnist) do %>
+                    <%= @publication.author.profile.name || @publication.author.email %>
+                  <% end %>
+                <% else %>
                   <%= @publication.author.profile.name || @publication.author.email %>
                 <% end %>
               </span>

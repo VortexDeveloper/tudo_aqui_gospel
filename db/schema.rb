@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110231104) do
-
-  create_table "ad_locals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "state_id"
-    t.integer  "city_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_ad_locals_on_city_id", using: :btree
-    t.index ["state_id"], name: "index_ad_locals_on_state_id", using: :btree
-  end
+ActiveRecord::Schema.define(version: 20170112214235) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -182,9 +173,9 @@ ActiveRecord::Schema.define(version: 20170110231104) do
 
   create_table "curriculums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.text     "description",       limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "subscriber_id"
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -325,15 +316,6 @@ ActiveRecord::Schema.define(version: 20170110231104) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
-  create_table "scopes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "ad_id"
-    t.integer  "ad_local_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["ad_id"], name: "index_scopes_on_ad_id", using: :btree
-    t.index ["ad_local_id"], name: "index_scopes_on_ad_local_id", using: :btree
-  end
-
   create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "uf"
@@ -406,8 +388,6 @@ ActiveRecord::Schema.define(version: 20170110231104) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "ad_locals", "cities"
-  add_foreign_key "ad_locals", "states"
   add_foreign_key "administrators", "users"
   add_foreign_key "ads", "announcers"
   add_foreign_key "ads", "categories"
@@ -432,8 +412,6 @@ ActiveRecord::Schema.define(version: 20170110231104) do
   add_foreign_key "pub_attachments", "publications"
   add_foreign_key "publications", "knowledge_areas"
   add_foreign_key "publications", "users", column: "author_id"
-  add_foreign_key "scopes", "ad_locals"
-  add_foreign_key "scopes", "ads"
   add_foreign_key "states", "countries"
   add_foreign_key "subscribers", "users"
   add_foreign_key "vacancies", "announcers"

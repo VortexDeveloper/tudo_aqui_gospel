@@ -1,5 +1,8 @@
 class ColumnistsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:show]
+  before_action only: [:edit, :update] do
+    authenticate_current_user(user_signed_in? && current_user.columnist.nil?)
+  end
 
   def show
     @columnist = Columnist.find(params[:id])
@@ -8,11 +11,11 @@ class ColumnistsController < ApplicationController
   end
 
   def edit
-    @columnist = Columnist.where("user_id = ?", current_user.id).first
+    @columnist = current_user.columnist
   end
 
   def update
-      @columnist = Columnist.where("user_id = ?", current_user.id).first
+      @columnist = current_user.columnist
       if @columnist.update(columnist_params)
         redirect_to columnists_edit_url, notice: 'Dados atualizados com sucesso.'
       else

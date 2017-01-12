@@ -38,8 +38,8 @@
                 <%= f.text_field :title, value: curriculum.title, class: 'rst-pageinput' %>
               </div>
               <div class="rst-setting">
-                <span><%= f.label :description, "Descrição" %></span>
-                <%= f.text_field :description, value: curriculum.description, class: 'rst-pageinput' %>
+                <span><%= f.label :description, "Resumo" %></span>
+                <%= f.text_area :description, value: curriculum.description, class: 'rst-pageinput' %>
               </div>
               <div class="rst-setting">
                 <span><%= f.label :file, "Anexo" %></span>

@@ -1,6 +1,10 @@
 class VacanciesController < ApplicationController
   before_action :set_vacancy, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!, only: [:show]
+  before_action only: [:edit, :update, :destroy] do
+    authenticate_current_user(@vacancy.announcer != current_user.announcer)
+  end
 
   # GET /vacancies
   # GET /vacancies.json
@@ -16,16 +20,18 @@ class VacanciesController < ApplicationController
   # GET /vacancies/new
   def new
     @vacancy = Vacancy.new
+    authorize! current_user, @vacancy
   end
 
   # GET /vacancies/1/edit
   def edit
+    authorize! current_user, @vacancy
   end
 
   # POST /vacancies
   # POST /vacancies.json
   def create
-    announcer = Announcer.where("user_id = ?", current_user.id).first
+    announcer = current_user.announcer
     @vacancy = Vacancy.new(vacancy_params)
 
     respond_to do |format|
@@ -37,6 +43,7 @@ class VacanciesController < ApplicationController
         format.json { render json: @vacancy.errors, status: :unprocessable_entity }
       end
     end
+    authorize! current_user, @vacancy
   end
 
   # PATCH/PUT /vacancies/1
@@ -51,6 +58,7 @@ class VacanciesController < ApplicationController
         format.json { render json: @vacancy.errors, status: :unprocessable_entity }
       end
     end
+    authorize! current_user, @vacancy
   end
 
   # DELETE /vacancies/1
@@ -62,6 +70,7 @@ class VacanciesController < ApplicationController
       format.js { head :ok, notice: 'Vaga excluída com sucesso.' }
       format.html { redirect_to edit_announcer_path(announcer), notice: 'Vaga excluída com sucesso.' }
     end
+    authorize! current_user, @vacancy
   end
 
   private

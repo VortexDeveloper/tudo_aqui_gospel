@@ -31,8 +31,7 @@ module ApplicationHelper
 
   def add_post_button
     if user_signed_in?
-      columnist = current_user.roles.where("name = ?", "Columnist")
-      if columnist.present?
+      if current_user.has_any_role? 'Columnist', 'Administrator'
         link_to "NOVO POST", "#", class: 'rst-accsetting-addpost rst-addpost-mobile'
       end
     end
@@ -74,8 +73,7 @@ module ApplicationHelper
 
   def plus_post_button
     if user_signed_in?
-      columnist = current_user.roles.where("name = ?", "Columnist")
-      if columnist.present?
+      if current_user.has_any_role? 'Columnist', 'Administrator'
         link_to new_publication_path, class: 'rst-accsetting-addpost' do
           content_tag(:i, "", :class => 'fa fa-plus')
         end

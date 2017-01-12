@@ -360,28 +360,40 @@
 						<div class="rst-section-title rst-section-title-box">
 							<h4>Vagas de Emprego</h4>
 						</div> <!-- fim section title -->
-						<div class="row commentlist owl-carousel">
-              <% if @vacancies.present? %>
+            <% if @vacancies.present? %>
+              <div class="row commentlist owl-carousel">
                 <% @vacancies.each do |vacancy| %>
     							<div class="col-sm-12 comment">
-    								<div class="comment-avatar">
-    									<%=  image_tag vacancy.announcer.avatar.url if vacancy.announcer.avatar.present? %>
-    								</div>
-    								<div class="comment-data">
-                      <%= link_to vacancy.announcer, class: 'comment-author' do %>
-                        <%= vacancy.announcer.fantasy_name %>
+                    <div class="comment-container">
+                      <%= link_to vacancy do %>
+                        <div class="comment-avatar">
+                          <%= image_tag vacancy.announcer.avatar.url if vacancy.announcer.avatar.present? %>
+                        </div>
                       <% end %>
-    									<span class="comment-time"><i class="fa fa-clock-o"></i><%= vacancy.created_at %></span>
-    									<p class="comment-body"><%= vacancy.name %></p>
-    								</div>
+                      <div class="comment-data">
+                        <div class="comment-header">
+                          <%= link_to vacancy.name, vacancy, class: "comment-author" %>
+                          <div class="rate-info">
+                            <time class="comment-date">
+                              <i class="fa fa-clock-o"></i><%= vacancy.created_at %>
+                            </time>
+                          </div>
+                        </div>
+                        <div class="comment-body">
+                          <p>
+                            Empresa: <%= vacancy.announcer.fantasy_name || "Confidencial" %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
     							</div>
                 <% end %>
-              <% else %>
-                <p>
+              </div>
+            <% else %>
+              <div class='alert'>
                   Ainda não existem vagas de emprego cadastradas
-                </p>
-              <% end %>
-						</div>
+              </div>
+            <% end %>
 					</div>
 				</div>
         <!-- fim vagas -->
@@ -406,10 +418,11 @@
     								</div>
     								<div class="comment-data">
                       <%= link_to curriculum, class: 'comment-author' do %>
-                        <%= curriculum.subscriber.user.profile.name %>
+                        <%= curriculum.subscriber.user.profile.name || "Usuário anônimo" %>
                       <% end %>
     									<span class="comment-time"><i class="fa fa-clock-o"></i><%= curriculum.created_at %></span>
-    									<p class="comment-body"><%= curriculum.description %></p>
+    									<p class="comment-body"><%= truncate(curriculum.description, length: 150)  %></p>
+                      <%= link_to 'Veja mais', curriculum %>
     								</div>
     							</div>
                 <% end %>
