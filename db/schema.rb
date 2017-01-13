@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112214235) do
+ActiveRecord::Schema.define(version: 20170113200322) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20170112214235) do
     t.string   "description"
     t.string   "title"
     t.string   "link"
-    t.string   "text_description"
+    t.text     "text_description",    limit: 65535
     t.date     "start_date"
     t.date     "end_date"
     t.date     "record_date"
     t.integer  "price"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "category_id"
     t.integer  "announcer_id"
     t.string   "avatar_file_name"

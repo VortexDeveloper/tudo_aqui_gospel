@@ -3,8 +3,36 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
+          <div class="search-bar text-right">
+            <%= form_tag search_category_path, method: :get, class: 'form-inline' do %>
+              <div class="form-group">
+                <%= text_field_tag :query, "", class: 'form-control', placeholder: 'Termo da pesquisa' %>
+              </div>
+              <div class="form-group">
+                <%= label_tag 'Estado' %>
+                <%= select_tag :personal_profile_state_id, states_for_select(''), class: 'form-control', include_blank: true %>
+              </div>
+              <div class="form-group">
+                <%= label_tag 'Cidade' %>
+                <%= grouped_collection_select(
+                      :personal_profile,
+                      :city_id,
+                      State.all.includes(:cities),
+                      :cities,
+                      :name,
+                      :id,
+                      :name,
+                      {selected: ''},
+                      class: 'form-control',
+                      include_blank: true
+                    )
+                %>
+              </div>
+              <%= submit_tag 'Pesquisar', class: 'btn btn-default' %>
+            <% end %>
+          </div>
           <div class="rst-section-title rst-section-title-box">
-            <h4><%= @page_title %></h4>
+            <h4><%= @category.name %></h4>
           </div>
           <div class="rst-mainslider owl-carousel">
             <% ads_categories.each do |ad| %>
@@ -87,3 +115,4 @@
       </div>
     </div>
   </section>
+<%= javascript_include_tag 'populate_city_select' %>

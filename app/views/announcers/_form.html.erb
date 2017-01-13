@@ -92,7 +92,19 @@
             </div>
             <div class="rst-setting">
               <span><%= profile.label :city, "Cidade" %></span>
-              <%= profile.select(:city_id, [cities_for_select], {selected: personal_profile.city_id}, { :class => 'rst-pageinput', required: true }) %>
+              <%= profile.grouped_collection_select(
+                    :city_id,
+                    State.all.includes(:cities),
+                    :cities,
+                    :name,
+                    :id,
+                    :name,
+                    {selected: personal_profile.city_id || ''},
+                    class: 'rst-pageinput',
+                    required: true,
+                    include_blank: true
+                  )
+              %>
             </div>
             <div class="rst-setting">
               <span><%= profile.label :zip_code, "CEP" %></span>
@@ -134,3 +146,19 @@
       <%= u.submit "Enviar", class: 'rst-pagebutton' %>
     </div>
 <% end %>
+<%= javascript_include_tag 'populate_city_select' %>
+<script type="text/javascript">
+  jQuery(function($){
+    $('#personal_profile_zip_code').inputmask('999.99-999', {greedy: false, clearIncomplete: true});
+
+    $('input[name="announcer[doc_type]"]').on('change', function(){
+      if($(this).val() == 'cpf'){
+        $('#announcer_doc').inputmask('remove');
+        $('#announcer_doc').inputmask('999.999.999-99', {greedy: false, clearIncomplete: true});
+      } else {
+        $('#announcer_doc').inputmask('remove');
+        $('#announcer_doc').inputmask('99.999.999/9999-99', {greedy: false, clearIncomplete: true});
+      }
+    });
+  });
+</script>

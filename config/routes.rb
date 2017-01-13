@@ -11,7 +11,13 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :announcers
-  resources :ads, only: [:show, :update]
+  resources :ads, only: [:show, :update] do
+    collection do
+      resources :categories, only: [:show] do
+        get :search, on: :member
+      end
+    end
+  end
   resources :vacancies, except: [:index]
   resources :galleries
   resources :publications
@@ -21,7 +27,6 @@ Rails.application.routes.draw do
   resources :pub_attachments
 
   get 'pages/home'
-  get 'ads_categories/:id_category' => 'application#ads_categories', as: 'ads_categories'
   get 'personal_profiles/edit'
   patch 'personal_profiles/update'
   post 'personal_profiles/update_announcer'

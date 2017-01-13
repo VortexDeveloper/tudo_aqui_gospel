@@ -49,11 +49,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def ads_categories
-    @page_title = Category.find(params[:id_category]).name
-    @ads_categories = Ad.where("category_id LIKE ?", params[:id_category])
-  end
-
   def authenticate_admin
     authenticate_user!
     redirect_to after_sign_in_path_for(current_user), notice: 'Você não está autorizado a acessar esta página.' unless current_user.has_role? :administrator
