@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   ratyrate_rater
 
+  rails_admin do
+    object_label_method :user_name
+  end
+
   has_one :profile, class_name: 'PersonalProfile', dependent: :destroy
 
   has_one :columnist, dependent: :destroy
@@ -76,5 +80,9 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && active?
+  end
+
+  def user_name
+    "#{self.email} - #{self.profile.name}"
   end
 end

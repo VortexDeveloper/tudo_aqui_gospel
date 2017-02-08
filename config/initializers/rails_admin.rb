@@ -1,6 +1,6 @@
 RailsAdmin.config do |config|
 
-  config.parent_controller = 'ApplicationController' 
+  config.parent_controller = 'ApplicationController'
 
   ### Popular gems integration
 
@@ -25,10 +25,25 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
+
+  config.excluded_models << 'Phonebook'
+  config.excluded_models << 'AverageCache'
+  config.excluded_models << 'OverallAverage'
+  config.excluded_models << 'Rate'
+  config.excluded_models << 'RatingCache'
+  config.excluded_models << 'Telephone'
+
+  # config.model 'Box' do
+  #   label "Beautiful box"
+  #   label_plural "Beautiful boxen"
+  # end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ['Announcer']
+    end
     export
     bulk_delete
     show
@@ -60,4 +75,96 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model User do
+    edit do
+      # For RailsAdmin >= 0.5.0
+      field :email
+      field :password do
+        required true
+        html_attributes do
+          {minlength: 6}
+        end
+      end
+      field :password_confirmation do
+        required true
+        html_attributes do
+          {minlength: 6}
+        end
+      end
+      field :active
+      field :roles
+    end
+  end
+
+  config.model Ad do
+    edit do
+      field :title do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :description do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :text_description
+      field :start_date do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :end_date do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :price do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :category do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :announcer do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :avatar do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :ad_type do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :home do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :active do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+    end
+  end
 end

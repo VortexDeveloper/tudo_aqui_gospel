@@ -12,6 +12,10 @@
 
   ratyrate_rateable "quality"
 
+  rails_admin do
+    object_label_method :announcer_label_name
+  end
+
   enum doc_type: [:cnpj, :cpf]
 
   has_attached_file(
@@ -72,5 +76,9 @@
 
   def address_string
     "#{user.profile.street}, #{user.profile.neighborhood}, #{user.profile.city.try(:name)} - #{user.profile.state.try(:name)}"
+  end
+
+  def announcer_label_name
+    "#{user.email} - #{self.name}"
   end
 end
