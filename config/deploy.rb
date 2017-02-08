@@ -11,7 +11,8 @@ require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :user, 'tag_rails'          # Username in the server to SSH to.
-set :domain, '45.55.83.125'
+# set :domain, '45.55.83.125'
+set :domain, '104.131.121.220'
 set :deploy_to, "/home/tag_rails/tag_production/"
 set :repository, 'git@github.com:VortexDeveloper/tudo_aqui_gospel.git'
 set :branch, 'production'
@@ -50,6 +51,7 @@ task deploy: :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    invoke :'rails:db_create'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
@@ -57,7 +59,7 @@ task deploy: :environment do
       in_path(fetch(:current_path)) do
         command %{source ~/.profile}
         invoke :'rbenv:load'
-        # command "RAILS_ENV='production' bundle exec rake db:seed"
+        command "RAILS_ENV='production' bundle exec rake db:seed"
         # command "chown -R www-data:www-data /home/tag_rails/tag_production/current"
         # command "chown -R www-data:www-data /home/tag_rails/tag_production/current/public"
         command %{mkdir -p tmp/}
