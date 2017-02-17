@@ -66,6 +66,13 @@ pt-BR:
       publication:
         one: Publicação
         other: Publicações
+        pub_categories:
+          video: Vídeo
+          text: Texto
+          mission_diary: Diário de Missão
+          teology_talk: Conversa de Teologia
+          course: Curso
+          witness: Testemunho
       knowledge_area:
         one: Área de conhecimento
         other: Áreas de conhecimento

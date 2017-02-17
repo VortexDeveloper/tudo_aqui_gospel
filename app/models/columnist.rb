@@ -16,11 +16,20 @@ class Columnist < ApplicationRecord
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+  rails_admin do
+    object_label_method :columnist_name_for_admin
+  end
+
   def title
     columnist_title.try(:title)
   end
 
   def columnist_name
     "#{title} #{user.profile.name}"
+  end
+
+  def columnist_name_for_admin
+    return "" if user.nil?
+    "#{user.email} - #{user.profile.name}"
   end
 end

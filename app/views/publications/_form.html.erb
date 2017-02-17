@@ -95,7 +95,9 @@
             </div>
           </div>
           <div class="rst-new-cat">
-            <%= f.select :pub_category, Publication.pub_categories.keys.map { |k| [k.humanize, k] }, {}, {class: 'rst-pageinput', required: true} %>
+            <%= f.select :pub_category, Publication.pub_categories.keys.map { |k|
+                  [t(k, scope: [:activerecord, :models, :publication, :pub_categories]), k]
+                }, {}, {class: 'rst-pageinput', required: true} %>
           </div>
           <div class="rst-section-title rst-section-title-box">
             <h4>Selecione uma área</h4>
