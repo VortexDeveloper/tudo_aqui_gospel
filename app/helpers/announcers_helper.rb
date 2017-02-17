@@ -18,7 +18,7 @@ module AnnouncersHelper
     html = content_tag(:i, '', class: "fa fa-lg fa-map-marker")
     html << content_tag(:span, @announcer.address_string)
   end
- 
+
   def show_average
     html = content_tag(:i, '', class: "fa fa-lg fa-star", style: 'color: #EDA100;')
     html << content_tag(:span, @announcer.average('quality').avg)
@@ -27,15 +27,19 @@ module AnnouncersHelper
   def select_for_telephones(form_builder)
     telephones = @announcer.user.profile.telephones
     main_phone = @announcer.main_telephone
-    select(
-      :main_phone,
-      :phone_id,
-      telephones.collect {|t| [ t.number, t.id ] },
-      {
-        selected: main_phone.id
-      },
-      class: 'rst-pageinput',
-      style: 'float: left; width: auto; margin-right: 10px;'
-    )
+    if telephones.present?
+      select(
+        :main_phone,
+        :phone_id,
+        telephones.collect {|t| [ t.number, t.id ] },
+        {
+          selected: main_phone.id
+        },
+        class: 'rst-pageinput',
+        style: 'float: left; width: auto; margin-right: 10px;'
+      )
+    else
+      content_tag :span, "Não há telefones cadastrados"
+    end
   end
 end
