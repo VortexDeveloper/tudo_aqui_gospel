@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113200322) do
+ActiveRecord::Schema.define(version: 20170217223047) do
 
   create_table "ad_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "comercial"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 20170113200322) do
     t.date     "start_date"
     t.date     "end_date"
     t.date     "record_date"
-    t.integer  "price"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.decimal  "price",                             precision: 11, scale: 2
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.integer  "category_id"
     t.integer  "announcer_id"
     t.string   "avatar_file_name"

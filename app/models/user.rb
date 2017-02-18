@@ -83,6 +83,7 @@ class User < ApplicationRecord
   end
 
   def user_name
-    "#{self.email} - #{self.profile.name}"
+    return "" if persisted?
+    "#{email} - #{profile.try(:name)}"
   end
 end

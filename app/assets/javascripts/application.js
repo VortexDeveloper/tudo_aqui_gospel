@@ -22,3 +22,4 @@
 //= require jquery.inputmask.date.extensions
 //= require jquery.raty
 //= require ratyrate
+//= require accounting.min

@@ -18,5 +18,26 @@
     <script type="text/javascript">
        <%= yield :js %>
     </script>
+    <script type="text/javascript">
+    accounting.settings = {
+      currency: {
+        symbol : "R$",   // default currency symbol is '$'
+        format: "%s %v", // controls output: %s = symbol, %v = value/number (can be object: see below)
+        decimal : ",",  // decimal point separator
+        thousand: ".",  // thousands separator
+        precision : 2   // decimal places
+      },
+      number: {
+        precision : 0,  // default precision on numbers is 0
+        thousand: ",",
+        decimal : "."
+      }
+    }
+    $('.money').each(function(){
+      var _this = $(this);
+      var price = _this.attr('data-price');
+      _this.text(accounting.formatMoney(price));
+    });
+    </script>
   </body>
 </html>

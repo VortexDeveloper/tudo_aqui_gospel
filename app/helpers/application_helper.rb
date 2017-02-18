@@ -108,9 +108,7 @@ module ApplicationHelper
 
   def show_admin
     if user_signed_in?
-      profile_type = current_user.roles.first.name
-
-      if profile_type == "Administrator"
+      if current_user.has_role?(:administrator) || current_user.has_role?(:insider)
         content_tag(:li, "") do
           link_to "Painel de administração", rails_admin_path
         end

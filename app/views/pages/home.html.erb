@@ -15,7 +15,7 @@
                       <%= link_to ad.announcer do %>
                         <span><%= ad.announcer.fantasy_name %></span>
                       <% end %>
-    									<p><a href=""><%= ad.description %></a></p>
+    									<p><%= link_to ad.description, ad_path(ad) %></p>
     								</div>
     							</div>
                 <% end %>
@@ -37,14 +37,14 @@
               <% if @principal_home.present? %>
                  <% @principal_home.each do |ad| %>
     							 <div class="rst-posttype photobox-370x320">
-                     <%= link_to ad do %>
+                     <%= link_to ad_path(ad) do %>
                         <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
                      <% end %>
     								<div class="rst-boxinfo">
                       <%= link_to ad.announcer do %>
     									  <span><%= ad.announcer.fantasy_name %></span>
                       <% end %>
-    									<p><a href=""><%= ad.description %></a></p>
+    									<p><%= link_to ad.description, ad_path(ad) %></p>
     								</div>
     							 </div>
                  <% end %>

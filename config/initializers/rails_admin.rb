@@ -32,6 +32,7 @@ RailsAdmin.config do |config|
   config.excluded_models << 'Rate'
   config.excluded_models << 'RatingCache'
   config.excluded_models << 'Telephone'
+  config.excluded_models << 'ColumnistKnowledge'
 
   # config.model 'Box' do
   #   label "Beautiful box"
@@ -143,9 +144,9 @@ RailsAdmin.config do |config|
       end
       field :avatar do
         required true
-        html_attributes do
-          {required: 'required'}
-        end
+        # html_attributes do
+        #   {required: 'required'}
+        # end
       end
       field :ad_type do
         required true

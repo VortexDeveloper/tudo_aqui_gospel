@@ -32,8 +32,12 @@ class Ability
     user ||= User.new
     if user.has_role? :administrator
       can :manage, :all
-      cannot :manage, Vacancy
-      cannot :manage, Curriculum
+      # cannot :manage, Vacancy
+      # cannot :manage, Curriculum
+    elsif user.has_role? :insider
+      can :manage, :all
+      cannot :manage, Administrator
+      cannot :manage, User
     else
       if user.has_role? :announcer
         can :manage, Vacancy

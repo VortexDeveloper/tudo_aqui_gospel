@@ -51,7 +51,9 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin
     authenticate_user!
-    redirect_to after_sign_in_path_for(current_user), notice: 'Você não está autorizado a acessar esta página.' unless current_user.has_role? :administrator
+    unless(current_user.has_role?(:administrator) or current_user.has_role?(:insider))
+      redirect_to after_sign_in_path_for(current_user), notice: 'Você não está autorizado a acessar esta página.'
+    end
   end
 
   def authenticate_current_user(_condition)
