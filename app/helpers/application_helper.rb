@@ -83,7 +83,7 @@ module ApplicationHelper
 
   def show_profile_type
     if user_signed_in?
-      profile_type = current_user.roles.first.name
+      profile_type = current_user.roles.first.name if current_user.roles.present?
 
       case profile_type
         when "Columnist"
@@ -118,7 +118,7 @@ module ApplicationHelper
 
   def show_image_thumb(columnist, subscriber, announcer, administrator)
     if user_signed_in?
-      profile_type = current_user.roles.first.name
+      profile_type = current_user.roles.first.name if current_user.roles.present?
       case profile_type
         when "Columnist"
           if columnist.avatar.present?

@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  # password: bkur5etc10
+  password: vorteX20**
+  host: 127.0.0.1
+  port: 3306
+
+development:
+  <<: *default
+  database: tag_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: tag_test
+
+production:
+  <<: *default
+  host: <%= ENV['DATABASE_HOST'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_NAME'] %>

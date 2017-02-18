@@ -226,7 +226,9 @@
                         <div class="rst-postpic col-sm-6">
                           <div class="photobox-370x278">
                             <%= link_to ad do %>
-                              <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
+                              <% if ad.avatar.present? %>
+                              <%= image_tag ad.avatar.url(:large) %>
+                              <% end %>
                             <% end %>
                             <%= link_to ad.announcer, class: 'rst-postpic-cat' do %>
                               <span><%= ad.announcer.fantasy_name %></span>
