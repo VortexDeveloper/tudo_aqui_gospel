@@ -58,8 +58,8 @@
           <div class="rst-shortmenu">
             <p>
               <span class="rst-item-author">
-                <b>POR</b>
-                <% if @publication.author.columnist.present? %>
+                <% if @publication.author && @publication.author.columnist.present? %>
+                  <b>POR</b>
                   <%= link_to columnist_path(@publication.author.columnist) do %>
                     <%= @publication.author.profile.name || @publication.author.email %>
                   <% end %>

@@ -98,6 +98,10 @@ module ApplicationHelper
           content_tag(:li, "") do
             link_to "Cadastro de anunciante", new_announcer_path
           end
+        when "Insider"
+          content_tag(:li, "") do
+            link_to "Cadastro de anunciante", new_announcer_path
+          end
         when "Announcer"
           content_tag(:li, "") do
             link_to "Minha página", announcer_path(@announcer)
