@@ -13,6 +13,10 @@ class SubscribersController < ApplicationController
       end
   end
 
+  def canceled_subscription
+
+  end
+
   def subscriber_params
     params.require(:subscriber).permit(
     :christian,

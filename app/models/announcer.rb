@@ -34,6 +34,8 @@
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 
+  delegate :main_phone, :telephones, to: :user, prefix: true, allow_nil: true
+
   def rate(stars, comment, user, dimension=nil, dirichlet_method=false)
     dimension = nil if dimension.blank?
 
@@ -66,12 +68,6 @@
       a.avg = stars
       a.save!(validate: false)
     end
-  end
-
-  def main_telephone
-    main_phone = user.profile.telephones.where(main_telephone: :main)
-    return main_phone.first if main_phone.present?
-    user.profile.telephones.first
   end
 
   def address_string

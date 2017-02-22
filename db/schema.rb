@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217223047) do
+ActiveRecord::Schema.define(version: 20170222002156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -238,9 +238,11 @@ ActiveRecord::Schema.define(version: 20170217223047) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.string   "zip_code"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.string   "street_number"
+    t.string   "cpf"
     t.index ["city_id"], name: "index_personal_profiles_on_city_id", using: :btree
     t.index ["country_id"], name: "index_personal_profiles_on_country_id", using: :btree
     t.index ["state_id"], name: "index_personal_profiles_on_state_id", using: :btree
@@ -254,6 +256,20 @@ ActiveRecord::Schema.define(version: 20170217223047) do
     t.integer  "personal_profile_id"
     t.index ["personal_profile_id"], name: "index_phonebooks_on_personal_profile_id", using: :btree
     t.index ["telephone_id"], name: "index_phonebooks_on_telephone_id", using: :btree
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "reference"
+    t.string   "name"
+    t.string   "details"
+    t.string   "period"
+    t.integer  "duration_in_months"
+    t.string   "price"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "expire",             limit: 2, default: 0
+    t.integer  "trial_duration",               default: 0
+    t.string   "code",                                     null: false
   end
 
   create_table "pub_attachments", force: :cascade do |t|
@@ -352,6 +368,17 @@ ActiveRecord::Schema.define(version: 20170217223047) do
     t.integer  "main_telephone", limit: 2, default: 0
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.integer  "status"
+    t.string   "subscription_code"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["plan_id"], name: "index_transactions_on_plan_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -417,5 +444,7 @@ ActiveRecord::Schema.define(version: 20170217223047) do
   add_foreign_key "publications", "users", column: "author_id"
   add_foreign_key "states", "countries"
   add_foreign_key "subscribers", "users"
+  add_foreign_key "transactions", "plans"
+  add_foreign_key "transactions", "users"
   add_foreign_key "vacancies", "announcers"
 end

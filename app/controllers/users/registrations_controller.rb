@@ -63,7 +63,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:roles].present?
       root_path
     else
-      subscription_path(resource)
+      flash[:notice] = 'É necessário finalizar o cadastro e efetuar o pagamento para ativar a conta!'
+      personal_profiles_edit_path
     end
   end
 
@@ -71,7 +72,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:roles].present?
       root_path
     else
-      subscription_path(resource)
+      flash[:notice] = 'É necessário finalizar o cadastro e efetuar o pagamento para ativar a conta!'
+      new_transaction_path(user_id: resource.id)
     end
   end
 end

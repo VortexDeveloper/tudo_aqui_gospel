@@ -25,8 +25,8 @@ module AnnouncersHelper
   end
 
   def select_for_telephones(form_builder)
-    telephones = @announcer.user.profile.telephones
-    main_phone = @announcer.main_telephone
+    telephones = @announcer.user_telephones
+    main_phone = @announcer.user_main_phone
     if telephones.present?
       select(
         :main_phone,

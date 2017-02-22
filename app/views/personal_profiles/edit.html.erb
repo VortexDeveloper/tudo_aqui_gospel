@@ -1,1 +1,48 @@
-<%= render 'form', personal_profile: @personal_profile %>
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Perfil</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Section Register -->
+<section id="rst-account-page">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Dados do Perfil</h4>
+          </div> <!-- end section title -->
+          <div class="rst-accsetting">
+            <div class="rst-account-setting">
+            <%= render 'phone_form', locals: { profile: @personal_profile } %>
+            <%= form_for @personal_profile, url: personal_profiles_update_path do |form_builder| %>
+              <%= render partial: 'form', locals: { f: form_builder, profile: @personal_profile } %>
+              <%= form_builder.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="rst-section-title rst-section-title-box">
+          <h4>Ofertas</h4>
+        </div> <!-- end section title -->
+        <aside class="widget widget_adv">
+          <% @ads_med.each do |ad| %>
+            <%= link_to ad, class: 'photobox-170x170' do %>
+              <%= image_tag ad.avatar(:medium) %>
+            <% end %>
+          <% end %>
+          <div class="clear"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>

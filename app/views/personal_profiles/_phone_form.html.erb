@@ -1,0 +1,30 @@
+<div id="telephone-new-div">
+  <% if profile.telephones.size < 3 %>
+    <%= form_for :telephone , remote: true do |telephone| %>
+      <div class="rst-setting">
+            <span><%= telephone.label :number, "Novo Telefone" %></span>
+            <%= telephone.text_field :number, class: 'rst-pageinput phone-field', id: 'telephone-new', maxlength: '15' %>
+            <%= telephone.submit "+", class: 'rst-pagebutton phone-button' %>
+      </div>
+    <% end # form_for %>
+  <% end # if %>
+</div>
+<div class="rst-setting" id="telephones-list">
+  <% profile.telephones.each_with_index do |telephone, i| %>
+    <%= form_for telephone, remote: true do |t| %>
+      <div class="rst-setting">
+            <span><%= t.label :number, "Telefone (#{i + 1})"  %></span>
+            <%= t.text_field :number, value: telephone.number, class: 'rst-pageinput phone-field-list', maxlength: '15' %>
+            <%= t.submit "Atualizar", class: 'rst-pagebutton phone-button' %>
+            <%= link_to telephone, method: :delete, data: { confirm: 'Tem certeza que deseja deletar esse telefone?' }, class: 'rst-pagebutton phone-button', remote: true do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<script type="text/javascript">
+  jQuery(function($){
+    $('#telephone-new').inputmask('(99) 99999999[9]', {greedy: false, clearIncomplete: true});
+  });
+</script>

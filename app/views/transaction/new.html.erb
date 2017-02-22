@@ -1,0 +1,55 @@
+<!-- Section Register -->
+<section id="rst-account-page">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Dados do Perfil</h4>
+          </div> <!-- end section title -->
+          <div class="rst-accsetting">
+            <div class="rst-account-setting">
+            <%= render partial: 'personal_profiles/phone_form', locals: { profile: PersonalProfile.new } %>
+            <%= form_for :personal_profile, url: personal_profiles_update_path do |form_builder| %>
+              <%= render partial: 'personal_profiles/form', locals: {
+                    f: form_builder,
+                    profile: PersonalProfile.new
+                  } %>
+              <%= form_builder.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rst-payment-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="rst-section-title rst-section-title-box">
+          <h4>Dados do Pagamento</h4>
+        </div> <!-- end section title -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+<script type="text/javascript">
+  // $(document).ready(function() {
+  //   PagSeguroDirectPayment.setSessionId('<%= @session_id %>');
+  //   var hash = PagSeguroDirectPayment.getSenderHash();
+  //   $('.hash').html(hash);
+  //
+  //   PagSeguroDirectPayment.getBrand({
+  //     cardBin: "4111111111111111",
+  //     success: function (response) {
+  //       $('.card').html(response);
+  //     },
+  //     error: function (response) {
+  //       console.log(response);
+  //     }
+  //   });
+  // });
+</script>

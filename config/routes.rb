@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'transaction/validate_transaction'
+
+  get 'transaction/create'
+
   post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -25,6 +29,10 @@ Rails.application.routes.draw do
   resources :evaluations
   resources :telephones
   resources :pub_attachments
+  # fazer new como post
+  resources :transaction, only: [:new] do
+    post 'validate_transaction'
+  end
 
   get 'pages/home'
   get 'personal_profiles/edit'
@@ -36,6 +44,7 @@ Rails.application.routes.draw do
   patch 'columnists/update'
   get 'subscribers/edit'
   patch 'subscribers/update'
+  patch 'subscribers/canceled_subscription', as: :canceled_subscription
   post 'announcers/create'
   post 'announcers/add_photo'
   post 'announcers/add_evaluation'
