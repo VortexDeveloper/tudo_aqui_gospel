@@ -22,7 +22,7 @@
           </div> <!-- end section title -->
           <div class="rst-accsetting">
             <div class="rst-account-setting">
-            <%= render 'phone_form', locals: { profile: @personal_profile } %>
+            <%= render partial: 'telephones/form', locals: { profile: @personal_profile, telephone: @telephone } %>
             <%= form_for @personal_profile, url: personal_profiles_update_path do |form_builder| %>
               <%= render partial: 'form', locals: { f: form_builder, profile: @personal_profile } %>
               <%= form_builder.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>

@@ -1,0 +1,124 @@
+<!-- Section Register -->
+<section id="rst-account-page">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+          <div class="rst-section-title rst-section-title-box">
+            <h4>Dados do Perfil</h4>
+          </div> <!-- end section title -->
+          <div class="rst-accsetting">
+            <div class="rst-account-setting">
+            <%= form_for @transaction do |f| %>
+              <%= fields_for :telephone do |ft| %>
+              <div class="rst-setting">
+                <span><%= ft.label :number, 'Telefone' %></span>
+                <%= ft.text_field :number, class: 'rst-pageinput phone-mask', required: true, maxlength: '15' %>
+              </div>
+              <% end %>
+
+              <%= fields_for :personal_profile do |form_builder| %>
+                <%= render partial: 'personal_profiles/form', locals: {
+                      f: form_builder,
+                      profile: PersonalProfile.new
+                    }
+                %>
+
+                <%= fields_for :card_params do |fc| %>
+                  <div class="rst-setting">
+                    <span><%= fc.label :card_number, 'Número do Cartão' %></span>
+                    <%= fc.text_field :card_number, class: 'rst-pageinput' %>
+                  </div>
+
+                  <div class="rst-setting">
+                    <span><%= fc.label :cvv, 'CVV' %></span>
+                    <%= fc.text_field :cvv, class: 'rst-pageinput' %>
+                  </div>
+
+                  <div class="rst-setting">
+                    <span><%= fc.label :expiration_date, 'Validade' %></span>
+                    <%= fc.date_select :expiration_date, {
+                          discard_day: true,
+                          start_year: Date.today.year,
+                          end_year: 30.years.from_now.year
+                        },
+                        {
+                          class: 'rst-pageinput date_select-width'
+                        }
+                    %>
+                  </div>
+
+                  <div class="rst-setting">
+                    <span><%= fc.label :name, 'Nome do Titular' %></span>
+                    <%= fc.text_field :name, class: 'rst-pageinput' %>
+                  </div>
+
+                  <div class="rst-setting">
+                    <span><%= fc.label :birth_date, 'Data de Nascimento do Titular' %></span>
+                    <%= fc.date_select :birth_date, {
+                          start_year: 15.years.ago.year,
+                          end_year: 100.years.ago.year
+                        },
+                        {
+                          class: 'rst-pageinput date_select-width'
+                        }
+                    %>
+                  </div>
+
+                  <div class="rst-setting">
+                    <span><%= fc.label :phone, 'Telefone do Titular' %></span>
+                    <%= fc.text_field :phone, class: 'rst-pageinput phone-mask' %>
+                  </div>
+
+                  <div class="rst-setting">
+                    <span><%= fc.label :cpf, 'CPF do Titular' %></span>
+                    <%= fc.text_field :cpf, class: 'rst-pageinput cpf-mask' %>
+                  </div>
+
+                  <%= f.hidden_field :sender_hash, id: 'sender_hash' %>
+                  <%= f.hidden_field :payment_token, id: 'payment_token' %>
+                  <%= f.hidden_field :user_id, value: @user.id %>
+                <% end %>
+
+                <%= f.submit "ASSINAR", class: 'rst-pagebutton subscribe-action' %>
+              <% end %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    PagSeguroDirectPayment.setSessionId('<%= @session_id %>');
+
+    $('.subscribe-action').on('click', function(e){
+      e.preventDefault();
+      var hash = PagSeguroDirectPayment.getSenderHash();
+      $('#sender_hash').val(hash);
+      console.log(hash)
+      var _this = $(this);
+
+      PagSeguroDirectPayment.createCardToken({
+        cardNumber: $("#card_params_card_number").val(),
+        cvv: $("#card_params_cvv").val(),
+        expirationMonth: $("#card_params_expiration_date_2i").val(),
+        expirationYear: $("#card_params_expiration_date_1i").val(),
+        success: function (response) {
+          var token = response.card.token;
+          $("#payment_token").val(token);
+          $('#new_transaction').submit();
+        },
+        error: function (response) {
+          alert('Houve um erro inesperado.')
+          console.log(response);
+        }
+      });
+    });
+
+
+  });
+</script>

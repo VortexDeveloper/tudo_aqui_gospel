@@ -36,7 +36,7 @@ class Transaction < ApplicationRecord
         },
         document: {
           type: 'CPF',
-          value: user.cpf
+          value: user.cpf.gsub(/\.|-/, '')
         },
         address: {
           street: user.street,
@@ -45,7 +45,7 @@ class Transaction < ApplicationRecord
           district: user.neighborhood,
           city: user.city_name,
           state: user.state_uf,
-          country: user.country_code,
+          country: user.country_code || user.state.country.code,
           postal_code: user.zip_code
         }
       },
@@ -53,18 +53,25 @@ class Transaction < ApplicationRecord
         token: payment_token,
         holder: {
           name: card_params[:name],
-          birth_date: card_params[:birth_date],
+          birth_date: birth_date_formatted,
           phone: {
             area_code: card_params[:phone][1..2],
             number: card_params[:phone][5..14]
           },
           document: {
             type: 'CPF',
-            value: card_params[:cpf]
+            value: card_params[:cpf].gsub(/\.|-/, '')
           }
         }
       }
     }
+  end
+
+  def birth_date_formatted
+    year = card_params[:"birth_date(1i)"]
+    month = sprintf('%02d', card_params[:"birth_date(2i)"])
+    day = sprintf('%02d', card_params[:"birth_date(3i)"])
+    "#{day}/#{month}/#{year}"
   end
 
   def credentials

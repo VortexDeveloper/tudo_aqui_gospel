@@ -39,6 +39,10 @@ input#roles_ {
     text-align: center;
 }
 
+.date_select-width {
+  width: 20% !important;
+}
+
 #custom_error_explanation {
     margin: 20px 10px 40px;
 }

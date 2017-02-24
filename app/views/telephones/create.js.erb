@@ -1,4 +1,4 @@
-$('#telephones-list').append('<%= j render partial: "telephone" %>');
+$('#telephones-list').append('<%= j render partial: "telephone", locals: {telephone: @telephone, personal_profile: @personal_profile} %>');
 $('#telephone-new').val("");
 if ('<%= @personal_profile.telephones.size %>' > 2) {
   $('#telephone-new-div').hide();

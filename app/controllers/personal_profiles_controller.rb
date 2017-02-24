@@ -2,6 +2,7 @@ class PersonalProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def edit
+    @telephone = Telephone.new
   end
 
   def update

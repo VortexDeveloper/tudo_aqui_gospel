@@ -5,7 +5,7 @@
   </div>
   <div class="rst-setting">
     <span><%= f.label :cpf, "CPF" %></span>
-    <%= f.text_field :cpf, value: profile.cpf, class: 'rst-pageinput' %>
+    <%= f.text_field :cpf, value: profile.cpf, class: 'rst-pageinput cpf-mask' %>
   </div>
   <div class="rst-setting">
     <span><%= f.label :street, "Rua" %></span>
@@ -49,7 +49,8 @@
   </div>
 <script type="text/javascript">
   jQuery(function($){
-   $('#personal_profile_zip_code').inputmask('99999-999', {greedy: false, clearIncomplete: true});
+    $('#personal_profile_zip_code').inputmask('99999-999', {greedy: false, clearIncomplete: true});
+    $('.cpf-mask').inputmask('999.999.999-99', {greedy: false, clearIncomplete: true});
   });
 </script>
 <%= javascript_include_tag 'populate_city_select' %>

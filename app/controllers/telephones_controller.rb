@@ -1,6 +1,6 @@
 class TelephonesController < ApplicationController
   before_action :set_telephone, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   # GET /telephones
   # GET /telephones.json
@@ -25,15 +25,16 @@ class TelephonesController < ApplicationController
   # POST /telephones
   # POST /telephones.json
   def create
-    personal_profile = current_user.profile
-    @telephone = Telephone.new(telephone_params)
-    personal_profile.telephones << @telephone
+    user = current_user || User.find(telephone_params[:user_id])
+    @personal_profile = user.profile
+    @telephone = Telephone.new(number: telephone_params[:number])
+    @personal_profile.telephones << @telephone
     respond_to do |format|
       if @telephone.save
-        format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone adicionado com sucesso!' }
+        format.html { redirect_to personal_profiles_edit_path(@personal_profile), notice: 'Telefone adicionado com sucesso!' }
         format.js
       else
-        format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone adicionado com sucesso!' }
+        format.html { redirect_to personal_profiles_edit_path(@personal_profile), notice: 'Telefone adicionado com sucesso!' }
         format.js
       end
     end
@@ -42,7 +43,8 @@ class TelephonesController < ApplicationController
   # PATCH/PUT /telephones/1
   # PATCH/PUT /telephones/1.json
   def update
-    personal_profile = current_user.profile
+    user = current_user || User.find(telephone_params[:user_id])
+    personal_profile = user.profile
     respond_to do |format|
       if @telephone.update(telephone_params)
         format.html { redirect_to personal_profiles_edit_path(personal_profile), notice: 'Telefone atualizado com sucesso!' }
@@ -57,7 +59,9 @@ class TelephonesController < ApplicationController
   # DELETE /telephones/1
   # DELETE /telephones/1.json
   def destroy
-    personal_profile = current_user.profile
+    byebug
+    user = current_user || User.find(telephone_params[:user_id])
+    personal_profile = user.profile
     @phonebook = @telephone.phonebooks.where(personal_profile_id: personal_profile.id).first
     @phonebook.destroy
     @telephone.destroy
@@ -75,7 +79,8 @@ class TelephonesController < ApplicationController
 
     def telephone_params
       params.require(:telephone).permit(
-      :number
+      :number,
+      :user_id
       )
     end
 end

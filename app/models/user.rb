@@ -26,7 +26,7 @@ class User < ApplicationRecord
   enum active: [:unactive, :active]
 
   delegate :name, :street, :street_number, :complement, :neighborhood, :cpf,
-           :city_name, :state_uf, :country_code, :zip_code, :main_phone,
+           :city_name, :state_uf, :state, :country_code, :zip_code, :main_phone,
            :telephones, to: :profile, prefix: false, allow_nil: true
 
   validates :email, presence: true, uniqueness: true

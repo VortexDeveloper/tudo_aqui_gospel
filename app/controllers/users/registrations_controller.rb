@@ -73,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       root_path
     else
       flash[:notice] = 'É necessário finalizar o cadastro e efetuar o pagamento para ativar a conta!'
-      new_transaction_path(user_id: resource.id)
+      new_transaction_path(u: resource.id)
     end
   end
 end

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'transaction/validate_transaction'
-
-  get 'transaction/create'
-
   post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -30,8 +26,11 @@ Rails.application.routes.draw do
   resources :telephones
   resources :pub_attachments
   # fazer new como post
-  resources :transaction, only: [:new] do
-    post 'validate_transaction'
+  resources :transactions, only: [:new, :create] do
+    member do
+      get 'success'
+      post 'validate'
+    end
   end
 
   get 'pages/home'
