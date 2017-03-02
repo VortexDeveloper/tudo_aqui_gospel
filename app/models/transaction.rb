@@ -7,6 +7,7 @@ class Transaction < ApplicationRecord
   before_create :send_to_pagseguro
 
   attr_accessor :sender_hash, :payment_token, :card_params
+  # enum status: [:waiting, ]
 
   def send_to_pagseguro
     email, token = credentials

@@ -20,9 +20,8 @@ class Plan < ApplicationRecord
   # virá de algum controlador
   def plan_params
     plan = {
-      redirect_url: "https://localhost:3000/transaction/1/validate_transaction",
-      review_url: "https://localhost:3000/transaction/1/validate_transaction",
-      # cancel_url: "https://localhost:3000/transaction/1/validate_transaction",
+      redirect_url: "http://taglojateste.com.br/transactions/payment_return",
+      review_url: "http://taglojateste.com.br/transactions/validate_review",
       charge: 'auto',
       reference: self.reference,
       name: self.name,
@@ -42,7 +41,7 @@ class Plan < ApplicationRecord
     plan[:trial_duration] = self.trial_duration if self.trial_duration > 0
     plan
   end
-  
+
   def credentials
     ['tufa.araujo@hotmail.com', '947533195E6B4C6FB5F793F48BE43D2B']
   end

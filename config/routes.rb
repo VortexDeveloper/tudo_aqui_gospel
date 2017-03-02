@@ -27,9 +27,14 @@ Rails.application.routes.draw do
   resources :pub_attachments
   # fazer new como post
   resources :transactions, only: [:new, :create] do
+    collection do
+      get 'payment_return'
+      get 'payment_review'
+      post 'payment_redirect'
+    end
+
     member do
       get 'success'
-      post 'validate'
     end
   end
 

@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_new_user, only: [:new]
+  skip_before_action :verify_authenticity_token
 
   def new
     @transaction = Transaction.new
@@ -20,7 +21,7 @@ class TransactionsController < ApplicationController
     @transaction.card_params = card_params
     @transaction.sender_hash = transaction_params[:sender_hash]
     @transaction.payment_token = transaction_params[:payment_token]
-
+    headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
     if @transaction.save
       redirect_to success_transaction_path(@transaction)
     else
@@ -30,7 +31,20 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def validate_transaction
+  def payment_return
+    headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
+    byebug
+    # @transaction = Transaction
+  end
+
+  def payment_review
+    headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
+    byebug
+  end
+
+  def payment_redirect
+    headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
+    byebug
   end
 
   def success
