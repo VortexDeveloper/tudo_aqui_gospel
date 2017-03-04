@@ -4,7 +4,6 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @user = User.find params[:u]
     session = PagSeguro::Session.create
     @session_id = session.id
     @telephone = Telephone.new
@@ -31,20 +30,17 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def payment_return
-    headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
-    byebug
-    # @transaction = Transaction
-  end
-
-  def payment_review
-    headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
-    byebug
-  end
-
   def payment_redirect
     headers['Access-Control-Allow-Origin'] = 'https://sandbox.pagseguro.uol.com.br'
-    byebug
+
+    type = params[:notificationType]
+    if type == 'preApproval'
+      Transaction.update_subscription(params[:notificationCode])
+    elsif type == 'transaction'
+      Transaction.update_transaction(params[:notificationCode])
+    else
+      # envia email para tag e vortex
+    end
   end
 
   def success
@@ -53,8 +49,15 @@ class TransactionsController < ApplicationController
 
   private
   def authenticate_new_user
-    # verificar se foi criado recentemente
-    # verificar se está inativo
+    @user = User.find params[:u]
+    unless @user.created_at < 1.hour.ago && @user.unactive?
+      if @user.active?
+        redirect_to new_user_session_path, notice: 'Você não está autorizado a acessar esta página mas sua conta já está ativada. Pode fazer o login ou recupere a sua senha.'
+      else
+        @user.destroy!
+        redirect_to new_user_registration_path, notice: 'Você não está autorizado a acessar esta página. Será necessário criar um cadastro.'
+      end
+    end
   end
 
   def telephone_params
