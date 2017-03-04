@@ -20,8 +20,8 @@ class Plan < ApplicationRecord
   # virá de algum controlador
   def plan_params
     plan = {
-      redirect_url: "http://taglojateste.com.br/transactions/payment_return",
-      review_url: "http://taglojateste.com.br/transactions/validate_review",
+      redirect_url: "https://tudoaquigospel.herokuapp.com/transactions/payment_return",
+      review_url: "https://tudoaquigospel.herokuapp.com/transactions/validate_review",
       charge: 'auto',
       reference: self.reference,
       name: self.name,
