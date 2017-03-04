@@ -73,6 +73,13 @@ pt-BR:
           teology_talk: Conversa de Teologia
           course: Curso
           witness: Testemunho
+      announcer_payment:
+        one: Pagamento de Anunciante
+        other: pagamentos de Anunciante
+        payment_method:
+          credit: Cartão de Crédito
+          money: Dinheiro
+          bank_slip: Boleto
       knowledge_area:
         one: Área de conhecimento
         other: Áreas de conhecimento
@@ -300,6 +307,13 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Atualizado em"
         user: "Usuário"
+      announcer_payment:
+        announcer: Anunciante
+        ad: Anúncio
+        price: Valor
+        payment_method: Método de Pagamento
+        charge_date: Data da Cobrança
+        paid_date: Data do Recebimento
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

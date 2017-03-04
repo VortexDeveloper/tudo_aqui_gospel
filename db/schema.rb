@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303224459) do
+ActiveRecord::Schema.define(version: 20170304002438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 20170303224459) do
     t.integer  "active"
     t.index ["announcer_id"], name: "index_ads_on_announcer_id", using: :btree
     t.index ["category_id"], name: "index_ads_on_category_id", using: :btree
+  end
+
+  create_table "announcer_payments", force: :cascade do |t|
+    t.integer  "announcer_id"
+    t.integer  "ad_id"
+    t.decimal  "price"
+    t.integer  "payment_method"
+    t.date     "charge_date"
+    t.date     "paid_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["ad_id"], name: "index_announcer_payments_on_ad_id", using: :btree
+    t.index ["announcer_id"], name: "index_announcer_payments_on_announcer_id", using: :btree
   end
 
   create_table "announcers", force: :cascade do |t|
