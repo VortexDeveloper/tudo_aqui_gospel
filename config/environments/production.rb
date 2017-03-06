@@ -89,23 +89,22 @@ Rails.application.configure do
 
   # pagseguro-oficial
   PagSeguro.configure do |config|
-    config.token       = "seu token"
-    config.email       = "seu e-mail"
-    config.environment = :production # ou :sandbox. O padrão é production.
+    config.token       = "947533195E6B4C6FB5F793F48BE43D2B"
+    config.email       = "tufa.araujo@hotmail.com"
+    config.environment = :sandbox # ou :sandbox. O padrão é production.
     config.encoding    = "UTF-8" # ou ISO-8859-1. O padrão é UTF-8.
   end
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'tudoaquigospel.herokuapp.com/' }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['SG_USERNAME'],
-    :password => ENV['SG_PASSWORD'],
-    :domain => 'vortexdeveloper.com',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    address: 'smtp.vortexdeveloper.com',
+    port: 587,
+    domain: "vortexdeveloper.com",
+    authentication: :login,
+    enable_starttls_auto: true,
+    user_name: 'noreply@vortexdeveloper.com',
+    password: 'vorteX20**'
   }
 end
