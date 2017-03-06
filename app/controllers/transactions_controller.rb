@@ -50,13 +50,14 @@ class TransactionsController < ApplicationController
   private
   def authenticate_new_user
     @user = User.find params[:u]
-    unless @user.created_at < 1.hour.ago && @user.unactive?
-      if @user.active?
-        redirect_to new_user_session_path, notice: 'Você não está autorizado a acessar esta página mas sua conta já está ativada. Pode fazer o login ou recupere a sua senha.'
-      else
-        @user.destroy!
-        redirect_to new_user_registration_path, notice: 'Você não está autorizado a acessar esta página. Será necessário criar um cadastro.'
-      end
+
+    if @user.active?
+      redirect_to new_user_session_path, notice: 'Você não está autorizado a acessar esta página mas sua conta já está ativada. Pode fazer o login ou recupere a sua senha.'
+    end
+
+    if @user.created_at > 1.hour.ago
+      @user.destroy!
+      redirect_to new_user_registration_path, notice: 'Você não está autorizado a acessar esta página. Será necessário criar um cadastro.'
     end
   end
 
