@@ -81,16 +81,10 @@ RailsAdmin.config do |config|
       # For RailsAdmin >= 0.5.0
       field :email
       field :password do
-        required true
-        html_attributes do
-          {minlength: 6}
-        end
+        help 'Obrigatório no cadastro.'
       end
       field :password_confirmation do
-        required true
-        html_attributes do
-          {minlength: 6}
-        end
+        help 'Obrigatório no cadastro.'
       end
       field :active
       field :roles
