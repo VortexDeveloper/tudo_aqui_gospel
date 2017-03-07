@@ -36,7 +36,7 @@
           <% end %>
           <div class="rst-author-contactinfo">
             <p>
-              <%= show_telephone if @announcer.main_telephone.present? %>
+              <%= show_telephone if @announcer.user_main_phone.present? %>
               <%= show_email if @announcer.email.present? %>
               <%= show_location %>
               <%= show_average if @announcer.average('quality').present? %>
