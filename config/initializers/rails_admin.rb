@@ -80,18 +80,8 @@ RailsAdmin.config do |config|
     edit do
       # For RailsAdmin >= 0.5.0
       field :email
-      field :password do
-        required true
-        html_attributes do
-          {minlength: 6}
-        end
-      end
-      field :password_confirmation do
-        required true
-        html_attributes do
-          {minlength: 6}
-        end
-      end
+      field :password
+      field :password_confirmation
       field :active
       field :roles
     end

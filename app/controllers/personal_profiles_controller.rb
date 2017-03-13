@@ -23,7 +23,9 @@ class PersonalProfilesController < ApplicationController
   def personal_profile_params
     params.require(:personal_profile).permit(
     :name,
+    :cpf,
     :street,
+    :street_number,
     :complement,
     :neighborhood,
     :city_id,

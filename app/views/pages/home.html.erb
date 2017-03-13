@@ -115,7 +115,11 @@
                   <%= link_to publication do %>
                     <%=  image_tag publication.image.url if publication.image.present? %>
                   <% end %>
-                  <a class="rst-postpic-cat"><span><%= publication.pub_category %></span></a>
+                  <a class="rst-postpic-cat">
+                    <span>
+                      <%= t(publication.pub_category, scope: [:activerecord, :models, :publication, :pub_categories]) %>
+                    </span>
+                  </a>
     						</div>
     						<div class="rst-postinfo">
     							<h6>

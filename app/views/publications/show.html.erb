@@ -24,7 +24,7 @@
               <img src="../images/banner_normal.png" alt="" />
             <% end %>
             <div class="rst-boxinfo">
-              <a><span><%= @publication.pub_category %></span></a>
+              <a><span><%= t(@publication.pub_category, scope: [:activerecord, :models, :publication, :pub_categories]) %></span></a>
               <p><a><%= @publication.description %></a></p>
               <time><i class="fa fa-clock-o"></i><%= @publication.created_at %></time>
             </div>

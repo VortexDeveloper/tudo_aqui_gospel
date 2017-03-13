@@ -2,59 +2,47 @@
 // This is The Scripts used for Simply Theme
 //
 
-$(function() {
+$(document).ready(function(){
+  var gallery_input_file = $('#image-button-photo2');
+
+  gallery_input_file.on("change", function(){
+    verificaMostraBotao();
+  });
+
   $("#input-banner").click(function(e) {
     e.preventDefault();
     $("#image-button-banner").trigger('click');
   });
-})
 
-$(function() {
   $("#input-avatar").click(function(e) {
     e.preventDefault();
     $("#image-button-avatar").trigger('click');
   });
-})
 
-$(function() {
   $("#input-publication-image").click(function(e) {
     e.preventDefault();
     $("#publication-image-button").trigger('click');
   });
-})
 
-$(function() {
   $("#input-photo").click(function(e) {
     e.preventDefault();
-    alert("1 - input-photo click");
-    $("#image-button-photo2").trigger('click');
+    gallery_input_file.val('');
+    gallery_input_file.trigger('click');
   });
-})
 
-function verificaMostraBotao(){
-  alert("verificaMostraBotao");
-  $('#image-button-photo2').each(function(index){
+  function verificaMostraBotao(){
+    $('#image-button-photo2').each(function(index){
       if ($('#image-button-photo2').eq(index).val() != ""){
         $("#save-button").trigger('click');
-
       }
+    });
+  }
+
+  $('#save-button').on("click", function(){
+      $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
+      $('#save-button').hide();
   });
-}
-
-$('#image-button-photo2').on("change", function(){
-  alert("image-button-photo change");
-  verificaMostraBotao();
 });
-
-$('#save-button').on("click", function(){
-  alert("save-button append");
-    $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
-    $('#save-button').hide();
-});
-
-
-
-
 
 
 function main() {

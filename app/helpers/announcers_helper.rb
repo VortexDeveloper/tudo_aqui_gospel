@@ -1,7 +1,7 @@
 module AnnouncersHelper
   def show_telephone
     html = content_tag(:i, '', class: "fa fa-lg fa-mobile")
-    html << content_tag(:span, @announcer.main_telephone.number)
+    html << content_tag(:span, @announcer.user_main_phone.number)
   end
 
   def show_email
