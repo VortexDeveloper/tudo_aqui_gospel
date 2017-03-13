@@ -81,7 +81,7 @@ class AnnouncersController < ApplicationController
   end
 
   def update_main_phone
-    main_phone = @announcer.main_telephone
+    main_phone = @announcer.user_main_phone
 
     if main_phone && main_phone.id != main_phone_params[:phone_id].to_i
       main_phone.not_main!
