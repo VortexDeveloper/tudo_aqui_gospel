@@ -19,9 +19,9 @@
         <div class="rst-catbanner-post">
           <div class="rst-mainslide">
             <% if @publication.image.present? %>
-              <%= image_tag @publication.image.url(:normal) %>
+              <%= image_tag @publication.image.url(:normal), class: 'photoban'  %>
             <% else %>
-              <img src="../images/banner_normal.png" alt="" />
+            <img src="../images/banner_normal.png" alt="" />
             <% end %>
             <div class="rst-boxinfo">
               <a><span><%= t(@publication.pub_category, scope: [:activerecord, :models, :publication, :pub_categories]) %></span></a>

@@ -1858,6 +1858,11 @@ footer li a {
 .rst-catbanner-slider .owl-item img {
   opacity: 0.8;
 }
+
+.photoban {
+  width: 100%;
+}
+
 .widget.widget_video a {
   position: relative;
 }
