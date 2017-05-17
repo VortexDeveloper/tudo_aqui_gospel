@@ -355,6 +355,7 @@ footer li a:hover,
 
 .rst-header-socialbar {
   border-bottom: 1px solid #e8ecf0;
+  height: 10px;
 }
 .rst-socialbar-menu {
   float: left;
@@ -1028,7 +1029,9 @@ footer li a:hover,
 {
   border: 1px solid #e8ecf0;
   padding: 16px 20px 23px;
-
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #rst-popular .rst-postinfo h6,
 #rst-popular .rst-postinfo h6 a {
