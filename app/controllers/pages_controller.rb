@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def home
+    # User.with_role "Columnist" <-TENTE ISSO
     @columnists = Columnist.all.shuffle
     @banner_home = Ad.active_banner(home: true).first(5)
     @principal_home = Ad.active_side_banner(home: true).first(2)

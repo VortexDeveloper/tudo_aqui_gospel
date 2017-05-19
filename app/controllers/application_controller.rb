@@ -27,7 +27,9 @@ class ApplicationController < ActionController::Base
 
     #Publications
     @last_publications = Publication.latest_publications.first(4)
-    @publications_category = Publication.where(pub_category: Publication.random_category, pub_type: "post")
+    # A linha de baixo estava em publications_category, antes de pub_type: "post"
+    # pub_category: Publication.random_category,
+    @publications_category = Publication.where(pub_type: "post")
     @news = Publication.where(pub_type: "news")
 
     #Ads side
@@ -43,7 +45,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if user.has_any_role? "Administrator", "Announcer", "Columnist", "Insider"
-      personal_profiles_edit_path
+      request.env['omniauth.origin'] || stored_location_for(resource) || root_url
     else
       root_path
     end

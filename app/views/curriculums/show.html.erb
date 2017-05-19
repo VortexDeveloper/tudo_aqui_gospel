@@ -42,8 +42,11 @@
         </div>
         <p class="rst-author-excerpt"><%= @curriculum.description %></p>
         <p class="rst-author-excerpt">
-          <h3>Veja o currículo</h3>
-          <i class="fa fa-file-pdf-o" aria-hidden="true"></i> <%= link_to @curriculum.file.instance.file_file_name, @curriculum.file.url, target: '_blank' %>
+          <% if @curriculum.file.url != '/files/original/missing.png' %>
+            <h3>Veja o currículo</h3>
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+            <%=  link_to @curriculum.file.instance.file_file_name, @curriculum.file.url, target: '_blank' %>
+          <% end %>
         </p>
         <!-- End zone -->
       </div>
