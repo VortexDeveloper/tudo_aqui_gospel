@@ -33,11 +33,43 @@ RailsAdmin.config do |config|
   config.excluded_models << 'RatingCache'
   config.excluded_models << 'Telephone'
   config.excluded_models << 'ColumnistKnowledge'
+  # config.excluded_models << 'Ckeditor::AttachmentFile'
+  # config.excluded_models << 'Ckeditor::Picture'
+  # config.excluded_models << 'Ckeditor::Asset'
+  # config.excluded_models << 'Ckeditor'
+
+  class Ckeditor::AttachmentFile < ActiveRecord::Base
+    rails_admin do
+      visible false
+    end
+  end
+
+  class Ckeditor::Asset < ActiveRecord::Base
+    rails_admin do
+      visible false
+    end
+  end
+
+  class Ckeditor::Picture < ActiveRecord::Base
+    rails_admin do
+      visible false
+    end
+  end
+
+  # byebug
 
   # config.model 'Box' do
   #   label "Beautiful box"
   #   label_plural "Beautiful boxen"
   # end
+
+# new do
+#   except %w(Ckeditor::Asset Ckeditor::AttachmentFile Ckeditor::Picture)
+# end
+#
+# edit do
+#   except %w(Ckeditor::Asset Ckeditor::AttachmentFile Ckeditor::Picture)
+# end
 
   config.actions do
     dashboard                     # mandatory
@@ -45,10 +77,10 @@ RailsAdmin.config do |config|
     new do
       except ['Announcer']
     end
+    edit
     export
     bulk_delete
     show
-    edit
     delete
     show_in_app
 

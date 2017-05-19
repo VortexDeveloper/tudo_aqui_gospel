@@ -42,8 +42,8 @@ pt-BR:
     actions:
       dashboard:
         title: "Administração do Site"
-        menu: "Dashboard"
-        breadcrumb: "Dashboard"
+        menu: "Painel"
+        breadcrumb: "Painel"
       index:
         title: "Lista de %{model_label_plural}"
         menu: "Lista"
@@ -97,7 +97,7 @@ pt-BR:
       basic_info: "Informação Básica"
       required: "Obrigatórios"
       optional: "Opcional"
-      one_char: "caracter"
+      one_char: "caractere"
       char_length_up_to: "comprimento até"
       char_length_of: "comprimento de"
       save: "Gravar"

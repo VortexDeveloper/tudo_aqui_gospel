@@ -6,6 +6,9 @@ pt-BR:
     page_gap: "&hellip;"
   activerecord:
     models:
+      plan:
+        one: Plano
+        other: Planos
       ad:
         one: Anúncio
         other: Anúncios

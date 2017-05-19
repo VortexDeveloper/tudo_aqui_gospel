@@ -355,7 +355,7 @@ footer li a:hover,
 
 .rst-header-socialbar {
   border-bottom: 1px solid #e8ecf0;
-  height: 10px;
+  /*height: 10px;*/
 }
 .rst-socialbar-menu {
   float: left;

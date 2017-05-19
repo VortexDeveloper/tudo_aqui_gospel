@@ -431,10 +431,10 @@ function main() {
 
 	});
 
-	function tab_height() {
-		$('.widget.widget_popular').css('height',$('.widget.widget_popular > ul > li.active').height() + $('.widget.widget_popular > ul > li.active ul').height() + 30 + 'px');
-
-	}
+	// function tab_height() {
+	// 	$('.widget.widget_popular').css('height',$('.widget.widget_popular > ul > li.active').height() + $('.widget.widget_popular > ul > li.active ul').height() + 30 + 'px');
+  //
+	// }
 
 	function search_width() {
 		if ( $(window).width() < 981 )
