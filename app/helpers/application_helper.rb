@@ -103,10 +103,12 @@ module ApplicationHelper
             link_to "Cadastro de anunciante", new_announcer_path
           end
         when "Announcer"
-          content_tag(:li, "") do
-            link_to "Minha página", announcer_path(@announcer)
+          if @announcer != nil
+            content_tag(:li, "") do
+                link_to "Minha página", announcer_path(@announcer)
+            end
           end
-      end
+        end
     end
   end
 
@@ -137,7 +139,7 @@ module ApplicationHelper
             image_tag ('user_thumb.png')
           end
         when "Announcer"
-          if announcer.avatar.present?
+          if announcer != nil && announcer.avatar.present?
             image_tag announcer.avatar.url(:thumb)
           else
             image_tag ('user_thumb.png')
@@ -181,48 +183,48 @@ module ApplicationHelper
   end
 
   def media_section_banner(announcer)
-    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && (announcer.ad_plan.silver? || announcer.ad_plan.gold?)
       render partial: 'announcers/show/media_section_banner'
     end
   end
 
   def media_section_gallery(announcer)
-    if announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && announcer.ad_plan.gold?
       render partial: 'announcers/show/media_section_gallery'
     end
   end
 
   def media_section_gallery_slide(announcer)
-    if announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && announcer.ad_plan.gold?
       render partial: 'announcers/show/media_section_gallery_slide'
     end
   end
 
   def media_section_banner_edit(announcer, form_builder)
-    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && (announcer.ad_plan.silver? || announcer.ad_plan.gold?)
       render partial: 'announcers/edit/media_section_banner', locals: {f: form_builder}
     end
   end
 
   def media_section_gallery_edit(announcer)
-    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && (announcer.ad_plan.silver? || announcer.ad_plan.gold?)
       render partial: 'announcers/edit/media_section_gallery'
     end
   end
 
   def media_section_gallery_slide_edit(announcer)
-    if announcer.ad_plan.silver? || announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && (announcer.ad_plan.silver? || announcer.ad_plan.gold?)
       render partial: 'announcers/edit/media_section_gallery_slide'
     end
   end
 
   def add_photo_button(announcer)
-    if announcer.ad_plan.silver?
+    if announcer.ad_plan != nil && announcer.ad_plan.silver?
       if announcer.photos.count < 10
         render partial: 'announcers/edit/add_photo_button'
       end
     end
-    if announcer.ad_plan.gold?
+    if announcer.ad_plan != nil && announcer.ad_plan.gold?
         if announcer.photos.count < 20
           render partial: 'announcers/edit/add_photo_button'
         end

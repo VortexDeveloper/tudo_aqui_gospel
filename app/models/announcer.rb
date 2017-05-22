@@ -71,7 +71,25 @@
   end
 
   def address_string
-    "#{user.profile.street}, #{user.profile.neighborhood}, #{user.profile.city.try(:name)} - #{user.profile.state.try(:name)}"
+    if user.profile.street != nil && user.profile.neighborhood
+      first_coma = " , "
+    else
+      first_coma = " "
+    end
+
+    if user.profile.neighborhood != nil && user.profile.city
+      second_coma = " , "
+    else
+      second_coma = " "
+    end
+
+    if user.profile.state != nil && (user.profile.street != nil || user.profile.neighborhood != nil || user.profile.city)
+      dash = " - "
+    else
+      dash = " "
+    end
+
+    "#{user.profile.street}" + first_coma + "#{user.profile.neighborhood}" + second_coma + "#{user.profile.city.try(:name)}" + dash + "#{user.profile.state.try(:name)}"
   end
 
   def announcer_label_name

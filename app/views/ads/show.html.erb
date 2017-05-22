@@ -27,8 +27,8 @@
               <article>
                 <div class="row">
                   <div class="rst-postpic col-sm-6">
-                    <a href="#"><%= image_tag @ad.avatar.url(:medium) %></a>
-                    <a href="#" class="rst-postpic-cat"><span class='money' data-price='<%= @ad.price %>'></span></a>
+                    <%= image_tag @ad.avatar.url(:medium) %>
+                    <span class="money rst-postpic-cat" data-price='<%= @ad.price %>'></span>
                   </div>
                   <div class="rst-postinfo col-sm-6">
                     <h6><%= @ad.title %></h6>

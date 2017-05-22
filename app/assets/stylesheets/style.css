@@ -34,6 +34,16 @@ input#roles_ {
     float: left;
 }
 
+.columnist{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 50%;
+}
+
 .category-description p{
     color: #2be0b5 !important;
     text-align: center;

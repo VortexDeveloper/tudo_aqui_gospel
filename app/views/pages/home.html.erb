@@ -335,14 +335,20 @@
 							<h3>Nossos Colunistas</h3>
               <% if @columnists.present? %>
                   <% @columnists.first(4).each do |columnist|%>
-                    <%= link_to columnist, class: 'photobox-170x170' do %>
-                      <%= if columnist.avatar.present?
-                            image_tag columnist.avatar.url(:large)
-                          else
-                            image_tag ('user.png')
-                          end
-                        %>
-                    <% end %>
+										<!-- <div class="columnist"> -->
+											<strong><%= columnist.columnist_title.title %></strong>
+											<br/>
+											<strong><%= columnist.user.name %></strong>
+											<br/>
+	                    <%= link_to columnist, class: 'photobox-170x170' do %>
+	                      <%= if columnist.avatar.present?
+	                            image_tag columnist.avatar.url(:large)
+	                          else
+	                            image_tag ('user.png')
+	                          end
+	                        %>
+	                    <% end %>
+										<!-- </div> -->
                 <% end %>
               <% else %>
                   <p>

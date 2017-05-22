@@ -15,8 +15,12 @@ module AnnouncersHelper
   end
 
   def show_location
-    html = content_tag(:i, '', class: "fa fa-lg fa-map-marker")
-    html << content_tag(:span, @announcer.address_string)
+    if @announcer.address_string == "" || @announcer.address_string == "   "
+      html = content_tag(:span, @announcer.address_string)
+    else
+      html = content_tag(:i, '', class: "fa fa-lg fa-map-marker")
+      html << content_tag(:span, @announcer.address_string)
+    end
   end
 
   def show_average
