@@ -333,28 +333,33 @@
 
 						<aside class="widget widget_adv">
 							<h3>Nossos Colunistas</h3>
-              <% if @columnists.present? %>
-                  <% @columnists.first(4).each do |columnist|%>
-										<!-- <div class="columnist"> -->
-											<strong><%= columnist.columnist_title.title %></strong>
-											<br/>
-											<strong><%= columnist.user.name %></strong>
-											<br/>
-	                    <%= link_to columnist, class: 'photobox-170x170' do %>
-	                      <%= if columnist.avatar.present?
-	                            image_tag columnist.avatar.url(:large)
-	                          else
-	                            image_tag ('user.png')
-	                          end
-	                        %>
-	                    <% end %>
-										<!-- </div> -->
-                <% end %>
-              <% else %>
-                  <p>
-                    Ainda não existem colunistas cadastrados
-                  </p>
-              <% end %>
+							<div class="flexbox-columnist" style="display: flex;flex-wrap: wrap;">
+	              <% if @columnists.present? %>
+	                  <% @columnists.first(4).each do |columnist|%>
+											<!-- <div class="columnist"> -->
+											<!-- <% if columnist.columnist_title != nil %>
+												<strong><%= columnist.columnist_title.title %></strong>
+												<br/>
+											<% end %> -->
+											<!-- <strong><%= columnist.user.name %></strong> -->
+												<br/>
+		                    <%= link_to columnist, class: 'photobox-170x170' do %>
+		                      <%= if columnist.avatar.present?
+		                            image_tag columnist.avatar.url(:large)
+		                          else
+		                            image_tag ('user.png')
+		                          end
+		                        %>
+		                    <% end %>
+											<!-- </div> -->
+	                <% end %>
+									<%= link_to "Ver mais", columnists_path %>
+	              <% else %>
+	                  <p>
+	                    Ainda não existem colunistas cadastrados
+	                  </p>
+	              <% end %>
+							</div>
 							<div class="clear"></div>
 						</aside>
 					</div>
