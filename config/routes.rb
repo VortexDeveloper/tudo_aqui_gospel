@@ -56,4 +56,5 @@ Rails.application.routes.draw do
   post 'announcers/add_evaluation'
   get 'pages/:id/subscription', controller: :pages, action: :subscription, as: 'subscription'
 
+  resources :columnists
 end

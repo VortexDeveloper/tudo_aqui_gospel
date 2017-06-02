@@ -4,6 +4,10 @@ class ColumnistsController < ApplicationController
     authenticate_current_user(user_signed_in? && current_user.columnist.nil?)
   end
 
+  def index
+    @columnists = Columnist.all
+  end
+
   def show
     @columnist = Columnist.find(params[:id])
     @publications_show = Publication.where(author_id: @columnist.user_id).paginate(page: params[:page], per_page: 4)
