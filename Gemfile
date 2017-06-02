@@ -44,7 +44,8 @@ gem 'ckeditor'
 gem 'jquery-inputmask-rails'
 gem 'ratyrate'
 # gem "pagseguro-oficial", "~> 2.6.0"
-gem "pagseguro-oficial", path: '/home/arthur/workspace/ruby/pagseguro-oficial'
+# gem "pagseguro-oficial", path: '/home/arthur/workspace/ruby/pagseguro-oficial'
+gem 'pagseguro-oficial', github: 'VortexDeveloper/pagseguro-oficial'
 gem 'rack-cors', :require => 'rack/cors'
 
 
