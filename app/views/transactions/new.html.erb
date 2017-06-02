@@ -16,28 +16,29 @@
               </div>
               <% end %>
 
-              <%= fields_for :personal_profile do |form_builder| %>
+              <!-- <%= fields_for :personal_profile do |form_builder| %>
                 <%= render partial: 'personal_profiles/form', locals: {
                       f: form_builder,
                       profile: PersonalProfile.new
                     }
-                %>
+                %> -->
 
                 <%= fields_for :card_params do |fc| %>
                   <div class="rst-setting">
                     <span><%= fc.label :card_number, 'Número do Cartão' %></span>
-                    <%= fc.text_field :card_number, class: 'rst-pageinput' %>
+                    <%= fc.text_field :card_number, class: 'rst-pageinput', required: true %>
                   </div>
 
                   <div class="rst-setting">
                     <span><%= fc.label :cvv, 'CVV' %></span>
-                    <%= fc.text_field :cvv, class: 'rst-pageinput' %>
+                    <%= fc.text_field :cvv, class: 'rst-pageinput', required: true %>
                   </div>
 
                   <div class="rst-setting">
                     <span><%= fc.label :expiration_date, 'Validade' %></span>
                     <%= fc.date_select :expiration_date, {
                           discard_day: true,
+                          required: true,
                           start_year: Date.today.year,
                           end_year: 30.years.from_now.year
                         },
@@ -49,12 +50,13 @@
 
                   <div class="rst-setting">
                     <span><%= fc.label :name, 'Nome do Titular' %></span>
-                    <%= fc.text_field :name, class: 'rst-pageinput' %>
+                    <%= fc.text_field :name, class: 'rst-pageinput', required: true %>
                   </div>
 
                   <div class="rst-setting">
                     <span><%= fc.label :birth_date, 'Data de Nascimento do Titular' %></span>
                     <%= fc.date_select :birth_date, {
+                          required: true,
                           start_year: 15.years.ago.year,
                           end_year: 100.years.ago.year
                         },
@@ -66,12 +68,12 @@
 
                   <div class="rst-setting">
                     <span><%= fc.label :phone, 'Telefone do Titular' %></span>
-                    <%= fc.text_field :phone, class: 'rst-pageinput phone-mask' %>
+                    <%= fc.text_field :phone, class: 'rst-pageinput phone-mask', required: true %>
                   </div>
 
                   <div class="rst-setting">
                     <span><%= fc.label :cpf, 'CPF do Titular' %></span>
-                    <%= fc.text_field :cpf, class: 'rst-pageinput cpf-mask' %>
+                    <%= fc.text_field :cpf, class: 'rst-pageinput cpf-mask', required: true %>
                   </div>
 
                   <%= f.hidden_field :sender_hash, id: 'sender_hash' %>
@@ -80,7 +82,7 @@
                 <% end %>
 
                 <%= f.submit "ASSINAR", class: 'rst-pagebutton subscribe-action' %>
-              <% end %>
+              <!-- <% end %> -->
             <% end %>
 
           </div>

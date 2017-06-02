@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :announcers
+  resources :subscribers
   resources :ads, only: [:show, :update] do
     collection do
       resources :categories, only: [:show] do
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
   patch 'subscribers/update'
   patch 'subscribers/canceled_subscription', as: :canceled_subscription
   post 'announcers/create'
+  post 'subscribers/create'
   post 'announcers/add_photo'
   post 'announcers/add_evaluation'
   get 'pages/:id/subscription', controller: :pages, action: :subscription, as: 'subscription'

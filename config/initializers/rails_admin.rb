@@ -33,10 +33,7 @@ RailsAdmin.config do |config|
   config.excluded_models << 'RatingCache'
   config.excluded_models << 'Telephone'
   config.excluded_models << 'ColumnistKnowledge'
-  # config.excluded_models << 'Ckeditor::AttachmentFile'
-  # config.excluded_models << 'Ckeditor::Picture'
-  # config.excluded_models << 'Ckeditor::Asset'
-  # config.excluded_models << 'Ckeditor'
+  config.excluded_models << 'PubAttachment'
 
   class Ckeditor::AttachmentFile < ActiveRecord::Base
     rails_admin do
@@ -89,6 +86,21 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.model Vacancy do
+    create do
+      configure :description do
+         partial 'vacancy_description'
+         html_attributes rows: 8, cols: 50
+      end
+    end
+    edit do
+      configure :description do
+         partial 'vacancy_description'
+         html_attributes rows: 8, cols: 50
+      end
+    end
+  end
+
   config.model Publication do
     edit do
       # For RailsAdmin >= 0.5.0
@@ -123,7 +135,94 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Announcer do
+    edit do
+      field :user
+      field :name
+      field :fantasy_name
+      field :contact_name
+      field :doc_type
+      field :doc
+      field :email
+      field :avatar
+      field :ad_plan
+      field :about_text
+      field :banner
+      field :ads
+      field :photos
+      field :vacancies
+      field :evaluations
+    end
+  end
+
   config.model Ad do
+    create do
+      field :title do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :description do
+        required true
+        partial 'vacancy_description'
+      end
+      field :text_description
+      field :start_date do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :end_date do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :price do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :category do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :announcer do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :avatar do
+        required true
+        # html_attributes do
+        #   {required: 'required'}
+        # end
+      end
+      field :ad_type do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :home do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+      field :active do
+        required true
+        html_attributes do
+          {required: 'required'}
+        end
+      end
+    end
     edit do
       field :title do
         required true
@@ -133,11 +232,12 @@ RailsAdmin.config do |config|
       end
       field :description do
         required true
-        html_attributes do
-          {required: 'required'}
-        end
+        partial 'vacancy_description'
+        html_attributes rows: 4, cols: 50, required: 'required'
       end
-      field :text_description
+      field :text_description do
+        html_attributes rows: 4, cols: 50
+      end
       field :start_date do
         required true
         html_attributes do

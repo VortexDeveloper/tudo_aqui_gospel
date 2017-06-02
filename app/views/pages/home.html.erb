@@ -336,12 +336,13 @@
               <% if @columnists.present? %>
                   <% @columnists.first(4).each do |columnist|%>
 										<!-- <div class="columnist"> -->
-											<strong><%= columnist.columnist_title.title %></strong>
+											<strong><%= columnist.title if columnist.title %></strong>
 											<br/>
-											<strong><%= columnist.user.name %></strong>
+											<strong><%= columnist.user.name if columnist.user %></strong>
 											<br/>
 	                    <%= link_to columnist, class: 'photobox-170x170' do %>
-	                      <%= if columnist.avatar.present?
+	                      <%=
+                            if columnist.avatar.present?
 	                            image_tag columnist.avatar.url(:large)
 	                          else
 	                            image_tag ('user.png')

@@ -1,0 +1,137 @@
+<!-- Page Breadcrumb -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Cadastro de Assinante</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page Breadcrumb -->
+
+<!-- Section Register -->
+<section id="rst-register-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <% user = User.new(session[:user_error]) || @user %>
+        <% personal_profile = PersonalProfile.new(session[:profile_error]) || @personal_profile %>
+        <% subscriber = Subscriber.new(session[:subscriber_error]) || @subscriber %>
+        <% session[:user_error] = nil %>
+        <% session[:profile_error] = nil %>
+        <% session[:subscriber_error] = nil %>
+        <%= form_for user, :html => { :multipart => true }, :url => subscribers_create_path(user), class: 'form-package' do |u| %>
+            <%= fields_for personal_profile do |profile| %>
+              <%= fields_for subscriber do |a| %>
+                <div class="rst-section-title rst-section-title-box">
+                  <h4>Cadastro de Assinante</h4>
+                </div> <!-- end section title -->
+                <% if flash[:new_user_errors].present? %>
+                  <div id="custom_error_explanation">
+                    <h3>Por favor, corrija os seguintes erros</h3>
+
+                    <ul>
+                    <%= flash[:new_user_errors].html_safe %>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="rst-accsetting">
+                  <div class="col-sm-6">
+                      <% if subscriber.avatar.present? %>
+                        <%= image_tag subscriber.avatar.url(:medium) %>
+                      <% else %>
+                        <img src="../images/user.png" alt="" />
+                      <% end %>
+                      <input id="input-avatar" class="rst-pagebutton" type="submit" value="INSERIR LOGO"/>
+                      <%= a.file_field :avatar, class: 'image-button', id: 'image-button-avatar', required: true %>
+                    <div class="rst-setting">
+                      <span><%= u.label :email, "Email" %></span>
+                      <%= u.email_field :email, value: user.email, autofocus: true, class: 'rst-pageinput', required: true %>
+                      <%= hidden_field_tag "roles[]", 4, class: 'rst-pageinput'%>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= u.label :password, "Senha" %></span>
+                      <%= u.password_field :password, value: user.password, autocomplete: "off", class: 'rst-pageinput', required: true %>
+                      <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> caracteres no mínimo)</em>
+                      <% end %><br />
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= u.label :password_confirmation, "Confirmação de senha" %></span>
+                      <%= u.password_field :password_confirmation, value: user.password_confirmation, autocomplete: "off", class: 'rst-pageinput', required: true %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :name, "Nome de usuário" %></span>
+                      <%= profile.text_field :name, value: personal_profile.name, class: 'rst-pageinput', required: true %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :cpf, 'CPF do usuário' %></span>
+                      <%= profile.text_field :cpf, value: personal_profile.cpf, class: 'rst-pageinput', required: true %>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+
+                    <div class="rst-setting">
+                      <span><%= profile.label :street, "Rua" %></span>
+                      <%= profile.text_field :street, value: personal_profile.street, class: 'rst-pageinput', required: true %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :street_number, "Número" %></span>
+                      <%= profile.text_field :street_number, value: personal_profile.street_number, class: 'rst-pageinput', required: true %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :complement, "Complemento" %></span>
+                      <%= profile.text_field :complement, value: personal_profile.complement, class: 'rst-pageinput', required: true %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :neighborhood, "Bairro" %></span>
+                      <%= profile.text_field :neighborhood, value: personal_profile.neighborhood, class: 'rst-pageinput', required: true %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :state, "Estado" %></span>
+                      <%= profile.select(:state_id, [states_for_select], {selected: personal_profile.state_id}, { :class => 'rst-pageinput', required: true }) %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :city, "Cidade" %></span>
+                      <%= profile.grouped_collection_select(
+                            :city_id,
+                            State.all.includes(:cities),
+                            :cities,
+                            :name,
+                            :id,
+                            :name,
+                            {selected: personal_profile.city_id || ''},
+                            class: 'rst-pageinput',
+                            required: true,
+                            include_blank: true
+                          )
+                      %>
+                    </div>
+                    <div class="rst-setting">
+                      <span><%= profile.label :zip_code, "CEP" %></span>
+                      <%= profile.text_field :zip_code, value: personal_profile.zip_code, class: 'rst-pageinput', required: true %>
+                      <%= hidden_field_tag :id, personal_profile.id %>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="col-xs-12">
+              <%= u.submit "Enviar", class: 'rst-pagebutton' %>
+            </div>
+        <% end %>
+        <%= javascript_include_tag 'populate_city_select' %>
+        <script type="text/javascript">
+          jQuery(function($){
+            $('#personal_profile_zip_code').inputmask('99999999', {greedy: false, clearIncomplete: true});
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Section Register -->

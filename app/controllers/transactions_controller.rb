@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
 
   def create
     @user = User.find transaction_params[:user_id]
-    @user.profile.update(personal_profile_params)
+    # @user.profile.update(personal_profile_params)
     @user.profile.telephones.create(telephone_params)
     @transaction = Transaction.new do |t|
       t.user = @user

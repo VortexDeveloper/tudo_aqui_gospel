@@ -57,7 +57,6 @@ class AnnouncersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       @user.set_roles(params[:roles])
       @user.profile.update personal_profile_params

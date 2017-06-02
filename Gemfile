@@ -43,8 +43,10 @@ gem 'rails_admin-i18n'
 gem 'ckeditor'
 gem 'jquery-inputmask-rails'
 gem 'ratyrate'
-gem "pagseguro-oficial", "~> 2.6.0"
+# gem "pagseguro-oficial", "~> 2.6.0"
+gem "pagseguro-oficial", path: '/home/arthur/workspace/ruby/pagseguro-oficial'
 gem 'rack-cors', :require => 'rack/cors'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

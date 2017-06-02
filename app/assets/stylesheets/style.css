@@ -895,15 +895,25 @@ footer li a:hover,
 
 .photobox-170x170 {
     height: 170px;
-    overflow: hidden;
     float: left;
     width: 170px;
-    position: relative;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.photobox-170x170 a {
+  min-width: 100%;
 }
 
 .photobox-170x170 img{
     min-width: 100% !important;
-    max-width: 150% !important;
     height: auto !important;
 }
 
@@ -911,62 +921,157 @@ footer li a:hover,
     width: 100%;
     position: relative;
     height: 190px;
-    overflow: hidden;
     margin-top: 30px;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.photobox-270x190 a{
+  min-width: 100%;
 }
 
 .photobox-270x190 img{
-    max-width: 150% !important;
+    min-width: 100% !important;
 }
 
 
 .photobox-370x278 {
     height: 278px;
-    overflow: hidden;
+    display: flex;
+}
+
+.photobox-370x278 a{
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.photobox-370x278 img{
+  min-width: 120% !important;
+  height: auto !important;
 }
 
 .photobox-370x320 {
     height: 320px;
-    overflow: hidden;
+    display: flex;
+}
+
+.photobox-370x320 a{
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.photobox-370x320 img{
+  min-width: 120% !important;
+  height: auto !important;
 }
 
 .photobox-370x370 {
     height: 370px;
-    overflow: hidden;
+    display: flex;
+}
+
+.photobox-370x370 a{
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .photobox-370x370 img{
-  max-width: 150% !important;
+  min-width: 120% !important;
   height: auto !important;
 }
 
 .photobox-570x334 {
     height: 334px;
-    overflow: hidden;
+    display: flex;
+}
+
+.photobox-570x334 a{
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .photobox-570x334 img{
-  max-width: 150% !important;
+  min-width: 120% !important;
   height: auto !important;
 }
 
 .photobox-800x640 {
     height: 640px;
-    overflow: hidden;
+    display: flex;
+}
+
+.photobox-800x640 a{
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .photobox-800x640 img{
-  max-width: 150% !important;
+  min-width: 120% !important;
   height: auto !important;
 }
 
 .photobox-800x370 {
     height: 370px;
-    overflow: hidden;
+    display: flex;
+}
+
+.photobox-800x370 a{
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .photobox-800x370 img{
-  max-width: 150% !important;
+  min-width: 120% !important;
   height: auto !important;
 }
 
@@ -2767,6 +2872,27 @@ span.checkbox, span.radio {
 }
 .btn-file > input {
   z-index: 99;
+}
+
+.success-container{
+  width: 100%;
+  padding: 13%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.success-inner {
+    padding: 5% 10%;
+    max-width: 100%;
+    background: #0071bc;
+    color: #fff !important;
+    box-shadow: 5px 5px 2.5px #ccc;
+}
+
+.success-inner h1{
+  color: #fff !important;
 }
 
 #show-publication .pub-body {

@@ -38,6 +38,8 @@ class Ability
       can :manage, :all
       cannot :manage, Administrator
       cannot :manage, User
+      cannot :create, Columnist
+      cannot :create, Subscriber
     else
       if user.has_role? :announcer
         can :manage, Vacancy

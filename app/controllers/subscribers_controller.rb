@@ -1,5 +1,5 @@
 class SubscribersController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   def edit
     @subscriber = current_user.subscriber
   end
@@ -17,6 +17,29 @@ class SubscribersController < ApplicationController
 
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      @user.set_roles(params[:roles])
+      @user.profile.update personal_profile_params
+      @subscriber = @user.subscriber
+      @subscriber.update subscriber_params
+      respond_to do |format|
+        format.html { redirect_to new_transaction_path(u: @user.id), notice: 'É necessário finalizar o cadastro e efetuar o pagamento para ativar a conta!' }
+      end
+    else
+        respond_to do |format|
+            messages = []
+            @user.errors.full_messages.each { |msg| messages << "<li>#{msg}</li>" }
+            flash[:new_user_errors] = messages.join
+            session[:user_error] = @user
+            session[:profile_error] = personal_profile_params
+            session[:subscriber_error] = subscriber_params
+          format.html { redirect_to new_subscriber_path }
+        end
+    end
+  end
+
   def subscriber_params
     params.require(:subscriber).permit(
     :christian,
@@ -25,6 +48,30 @@ class SubscribersController < ApplicationController
     :sex,
     :christian_denomination,
     :avatar
+    )
+  end
+
+  def user_params
+    params.require(:user).permit(
+    :email,
+    :password,
+    :password_confirmation,
+    :active
+    )
+  end
+
+  def personal_profile_params
+    params.require(:personal_profile).permit(
+    :name,
+    :street,
+    :street_number,
+    :complement,
+    :neighborhood,
+    :city_id,
+    :state_id,
+    :country_id,
+    :zip_code,
+    :cpf
     )
   end
 

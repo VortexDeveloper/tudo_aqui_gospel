@@ -8,11 +8,15 @@ class Columnist < ApplicationRecord
 
   validates :user_id, presence: true, uniqueness: true
 
+  enum admin_validate: [:enabled, :disabled]
+
   has_attached_file(
     :avatar,
     styles: { large: "170x170>", medium: "140x140>", thumb: "27x27>" },
     default_url: "/images/user.png"
   )
+
+  scope :activated, -> { where(admin_validate: :enabled) }
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 

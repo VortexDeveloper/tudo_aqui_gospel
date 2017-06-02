@@ -120,6 +120,8 @@ pt-BR:
         announcer: "Anunciante"
         category: "Categoria"
         type: "Tipo do Anúncio"
+        ad_type: "Tipo do anúncio"
+        active: "Ativo"        
         home: "Páginal Principal"
       ad_plan:
         created_at: "Criado em"
@@ -157,7 +159,9 @@ pt-BR:
         photos: "Galeria"
         banner: "Banner"
         about_text: "Quem Somos"
-      gallery:
+        gallery: 'Galeria'
+        vacancies: 'Vagas de Emprego'
+        evaluations: 'Avaliações'
         image: "Imagem"
         announcer: "Anunciante"
       city:

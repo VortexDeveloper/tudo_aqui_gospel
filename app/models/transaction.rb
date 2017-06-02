@@ -77,7 +77,7 @@ class Transaction < ApplicationRecord
           district: user.neighborhood,
           city: user.city_name,
           state: user.state_uf,
-          country: user.country_code || user.state.country.code,
+          country: "BRA",
           postal_code: user.zip_code
         }
       },
