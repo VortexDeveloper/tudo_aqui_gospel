@@ -35,23 +35,23 @@ RailsAdmin.config do |config|
   config.excluded_models << 'ColumnistKnowledge'
   config.excluded_models << 'PubAttachment'
 
-  class Ckeditor::AttachmentFile < ActiveRecord::Base
-    rails_admin do
-      visible false
-    end
-  end
-
-  class Ckeditor::Asset < ActiveRecord::Base
-    rails_admin do
-      visible false
-    end
-  end
-
-  class Ckeditor::Picture < ActiveRecord::Base
-    rails_admin do
-      visible false
-    end
-  end
+  # class Ckeditor::AttachmentFile < ActiveRecord::Base
+  #   rails_admin do
+  #     visible false
+  #   end
+  # end
+  #
+  # class Ckeditor::Asset < ActiveRecord::Base
+  #   rails_admin do
+  #     visible false
+  #   end
+  # end
+  #
+  # class Ckeditor::Picture < ActiveRecord::Base
+  #   rails_admin do
+  #     visible false
+  #   end
+  # end
 
   # byebug
 
