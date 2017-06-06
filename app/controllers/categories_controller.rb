@@ -1,5 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category
+  before_action :is_active?, only: [:show]
+
+  def is_active?
+    redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active?
+  end
 
   def show
     @ads = Ad.where(category_id: params[:id]).includes(:category)

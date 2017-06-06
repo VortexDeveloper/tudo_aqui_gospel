@@ -7,10 +7,13 @@
           <nav class="rst-socialbar-menu">
             <ul>
               <li><%= link_to "CONTATO", new_contact_path %></li>
-              <% if !user_signed_in? %>
-                <li class="blue-bg sign-buttons"><%= link_to 'ASSINE JÁ', new_subscriber_path %></li>
-                <li class="green-bg sign-buttons"><%= link_to 'SEJA NOSSO COLUNISTA', new_registration_path(resource_name) %></li>
+
+              <% if user_signed_in? && current_user.unactive?%>
+                <li class="blue-bg sign-buttons"><%= link_to 'ASSINE JÁ', new_transaction_path(u: current_user.id)%></li>
+              <% else %>
+                <li class="blue-bg sign-buttons"><%= link_to 'CADASTRE-SE', new_subscriber_path %></li>
               <% end %>
+
               <li></li>
             </ul>
           </nav>

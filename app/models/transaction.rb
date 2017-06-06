@@ -64,7 +64,7 @@ class Transaction < ApplicationRecord
         hash: sender_hash,
         phone: {
           area_code: user.main_phone.number[1..2],
-          number: user.main_phone.number[5..14]
+          number: user.main_phone.number[5..14].gsub(/\.|-/, '')
         },
         document: {
           type: 'CPF',
@@ -78,7 +78,7 @@ class Transaction < ApplicationRecord
           city: user.city_name,
           state: user.state_uf,
           country: "BRA",
-          postal_code: user.zip_code
+          postal_code: user.zip_code.gsub(/\.|-/, '')
         }
       },
       payment_method: {
@@ -88,7 +88,7 @@ class Transaction < ApplicationRecord
           birth_date: birth_date_formatted,
           phone: {
             area_code: card_params[:phone][1..2],
-            number: card_params[:phone][5..14]
+            number: card_params[:phone][5..14].gsub(/\.|-/, '')
           },
           document: {
             type: 'CPF',

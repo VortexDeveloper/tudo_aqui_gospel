@@ -22,19 +22,21 @@ class SubscribersController < ApplicationController
     if @user.save
       @user.set_roles(params[:roles])
       @user.profile.update personal_profile_params
-      @subscriber = @user.subscriber
-      @subscriber.update subscriber_params
+      # @subscriber = @user.subscriber
+      # @subscriber.update subscriber_params
+      sign_in(@user, scope: :user)
       respond_to do |format|
-        format.html { redirect_to new_transaction_path(u: @user.id), notice: 'É necessário finalizar o cadastro e efetuar o pagamento para ativar a conta!' }
+        format.html { redirect_to root_path, notice: 'Parabéns, você finalizou seu cadastro, para ter acesso completo ao nosso conteúdo, é necessário fazer a assinatura. Obrigado!' }
       end
     else
         respond_to do |format|
+            byebug
             messages = []
             @user.errors.full_messages.each { |msg| messages << "<li>#{msg}</li>" }
             flash[:new_user_errors] = messages.join
             session[:user_error] = @user
             session[:profile_error] = personal_profile_params
-            session[:subscriber_error] = subscriber_params
+            # session[:subscriber_error] = subscriber_params
           format.html { redirect_to new_subscriber_path }
         end
     end

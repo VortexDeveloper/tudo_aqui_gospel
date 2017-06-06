@@ -1,7 +1,11 @@
 class ColumnistsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
   before_action only: [:edit, :update] do
     authenticate_current_user(user_signed_in? && current_user.columnist.nil?)
+  end
+  before_action :is_active?, only: [:show]
+
+  def is_active?
+    redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active?
   end
 
   def index

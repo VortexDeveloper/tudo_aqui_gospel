@@ -105,7 +105,7 @@
       var _this = $(this);
 
       PagSeguroDirectPayment.createCardToken({
-        cardNumber: $("#card_params_card_number").val(),
+        cardNumber: $("#card_params_card_number").val().replace(" ", ""),
         cvv: $("#card_params_cvv").val(),
         expirationMonth: $("#card_params_expiration_date_2i").val(),
         expirationYear: $("#card_params_expiration_date_1i").val(),
@@ -115,14 +115,17 @@
           $('#new_transaction').submit();
         },
         error: function (response) {
-          alert('Houve um erro inesperado.')
-          console.log(response);
+          for (var error_code in response.errors) {
+            alert(response.errors[error_code]);
+          }
         }
       });
     });
 
-    $('.phone-mask').inputmask('(99) 99999999[9]', {greedy: false, clearIncomplete: true});
-
-
+    $('.phone-mask').inputmask('(99) 9999-9999[9]', {greedy: false, clearIncomplete: true});
+    $('#card_params_card_number').inputmask('9999 9999 9999 9999', {greedy: false, clearIncomplete: true});
+    $('#card_params_cvv').inputmask('999', {greedy: false, clearIncomplete: true});
+    $('#card_params_cpf').inputmask('999.999.999-99', {greedy: false, clearIncomplete: true});
+    $('#card_params_phone').inputmask('(99) 9999-9999[9]', {greedy: false, clearIncomplete: true});
   });
 </script>

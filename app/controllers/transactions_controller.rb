@@ -55,10 +55,10 @@ class TransactionsController < ApplicationController
       redirect_to new_user_session_path, notice: 'Você não está autorizado a acessar esta página mas sua conta já está ativada. Pode fazer o login ou recupere a sua senha.'
     end
 
-    if @user.created_at < 1.hour.ago
-      @user.destroy!
-      redirect_to new_user_registration_path, notice: 'Você não está autorizado a acessar esta página. Será necessário criar um cadastro.'
-    end
+    # if @user.created_at < 1.hour.ago
+    #   @user.destroy!
+    #   redirect_to new_user_registration_path, notice: 'Você não está autorizado a acessar esta página. Será necessário criar um cadastro.'
+    # end
   end
 
   def telephone_params

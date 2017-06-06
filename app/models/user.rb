@@ -78,7 +78,12 @@ class User < ApplicationRecord
     end
   end
 
-  def active_for_authentication?
-    super && active?
-  end
+  # def active_for_authentication?
+  #   super && active?
+  # end
+  #
+  # def inactive_message
+  #   "Desculpe, sua conta não está ativa"
+  # end
+
 end
