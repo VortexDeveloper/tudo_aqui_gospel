@@ -105,7 +105,8 @@
       var _this = $(this);
 
       PagSeguroDirectPayment.createCardToken({
-        cardNumber: $("#card_params_card_number").val().replace(" ", ""),
+
+        cardNumber: $("#card_params_card_number").val().replace( /\s/g, '' ),
         cvv: $("#card_params_cvv").val(),
         expirationMonth: $("#card_params_expiration_date_2i").val(),
         expirationYear: $("#card_params_expiration_date_1i").val(),

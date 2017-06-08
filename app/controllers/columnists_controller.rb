@@ -31,6 +31,32 @@ class ColumnistsController < ApplicationController
       end
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      @user.set_roles(params[:roles])
+      @user.profile.update personal_profile_params
+      @columnist = @user.columnist
+      @columnist.update columnist_params
+      sign_in(@user, scope: :user) unless user_signed_in?
+      respond_to do |format|
+        format.html {
+          redirect_to root_path, notice: 'Cadastrado finalizado com sucesso'
+        }
+      end
+    else
+        respond_to do |format|
+            messages = []
+            @user.errors.full_messages.each { |msg| messages << "<li>#{msg}</li>" }
+            flash[:new_user_errors] = messages.join
+            session[:user_error] = @user
+            session[:profile_error] = personal_profile_params
+            session[:columnist_error] = columnist_params
+          format.html { redirect_to new_columnist_path }
+        end
+    end
+  end
+
   def columnist_params
     params.require(:columnist).permit(
     :periodicity,
@@ -39,6 +65,30 @@ class ColumnistsController < ApplicationController
     :sex,
     :admin_validate,
     :avatar
+    )
+  end
+
+  def user_params
+    params.require(:user).permit(
+    :email,
+    :password,
+    :password_confirmation,
+    :active
+    )
+  end
+
+  def personal_profile_params
+    params.require(:personal_profile).permit(
+    :name,
+    :street,
+    :street_number,
+    :complement,
+    :neighborhood,
+    :city_id,
+    :state_id,
+    :country_id,
+    :zip_code,
+    :cpf
     )
   end
 

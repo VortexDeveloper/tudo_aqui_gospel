@@ -122,6 +122,16 @@ module ApplicationHelper
     end
   end
 
+  def show_columnist_page
+    if user_signed_in?
+      if current_user.has_role?(:administrator) || current_user.has_role?(:insider)
+        content_tag(:li, "") do
+          link_to "Cadastro de Colunista", new_columnist_path
+        end
+      end
+    end
+  end
+
   def show_image_thumb(columnist, subscriber, announcer, administrator)
     if user_signed_in?
       profile_type = current_user.roles.first.name if current_user.roles.present?

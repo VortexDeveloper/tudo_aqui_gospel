@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :contacts
   resources :announcers
   resources :subscribers
+  resources :columnists
+
   resources :ads, only: [:show, :update] do
     collection do
       resources :categories, only: [:show] do
@@ -45,16 +47,18 @@ Rails.application.routes.draw do
   post 'personal_profiles/update_announcer'
   #post 'personal_profiles/add_telephone'
   get 'columnists/edit'
-  get 'columnists/:id' => 'columnists#show', as: 'columnist'
   patch 'columnists/update'
+  post 'columnists/create'
+  # get 'columnists/:id' => 'columnists#show', as: 'columnist'
   get 'subscribers/edit'
   patch 'subscribers/update'
-  patch 'subscribers/canceled_subscription', as: :canceled_subscription
-  post 'announcers/create'
   post 'subscribers/create'
+  patch 'subscribers/canceled_subscription', as: :canceled_subscription
+
+  post 'announcers/create'
   post 'announcers/add_photo'
   post 'announcers/add_evaluation'
   get 'pages/:id/subscription', controller: :pages, action: :subscription, as: 'subscription'
 
-  resources :columnists
+
 end
