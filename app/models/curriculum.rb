@@ -18,4 +18,8 @@ class Curriculum < ApplicationRecord
       %w(image/jpeg image/jpg image/png application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document)
   }
 
+  rails_admin do
+    object_label_method :subscriber_label_name
+  end
+
 end

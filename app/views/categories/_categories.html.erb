@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <div class="search-bar text-right">
-            <%= form_tag search_category_path, method: :get, class: 'form-inline' do %>
+          <div>
+            <%= form_tag search_category_path, method: :get, class: 'form-inline search-bar' do %>
               <div class="form-group">
                 <%= text_field_tag :query, "", class: 'form-control', placeholder: 'Termo da pesquisa' %>
               </div>
@@ -22,9 +22,11 @@
                       :name,
                       :id,
                       :name,
-                      {selected: ''},
-                      class: 'form-control',
-                      include_blank: true
+                      {
+                        selected: '',
+                        include_blank: true
+                      },
+                      class: 'form-control'
                     )
                 %>
               </div>
@@ -34,21 +36,22 @@
           <div class="rst-section-title rst-section-title-box">
             <h4><%= @category.name %></h4>
           </div>
-          <div class="rst-mainslider owl-carousel">
-            <% ads_categories.each do |ad| %>
-              <div class="rst-mainslide photobox-800x640">
-                <%= link_to ad do %>
-                  <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
-                <% end %>
-                <div class="rst-boxinfo">
-                  <%= link_to ad.announcer do %>
-                    <span><%= ad.announcer.fantasy_name %></span>
+          <% if ads_categories.present? %>
+            <div class="rst-mainslider owl-carousel">
+              <% ads_categories.each do |ad| %>
+                <div class="rst-mainslide photobox-800x640">
+                  <%= link_to ad do %>
+                    <%= image_tag ad.avatar.url(:large) if ad.avatar.present? %>
                   <% end %>
-                  <p><a href=""><%= ad.description %></a></p>
+                  <div class="rst-boxinfo">
+                    <%= link_to ad.announcer do %>
+                      <span><%= ad.announcer.fantasy_name %></span>
+                    <% end %>
+                    <p><a href=""><%= ad.description %></a></p>
+                  </div>
                 </div>
-              </div>
-            <% end %>
-          </div>
+              <% end %>
+            </div>
           <!-- fim slider -->
           <div class="rst-mainslider-posts">
              <% ads_categories.first(2).each do |ad| %>
@@ -66,6 +69,11 @@
              <% end %>
              </div>
              <div class="clear"></div>
+             <% else %>
+                <p>
+                    Nenhum anúncio encontrado para essa categoria
+                </p>
+             <%end%>
           </div>
           <!-- fim anúncios menores -->
           <div class="clear"></div>
@@ -73,46 +81,48 @@
       </div>
     </div>
   </section>
-  <section id="rst-newsandhot">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="rst-section-title">
-            <h4>Anúncios</h4>
-          </div>
-          <div class="rst-newsandhot-post">
-            <div class="rst-newsandhot-post-content">
-              <article>
-                <div class="row">
-                  <% ads_categories.each do |ad| %>
-                    <div class="rst-postpic col-sm-6">
-                      <div class="photobox-370x278">
-                        <%= link_to ad do %>
-                          <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
-                        <% end %>
-                        <%= link_to ad.announcer, class: 'rst-postpic-cat' do %>
-                          <span><%= ad.announcer.fantasy_name %></span>
-                        <% end %>
+  <% if ads_categories.present? %>
+    <section id="rst-newsandhot">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="rst-section-title">
+              <h4>Anúncios</h4>
+            </div>
+            <div class="rst-newsandhot-post">
+              <div class="rst-newsandhot-post-content">
+                <article>
+                  <div class="row">
+                    <% ads_categories.each do |ad| %>
+                      <div class="rst-postpic col-sm-6">
+                        <div class="photobox-370x278">
+                          <%= link_to ad do %>
+                            <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %></a>
+                          <% end %>
+                          <%= link_to ad.announcer, class: 'rst-postpic-cat' do %>
+                            <span><%= ad.announcer.fantasy_name %></span>
+                          <% end %>
+                        </div>
                       </div>
-                    </div>
-                  <% end %>
-                </div>
-              </article>
+                    <% end %>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-4">
-          <aside class="widget widget_adv">
-            <h3>Anúncios</h3>
-            <% ads_categories.each do |ad| %>
-              <%= link_to ad, class: 'photobox-170x170' do %>
-                <%= image_tag ad.avatar(:medium) %>
+          <div class="col-sm-4">
+            <aside class="widget widget_adv">
+              <h3>Anúncios</h3>
+              <% ads_categories.each do |ad| %>
+                <%= link_to ad, class: 'photobox-170x170' do %>
+                  <%= image_tag ad.avatar(:medium) %>
+                <% end %>
               <% end %>
-            <% end %>
-            <div class="clear"></div>
-          </aside>
+              <div class="clear"></div>
+            </aside>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <% end %>
 <%= javascript_include_tag 'populate_city_select' %>

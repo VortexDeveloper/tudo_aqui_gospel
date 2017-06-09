@@ -12,11 +12,14 @@ class CategoriesController < ApplicationController
 
   def search
     @ads = Ad.joins(announcer: [user: :profile])
-    .where("text_description LIKE :query", query: "%#{params[:query]}%")
+    .where("lower(text_description) LIKE ? OR lower(title) LIKE ?", "%#{params[:query]}%".downcase, "%#{params[:query]}%".downcase)
     .where(category_id: params[:id])
-    @ads = @ads.where(personal_profiles: {city_id: params[:personal_profile][:city_id]}) if params[:personal_profile][:city_id].present?
-    @ads = @ads.where(personal_profiles: {state_id: params[:personal_profile_state_id]}) if params[:personal_profile_state_id].present?
-
+    if params[:personal_profile_state_id].present?
+      @ads = @ads.where(personal_profiles: {state_id: params[:personal_profile_state_id]})
+      if params[:personal_profile][:city_id].present?
+        @ads = @ads.where(personal_profiles: {city_id: params[:personal_profile][:city_id]})
+      end
+    end
     respond_to do |format|
       format.html { render :show }
       format.json { render :show, status: :ok, location: @ad }

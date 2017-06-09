@@ -9,7 +9,7 @@ class PublicationsController < ApplicationController
   before_action :is_active?, only: [:index, :show, :new, :create]
 
   def is_active?
-    redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active?
+    redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active? || current_user.has_role?("Columnist")
   end
 
   # GET /publications
