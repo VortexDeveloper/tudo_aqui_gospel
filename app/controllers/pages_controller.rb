@@ -11,4 +11,15 @@ class PagesController < ApplicationController
   def subscription
     @user = User.find params[:id]
   end
+
+  def search
+    @ads = Ad.joins(announcer: [user: :profile])
+    .where("text_description LIKE :query", query: "%#{params[:query]}%")
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :show, status: :ok, location: @ad }
+    end
+  end
+
 end

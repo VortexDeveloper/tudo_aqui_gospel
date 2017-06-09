@@ -21,6 +21,11 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :pages, only: [:search] do
+    get :search, on: :member
+  end
+
   resources :vacancies, except: [:index]
   resources :galleries
   resources :publications
