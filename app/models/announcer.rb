@@ -1,11 +1,11 @@
  class Announcer < ApplicationRecord
   include Rolifiable
-  has_many :ads
-  has_many :photos, class_name: "Gallery"
-  has_many :vacancies
+  has_many :ads, dependent: :destroy
+  has_many :photos, class_name: "Gallery", dependent: :destroy
+  has_many :vacancies, dependent: :destroy
   belongs_to :ad_plan
   belongs_to :user, optional: false
-  has_many :evaluations, class_name: "Evaluation"
+  has_many :evaluations, class_name: "Evaluation", dependent: :destroy
 
   validates :user_id, presence: true, uniqueness: true
   validates :email, :doc, :doc_type, presence: true, on: :update

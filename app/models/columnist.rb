@@ -4,7 +4,7 @@ class Columnist < ApplicationRecord
   belongs_to :user, optional: false
   belongs_to :columnist_title
   has_many :columnist_knowledges, dependent: :destroy
-  has_many :knowledge_areas, through: :columnist_knowledges
+  has_many :knowledge_areas, through: :columnist_knowledges, dependent: :destroy
 
   validates :user_id, presence: true, uniqueness: true
 

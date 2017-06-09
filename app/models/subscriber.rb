@@ -2,7 +2,7 @@ class Subscriber < ApplicationRecord
   include Rolifiable
 
   belongs_to :user, optional: false
-  has_one :curriculum
+  has_one :curriculum, dependent: :destroy
 
   validates :user_id, presence: true, uniqueness: true
 

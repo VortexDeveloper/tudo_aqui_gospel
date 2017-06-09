@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-  has_many :ads
-  has_many :childs, class_name: "Category", foreign_key: "father_id"
+  has_many :ads, dependent: :destroy
+  has_many :childs, class_name: "Category", foreign_key: "father_id", dependent: :destroy
   belongs_to :father, class_name: "Category", optional: true
 
   def self.enabled_categories
