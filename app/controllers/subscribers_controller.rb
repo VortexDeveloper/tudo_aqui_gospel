@@ -30,7 +30,6 @@ class SubscribersController < ApplicationController
       end
     else
         respond_to do |format|
-            byebug
             messages = []
             @user.errors.full_messages.each { |msg| messages << "<li>#{msg}</li>" }
             flash[:new_user_errors] = messages.join

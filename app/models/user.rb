@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
        :recoverable, :validatable
 
+  # before_destroy :destroy_transactions
+
   ratyrate_rater
 
   has_one :profile, class_name: 'PersonalProfile', dependent: :destroy
@@ -26,6 +28,10 @@ class User < ApplicationRecord
            :telephones, to: :profile, prefix: false, allow_nil: true
 
   validates :email, presence: true, uniqueness: true
+
+  # def destroy_transactions
+  #   self.transaction.destroy_all
+  # end
 
   # DEPRECATED
   def set_roles(roles_id)

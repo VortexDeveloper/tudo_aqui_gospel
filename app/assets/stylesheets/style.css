@@ -926,36 +926,42 @@ footer li a:hover,
 }
 
 .photobox-170x170 a {
-  min-width: 100%;
+  min-width: 120%;
 }
 
-.photobox-170x170 img{
-    min-width: 100% !important;
+.photobox-170x170 img {
+    min-width: 200% !important;
     height: auto !important;
+}
+
+div#photo-gallery {
+    margin-top: 30px;
+    margin-bottom: -45px;
 }
 
 .photobox-270x190 {
     width: 100%;
     position: relative;
     height: 190px;
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    align-items: center;
-    align-content: stretch;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+
 }
 
 .photobox-270x190 a{
-  min-width: 100%;
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: stretch;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .photobox-270x190 img{
-    min-width: 100% !important;
+    min-width: 120% !important;
 }
 
 
@@ -1003,14 +1009,14 @@ footer li a:hover,
   height: auto !important;
 }
 
-.photobox-370x370 {
-    height: 370px;
-    display: flex;
-}
+/*.photobox-370x370 {
+display: flex;
+}*/
 
-.photobox-370x370 a{
-  display: flex;
+.photobox-370x370{
+  height: 370px;
   overflow: hidden;
+  display: flex;
   background-size: cover;
   background-position: center;
   align-items: center;
@@ -1021,7 +1027,7 @@ footer li a:hover,
 }
 
 .photobox-370x370 img{
-  min-width: 120% !important;
+  min-width: 190% !important;
   height: auto !important;
 }
 
@@ -1088,6 +1094,36 @@ footer li a:hover,
 }
 
 .photobox-800x370 img{
+  min-width: 120% !important;
+  height: auto !important;
+}
+
+.photobox-787x370 {
+    height: 370px;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.photobox-787x370 a{
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.photobox-787x370 img{
   min-width: 120% !important;
   height: auto !important;
 }

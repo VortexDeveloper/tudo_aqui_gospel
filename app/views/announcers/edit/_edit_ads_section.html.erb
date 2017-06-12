@@ -13,7 +13,7 @@
                 <div class="row">
                   <% @announcer.ads.each do |ad| %>
                     <div class="rst-postpic col-sm-4 rst-postpic-img">
-                      <%= link_to ad do %>
+                      <%= link_to ad, class: 'photobox-370x370' do %>
                         <%=  image_tag ad.avatar.url %>
                       <% end %>
                       <%= link_to ad, class: 'rst-postpic-cat' do %>
