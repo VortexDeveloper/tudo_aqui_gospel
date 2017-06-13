@@ -34,6 +34,13 @@ input#roles_ {
     float: left;
 }
 
+.columnists {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  align-items: center;
+}
+
 .columnist{
   display: flex;
   flex-direction: row;
@@ -41,6 +48,7 @@ input#roles_ {
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
+
   width: 50%;
 }
 
@@ -887,6 +895,30 @@ footer li a:hover,
 .text-area-announcer{
   width: 100%;
   height: 150px;
+}
+
+.photobox-50x50 {
+    height: 50px;
+    float: left;
+    width: 50px;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.photobox-50x50 a {
+  min-width: 120%;
+}
+
+.photobox-50x50 img {
+    min-width: 200% !important;
+    height: auto !important;
 }
 
 .photobox-100x76 {

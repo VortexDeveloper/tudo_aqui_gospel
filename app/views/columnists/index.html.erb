@@ -1,38 +1,45 @@
 <p id="notice"><%= notice %></p>
-
-<!-- FAZER A VIEW DE TODOS OS COLUNISTAS -->
-<div class="flexbox-columnists" style="display: flex;flex-direction: column;padding-left: 10%;">
-  <% if @columnists.present? %>
-      <% @columnists.each do |columnist|%>
-      <div class="flexbox-columnist-element" style="display: flex;justify-content: space-between;align-items: flex-start;">
-            <!-- <div class="columnist"> -->
-          <!-- <% if columnist.columnist_title != nil %>
-            <strong><%= columnist.columnist_title.title %></strong>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="rst-breadcrumb">
+        <a href="#"><span>Home</span></a>
+        <span>></span>
+        <a href="#"><span>Nossos Colunistas</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sx-12">
+      <div class="rst-section-title rst-section-title-box">
+        <h4>Nossos Colunistas</h4>
+      </div>
+      <% if @columnists.present? %>
+        <% @columnists.each do |columnist|%>
+          <div class="columnists">
+            <%= link_to columnist, class: 'photobox-50x50' do %>
+              <%= if columnist.avatar.present?
+                    image_tag columnist.avatar.url(:large)
+                  else
+                    image_tag ('user.png')
+                  end
+                %>
+            <% end %>
+            <% if columnist.columnist_title != nil %>
+              <strong><%= columnist.columnist_title.title %></strong>
+              <br/>
+            <% end %>
+            <strong><%= columnist.user.name %></strong>
             <br/>
-          <% end %>
-          <strong><%= columnist.user.name %></strong>
-          <br/> -->
-          <%= link_to columnist, class: 'photobox-170x170' do %>
-            <%= if columnist.avatar.present?
-                  image_tag columnist.avatar.url(:large)
-                else
-                  image_tag ('user.png')
-                end
-              %>
-          <% end %>
-          <% if columnist.columnist_title != nil %>
-            <strong><%= columnist.columnist_title.title %></strong>
-            <br/>
-          <% end %>
-          <strong><%= columnist.user.name %></strong>
-          <br/>
-            <!-- </div> -->
           </div>
-    <% end %>
-
-  <% else %>
-      <p>
-        Ainda não existem colunistas cadastrados
-      </p>
-  <% end %>
+        <% end %>
+      <% else %>
+        <p>
+          Ainda não existem colunistas cadastrados
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>
