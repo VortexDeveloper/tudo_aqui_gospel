@@ -9,7 +9,7 @@
           <% if @announcer.quality_rates.present? %>
               <ol class="commentlist">
                 <% @announcer.quality_rates.each do |evaluation| %>
-                  <li class="comment">
+                  <li class="comment" id="evaluation_<%= evaluation.id %>">
                     <div class="comment-container">
                       <div class="comment-avatar">
                         <% #if evaluation.rater.type.avatar.present? %>
