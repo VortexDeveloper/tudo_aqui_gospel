@@ -4,6 +4,15 @@ class AdsController < ApplicationController
   before_action only: [:update] do
     authenticate_current_user(current_user.announcer != @ad.announcer)
   end
+  # before_action :is_active?, only: [:show]
+  #
+  # def is_active?
+  #   if user_signed_in?
+  #     redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active?
+  #   else
+  #     redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!'
+  #   end
+  # end
 
   # GET /ads/1
   # GET /ads/1.json

@@ -1071,10 +1071,22 @@ display: flex;
   flex-wrap: wrap;
 }
 
-.photobox-800x640 img{
-  min-width: 120% !important;
-  height: auto !important;
+.photobox-800x640 img {
+    min-width: 100%;
+    min-height: 640px;
+    width: auto;
+    height: auto;
 }
+
+  /*.photobox-800x640 img {
+      min-width: 100% !important;
+      max-width: 300% !important;
+      min-height: 640px !important;
+      max-height: 2000px !important;
+      height: 640px !important;
+  }*/
+
+
 
 .photobox-800x370 {
     height: 370px;

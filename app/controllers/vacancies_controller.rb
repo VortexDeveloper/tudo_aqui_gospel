@@ -4,11 +4,11 @@ class VacanciesController < ApplicationController
   before_action only: [:edit, :update, :destroy] do
     authenticate_current_user(@vacancy.announcer != current_user.announcer)
   end
-  before_action :is_active?, only: [:show]
-
-  def is_active?
-    redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active?
-  end
+  # before_action :is_active?, only: [:show]
+  #
+  # def is_active?
+  #   redirect_to root_path, notice: 'Conteúdo não autorizado você precisa assinar nosso portal para acessar essa area!' unless current_user.active?
+  # end
 
   # GET /vacancies
   # GET /vacancies.json
