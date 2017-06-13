@@ -54,6 +54,9 @@ pt-BR:
       telephone:
         one: Telefone
         other: Telefones
+      transaction:
+        one: Transação
+        other: Transações
       user:
         one: Usuário
         other: Usuários
@@ -105,6 +108,18 @@ pt-BR:
         one: Role
         other: Roles
     attributes:
+      plan:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        reference: "Referência"
+        name: "Nome"
+        details: "Detalhes"
+        period: "Periodo"
+        duration_in_months: "Duração em mesês"
+        price: "Preço"
+        expire: "Expira em"
+        trial_duration: "Tempo de teste"
+        code: "Código"
       ad:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -121,7 +136,7 @@ pt-BR:
         category: "Categoria"
         type: "Tipo do Anúncio"
         ad_type: "Tipo do anúncio"
-        active: "Ativo"        
+        active: "Ativo"
         home: "Páginal Principal"
       ad_plan:
         created_at: "Criado em"
@@ -132,11 +147,13 @@ pt-BR:
         value: "Valor do anúncio"
         start_date: "Data de início"
         end_date: "Data final"
-        type: "Tipo de plano"
+        plan_type: "Tipo de plano"
         description: "Descrição do plano"
+        announcers: "Anunciantes"
       category:
         created_at: "Criado em"
         updated_at: "Atualizado em"
+        childs: "Sub-categorias"
         name: "Nome"
         father: "Superior"
         ads: "Anúncios"
@@ -179,6 +196,8 @@ pt-BR:
         sex: "Sexo"
         admin_validate: "Validação do administrador"
         avatar: "Imagem"
+        columnist_title: "Título"
+        knowledge_areas: "Áreas de conhecimento"
       contact:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -202,6 +221,7 @@ pt-BR:
         user: "Usuário"
         name: "Nome"
         street: "Rua"
+        street_number: "Número"
         complement: "Complemento"
         neighborhood: "Bairro"
         city: "Cidade"
@@ -239,6 +259,16 @@ pt-BR:
         user: "Usuário"
         number: "Número"
         phonebooks: "Agendas"
+      transaction:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        user: "Usuário"
+        plan: "Plano"
+        subscription_status: "Status da transação"
+        subscription_code: "Código da transação"
+        last_transaction_code: "Último código da transação"
+        last_transaction_status: "Último status da transação"
+        transaction_reference: "Referência da transação"
       user:
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -309,11 +339,13 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Atualizado em"
         name: "Nome"
-        user: "Usuário"
+        users: "Usuários"
       gallery:
         created_at: "Criado em"
         updated_at: "Atualizado em"
         user: "Usuário"
+        image: "Imagem"
+        announcer: "Anunciante"
       announcer_payment:
         announcer: Anunciante
         ad: Anúncio

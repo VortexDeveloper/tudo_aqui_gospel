@@ -33,6 +33,10 @@ class User < ApplicationRecord
   #   self.transaction.destroy_all
   # end
 
+  rails_admin do
+    object_label_method :user_label_name
+  end
+
   # DEPRECATED
   def set_roles(roles_id)
     roles_id ||= {} # no role checked
@@ -82,6 +86,10 @@ class User < ApplicationRecord
       when "Administrator"
         self.administrator
     end
+  end
+
+  def user_label_name
+    "#{self.email} - #{self.name}"
   end
 
   # def active_for_authentication?

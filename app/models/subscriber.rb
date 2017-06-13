@@ -12,6 +12,15 @@ class Subscriber < ApplicationRecord
     default_url: "/images/user.png"
   )
 
+  rails_admin do
+    object_label_method :subscriber_label_name
+  end
+
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
+  def subscriber_label_name
+    return "" if user.nil?
+    "#{user.email} - #{user.profile.name}"
+  end
 
 end

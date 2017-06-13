@@ -11,4 +11,9 @@ class Ckeditor::Picture < Ckeditor::Asset
   def url_content
     url(:content)
   end
+
+  rails_admin do
+    visible false
+  end
+  
 end

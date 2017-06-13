@@ -35,26 +35,6 @@ RailsAdmin.config do |config|
   config.excluded_models << 'ColumnistKnowledge'
   config.excluded_models << 'PubAttachment'
 
-  # class Ckeditor::AttachmentFile < ActiveRecord::Base
-  #   rails_admin do
-  #     visible false
-  #   end
-  # end
-  #
-  # class Ckeditor::Asset < ActiveRecord::Base
-  #   rails_admin do
-  #     visible false
-  #   end
-  # end
-  #
-  # class Ckeditor::Picture < ActiveRecord::Base
-  #   rails_admin do
-  #     visible false
-  #   end
-  # end
-
-  # byebug
-
   # config.model 'Box' do
   #   label "Beautiful box"
   #   label_plural "Beautiful boxen"
@@ -79,7 +59,9 @@ RailsAdmin.config do |config|
     bulk_delete
     show
     delete
-    show_in_app
+    show_in_app do
+      except ['Subscriber', 'Announcer']
+    end
 
     ## With an audit adapter, you can add:
     # history_index
