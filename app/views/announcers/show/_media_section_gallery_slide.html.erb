@@ -2,7 +2,7 @@
   <aside class="widget widget_adv">
     <% @announcer.photos.first(4).each do |photo| %>
       <a class="photobox-170x170">
-        <%= image_tag photo.image.url %>
+        <%= image_tag photo.image.url(:thumb) %>
       </a>
     <% end %>
   </aside>

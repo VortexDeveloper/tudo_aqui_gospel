@@ -38,14 +38,14 @@
                  <% @principal_home.each do |ad| %>
     							 <div class="rst-posttype photobox-370x320">
                      <%= link_to ad_path(ad) do %>
-                        <%=  image_tag ad.avatar.url(:large) if ad.avatar.present? %>
+                        <%=  image_tag ad.avatar.url(:medium) if ad.avatar.present? %>
                      <% end %>
-    								<div class="rst-boxinfo">
-                      <%= link_to ad.announcer do %>
-    									  <span><%= ad.announcer.fantasy_name %></span>
-                      <% end %>
-    									<p><%= link_to ad.description, ad_path(ad) %></p>
-    								</div>
+	    								<div class="rst-boxinfo">
+	                      <%= link_to ad.announcer do %>
+	    									  <span><%= ad.announcer.fantasy_name %></span>
+	                      <% end %>
+	    									<p><%= link_to ad.description, ad_path(ad) %></p>
+	    								</div>
     							 </div>
                  <% end %>
                  <% if @principal_home.size < 2 %>
@@ -336,13 +336,6 @@
 							<div class="flexbox-columnist" style="display: flex;flex-wrap: wrap;">
 	              <% if @columnists.present? %>
 	                  <% @columnists.first(4).each do |columnist|%>
-											<!-- <div class="columnist"> -->
-											<!-- <% if columnist.columnist_title != nil %>
-												<strong><%= columnist.columnist_title.title %></strong>
-												<br/>
-											<% end %> -->
-											<!-- <strong><%= columnist.user.name %></strong> -->
-												<br/>
 		                    <%= link_to columnist, class: 'photobox-170x170' do %>
 		                      <%= if columnist.avatar.present?
 		                            image_tag columnist.avatar.url(:large)
@@ -351,7 +344,6 @@
 		                          end
 		                        %>
 		                    <% end %>
-											<!-- </div> -->
 	                <% end %>
 									<%= link_to "Ver mais", columnists_path %>
 	              <% else %>

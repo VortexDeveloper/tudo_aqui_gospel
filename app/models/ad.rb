@@ -7,7 +7,7 @@ class Ad < ApplicationRecord
 
   has_attached_file(
     :avatar,
-    styles: { large: "800x640>" ,medium: "370x320", thumb: "170x170>" },
+    styles: { large: "800x640#",  medium: "370x278#", small: "370x320#", thumb: "170x170#" },
     default_url: "/images/user.png"
   )
 

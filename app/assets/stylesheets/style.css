@@ -947,6 +947,7 @@ footer li a:hover,
     float: left;
     width: 170px;
     display: flex;
+    margin: 7.5px;
     overflow: hidden;
     background-size: cover;
     background-position: center;
@@ -957,12 +958,8 @@ footer li a:hover,
     flex-wrap: wrap;
 }
 
-.photobox-170x170 a {
-  min-width: 120%;
-}
-
 .photobox-170x170 img {
-    min-width: 200% !important;
+    min-width: 100% !important;
     height: auto !important;
 }
 
@@ -993,7 +990,7 @@ div#photo-gallery {
 }
 
 .photobox-270x190 img{
-    min-width: 120% !important;
+    min-width: 100% !important;
 }
 
 
@@ -1014,9 +1011,9 @@ div#photo-gallery {
   flex-wrap: wrap;
 }
 
-.photobox-370x278 img{
-  min-width: 120% !important;
-  height: auto !important;
+.photobox-370x278 img {
+    min-width: 100% !important;
+    height: auto !important;
 }
 
 .photobox-370x320 {
@@ -1240,14 +1237,13 @@ display: flex;
 .col-sm-6.rst-catpost .rst-postinfo
 {
   border: 1px solid #e8ecf0;
-  padding: 16px 20px 23px;
-  height: 100px;
+  padding: 8px 12px 8px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #rst-popular .rst-postinfo h6,
 #rst-popular .rst-postinfo h6 a {
-  color: #2f3e42;
+  color: #0071bc;
   font-family: "ROBOTO";
   font-size: 18px;
   font-weight: bold;

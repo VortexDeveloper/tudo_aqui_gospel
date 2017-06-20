@@ -3,7 +3,7 @@ class Gallery < ApplicationRecord
 
   has_attached_file(
     :image,
-    styles: { medium: "370x278>", large: "370x370>" },
+    styles: { medium: "370x278#", large: "370x370#", thumb: "170x170#" },
     default_url: "/images/user.png"
   )
 
