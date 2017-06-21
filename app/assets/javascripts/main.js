@@ -9,20 +9,54 @@ $(document).ready(function(){
     verificaMostraBotao();
   });
 
-  $("#input-banner").click(function(e) {
-    e.preventDefault();
-    $("#image-button-banner").trigger('click');
+  // $("#input-banner").click(function(e) {
+  //   e.preventDefault();
+  //   $("#image-button-banner").trigger('click');
+  // });
+
+  // $("#input-avatar").click(function(e) {
+  //   e.preventDefault();
+  //   $("#image-button-avatar").trigger('click');
+  // });
+
+  $(".file-field").change(function(){
+    readURL($('.file-field'))
   });
 
-  $("#input-avatar").click(function(e) {
+  function readURL(input) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var img = document.getElementById('image-input');
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(input[0].files[0]);
+  }
+
+  $("#file-button").click(function(e) {
     e.preventDefault();
-    $("#image-button-avatar").trigger('click');
+    $(".file-field").trigger('click');
   });
 
-  $("#input-publication-image").click(function(e) {
-    e.preventDefault();
-    $("#publication-image-button").trigger('click');
+
+  //Announcer Banner++++++++++++++++++++++++++++++++++++++++
+  $(".file-field-ban").change(function(){
+    readURLBan($('.file-field-ban'))
   });
+
+  function readURLBan(input) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var img = document.getElementById('image-input-ban');
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(input[0].files[0]);
+  }
+
+  $("#file-button-ban").click(function(e) {
+    e.preventDefault();
+    $(".file-field-ban").trigger('click');
+  });
+  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   $("#input-photo").click(function(e) {
     e.preventDefault();

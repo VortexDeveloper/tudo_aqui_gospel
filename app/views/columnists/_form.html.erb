@@ -54,13 +54,15 @@
               <%= f.submit "SALVAR ALTERAÇÕES", class: 'rst-pagebutton' %>
             </div>
             <div class="rst-account-img">
-              <% if @columnist.avatar.present? %>
-                <%= image_tag @columnist.avatar.url(:medium) %>
-              <% else %>
-                <img src="../images/user.png" alt="" />
-              <% end %>
-              <input id="input-avatar" class="rst-pagebutton" type="submit" value="ALTERAR"/>
-              <%= f.file_field :avatar, class: 'image-button', id: 'image-button-avatar' %>
+              <div class="photobox-170x170">
+                <% if @columnist.avatar.present? %>
+                  <%= image_tag @columnist.avatar.url(:large), id: 'image-input' %>
+                <% else %>
+                  <img id="image-input" src="../images/user.png"/>
+                <% end %>
+                <%= f.file_field :avatar, class: 'file-field image-button' %>
+              </div>
+              <input id="file-button" class="rst-pagebutton" type="submit" value="ALTERAR"/>
             </div>
           </div>
         </div>

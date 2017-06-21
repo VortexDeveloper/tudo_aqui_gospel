@@ -129,10 +129,12 @@
               </div>
             </div>
             <% if publication.image.present? %>
-              <%= image_tag publication.image.url %>
+              <%= image_tag publication.image.url, id: 'image-input' %>
+            <% else %>
+              <img id="image-input" />
             <% end %>
-            <input id="input-publication-image" class="rst-pagebutton" type="submit" value="SELECIONAR"/>
-            <%= f.file_field :image, class: 'image-button', id: 'publication-image-button' %>
+            <%= f.file_field :image, class: 'file-field image-button' %>
+            <input id="file-button" class="rst-pagebutton" type="submit" value="SELECIONAR"/>
           </div>
         </div>
       <% end %>
@@ -141,3 +143,8 @@
 </section>
 
 <%= javascript_include_tag 'init_ckeditor' %>
+<script type="text/javascript">
+
+
+
+</script>

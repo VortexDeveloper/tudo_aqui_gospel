@@ -942,12 +942,25 @@ footer li a:hover,
   height: auto !important;
 }
 
+.announcer-avatar {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.announcer-banner {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
 .photobox-170x170 {
     height: 170px;
     float: left;
     width: 170px;
     display: flex;
-    margin: 7.5px;
     overflow: hidden;
     background-size: cover;
     background-position: center;
@@ -960,6 +973,46 @@ footer li a:hover,
 
 .photobox-170x170 img {
     min-width: 100% !important;
+    height: auto !important;
+}
+
+.photobox-150x150 {
+    height: 150px;
+    float: left;
+    width: 150px;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.photobox-150x150 img {
+    min-width: 100% !important;
+    height: auto !important;
+}
+
+.photobox-350x150 {
+    height: 150px;
+    float: left;
+    width: 350px;
+    display: flex;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.photobox-350x150 img {
+    width: 100% !important;
     height: auto !important;
 }
 
@@ -1888,6 +1941,7 @@ footer li a {
   position: absolute;
   right: 30px;
   top: 0;
+  width: 170px;
 }
 .rst-account-img img {
   display: block;

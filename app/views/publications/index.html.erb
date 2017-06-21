@@ -19,8 +19,8 @@
         <% if @publications.present? %>
           <div class="row rst-cat-postlist">
             <% @publications.each do |publication| %>
-              <article class="col-sm-6 rst-catpost" id="publication_<%= publication.id %>">
-                <div class="rst-postpic photobox-370x370">
+              <article class="col-sm-3 col-xs-6 rst-catpost" id="publication_<%= publication.id %>">
+                <div class="rst-postpic photobox-270x190">
                   <%= link_to publication do %>
                     <% if publication.image.url.present? %>
                       <%= image_tag publication.image.url %>
@@ -30,7 +30,28 @@
                     <span><%= publication.pub_category %></span>
                   <% end %>
                 </div>
+
                 <div class="rst-postinfo">
+    							<h6>
+                    <%= link_to publication do %>
+                      <%= publication.title %>
+                    <% end %>
+                  </h6>
+    							<time><i class="fa fa-clock-o"></i><%= publication.created_at %></time>
+    							<p><%= publication.description %></p>
+                  <br>
+                  <%= link_to publication, class: 'vacancy-actions green-bg', alt: 'Visualizar' do %>
+                    <i class="fa fa-eye"></i>
+                  <% end %>
+                  <%= link_to edit_publication_path(publication), class: 'vacancy-actions blue-bg' do %>
+                    <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+                  <%= link_to publication, method: :delete, data: { confirm: 'Tem certeza que deseja excluir essa publicação?' }, class: 'vacancy-actions red-bg', remote: true, id: "remove_publication_#{publication.id}" do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %><br>
+    						</div>
+
+                <!-- <div class="rst-postinfo">
                   <%= link_to publication, class: 'rst-postpic-cat' do %>
                     <span><%= publication.pub_category %></span>
                   <% end %>
@@ -51,7 +72,9 @@
                   <%= link_to publication, method: :delete, data: { confirm: 'Tem certeza que deseja excluir essa publicação?' }, class: 'vacancy-actions red-bg', remote: true, id: "remove_publication_#{publication.id}" do %>
                     <i class="fa fa-trash"></i>
                   <% end %><br>
-                </div>
+                </div> -->
+
+
                 <div class="clear"></div>
               </article>
               <% content_for :js do%>

@@ -16,22 +16,30 @@
         <% end %>
         <div class="rst-accsetting">
           <div class="col-sm-6">
-              <% if announcer.avatar.present? %>
-                <%= image_tag announcer.avatar.url(:medium) %>
-              <% else %>
-                <img src="../images/user.png" alt="" />
-              <% end %>
-              <input id="input-avatar" class="rst-pagebutton" type="submit" value="INSERIR LOGO"/>
-              <%= a.file_field :avatar, class: 'image-button', id: 'image-button-avatar' %>
+              <div class="announcer-avatar">
+                <div class="photobox-150x150">
+                  <% if announcer.avatar.present? %>
+                    <%= image_tag announcer.avatar.url(:large), id: 'image-input' %>
+                  <% else %>
+                    <img id="image-input" src="../images/user.png"/>
+                  <% end %>
+                  <%= a.file_field :avatar, class: 'file-field image-button' %>
+                </div>
+                <input id="file-button" class="rst-pagebutton" type="submit" value="INSERIR LOGO"/>
+              </div>
           </div>
           <div class="col-sm-6">
-              <% if announcer.banner.present? %>
-                <%= image_tag announcer.banner.url(:thumb) %>
-              <% else %>
-                <img src="../images/banner.png" alt="" />
-              <% end %>
-              <input id="input-banner" class="rst-pagebutton" type="submit" value="INSERIR BANNER"/>
-              <%= a.file_field :banner, class: 'image-button', id: 'image-button-banner' %>
+            <div class="announcer-banner">
+              <div class="photobox-350x150">
+                <% if announcer.banner.present? %>
+                  <%= image_tag announcer.banner.url(:large), id: 'image-input-ban' %>
+                <% else %>
+                  <img id="image-input-ban" src="../images/banner.png"/>
+                <% end %>
+                <%= a.file_field :banner, class: 'file-field-ban image-button' %>
+              </div>
+              <input id="file-button-ban" class="rst-pagebutton" type="submit" value="INSERIR BANNER"/>
+            </div>
           </div>
           <div class="col-sm-6">
             <div class="rst-setting">

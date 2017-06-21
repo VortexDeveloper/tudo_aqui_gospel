@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :announcers
   resources :subscribers
-  resources :columnists
+  # resources :columnists
 
   resources :ads, only: [:show, :update] do
     collection do
@@ -54,7 +54,9 @@ Rails.application.routes.draw do
   get 'columnists/edit'
   patch 'columnists/update'
   post 'columnists/create'
-  # get 'columnists/:id' => 'columnists#show', as: 'columnist'
+  get 'columnists/new' => 'columnists#new', as: 'new_columnist'
+  get 'columnists/:id' => 'columnists#show', as: 'columnist'
+  get 'columnists' => 'columnists#index', as: 'columnists'
   get 'subscribers/edit'
   patch 'subscribers/update'
   post 'subscribers/create'
